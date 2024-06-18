@@ -9,6 +9,7 @@ import { Registration } from "./pages/Registration/Registration";
 import { Home } from "./pages/Home/Home";
 import { NewsPage } from "./pages/NewsPage/NewsPage";
 import { MainNews } from "./pages/NewsPage/MainNews/MainNews";
+import DashboardLayout from "./pages/DashboardLayout/DashboardLayout";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="registration" element={<Registration />} />{" "}
         <Route path="news-page" element={<NewsPage />} />
         <Route path="main-news/:blog_id" element={<MainNews />} />
+        <Route path="dashboard-layout/*" element={<DashboardLayout />} />{" "}
       </Routes>
     </>
   );
