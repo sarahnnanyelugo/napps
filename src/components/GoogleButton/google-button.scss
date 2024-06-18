@@ -1,0 +1,17 @@
+.google-button {
+  border: solid 1px #e4e7ec !important;
+  background: #fff !important;
+  font-size: 14px;
+  font-family: montSB;
+  width: 100%;
+  border-radius: 7px;
+
+  padding: 10px 0;
+  margin-bottom: 20px;
+  img {
+    margin-right: 10px;
+  }
+  &:hover {
+    background: #e7e7e7 !important;
+  }
+}

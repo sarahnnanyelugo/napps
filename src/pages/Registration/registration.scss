@@ -1,0 +1,92 @@
+.registration-detail {
+  h6 {
+    font-size: 14px;
+    margin-left: 15px;
+    margin-top: 25px;
+    float: left;
+  }
+  input {
+    margin: 0 5px;
+    width: 100%;
+    border: 1px solid #f3ecec;
+    color: #c5c3c3;
+    font-size: 14px;
+    padding: 7px 30px;
+    font-family: montM;
+    margin-bottom: 30px;
+    border-radius: 7px;
+    &:hover {
+      background: #e7e7e740;
+    }
+  }
+  ::placeholder {
+    color: rgb(200, 199, 199);
+    font-size: 14px;
+  }
+}
+.payment-button {
+  border: solid 1px #e7e7e7 !important;
+  background: #027a48 !important;
+  font-size: 14px;
+  font-family: montSB;
+  margin-top: 40px;
+  border-radius: 7px;
+  color: #fff;
+  padding: 15px 40px;
+  margin-bottom: 20px;
+  float: right;
+  img {
+    margin-right: 10px;
+  }
+  &:hover {
+    background: #00923f !important;
+    transition: 0.5 ease;
+  }
+}
+.login {
+  color: #027a48;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: montB;
+}
+
+h6 {
+  float: left;
+}
+.PhoneInputInput {
+  border: solid 1px #f3ecec;
+  height: 40px;
+
+  border-radius: 0 !important;
+  border-top-right-radius: 7px !important;
+  border-bottom-right-radius: 7px !important;
+}
+.PhoneInputCountry {
+  border-top: solid 1px #f3ecec;
+  border-bottom: solid 1px #f3ecec;
+  border-left: solid 1px #f3ecec;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  height: 40px;
+  padding-left: 5px;
+  margin-right: 0 !important;
+  margin-left: 10px !important;
+}
+
+.members-form {
+  select {
+    margin: 0 5px;
+    width: 100%;
+    border: 1px solid #f3ecec;
+    color: #191919;
+    font-size: 14px;
+    padding: 7px 30px;
+    font-family: montM;
+    background: #fff;
+    margin-bottom: 30px;
+    border-radius: 7px;
+    &:hover {
+      background: #e7e7e740;
+    }
+  }
+}

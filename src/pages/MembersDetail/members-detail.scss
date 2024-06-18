@@ -1,0 +1,50 @@
+.members-detail {
+  h6 {
+    font-size: 14px;
+    margin-left: 15px;
+    margin-top: 25px;
+  }
+  input {
+    margin: 0 5px;
+    width: 100%;
+    border: 1px solid #f3ecec;
+    color: #c5c3c3;
+    font-size: 14px;
+    padding: 7px 30px;
+    font-family: montM;
+    margin-bottom: 30px;
+    border-radius: 7px;
+    &:hover {
+      background: #e7e7e740;
+    }
+  }
+  ::placeholder {
+    color: rgb(200, 199, 199);
+    font-size: 14px;
+  }
+}
+.payment-button {
+  border: solid 1px #e7e7e7 !important;
+  background: #027a48 !important;
+  font-size: 14px;
+  font-family: montSB;
+  margin-top: 40px;
+  border-radius: 7px;
+  color: #fff;
+  padding: 15px 40px;
+  margin-bottom: 20px;
+  float: right;
+  img {
+    margin-right: 10px;
+  }
+  &:hover {
+    background: #00923f !important;
+    transition: 0.5 ease;
+  }
+}
+.login {
+  color: #027a48;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: montB;
+}

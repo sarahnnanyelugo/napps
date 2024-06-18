@@ -1,0 +1,34 @@
+.footer-div {
+  background: #191919 0% 0% no-repeat padding-box;
+  box-shadow: 0px 2px 6px #00000029;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  color: #fff;
+  img {
+    filter: grayscale(100%);
+  }
+  h5 {
+    margin-bottom: 20px;
+    @media screen and (max-width: 820px) {
+      font-size: 12px;
+      margin-top: 20px;
+    }
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 30px;
+    font-family: montR;
+    @media screen and (max-width: 820px) {
+      font-size: 12px;
+    }
+  }
+  hr {
+    border: solid 1px #fff;
+    margin-top: 100px;
+  }
+  p {
+    font-size: 14px;
+  }
+}

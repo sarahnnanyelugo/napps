@@ -1,0 +1,49 @@
+/* src/SliderComponent.css */
+.slide {
+  position: relative;
+  transition: transform 0.5s, opacity 0.5s;
+  text-align: center;
+  color: black;
+  border-radius: 10px !important;
+  //   margin: 30px;
+
+  padding: 20px;
+  p {
+    font-size: 14px;
+  }
+}
+
+.slick-slide {
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+
+.slick-center {
+  transform: scale(1.2);
+  opacity: 1 !important;
+  position: relative;
+  z-index: 1;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000000d;
+  border: 1px solid #c2c1c1;
+  overflow: visible;
+  height: 170px;
+  border-radius: 10px;
+  transition: transform 0.5s, opacity 0.5s;
+  @media screen and (max-width: 820px) {
+    height: fit-content;
+  }
+}
+
+.slick-slide img {
+  width: 44px;
+  height: 44px;
+}
+.slick-list {
+  //   overflow: visible; /* Ensure the overflow is visible to show zoom effect */
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
+}

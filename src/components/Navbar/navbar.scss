@@ -1,0 +1,17 @@
+.nav-container {
+  a {
+    color: #292d32;
+    font-family: montSB;
+    margin: 0 0px;
+  }
+  button {
+    border-radius: 7px;
+    background: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    &:hover {
+      background: #e4e7ec;
+    }
+  }
+}
