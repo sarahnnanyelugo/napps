@@ -7,7 +7,12 @@ import { SubChart } from "../../components/SubChart/SubChart";
 import { ZoneChart } from "../../components/ZoneChart/ZoneChart";
 import { recentActs } from "../../Data/recentActivities";
 import { schools } from "../../Data/schoolsData";
+import CountUp from "react-countup";
+import Icon1 from "../../assets/images/up.svg";
+import Icon2 from "../../assets/images/down.svg";
+
 import "./admin-dashboard.scss";
+import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 export const AdminDashboard = () => {
   const [state, setState] = useState({
     query: "",
@@ -15,19 +20,30 @@ export const AdminDashboard = () => {
   });
   return (
     <>
+      <DashboardTop title="Welcome, Peter" />
       <div className="Admin-dashboard">
-        <div className="d-flex">
-          <h1 style={{ flexGrow: 1 }}>Welcome, Peter</h1>
-          <input placeholder="Search" className="col-md-3" />
-        </div>
         <div className=" row row-cols-1 row-cols-lg-3 g-2 g-lg-4 mt">
           <div className="col">
             <div className="summary">
               <p>Total Registered Schools</p>
               <div className="d-flex">
                 <div className="col-md-5">
-                  <h1>530</h1>
-                  <p>vs last month</p>
+                  <h1 className="stats">
+                    {" "}
+                    <CountUp
+                      start={0}
+                      end={530}
+                      duration={2}
+                      decimal=""
+                      prefix=" "
+                      suffix=""
+                      enableScrollSpy={true}
+                    />
+                  </h1>
+                  <p>
+                    <img src={Icon1} height="11px" />
+                    <span className="up">12%</span>vs last month
+                  </p>
                 </div>{" "}
                 <div className="col-md-7">
                   <DataChart />
@@ -40,8 +56,22 @@ export const AdminDashboard = () => {
               <p>Total Registered Schools</p>
               <div className="d-flex">
                 <div className="col-md-5">
-                  <h1>530</h1>
-                  <p>vs last month</p>
+                  <h1 className="stats">
+                    {" "}
+                    <CountUp
+                      start={0}
+                      end={490}
+                      duration={2}
+                      decimal=""
+                      prefix=" "
+                      suffix=""
+                      enableScrollSpy={true}
+                    />
+                  </h1>
+                  <p>
+                    <img src={Icon2} height="11px" />
+                    <span className="down">5%</span>vs last month
+                  </p>
                 </div>{" "}
                 <div className="col-md-7">
                   <SubChart />
@@ -54,8 +84,22 @@ export const AdminDashboard = () => {
               <p>Total Registered Schools</p>
               <div className="d-flex">
                 <div className="col-md-5">
-                  <h1>530</h1>
-                  <p>vs last month</p>
+                  <h1 className="stats">
+                    {" "}
+                    <CountUp
+                      start={0}
+                      end={100200}
+                      duration={2}
+                      decimal={true}
+                      prefix=" "
+                      suffix="m"
+                      enableScrollSpy={true}
+                    />
+                  </h1>
+                  <p>
+                    <img src={Icon1} width="11px" />
+                    <span className="up">12%</span>vs last month
+                  </p>
                 </div>{" "}
                 <div className="col-md-7">
                   <DataChart />
@@ -66,7 +110,7 @@ export const AdminDashboard = () => {
         </div>
         <div className="d-md-flex">
           <div className="col-md-8 zone-div">
-            <h6>Schools by Zones</h6>
+            <h5>Schools by Zones</h5>
             <ZoneChart />
           </div>
           <div className="col-md-4 acts-div">

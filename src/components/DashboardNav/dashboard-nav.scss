@@ -1,5 +1,6 @@
 .dashboard-nav {
   padding: 10px 5px;
+  height: 100%;
   border-right: solid 1px #f7f5f5;
   .dash-logo {
     height: 74px;
@@ -11,19 +12,24 @@
     padding-top: 50px;
     font-family: SoraM;
     font-size: 14px;
+    width: 100% !important;
     // line-height: 30px;
     img {
       margin-right: 5px;
     }
   }
   .active {
-    background: red;
+    background: rgb(244, 255, 248);
+    padding: 18px 60px 18px 10px;
+    color: #027a48 !important;
+    font-weight: bold !important;
     border-radius: 10px;
-    color: #fff;
-    padding: 10px 10px;
+    transition: 0.7s ease;
+    font-family: montSB;
+    font-family: montSB;
   }
   li {
-    width: fit-content;
+    width: 100%;
     margin-top: 40px;
   }
 }
@@ -51,3 +57,11 @@
     }
   }
 }
+// .dashboard-nav li :hover {
+//   background: red;
+//   padding: 18px 60px 15px 10px;
+//   color: #fff !important;
+//   font-weight: bold !important;
+//   border-radius: 10px;
+
+// }

@@ -1,24 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import "./schools-table.scss";
-const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
-  const [isShowingAll, setIsShowingAll] = useState(false);
-
-  const handleToggleDisplay = () => {
-    setIsShowingAll(!isShowingAll);
-  };
-  const visibleData = isShowingAll ? data : data.slice(0, initialDisplayCount);
-
+import "../../components/SchoolsTable/schools-table.scss";
+const ManagementTable = ({ data }) => {
   const { bg, colo, bd2, colo2 } = data;
+
   return (
     <div>
-      <div className="d-flex">
-        {" "}
-        <h5 style={{ flexGrow: 1 }}>Newly Registered School</h5>
-        <button onClick={handleToggleDisplay} className="more-btn">
-          {isShowingAll ? "See less" : "See all"}
-        </button>
-      </div>
+      <div className="d-flex"> </div>
 
       <Table striped bordered hover className="school-table">
         <thead>
@@ -33,7 +21,7 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
           </tr>
         </thead>
         <tbody>
-          {visibleData.map((item) => (
+          {data.map((item) => (
             <tr key={item.id}>
               <td>
                 <input type="checkbox" />
@@ -84,4 +72,4 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
   );
 };
 
-export default SchoolsTable;
+export default ManagementTable;

@@ -21,7 +21,7 @@ const DashboardNav = () => {
           </center>
         </div>
         {/* <hr /> */}
-        <ul className="list-unstyled col-md-9 offset-md-2">
+        <ul className="list-unstyled col-md-12 offset-md-2">
           <li>
             <NavLink to={"./admin-dashboard"} activeClassName="active">
               {/* <img src={Icon2} width="20px" height="20px" /> */}
@@ -29,7 +29,7 @@ const DashboardNav = () => {
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./product-requests"} activeClassName="active">
+            <NavLink to={"./school-management"} activeClassName="active">
               {/* <img src={Icon2} width="20px" height="20px" /> Product Requests */}
               School Management
             </NavLink>
