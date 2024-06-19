@@ -61,7 +61,7 @@ const ManagementTable = ({ data }) => {
               <td>{item.zone}</td>
               <td className="edit">
                 <Link
-                  className="edit"
+                  className="view"
                   to={"/dashboard-layout/displayed-school/" + item.id}
                   state={{ blog_id: blogId }}
                 >
@@ -69,7 +69,14 @@ const ManagementTable = ({ data }) => {
                 </Link>
               </td>
               <td className="edit" style={{ color: "#00923F" }}>
-                edit
+                <Link
+                  className="edit"
+                  to={"/dashboard-layout/displayed-school/" + item.id}
+                  state={{ blog_id: blogId }}
+                >
+                  {" "}
+                  edit
+                </Link>
               </td>
             </tr>
           ))}

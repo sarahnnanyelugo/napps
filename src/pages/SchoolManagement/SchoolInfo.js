@@ -1,13 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import { schools } from "../../Data/schoolsData";
-export const SchoolInfo = ({ blog_id }) => {
+export const SchoolInfo = ({ blog_id, initialValue = "Click tdsddo edit" }) => {
   const [data, setData] = useState({});
   const [id, setId] = useState(0);
   const location = useLocation();
+  const [value, setValue] = useState(initialValue);
+  const [isEditing, setIsEditing] = useState(false);
+  const inputRef = useRef(null);
 
-  const [value, setValue] = useState(""); // Set an initial value if needed
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleBlur = () => {
+    setIsEditing(false);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      setIsEditing(false);
+    }
+  };
+
+  const handleClick = () => {
+    setIsEditing(true);
+    // Focus on the input field after enabling editing
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
 
   useEffect(() => {
     setId(blog_id);
@@ -23,9 +46,6 @@ export const SchoolInfo = ({ blog_id }) => {
       );
     // console.log(data, research, id);
   }, [id]);
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
 
   return (
     <>
@@ -39,12 +59,28 @@ export const SchoolInfo = ({ blog_id }) => {
             <p>South East, Enugu Nigeria. Pending</p>
           </div>
         </div>
-        <div className="d-md-flex">
+        <div className="d-md-flex ">
           <div className="col-md-6">
             <h5>About School</h5>
-            <textarea onChange={handleChange}></textarea>
-
-            <p>Current Value: </p>
+            <div
+              onClick={handleClick}
+              style={{ cursor: "pointer" }}
+              className="editables"
+            >
+              {isEditing ? (
+                <input
+                  type="text"
+                  value={value}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  onKeyPress={handleKeyPress}
+                  ref={inputRef}
+                  style={{ height: "166px", width: "100%" }} // Optional: to make input take full width
+                />
+              ) : (
+                <span>{value}</span>
+              )}
+            </div>
           </div>
         </div>
       </div>
