@@ -33,6 +33,11 @@ export const DisplayedSchool = () => {
             <p>South East, Enugu Nigeria. Pending</p>
           </div>
         </div>
+        <div className="d-md-flex">
+          <div className="col-md-6">
+            <h5>About School</h5>
+          </div>
+        </div>
       </div>
       {/* <h1>{data.name}</h1> */}
     </>
