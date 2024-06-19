@@ -39,7 +39,7 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
                 <input type="checkbox" />
               </td>
               <td className="">
-                <div className=" alphabet" style={{ background: bg }}>
+                <div className=" alphabet" style={{ background: item.bg }}>
                   <center>
                     <p>{item.alphabet}</p>
                   </center>
@@ -49,7 +49,7 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
               <td>
                 <button
                   className="table-btn"
-                  style={{ background: bg, color: colo }}
+                  style={{ background: item.bg, color: item.colo }}
                 >
                   {item.status}
                 </button>
