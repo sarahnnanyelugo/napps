@@ -10,6 +10,8 @@ export const schools = [
     alphabet: "S",
     bg2: "#AA9C75",
     category: ["pending", "NE"],
+    about:
+      "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
   },
   {
     id: 2,
@@ -22,6 +24,8 @@ export const schools = [
     alphabet: "D",
     bg2: "#2A86D3",
     category: ["active", "NE"],
+    about:
+      "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
   },
   {
     id: 3,
@@ -34,6 +38,8 @@ export const schools = [
     alphabet: "B",
     bg2: "#EF9995",
     category: ["active", "NC"],
+    about:
+      "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
   },
   {
     id: 4,
@@ -46,6 +52,8 @@ export const schools = [
     alphabet: "S",
     bg2: "#2A7918",
     category: ["inactive", "NC"],
+    about:
+      "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
   },
   {
     id: 5,
@@ -58,6 +66,8 @@ export const schools = [
     alphabet: "S",
     bg2: "#2A7918",
     category: ["inactive", "SW"],
+    about:
+      "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
   },
   {
     id: 6,
@@ -70,6 +80,8 @@ export const schools = [
     alphabet: "S",
     bg2: "#2A7918",
     category: ["active", "SW"],
+    about:
+      "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
   },
   {
     id: 7,
@@ -82,6 +94,8 @@ export const schools = [
     alphabet: "S",
     bg2: "#2A7918",
     category: ["active", "WN"],
+    about:
+      "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
   },
   {
     id: 8,
@@ -94,5 +108,7 @@ export const schools = [
     alphabet: "S",
     bg2: "#2A7918",
     category: ["pending", "SS"],
+    about:
+      "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
   },
 ];
