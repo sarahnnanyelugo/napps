@@ -62,7 +62,7 @@ const ManagementTable = ({ data }) => {
               <td className="edit">
                 <Link
                   className="edit"
-                  to={"/displayed-school/" + data.id}
+                  to={"/dashboard-layout/displayed-school/" + item.id}
                   state={{ blog_id: blogId }}
                 >
                   view

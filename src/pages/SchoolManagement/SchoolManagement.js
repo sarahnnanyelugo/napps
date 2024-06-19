@@ -30,7 +30,8 @@ export const SchoolManagement = () => {
     list: schools,
   });
   function reducer(dt) {
-    setState(dt);
+    // console.log(dt);
+    setfilteredSchools(dt.list);
   }
   return (
     <>

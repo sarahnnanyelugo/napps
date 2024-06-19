@@ -24,6 +24,7 @@ function App() {
         <Route path="news-page" element={<NewsPage />} />
         <Route path="main-news/:blog_id" element={<MainNews />} />
         <Route path="dashboard-layout/*" element={<DashboardLayout />} />{" "}
+        {/* <Route path="displayed-school/:blog_id" element={<DisplayedSchool />} />{" "} */}
       </Routes>
     </>
   );

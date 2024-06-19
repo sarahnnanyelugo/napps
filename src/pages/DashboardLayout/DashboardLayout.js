@@ -18,11 +18,11 @@ export default function DashboardLayout() {
           <Routes>
             <Route path="/admin-dashboard" element={<AdminDashboard />} />{" "}
             <Route path="/school-management" element={<SchoolManagement />} />
-            {/* <Route
-              path="displayed-school/:blog_id"
+            <Route
+              path="/displayed-school/:blog_id"
               element={<DisplayedSchool />}
-            />{" "} */}
-            <Route path="displayed-school" element={<DisplayedSchool />} />{" "}
+            />{" "}
+            {/* <Route path="displayed-school" element={<DisplayedSchool />} />{" "} */}
           </Routes>
         </div>
       </div>

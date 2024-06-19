@@ -19,10 +19,10 @@ function SearchBar({ callback, posts }) {
   // Filter posts on typing in search input
   const handleChange = (e) => {
     const results = posts.filter((post) => {
-      if (e.target.value === "") return posts;
+      if (e.target.value === "") return post;
       return (
-        post["name"].toLowerCase().includes(e.target.value.toLowerCase()) ||
-        post[" zone"].toLowerCase().includes(e.target.value.toLowerCase())
+        post?.name?.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        post?.zone?.toLowerCase().includes(e.target.value.toLowerCase())
       );
     });
 
