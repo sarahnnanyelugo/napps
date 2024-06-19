@@ -10,6 +10,7 @@ import { Home } from "./pages/Home/Home";
 import { NewsPage } from "./pages/NewsPage/NewsPage";
 import { MainNews } from "./pages/NewsPage/MainNews/MainNews";
 import DashboardLayout from "./pages/DashboardLayout/DashboardLayout";
+import { DisplayedSchool } from "./pages/SchoolManagement/DisplayedSchool";
 
 function App() {
   return (

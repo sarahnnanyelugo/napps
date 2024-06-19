@@ -195,10 +195,10 @@ export const SchoolManagement = () => {
               </button>
               <button className="add-sch-btn">Add School</button>
             </div>
-          </div>
+          </div>{" "}
+          <hr />
           <ManagementTable data={filteredSchools} />
         </div>
-        <hr />
       </div>
     </>
   );

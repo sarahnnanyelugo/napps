@@ -35,7 +35,7 @@ const DashboardNav = () => {
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./order-page"} activeClassName="active">
+            <NavLink to={"./displayed-school"} activeClassName="active">
               {/* <img src={Icon2} width="20px" height="20px" /> Orders */}
               Subscription
             </NavLink>

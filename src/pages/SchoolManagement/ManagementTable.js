@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import "../../components/SchoolsTable/schools-table.scss";
+import { Link, useLocation } from "react-router-dom";
+
 const ManagementTable = ({ data }) => {
   const { bg, colo, bd2, colo2 } = data;
+  const [blogId, setBlogId] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    setBlogId(data.id);
+  });
 
   return (
     <div>
@@ -51,7 +59,15 @@ const ManagementTable = ({ data }) => {
               </td>
               <td>{item.regID}</td>
               <td>{item.zone}</td>
-              <td className="edit">view</td>
+              <td className="edit">
+                <Link
+                  className="edit"
+                  to={"/displayed-school/" + data.id}
+                  state={{ blog_id: blogId }}
+                >
+                  view
+                </Link>
+              </td>
               <td className="edit" style={{ color: "#00923F" }}>
                 edit
               </td>

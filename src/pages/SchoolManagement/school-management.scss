@@ -70,3 +70,25 @@
     margin: 10px;
   }
 }
+.sch-view-div {
+  height: 152px;
+  background: rgb(225, 183, 254);
+  background: linear-gradient(
+    153deg,
+    rgba(225, 183, 254, 1) 39%,
+    rgba(140, 191, 255, 1) 63%
+  );
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.sch-info {
+  padding: 25px;
+  .sch-display {
+    height: 173px;
+    width: 173px;
+    border-radius: 100%;
+    background: #027a48;
+    margin-top: -80px;
+  }
+}
