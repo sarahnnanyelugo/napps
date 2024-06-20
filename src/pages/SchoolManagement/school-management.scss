@@ -91,6 +91,24 @@
     background: #027a48;
     margin-top: -80px;
   }
+  button {
+    font-size: 14px;
+    font-family: montM;
+    height: 36px;
+    border-radius: 6px;
+    border: none;
+    padding: 0 15px;
+    border: 1px solid #d0d5dd;
+  }
+  .save-btn {
+    background: #027a48;
+    color: #fff;
+    margin-left: 6px;
+  }
+  .cancel-btn {
+    border: 1px solid #d0d5dd;
+    color: #000000;
+  }
 }
 .edit,
 .view {

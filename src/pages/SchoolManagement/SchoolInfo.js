@@ -56,9 +56,13 @@ export const SchoolInfo = ({ blog_id }) => {
         <div className="sch-view-div"></div>
         <div className="sch-info d-flex">
           <div className="sch-display"></div>
-          <div>
+          <div style={{ flexGrow: 1 }}>
             <h4>{data.name}</h4>
             <p>South East, Enugu Nigeria. Pending</p>
+          </div>
+          <div className="d-flex ">
+            <button clasName="cancel-btn">Cancel</button>
+            <button className="save-btn">Save</button>
           </div>
         </div>
         <div className="d-md-flex more-info">
@@ -166,6 +170,7 @@ export const SchoolInfo = ({ blog_id }) => {
             </div>
             <p>40 characters left</p>
           </div>
+          <div className="col-md-6"></div>
         </div>
       </div>
       {/* <h1>{data.name}</h1> */}
