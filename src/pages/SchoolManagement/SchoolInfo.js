@@ -170,7 +170,16 @@ export const SchoolInfo = ({ blog_id }) => {
             </div>
             <p>40 characters left</p>
           </div>
-          <div className="col-md-6"></div>
+          <div className="col-md-6">
+            <h5>Contact Information</h5>
+            <div className="d-flex">
+              <div className="contact-frame"></div>
+              <div>
+                <h6>Name</h6>
+                <input />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       {/* <h1>{data.name}</h1> */}
