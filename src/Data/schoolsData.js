@@ -12,6 +12,10 @@ export const schools = [
     category: ["pending", "NE"],
     about:
       "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
+    vision:
+      "Our vision is to raise a generation of students with the right tools, skills, moral and mental abilities to excel in life and contribute positively to the development of mankind. In fulfilling our mission, we seek to achieve the following:",
+    mission:
+      "Impart high quality education to students and develop inquiring minds and a desire for knowledge. Develop strong self-esteem and high personal expectation, and acquire a set of spiritual and moral values. Equip students with the tools to excel in life and skills to manage changes. Provide conducive environment for learning, and expose students to the rich and diverse culture of the environment and Nigeria in general. Impart leadership skills.",
   },
   {
     id: 2,
@@ -26,6 +30,10 @@ export const schools = [
     category: ["active", "NE"],
     about:
       "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
+    vision:
+      "Our vision is to raise a generation of students with the right tools, skills, moral and mental abilities to excel in life and contribute positively to the development of mankind. In fulfilling our mission, we seek to achieve the following:",
+    mission:
+      "Impart high quality education to students and develop inquiring minds and a desire for knowledge. Develop strong self-esteem and high personal expectation, and acquire a set of spiritual and moral values. Equip students with the tools to excel in life and skills to manage changes. Provide conducive environment for learning, and expose students to the rich and diverse culture of the environment and Nigeria in general. Impart leadership skills.",
   },
   {
     id: 3,
@@ -40,6 +48,10 @@ export const schools = [
     category: ["active", "NC"],
     about:
       "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
+    vision:
+      "Our vision is to raise a generation of students with the right tools, skills, moral and mental abilities to excel in life and contribute positively to the development of mankind. In fulfilling our mission, we seek to achieve the following:",
+    mission:
+      "Impart high quality education to students and develop inquiring minds and a desire for knowledge. Develop strong self-esteem and high personal expectation, and acquire a set of spiritual and moral values. Equip students with the tools to excel in life and skills to manage changes. Provide conducive environment for learning, and expose students to the rich and diverse culture of the environment and Nigeria in general. Impart leadership skills.",
   },
   {
     id: 4,
@@ -54,6 +66,10 @@ export const schools = [
     category: ["inactive", "NC"],
     about:
       "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
+    vision:
+      "Our vision is to raise a generation of students with the right tools, skills, moral and mental abilities to excel in life and contribute positively to the development of mankind. In fulfilling our mission, we seek to achieve the following:",
+    mission:
+      "Impart high quality education to students and develop inquiring minds and a desire for knowledge. Develop strong self-esteem and high personal expectation, and acquire a set of spiritual and moral values. Equip students with the tools to excel in life and skills to manage changes. Provide conducive environment for learning, and expose students to the rich and diverse culture of the environment and Nigeria in general. Impart leadership skills.",
   },
   {
     id: 5,
@@ -68,6 +84,10 @@ export const schools = [
     category: ["inactive", "SW"],
     about:
       "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
+    vision:
+      "Our vision is to raise a generation of students with the right tools, skills, moral and mental abilities to excel in life and contribute positively to the development of mankind. In fulfilling our mission, we seek to achieve the following:",
+    mission:
+      "Impart high quality education to students and develop inquiring minds and a desire for knowledge. Develop strong self-esteem and high personal expectation, and acquire a set of spiritual and moral values. Equip students with the tools to excel in life and skills to manage changes. Provide conducive environment for learning, and expose students to the rich and diverse culture of the environment and Nigeria in general. Impart leadership skills.",
   },
   {
     id: 6,
@@ -82,6 +102,10 @@ export const schools = [
     category: ["active", "SW"],
     about:
       "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
+    vision:
+      "Our vision is to raise a generation of students with the right tools, skills, moral and mental abilities to excel in life and contribute positively to the development of mankind. In fulfilling our mission, we seek to achieve the following:",
+    mission:
+      "Impart high quality education to students and develop inquiring minds and a desire for knowledge. Develop strong self-esteem and high personal expectation, and acquire a set of spiritual and moral values. Equip students with the tools to excel in life and skills to manage changes. Provide conducive environment for learning, and expose students to the rich and diverse culture of the environment and Nigeria in general. Impart leadership skills.",
   },
   {
     id: 7,
@@ -96,6 +120,10 @@ export const schools = [
     category: ["active", "WN"],
     about:
       "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
+    vision:
+      "Our vision is to raise a generation of students with the right tools, skills, moral and mental abilities to excel in life and contribute positively to the development of mankind. In fulfilling our mission, we seek to achieve the following:",
+    mission:
+      "Impart high quality education to students and develop inquiring minds and a desire for knowledge. Develop strong self-esteem and high personal expectation, and acquire a set of spiritual and moral values. Equip students with the tools to excel in life and skills to manage changes. Provide conducive environment for learning, and expose students to the rich and diverse culture of the environment and Nigeria in general. Impart leadership skills.",
   },
   {
     id: 8,
@@ -110,5 +138,9 @@ export const schools = [
     category: ["pending", "SS"],
     about:
       "British Spring College was established in October 2011 by Lady Obianuju Dike. It is a co-educational full-boarding international secondary school that is approved by the British Council and the Federal /State Ministry of Education. We strongly believe that the 21st Century child should be educated with all necessary skills: moral and mental skills. The school is located at Awka, the state capital of Anambra State and it is amongst the best schools in Nigeria.",
+    vision:
+      "Our vision is to raise a generation of students with the right tools, skills, moral and mental abilities to excel in life and contribute positively to the development of mankind. In fulfilling our mission, we seek to achieve the following:",
+    mission:
+      "Impart high quality education to students and develop inquiring minds and a desire for knowledge. Develop strong self-esteem and high personal expectation, and acquire a set of spiritual and moral values. Equip students with the tools to excel in life and skills to manage changes. Provide conducive environment for learning, and expose students to the rich and diverse culture of the environment and Nigeria in general. Impart leadership skills.",
   },
 ];

@@ -97,6 +97,74 @@ export const SchoolInfo = ({ blog_id }) => {
               )}
             </div>
             <p>40 characters left</p>
+            <h5>Vision</h5>
+            <div className="d-flex">
+              <div className="select-div">
+                <select>
+                  <option>Normal text</option>
+                  <option>Other texts texts</option>
+                </select>
+              </div>
+              <h6>B</h6>
+              <h6 className="dec">U</h6>
+              <h6>
+                <em>I</em>
+              </h6>
+            </div>
+            <div
+              onClick={handleClick}
+              style={{ cursor: "pointer" }}
+              className="editables"
+            >
+              {isEditing ? (
+                <input
+                  type="text"
+                  value={value}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  onKeyPress={handleKeyPress}
+                  ref={inputRef}
+                  style={{ height: "166px", width: "100%" }} // Optional: to make input take full width
+                />
+              ) : (
+                <span className="editable-text">{data.vision}</span>
+              )}
+            </div>
+            <p>40 characters left</p>
+            <h5>Mission</h5>
+            <div className="d-flex">
+              <div className="select-div">
+                <select>
+                  <option>Normal text</option>
+                  <option>Other texts texts</option>
+                </select>
+              </div>
+              <h6>B</h6>
+              <h6 className="dec">U</h6>
+              <h6>
+                <em>I</em>
+              </h6>
+            </div>
+            <div
+              onClick={handleClick}
+              style={{ cursor: "pointer" }}
+              className="editables"
+            >
+              {isEditing ? (
+                <input
+                  type="text"
+                  value={value}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  onKeyPress={handleKeyPress}
+                  ref={inputRef}
+                  style={{ height: "166px", width: "100%" }} // Optional: to make input take full width
+                />
+              ) : (
+                <span className="editable-text">{data.mission}</span>
+              )}
+            </div>
+            <p>40 characters left</p>
           </div>
         </div>
       </div>
