@@ -336,7 +336,7 @@ export const SchoolInfo = ({ blog_id }) => {
               <h5>Contact Information</h5>
               <div className="d-flex">
                 <div className="contact-frame col-md-"></div>
-                <div>
+                <div className="col-md-9">
                   <div>
                     <h3>Name</h3>
 
