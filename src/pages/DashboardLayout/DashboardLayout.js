@@ -5,6 +5,7 @@ import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import { AdminDashboard } from "../AdminDashboard/AdminDashboard";
 import { DisplayedSchool } from "../SchoolManagement/DisplayedSchool";
 import { SchoolManagement } from "../SchoolManagement/SchoolManagement";
+import { SchShowcase } from "../SchoolManagement/SchShowcase";
 
 export default function DashboardLayout() {
   return (
@@ -22,7 +23,7 @@ export default function DashboardLayout() {
               path="/displayed-school/:blog_id"
               element={<DisplayedSchool />}
             />{" "}
-            {/* <Route path="displayed-school" element={<DisplayedSchool />} />{" "} */}
+            <Route path="/sch-showcase/:blog_id" element={<SchShowcase />} />{" "}
           </Routes>
         </div>
       </div>
