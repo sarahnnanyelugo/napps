@@ -62,7 +62,7 @@ export const SchoolBio = ({ blog_id }) => {
 
             <p> {data.mission}</p>
           </div>
-          <div className="contact-holder col-md-6">
+          <div className="contact-holder col-md-5  offset-md-1">
             <div className="">
               <h5>Contact Information</h5>
               <div className="d-flex">
@@ -81,7 +81,7 @@ export const SchoolBio = ({ blog_id }) => {
               {" "}
               <div className="col-md-6">
                 <h2>Address 1</h2>
-                <p> {data.address1}</p>
+                <p className="col-md-10"> {data.address1}</p>
               </div>
               <div className="col-md-6">
                 <h2>Website</h2>
@@ -93,7 +93,7 @@ export const SchoolBio = ({ blog_id }) => {
               <div className="col-md-6">
                 {" "}
                 <h2>Address 2</h2>
-                <p> {data.address2}</p>
+                <p className="col-md-10"> {data.address2}</p>
               </div>
               <div className="col-md-6">
                 <h2>Zone</h2>
@@ -104,7 +104,7 @@ export const SchoolBio = ({ blog_id }) => {
             <div className="d-flex">
               <div className="col-md-6">
                 <h2>Email</h2>
-                <p>{data.email}</p>
+                <p className="col-md-10">{data.email}</p>
               </div>{" "}
               <div className="col-md-6">
                 <h2>State</h2>
