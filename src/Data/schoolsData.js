@@ -16,6 +16,11 @@ export const schools = [
       "Our vision is to raise a generation of students with the right tools, skills, moral and mental abilities to excel in life and contribute positively to the development of mankind. In fulfilling our mission, we seek to achieve the following:",
     mission:
       "Impart high quality education to students and develop inquiring minds and a desire for knowledge. Develop strong self-esteem and high personal expectation, and acquire a set of spiritual and moral values. Equip students with the tools to excel in life and skills to manage changes. Provide conducive environment for learning, and expose students to the rich and diverse culture of the environment and Nigeria in general. Impart leadership skills.",
+    founder: "Mr Dozie Dike (Head of schools)",
+    website: "St.crigshighschool.com.ng",
+    phone: "+2348059838298",
+    state: "Lagos",
+    email: "St.crigshighschool@gmail.com",
   },
   {
     id: 2,
@@ -34,6 +39,11 @@ export const schools = [
       "Sultan High School envisions a vibrant, inclusive learning environment where cultural diversity is celebrated and every student is empowered to achieve global competence and personal success.",
     mission:
       "Sultan High School is committed to offering a diverse and inclusive educational experience that promotes intercultural understanding, academic excellence, and the holistic development of every student.",
+    founder: "Mr Dozie Dike (Head of schools)",
+    website: "sultanhighschool.com.ng",
+    phone: "+2349030838298",
+    state: "Kaduna",
+    email: "sultanhighschool@gmail.com",
   },
   {
     id: 3,
@@ -52,6 +62,11 @@ export const schools = [
       "BritishSpring College strives to blend the best of British and local educational practices, fostering critical thinkers and innovative leaders prepared for global challenges.",
     mission:
       "The mission of BritishSpring College is to deliver a comprehensive education that merges British and local standards, encouraging intellectual curiosity, creativity, and leadership in our students.",
+    founder: "Mr Dozie Dike (Head of schools)",
+    website: "britishspringcollege.com.ng",
+    phone: "+2348047478298",
+    state: "Abuja",
+    email: "britishspringcollege@gmail.com",
   },
   {
     id: 4,
@@ -70,6 +85,11 @@ export const schools = [
       "Dowen College aims to be a center of excellence in education, where students are equipped with the knowledge, skills, and entrepreneurial spirit to thrive in a rapidly evolving world.",
     mission:
       "Dowen College's mission is to create an innovative learning environment that blends traditional academics with modern technology and entrepreneurial education, equipping students for future success.",
+    founder: "Mr Dozie Dike (Head of schools)",
+    website: "dowencollege.com.ng",
+    phone: "+2348047925398",
+    state: "Lagos",
+    email: "dowencollege@gmail.com",
   },
   {
     id: 5,
@@ -88,6 +108,11 @@ export const schools = [
       "CherryField College is dedicated to nurturing well-rounded individuals through a balanced education that promotes academic excellence, personal growth, and community engagement.",
     mission:
       "CherryField College aims to provide a nurturing and supportive educational environment where students are encouraged to achieve academic excellence, develop strong character, and engage in their communities.",
+    founder: "Mr Dozie Dike (Head of schools)",
+    website: "cherryfieldcollege.com.ng",
+    phone: "+2348039085398",
+    state: "Abuja",
+    email: "cherryfieldcollege@gmail.com",
   },
   {
     id: 6,
@@ -106,6 +131,11 @@ export const schools = [
       "WisVille Schools Enugu aspires to develop holistic learners who excel academically, demonstrate strong character, and are prepared to make meaningful contributions to their communities.",
     mission:
       "WisVille Schools Enugu is dedicated to offering a holistic education that balances academic achievement, character development, and extracurricular activities, fostering well-rounded and resilient students.",
+    founder: "Mr Dozie Dike (Head of schools)",
+    website: "wisvilleschoolsenugu.com.ng",
+    phone: "+2348039085398",
+    state: "Enugu",
+    email: "wisvilleschoolsenugu@gmail.com",
   },
   {
     id: 7,
@@ -124,6 +154,11 @@ export const schools = [
       "Hilton Top HighSchool envisions an educational environment where high academic standards, personal integrity, and community involvement create the foundation for student success.",
     mission:
       "Hilton Top HighSchool's mission is to provide a challenging and supportive academic environment that encourages personal integrity, high achievement, and active participation in the community.",
+    founder: "Mr Dozie Dike (Head of schools)",
+    website: "hiltontophighschool.com.ng",
+    phone: "+2348039085298",
+    state: "Enugu",
+    email: "hiltontophighschool@gmail.com",
   },
   {
     id: 9,
@@ -142,6 +177,11 @@ export const schools = [
       "Montessori International School seeks to nurture independent, creative learners who are empowered to explore their potential and contribute thoughtfully to the world around them.",
     mission:
       "The mission of Montessori International School is to offer a child-centered education based on Montessori principles, fostering independence, creativity, and a lifelong love of learning in a respectful and supportive environment",
+    founder: "Mr Dozie Dike (Head of schools)",
+    website: "montessoriinternationalschool.com.ng",
+    phone: "+2348034485298",
+    state: "Lagos",
+    email: "montessoriinternationalschool@gmail.com",
   },
   {
     id: 8,
@@ -160,5 +200,10 @@ export const schools = [
       "Norwegian College aims to inspire a love for learning and a commitment to global citizenship through an innovative, experiential curriculum that emphasizes sustainability and critical thinking.",
     mission:
       "Norwegian College is committed to delivering an education that emphasizes experiential learning, environmental stewardship, and critical thinking, preparing students to become informed and responsible global citizens.",
+    founder: "Mr Dozie Dike (Head of schools)",
+    website: "norwagiancollege.com.ng",
+    phone: "+2348034561298",
+    state: "Enugu",
+    email: "norwagiancollege@gmail.com",
   },
 ];

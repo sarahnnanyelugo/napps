@@ -72,7 +72,7 @@ export const SchoolInfo = ({ blog_id }) => {
               <div className="select-div">
                 <select>
                   <option>Normal text</option>
-                  <option>Other texts texts</option>
+                  <option>Other texts options</option>
                 </select>
               </div>
               <h6>B</h6>
@@ -94,7 +94,8 @@ export const SchoolInfo = ({ blog_id }) => {
                   onBlur={handleBlur}
                   onKeyPress={handleKeyPress}
                   ref={inputRef}
-                  style={{ height: "166px", width: "100%" }} // Optional: to make input take full width
+                  style={{ height: "166px", width: "100%" }}
+                  className="form-control"
                 />
               ) : (
                 <span className="editable-text">{data.about}</span>
@@ -128,7 +129,8 @@ export const SchoolInfo = ({ blog_id }) => {
                   onBlur={handleBlur}
                   onKeyPress={handleKeyPress}
                   ref={inputRef}
-                  style={{ height: "166px", width: "100%" }} // Optional: to make input take full width
+                  style={{ height: "166px", width: "100%" }}
+                  className="form-control"
                 />
               ) : (
                 <span className="editable-text">{data.vision}</span>
@@ -162,7 +164,8 @@ export const SchoolInfo = ({ blog_id }) => {
                   onBlur={handleBlur}
                   onKeyPress={handleKeyPress}
                   ref={inputRef}
-                  style={{ height: "166px", width: "100%" }} // Optional: to make input take full width
+                  style={{ height: "166px", width: "100%" }}
+                  className="form-control"
                 />
               ) : (
                 <span className="editable-text">{data.mission}</span>
@@ -170,19 +173,245 @@ export const SchoolInfo = ({ blog_id }) => {
             </div>
             <p>40 characters left</p>
           </div>
-          <div className="col-md-6">
-            <h5>Contact Information</h5>
+          <div className="contact-holder col-md-6">
+            <div className="">
+              <h5>Contact Information</h5>
+              <div className="d-flex">
+                <div className="contact-frame col-md-"></div>
+                <div>
+                  <div>
+                    <h3>Name</h3>
+
+                    <div
+                      onClick={handleClick}
+                      style={{ cursor: "pointer" }}
+                      className="editables-two "
+                    >
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          value={value}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          onKeyPress={handleKeyPress}
+                          ref={inputRef}
+                          className="form-control"
+                        />
+                      ) : (
+                        <span className="editable-text">{data.founder}</span>
+                      )}
+                    </div>
+                  </div>{" "}
+                  <div>
+                    <h3>Phone</h3>
+
+                    <div
+                      onClick={handleClick}
+                      style={{ cursor: "pointer" }}
+                      className="editables-two "
+                    >
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          value={value}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          onKeyPress={handleKeyPress}
+                          ref={inputRef}
+                          style={{ height: "30px", width: "100%" }}
+                          className="form-control"
+                        />
+                      ) : (
+                        <span className="editable-text">{data.phone}</span>
+                      )}
+                    </div>
+                  </div>{" "}
+                  <div>
+                    <h3>Email</h3>
+
+                    <div
+                      onClick={handleClick}
+                      style={{ cursor: "pointer" }}
+                      className="editables-two "
+                    >
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          value={value}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          onKeyPress={handleKeyPress}
+                          ref={inputRef}
+                          style={{ height: "30px", width: "100%" }}
+                          className="form-control"
+                        />
+                      ) : (
+                        <span className="editable-text">{data.email}</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>Location</h3>
+              <h3>Address 1</h3>
+              <div
+                onClick={handleClick}
+                style={{ cursor: "pointer" }}
+                className="editables-two "
+              >
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={value}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    onKeyPress={handleKeyPress}
+                    ref={inputRef}
+                    style={{ height: "30px", width: "100%" }}
+                    className="form-control"
+                  />
+                ) : (
+                  <span className="editable-text">{data.founder}</span>
+                )}
+              </div>
+            </div>
+            <div>
+              <h3>Address 2</h3>
+
+              <div
+                onClick={handleClick}
+                style={{ cursor: "pointer" }}
+                className="editables-two "
+              >
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={value}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    onKeyPress={handleKeyPress}
+                    ref={inputRef}
+                    style={{ height: "30px", width: "100%" }}
+                    className="form-control"
+                  />
+                ) : (
+                  <span className="editable-text">{data.founder}</span>
+                )}
+              </div>
+            </div>
             <div className="d-flex">
-              <div className="contact-frame"></div>
               <div>
-                <h6>Name</h6>
-                <input />
+                <h3>Website</h3>
+
+                <div
+                  onClick={handleClick}
+                  style={{ cursor: "pointer" }}
+                  className="editables-two "
+                >
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      ref={inputRef}
+                      style={{ height: "30px", width: "100%" }}
+                      className="form-control"
+                    />
+                  ) : (
+                    <span className="editable-text">
+                      <small>{data.website}</small>
+                    </span>
+                  )}
+                </div>
+              </div>{" "}
+              <div>
+                <h3>Ward</h3>
+
+                <div
+                  onClick={handleClick}
+                  style={{ cursor: "pointer" }}
+                  className="editables-two "
+                >
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      ref={inputRef}
+                      style={{ height: "30px", width: "100%" }}
+                      className="form-control"
+                    />
+                  ) : (
+                    <span className="editable-text">
+                      <small>{data.founder}</small>
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="d-flex">
+              <div>
+                <h3>Zone</h3>
+
+                <div
+                  onClick={handleClick}
+                  style={{ cursor: "pointer" }}
+                  className="editables-two "
+                >
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      ref={inputRef}
+                      style={{ height: "30px", width: "100%" }}
+                      className="form-control"
+                    />
+                  ) : (
+                    <span className="editable-text">
+                      <small>{data.zone}</small>
+                    </span>
+                  )}
+                </div>
+              </div>{" "}
+              <div>
+                <h3>State</h3>
+
+                <div
+                  onClick={handleClick}
+                  style={{ cursor: "pointer" }}
+                  className="editables-two "
+                >
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      ref={inputRef}
+                      style={{ height: "30px", width: "100%" }}
+                      className="form-control"
+                    />
+                  ) : (
+                    <span className="editable-text">
+                      <small>{data.state}</small>
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* <h1>{data.name}</h1> */}
     </>
   );
 };
