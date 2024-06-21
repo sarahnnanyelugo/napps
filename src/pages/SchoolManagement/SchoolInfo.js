@@ -8,6 +8,18 @@ export const SchoolInfo = ({ blog_id }) => {
   const location = useLocation();
   const [value, setValue] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [isAbout, setIsAbout] = useState(false);
+  const [isVision, setIsVision] = useState(false);
+  const [isMission, setIsMission] = useState(false);
+  const [isName, setIsName] = useState(false);
+  const [isPhone, setIsPhone] = useState(false);
+  const [isEmail, setIsEmail] = useState(false);
+  const [isAddress1, setIsAddress1] = useState(false);
+  const [isAddress2, setIsAddress2] = useState(false);
+  const [isWebsite, setIsWebsite] = useState(false);
+  const [isWard, setIsWard] = useState(false);
+  const [isZone, setIsZone] = useState(false);
+  const [isState, setIsState] = useState(false);
   const inputRef = useRef(null);
 
   const handleChange = (event) => {
@@ -26,12 +38,95 @@ export const SchoolInfo = ({ blog_id }) => {
 
   const handleClick = () => {
     setIsEditing(true);
-    // Focus on the input field after enabling editing
+
     setTimeout(() => {
       inputRef.current.focus();
     }, 0);
   };
+  const handleAbout = () => {
+    setIsAbout(true);
 
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleVision = () => {
+    setIsVision(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleMission = () => {
+    setIsMission(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleName = () => {
+    setIsName(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handlePhone = () => {
+    setIsPhone(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleEmail = () => {
+    setIsEmail(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleAddress1 = () => {
+    setIsAddress1(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleAddress2 = () => {
+    setIsAddress2(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleWebsite = () => {
+    setIsWebsite(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleWard = () => {
+    setIsWard(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleState = () => {
+    setIsState(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
+  const handleZone = () => {
+    setIsZone(true);
+
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0);
+  };
   useEffect(() => {
     setId(blog_id);
     console.log(blog_id);
@@ -82,11 +177,11 @@ export const SchoolInfo = ({ blog_id }) => {
               </h6>
             </div>
             <div
-              onClick={handleClick}
+              onClick={handleAbout}
               style={{ cursor: "pointer" }}
               className="editables"
             >
-              {isEditing ? (
+              {isAbout ? (
                 <input
                   type="text"
                   value={value}
@@ -117,11 +212,11 @@ export const SchoolInfo = ({ blog_id }) => {
               </h6>
             </div>
             <div
-              onClick={handleClick}
+              onClick={handleVision}
               style={{ cursor: "pointer" }}
               className="editables"
             >
-              {isEditing ? (
+              {isVision ? (
                 <input
                   type="text"
                   value={value}
@@ -152,11 +247,11 @@ export const SchoolInfo = ({ blog_id }) => {
               </h6>
             </div>
             <div
-              onClick={handleClick}
+              onClick={handleMission}
               style={{ cursor: "pointer" }}
               className="editables"
             >
-              {isEditing ? (
+              {isMission ? (
                 <input
                   type="text"
                   value={value}
@@ -183,11 +278,11 @@ export const SchoolInfo = ({ blog_id }) => {
                     <h3>Name</h3>
 
                     <div
-                      onClick={handleClick}
+                      onClick={handleName}
                       style={{ cursor: "pointer" }}
                       className="editables-two "
                     >
-                      {isEditing ? (
+                      {isName ? (
                         <input
                           type="text"
                           value={value}
@@ -206,11 +301,11 @@ export const SchoolInfo = ({ blog_id }) => {
                     <h3>Phone</h3>
 
                     <div
-                      onClick={handleClick}
+                      onClick={handlePhone}
                       style={{ cursor: "pointer" }}
                       className="editables-two "
                     >
-                      {isEditing ? (
+                      {isPhone ? (
                         <input
                           type="text"
                           value={value}
@@ -230,11 +325,11 @@ export const SchoolInfo = ({ blog_id }) => {
                     <h3>Email</h3>
 
                     <div
-                      onClick={handleClick}
+                      onClick={handleEmail}
                       style={{ cursor: "pointer" }}
                       className="editables-two "
                     >
-                      {isEditing ? (
+                      {isEmail ? (
                         <input
                           type="text"
                           value={value}
@@ -257,11 +352,11 @@ export const SchoolInfo = ({ blog_id }) => {
               <h3>Location</h3>
               <h3>Address 1</h3>
               <div
-                onClick={handleClick}
+                onClick={handleAddress1}
                 style={{ cursor: "pointer" }}
                 className="editables-two "
               >
-                {isEditing ? (
+                {isAddress1 ? (
                   <input
                     type="text"
                     value={value}
@@ -281,11 +376,11 @@ export const SchoolInfo = ({ blog_id }) => {
               <h3>Address 2</h3>
 
               <div
-                onClick={handleClick}
+                onClick={handleAddress2}
                 style={{ cursor: "pointer" }}
                 className="editables-two "
               >
-                {isEditing ? (
+                {isAddress2 ? (
                   <input
                     type="text"
                     value={value}
@@ -306,11 +401,11 @@ export const SchoolInfo = ({ blog_id }) => {
                 <h3>Website</h3>
 
                 <div
-                  onClick={handleClick}
+                  onClick={handleWebsite}
                   style={{ cursor: "pointer" }}
                   className="editables-two "
                 >
-                  {isEditing ? (
+                  {isWebsite ? (
                     <input
                       type="text"
                       value={value}
@@ -332,11 +427,11 @@ export const SchoolInfo = ({ blog_id }) => {
                 <h3>Ward</h3>
 
                 <div
-                  onClick={handleClick}
+                  onClick={handleWard}
                   style={{ cursor: "pointer" }}
                   className="editables-two "
                 >
-                  {isEditing ? (
+                  {isAddress2 ? (
                     <input
                       type="text"
                       value={value}
@@ -360,11 +455,11 @@ export const SchoolInfo = ({ blog_id }) => {
                 <h3>Zone</h3>
 
                 <div
-                  onClick={handleClick}
+                  onClick={handleZone}
                   style={{ cursor: "pointer" }}
                   className="editables-two "
                 >
-                  {isEditing ? (
+                  {isZone ? (
                     <input
                       type="text"
                       value={value}
@@ -386,11 +481,11 @@ export const SchoolInfo = ({ blog_id }) => {
                 <h3>State</h3>
 
                 <div
-                  onClick={handleClick}
+                  onClick={handleState}
                   style={{ cursor: "pointer" }}
                   className="editables-two "
                 >
-                  {isEditing ? (
+                  {isState ? (
                     <input
                       type="text"
                       value={value}
