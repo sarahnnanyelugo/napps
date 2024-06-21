@@ -224,3 +224,51 @@
     margin-left: 30px;
   }
 }
+/* Table.css */
+/* Table.css */
+
+/* Common for all transitions */
+.row-enter,
+.row-exit {
+  position: relative;
+}
+
+/* Slide down animation */
+.row-slide-down-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.row-slide-down-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+.row-slide-down-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.row-slide-down-exit-active {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* Slide up animation */
+.row-slide-up-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.row-slide-up-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+.row-slide-up-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.row-slide-up-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 500ms, transform 500ms;
+}
