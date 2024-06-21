@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useLocation, useEffect } from "react";
 import Table from "react-bootstrap/Table";
+import { Link } from "react-router-dom";
 import "./schools-table.scss";
 const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
+  const [blogId, setBlogId] = useState(0);
+  // const location = useLocation();
+  const [prevData, setPrevData] = useState([]);
+  useEffect(() => {
+    setBlogId(data.id);
+  });
+
   const [isShowingAll, setIsShowingAll] = useState(false);
 
   const handleToggleDisplay = () => {
@@ -63,9 +71,24 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
               </td>
               <td>{item.regID}</td>
               <td>{item.zone}</td>
-              <td className="edit">view</td>
+              <td className="edit">
+                <Link
+                  className="view"
+                  to={"/dashboard-layout/sch-showcase/" + item.id}
+                  state={{ blog_id: blogId }}
+                >
+                  view
+                </Link>
+              </td>
               <td className="edit" style={{ color: "#00923F" }}>
-                edit
+                <Link
+                  className="edit"
+                  to={"/dashboard-layout/displayed-school/" + item.id}
+                  state={{ blog_id: blogId }}
+                >
+                  {" "}
+                  edit
+                </Link>
               </td>
             </tr>
           ))}

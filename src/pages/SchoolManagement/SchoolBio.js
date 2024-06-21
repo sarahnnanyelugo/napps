@@ -37,7 +37,9 @@ export const SchoolBio = ({ blog_id }) => {
           <div style={{ flexGrow: 1 }}>
             <h4>{data.name}</h4>
             <p>
-              {data.zone}, {data.state}, Nigeria. {data.status}
+              {data.zone}, {data.state}, Nigeria{" "}
+              <span style={{ fontSize: "20px", fontWeight: "bold" }}>.</span>{" "}
+              {data.status}
             </p>
           </div>
           <div className="d-flex ">
@@ -117,7 +119,7 @@ export const SchoolBio = ({ blog_id }) => {
                 <div className="col-md-6">
                   <h2>Ward</h2>
 
-                  <p>{data.founder}</p>
+                  <p>************</p>
                 </div>
               </div>
             </div>
