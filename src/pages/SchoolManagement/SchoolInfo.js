@@ -180,7 +180,9 @@ export const SchoolInfo = ({ blog_id }) => {
           <div className="sch-display"></div>
           <div style={{ flexGrow: 1 }}>
             <h4>{data.name}</h4>
-            <p>South East, Enugu Nigeria. Pending</p>
+            <p>
+              {data.zone}, {data.state}, Nigeria. {data.status}
+            </p>
           </div>
           <div className="d-flex ">
             <button clasName="cancel-btn">Cancel</button>
