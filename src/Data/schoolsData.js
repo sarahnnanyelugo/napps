@@ -21,6 +21,9 @@ export const schools = [
     phone: "+2348059838298",
     state: "Lagos",
     email: "St.crigshighschool@gmail.com",
+    address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
+    address2:
+      "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
   },
   {
     id: 2,
@@ -44,6 +47,9 @@ export const schools = [
     phone: "+2349030838298",
     state: "Kaduna",
     email: "sultanhighschool@gmail.com",
+    address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
+    address2:
+      "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
   },
   {
     id: 3,
@@ -67,6 +73,9 @@ export const schools = [
     phone: "+2348047478298",
     state: "Abuja",
     email: "britishspringcollege@gmail.com",
+    address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
+    address2:
+      "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
   },
   {
     id: 4,
@@ -90,6 +99,9 @@ export const schools = [
     phone: "+2348047925398",
     state: "Lagos",
     email: "dowencollege@gmail.com",
+    address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
+    address2:
+      "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
   },
   {
     id: 5,
@@ -113,6 +125,9 @@ export const schools = [
     phone: "+2348039085398",
     state: "Abuja",
     email: "cherryfieldcollege@gmail.com",
+    address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
+    address2:
+      "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
   },
   {
     id: 6,
@@ -136,6 +151,9 @@ export const schools = [
     phone: "+2348039085398",
     state: "Enugu",
     email: "wisvilleschoolsenugu@gmail.com",
+    address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
+    address2:
+      "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
   },
   {
     id: 7,
@@ -159,6 +177,9 @@ export const schools = [
     phone: "+2348039085298",
     state: "Enugu",
     email: "hiltontophighschool@gmail.com",
+    address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
+    address2:
+      "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
   },
   {
     id: 9,
@@ -182,6 +203,9 @@ export const schools = [
     phone: "+2348034485298",
     state: "Lagos",
     email: "montessoriinternationalschool@gmail.com",
+    address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
+    address2:
+      "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
   },
   {
     id: 8,
@@ -205,5 +229,8 @@ export const schools = [
     phone: "+2348034561298",
     state: "Enugu",
     email: "norwagiancollege@gmail.com",
+    address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
+    address2:
+      "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
   },
 ];
