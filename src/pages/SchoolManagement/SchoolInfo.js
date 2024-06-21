@@ -20,8 +20,20 @@ export const SchoolInfo = ({ blog_id }) => {
   const [isWard, setIsWard] = useState(false);
   const [isZone, setIsZone] = useState(false);
   const [isState, setIsState] = useState(false);
-  const inputRef = useRef(null);
+  const [isItalic, setIsItalic] = useState(false);
+  const [isBold, setIsBold] = useState(false);
+  const [isUnderline, setIsUnderline] = useState(false);
 
+  const inputRef = useRef(null);
+  const toggleItalic = () => {
+    setIsItalic(!isItalic);
+  };
+  const toggleBold = () => {
+    setIsBold(!isBold);
+  };
+  const toggleUnderline = () => {
+    setIsUnderline(!isUnderline);
+  };
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -182,12 +194,14 @@ export const SchoolInfo = ({ blog_id }) => {
               <div className="select-div">
                 <select>
                   <option>Normal text</option>
-                  <option>Other texts options</option>
+                  <option>Other text options</option>
                 </select>
               </div>
-              <h6>B</h6>
-              <h6 className="dec">U</h6>
-              <h6>
+              <h6 onClick={toggleBold}>B</h6>
+              <h6 className="dec" onClick={toggleUnderline}>
+                U
+              </h6>
+              <h6 onClick={toggleItalic}>
                 <em>I</em>
               </h6>
             </div>
@@ -208,7 +222,17 @@ export const SchoolInfo = ({ blog_id }) => {
                   className="form-control"
                 />
               ) : (
-                <span className="editable-text">{data.about}</span>
+                <span
+                  className="editable-text"
+                  style={{
+                    fontStyle: isItalic ? "italic" : "normal",
+                    fontWeight: isBold ? "Bold" : "normal",
+                    textDecoration: isUnderline ? "underline" : "normal",
+                  }}
+                  readOnly
+                >
+                  {data.about}
+                </span>
               )}
             </div>
             <p>40 characters left</p>
@@ -217,12 +241,14 @@ export const SchoolInfo = ({ blog_id }) => {
               <div className="select-div">
                 <select>
                   <option>Normal text</option>
-                  <option>Other texts texts</option>
+                  <option>Other text options</option>
                 </select>
               </div>
-              <h6>B</h6>
-              <h6 className="dec">U</h6>
-              <h6>
+              <h6 onClick={toggleBold}>B</h6>
+              <h6 className="dec" onClick={toggleUnderline}>
+                U
+              </h6>
+              <h6 onClick={toggleItalic}>
                 <em>I</em>
               </h6>
             </div>
@@ -243,7 +269,17 @@ export const SchoolInfo = ({ blog_id }) => {
                   className="form-control"
                 />
               ) : (
-                <span className="editable-text">{data.vision}</span>
+                <span
+                  className="editable-text"
+                  style={{
+                    fontStyle: isItalic ? "italic" : "normal",
+                    fontWeight: isBold ? "Bold" : "normal",
+                    textDecoration: isUnderline ? "underline" : "normal",
+                  }}
+                  readOnly
+                >
+                  {data.vision}
+                </span>
               )}
             </div>
             <p>40 characters left</p>
@@ -252,12 +288,14 @@ export const SchoolInfo = ({ blog_id }) => {
               <div className="select-div">
                 <select>
                   <option>Normal text</option>
-                  <option>Other texts texts</option>
+                  <option>Other text options</option>
                 </select>
               </div>
-              <h6>B</h6>
-              <h6 className="dec">U</h6>
-              <h6>
+              <h6 onClick={toggleBold}>B</h6>
+              <h6 className="dec" onClick={toggleUnderline}>
+                U
+              </h6>
+              <h6 onClick={toggleItalic}>
                 <em>I</em>
               </h6>
             </div>
@@ -278,7 +316,17 @@ export const SchoolInfo = ({ blog_id }) => {
                   className="form-control"
                 />
               ) : (
-                <span className="editable-text">{data.mission}</span>
+                <span
+                  className="editable-text"
+                  style={{
+                    fontStyle: isItalic ? "italic" : "normal",
+                    fontWeight: isBold ? "Bold" : "normal",
+                    textDecoration: isUnderline ? "underline" : "normal",
+                  }}
+                  readOnly
+                >
+                  {data.mission}
+                </span>
               )}
             </div>
             <p>40 characters left</p>
