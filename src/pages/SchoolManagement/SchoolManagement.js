@@ -10,6 +10,7 @@ import { schools } from "../../Data/schoolsData";
 import ManagementTable from "./ManagementTable";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import WOW from "wowjs";
 export const SchoolManagement = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState(schools);
@@ -33,6 +34,11 @@ export const SchoolManagement = () => {
     // console.log(dt);
     setfilteredSchools(dt.list);
   }
+  useEffect(() => {
+    new WOW.WOW({
+      live: true,
+    }).init();
+  }, [category]);
   return (
     <>
       <DashboardTop title="School Management" />
@@ -107,25 +113,25 @@ export const SchoolManagement = () => {
           <h4>All Schools</h4>
           <div className=" d-flex filtering-btns">
             <button
-              className={` ${category === "*" ? "sch-active" : ""}`}
+              className={`btn-1 ${category === "*" ? "sch-active" : ""}`}
               onClick={() => setCat("*")}
             >
               All Schools
             </button>
             <button
-              className={` ${category === "active" ? "sch-active" : ""}`}
+              className={`btn-2 ${category === "active" ? "sch-active" : ""}`}
               onClick={() => setCat("active")}
             >
               Active Schools
             </button>
             <button
-              className={` ${category === "inactive" ? "sch-active" : ""}`}
+              className={`btn-2 ${category === "inactive" ? "sch-active" : ""}`}
               onClick={() => setCat("inactive")}
             >
               Inactive Schools
             </button>
             <button
-              className={` ${category === "pending" ? "sch-active" : ""}`}
+              className={`btn-4 ${category === "pending" ? "sch-active" : ""}`}
               onClick={() => setCat("pending")}
             >
               Pending Schools

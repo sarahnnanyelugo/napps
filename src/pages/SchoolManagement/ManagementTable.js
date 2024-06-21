@@ -4,14 +4,22 @@ import "../../components/SchoolsTable/schools-table.scss";
 import { Link, useLocation } from "react-router-dom";
 
 const ManagementTable = ({ data }) => {
-  const { bg, colo, bd2, colo2 } = data;
+  const { bg, colo, bd2, colo2, category } = data;
   const [blogId, setBlogId] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
     setBlogId(data.id);
   });
-
+  const [animation, setRandomNumber] = useState(0);
+  const anims = ["fadeInUp", "fadeInDown", "fadeInLeft", "fadeInRight"];
+  const generateRandomNumber = () => {
+    const randomNumber = Math.floor(Math.random() * anims.length);
+    setRandomNumber(anims[randomNumber]);
+  };
+  useEffect(() => {
+    generateRandomNumber();
+  }, []);
   return (
     <div>
       <div className="d-flex"> </div>
@@ -30,7 +38,11 @@ const ManagementTable = ({ data }) => {
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr key={item.id}>
+            <tr
+              key={item.id}
+              className={` wow ${animation} ${category}`}
+              data-wow-duration="0.5s"
+            >
               <td>
                 <input type="checkbox" />
               </td>
