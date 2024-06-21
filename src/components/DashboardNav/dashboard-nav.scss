@@ -13,9 +13,10 @@
     font-family: SoraM;
     font-size: 14px;
     width: 100% !important;
-    // line-height: 30px;
-    img {
+
+    span {
       margin-right: 5px;
+      font-size: 24px;
     }
   }
   .active {
@@ -33,30 +34,7 @@
     margin-top: 40px;
   }
 }
-.seller-div {
-  height: 300px;
-  background: #141212;
-  border: 1px solid #707070;
-  border-radius: 10px;
-  padding: 20px 40px;
-  margin-top: 280px;
-  color: #fff;
-  text-align: center;
-  button {
-    background: #fff;
-    border: solid 1px #ff3c2b;
-    font-size: 14px;
-    border-radius: 40px;
-    padding: 5px 20px;
-    font-family: SoraM;
-    color: #ff3c2b;
-    margin-top: 30px;
-    &:hover {
-      background: #ff3c2b;
-      color: #fff;
-    }
-  }
-}
+
 // .dashboard-nav li :hover {
 //   background: red;
 //   padding: 18px 60px 15px 10px;

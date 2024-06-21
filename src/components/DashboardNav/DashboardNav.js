@@ -2,6 +2,11 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./dashboard-nav.scss";
 import Logo from "../../assets/images/logo.png";
+import { TiChartBar } from "react-icons/ti";
+import { LuSchool } from "react-icons/lu";
+import { BsCreditCard } from "react-icons/bs";
+import { MdOutlinePayments } from "react-icons/md";
+
 // import Icon1 from "../../assets/images/dash.svg";
 // import Icon2 from "../../assets/images/requests.svg";
 // import Icon3 from "../../assets/images/message.svg";
@@ -24,25 +29,36 @@ const DashboardNav = () => {
         <ul className="list-unstyled col-md-12 offset-md-2">
           <li>
             <NavLink to={"./admin-dashboard"} activeClassName="active">
-              {/* <img src={Icon2} width="20px" height="20px" /> */}
+              <span>
+                <TiChartBar />
+              </span>
               Dashboard
             </NavLink>
           </li>{" "}
           <li>
             <NavLink to={"./school-management"} activeClassName="active">
-              {/* <img src={Icon2} width="20px" height="20px" /> Product Requests */}
+              <span>
+                {" "}
+                <LuSchool />
+              </span>
               School Management
             </NavLink>
           </li>{" "}
           <li>
             <NavLink to={"./displayed-school"} activeClassName="active">
-              {/* <img src={Icon2} width="20px" height="20px" /> Orders */}
+              <span>
+                {" "}
+                <MdOutlinePayments />
+              </span>
               Subscription
             </NavLink>
           </li>{" "}
           <li>
             <NavLink to={"./messages"} activeClassName="active">
-              {/* <img src={Icon2} width="20px" height="20px" /> */}
+              <span>
+                {" "}
+                <BsCreditCard />
+              </span>
               Payments
             </NavLink>
           </li>{" "}
