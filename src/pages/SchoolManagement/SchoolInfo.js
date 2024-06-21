@@ -27,22 +27,37 @@ export const SchoolInfo = ({ blog_id }) => {
   };
 
   const handleBlur = () => {
-    setIsEditing(false);
+    setIsAbout(false);
+    setIsVision(false);
+    setIsMission(false);
+    setIsName(false);
+    setIsPhone(false);
+    setIsEmail(false);
+    setIsAddress1(false);
+    setIsAddress2(false);
+    setIsWebsite(false);
+    setIsWard(false);
+    setIsState(false);
+    setIsZone(false);
   };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      setIsEditing(false);
+      setIsAbout(false);
+      setIsVision(false);
+      setIsMission(false);
+      setIsName(false);
+      setIsPhone(false);
+      setIsEmail(false);
+      setIsAddress1(false);
+      setIsAddress2(false);
+      setIsWebsite(false);
+      setIsWard(false);
+      setIsState(false);
+      setIsZone(false);
     }
   };
 
-  const handleClick = () => {
-    setIsEditing(true);
-
-    setTimeout(() => {
-      inputRef.current.focus();
-    }, 0);
-  };
   const handleAbout = () => {
     setIsAbout(true);
 
@@ -431,7 +446,7 @@ export const SchoolInfo = ({ blog_id }) => {
                   style={{ cursor: "pointer" }}
                   className="editables-two "
                 >
-                  {isAddress2 ? (
+                  {isWard ? (
                     <input
                       type="text"
                       value={value}
