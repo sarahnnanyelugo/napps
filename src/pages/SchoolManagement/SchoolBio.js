@@ -43,10 +43,10 @@ export const SchoolBio = ({ blog_id }) => {
           <div className="d-flex ">
             <button clasName="cancel-btn">Edit School</button>
             <button clasName="cancel-btn" style={{ marginLeft: "10px" }}>
-              Cancel
+              Decline
             </button>
 
-            <button className="save-btn">Save</button>
+            <button className="save-btn">Approve</button>
           </div>
         </div>
         <div className="d-md-flex more-info">
@@ -66,9 +66,9 @@ export const SchoolBio = ({ blog_id }) => {
             <div className="">
               <h5>Contact Information</h5>
               <div className="d-flex">
-                <div className="contact-frame col-md-"></div>
+                <div className="contact-frame2 col-md-"></div>
                 <div className="col-md-9">
-                  <div>
+                  <div style={{ marginLeft: "20px" }}>
                     <p> {data.founder}</p>
                     <p>{data.phone}</p>
                     <p>{data.website}</p>
@@ -80,11 +80,11 @@ export const SchoolBio = ({ blog_id }) => {
             <div className="d-flex">
               {" "}
               <div className="col-md-6">
-                <h3>Address 1</h3>
+                <h2>Address 1</h2>
                 <p> {data.address1}</p>
               </div>
               <div className="col-md-6">
-                <h3>Website</h3>
+                <h2>Website</h2>
 
                 <p>{data.website}</p>
               </div>{" "}
@@ -92,22 +92,22 @@ export const SchoolBio = ({ blog_id }) => {
             <div className="d-flex">
               <div className="col-md-6">
                 {" "}
-                <h3>Address 2</h3>
+                <h2>Address 2</h2>
                 <p> {data.address2}</p>
               </div>
               <div className="col-md-6">
-                <h3>Zone</h3>
+                <h2>Zone</h2>
                 <p>{data.zone}</p>
               </div>{" "}
             </div>
 
             <div className="d-flex">
               <div className="col-md-6">
-                <h3>Email</h3>
+                <h2>Email</h2>
                 <p>{data.email}</p>
               </div>{" "}
               <div className="col-md-6">
-                <h3>State</h3>
+                <h2>State</h2>
                 <p>{data.state}</p>
               </div>
             </div>
@@ -115,7 +115,7 @@ export const SchoolBio = ({ blog_id }) => {
               {" "}
               <div className="d-flex">
                 <div className="col-md-6">
-                  <h3>Ward</h3>
+                  <h2>Ward</h2>
 
                   <p>{data.founder}</p>
                 </div>

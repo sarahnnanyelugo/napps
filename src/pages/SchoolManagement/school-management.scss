@@ -183,6 +183,7 @@
   p {
     font-size: 14px;
     font-family: montR;
+    text-align: justify;
   }
   select {
     border: none;
@@ -207,9 +208,17 @@
     text-decoration: underline;
   }
 }
+
 .contact-frame {
   width: 132px;
   height: 133px;
+  background: #f04438 0% 0% no-repeat padding-box;
+  border: 1px solid #f9fafb;
+  border-radius: 100%;
+}
+.contact-frame2 {
+  width: 64px;
+  height: 64px;
   background: #f04438 0% 0% no-repeat padding-box;
   border: 1px solid #f9fafb;
   border-radius: 100%;
@@ -222,6 +231,12 @@
     font-size: 16px;
     margin-top: 20px;
     margin-left: 30px;
+  }
+  h2 {
+    font-family: teachersM;
+    color: #000000;
+    font-size: 16px;
+    margin-top: 20px;
   }
 }
 /* Table.css */
