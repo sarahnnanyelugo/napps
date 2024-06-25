@@ -13,6 +13,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
 import { GeoChart } from "../../components/GeoChart/GeoChart";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
 const subscriptionData = [
   { region: "South-East", value: 50 },
   { region: "South-South", value: 80 },
@@ -122,11 +123,20 @@ export const SchoolManagement = () => {
         <div className="schools-filter-div col-md-12">
           <h5>At a glance</h5>
           <hr />
-          <div className="col-md-6 map-div">
-            <center>
-              <img src={Map} />
-            </center>
-            {/* <GeoChart /> */}
+          <div className="d-md-flex">
+            {" "}
+            <div className="col-md-6 map-div">
+              <center>
+                <img src={Map} />
+              </center>
+              {/* <GeoChart /> */}
+            </div>
+            <div className="col-md-6">
+              {" "}
+              <ProgressBar number={75} max={100} />
+              <ProgressBar number={50} max={200} />
+              <ProgressBar number={30} max={50} />
+            </div>
           </div>
         </div>
         <div className="schools-filter-div col-md-12">
