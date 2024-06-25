@@ -11,6 +11,7 @@ import ManagementTable from "./ManagementTable";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
+import { GeoChart } from "../../components/GeoChart/GeoChart";
 export const SchoolManagement = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState(schools);
@@ -42,6 +43,7 @@ export const SchoolManagement = () => {
   return (
     <>
       <DashboardTop title="School Management" />
+
       <div className="Admin-dashboard">
         <div className=" row row-cols-1 row-cols-lg-3 g-2 g-lg-4 mt">
           <div className="col">
@@ -108,6 +110,14 @@ export const SchoolManagement = () => {
             </div>
           </div>
         </div>{" "}
+        <div className="schools-filter-div col-md-12">
+          <h5>At a glance</h5>
+          <hr />
+          <div className="col-md-6">
+            {" "}
+            <GeoChart />
+          </div>
+        </div>
         <div className="schools-filter-div col-md-12">
           {" "}
           <h4>All Schools</h4>
