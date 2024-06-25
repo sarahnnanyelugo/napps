@@ -45,7 +45,7 @@ const DashboardNav = () => {
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./displayed-school"} activeClassName="active">
+            <NavLink to={"./subscription"} activeClassName="active">
               <span>
                 {" "}
                 <MdOutlinePayments />

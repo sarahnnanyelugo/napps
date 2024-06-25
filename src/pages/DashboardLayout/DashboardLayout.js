@@ -6,6 +6,8 @@ import { AdminDashboard } from "../AdminDashboard/AdminDashboard";
 import { DisplayedSchool } from "../SchoolManagement/DisplayedSchool";
 import { SchoolManagement } from "../SchoolManagement/SchoolManagement";
 import { SchShowcase } from "../SchoolManagement/SchShowcase";
+import { Subscription } from "../Subscription/Subscription";
+import { SubShowcase } from "../Subscription/SubShowcase";
 
 export default function DashboardLayout() {
   return (
@@ -19,11 +21,13 @@ export default function DashboardLayout() {
           <Routes>
             <Route path="/admin-dashboard" element={<AdminDashboard />} />{" "}
             <Route path="/school-management" element={<SchoolManagement />} />
+            <Route path="/Subscription" element={<Subscription />} />
             <Route
               path="/displayed-school/:blog_id"
               element={<DisplayedSchool />}
             />{" "}
             <Route path="/sch-showcase/:blog_id" element={<SchShowcase />} />{" "}
+            <Route path="/sub-showcase/:blog_id" element={<SubShowcase />} />{" "}
           </Routes>
         </div>
       </div>
