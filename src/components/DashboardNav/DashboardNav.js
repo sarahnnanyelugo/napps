@@ -26,7 +26,7 @@ const DashboardNav = () => {
           </center>
         </div>
         {/* <hr /> */}
-        <ul className="list-unstyled col-md-12 offset-md-2">
+        <ul className="list-unstyled col-md-12 ">
           <li>
             <NavLink to={"./admin-dashboard"} activeClassName="active">
               <span>
