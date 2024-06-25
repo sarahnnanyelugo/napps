@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { calculatePercentage } from "../utils";
 import "./progress-bar.scss"; // Create this CSS file for styling
 
-const ProgressBar = ({ number, max }) => {
+const ProgressBar = ({ number, max, color }) => {
   const [width, setWidth] = useState(0);
   const percentage = calculatePercentage(number, max);
 
@@ -13,8 +13,11 @@ const ProgressBar = ({ number, max }) => {
 
   return (
     <div className="progress-bar-container">
-      <div className="progress-bar" style={{ width: `${width}%` }}>
-        {width.toFixed(2)}%
+      <div
+        className="progress-bar"
+        style={{ width: `${width}%`, backgroundColor: color }}
+      >
+        {/* {width.toFixed(2)}% */}
       </div>
     </div>
   );

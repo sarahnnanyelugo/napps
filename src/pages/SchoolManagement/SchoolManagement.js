@@ -131,11 +131,22 @@ export const SchoolManagement = () => {
               </center>
               {/* <GeoChart /> */}
             </div>
-            <div className="col-md-6">
-              {" "}
-              <ProgressBar number={75} max={100} />
-              <ProgressBar number={50} max={200} />
-              <ProgressBar number={30} max={50} />
+            <div
+              className="col-md-4 progress-div"
+              style={{ paddingLeft: "30px" }}
+            >
+              <h6>South-East Region</h6>
+              <ProgressBar number={16} max={200} color="#0470C7" />
+              <h6>South-South Region</h6>
+              <ProgressBar number={40} max={200} color="#DC64D6" />
+              <h6>South-West Region</h6>
+              <ProgressBar number={60} max={200} color="#EF7A80" />
+              <h6>North-Central Region</h6>
+              <ProgressBar number={14} max={200} color="#67CB356" />
+              <h6>North-East Region</h6>
+              <ProgressBar number={10} max={200} color="#7F58D9" />
+              <h6>North-West Region</h6>
+              <ProgressBar number={20} max={200} color="#225A60" />
             </div>
           </div>
         </div>
