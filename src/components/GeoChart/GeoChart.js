@@ -3,72 +3,12 @@ import { Chart } from "react-google-charts";
 
 export const data = [
   ["Country", "Latitude"],
-  ["Algeria", 36],
-  ["Angola", -8],
-  ["Benin", 6],
-  ["Botswana", -24],
-  ["Burkina Faso", 12],
-  ["Burundi", -3],
-  ["Cameroon", 3],
-  ["Canary Islands", 28],
-  ["Cape Verde", 15],
-  ["Central African Republic", 4],
-  ["Ceuta", 35],
-  ["Chad", 12],
-  ["Comoros", -12],
-  ["Cote d'Ivoire", 6],
-  ["Democratic Republic of the Congo", -3],
-  ["Djibouti", 12],
-  ["Egypt", 26],
-  ["Equatorial Guinea", 3],
-  ["Eritrea", 15],
-  ["Ethiopia", 9],
-  ["Gabon", 0],
-  ["Gambia", 13],
-  ["Ghana", 5],
-  ["Guinea", 10],
-  ["Guinea-Bissau", 12],
-  ["Kenya", -1],
-  ["Lesotho", -29],
-  ["Liberia", 6],
-  ["Libya", 32],
-  ["Madagascar", null],
-  ["Madeira", 33],
-  ["Malawi", -14],
-  ["Mali", 12],
-  ["Mauritania", 18],
-  ["Mauritius", -20],
-  ["Mayotte", -13],
-  ["Melilla", 35],
-  ["Morocco", 32],
-  ["Mozambique", -25],
-  ["Namibia", -22],
-  ["Niger", 14],
+
   ["Nigeria", 8],
-  ["Republic of the Congo", -1],
-  ["Réunion", -21],
-  ["Rwanda", -2],
-  ["Saint Helena", -16],
-  ["São Tomé and Principe", 0],
-  ["Senegal", 15],
-  ["Seychelles", -5],
-  ["Sierra Leone", 8],
-  ["Somalia", 2],
-  ["Sudan", 15],
-  ["South Africa", -30],
-  ["South Sudan", 5],
-  ["Swaziland", -26],
-  ["Tanzania", -6],
-  ["Togo", 6],
-  ["Tunisia", 34],
-  ["Uganda", 1],
-  ["Western Sahara", 25],
-  ["Zambia", -15],
-  ["Zimbabwe", -18],
 ];
 
 export const options = {
-  region: "002", // Africa
+  region: "002",
   colorAxis: {
     colors: ["#225A60", "#7F58D9", "67CB35", "#EF7A80", "#DC64D6", "#0470C7"],
   },
@@ -88,3 +28,56 @@ export function GeoChart() {
     />
   );
 }
+
+// import React from "react";
+// import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+// import { scaleQuantize } from "d3-scale";
+// import { regions } from "../../Data/nigeriaGeo";
+// import "./geo-chart.scss";
+// const colorScale = scaleQuantize()
+//   .domain([0, 100]) // Ensure the domain covers the possible range of values
+//   .range([
+//     "#ffedea",
+//     "#ffcec5",
+//     "#ffad9f",
+//     "#ff8a75",
+//     "#ff5533",
+//     "#e2492d",
+//     "#be3d26",
+//     "#9a311f",
+//     "#782618",
+//   ]);
+
+// const GeoChart = ({ data = [] }) => {
+//   return (
+//     <ComposableMap projection="geoMercator" width={800} height={600}>
+//       <Geographies geography={regions}>
+//         {({ geographies }) =>
+//           geographies.map((geo) => {
+//             const { properties } = geo;
+//             const regionName = properties ? properties.name : "Unknown";
+//             const regionData = data.find((s) => s.region === regionName) || {
+//               value: 0,
+//             };
+//             return (
+//               <Geography
+//                 key={geo.rsmKey}
+//                 geography={geo}
+//                 fill={colorScale(regionData.value)}
+//                 onMouseEnter={() => {
+//                   console.log(`${regionName} - ${regionData.value}`);
+//                 }}
+//                 style={{
+//                   default: { outline: "none" },
+//                   hover: { fill: "#F53", outline: "none" },
+//                   pressed: { outline: "none" },
+//                 }}
+//               />
+//             );
+//           })
+//         }
+//       </Geographies>
+//     </ComposableMap>
+//   );
+// };
+export default GeoChart;

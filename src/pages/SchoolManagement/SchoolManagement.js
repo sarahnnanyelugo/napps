@@ -4,6 +4,7 @@ import CountUp from "react-countup";
 import Icon1 from "../../assets/images/user1.svg";
 import Icon2 from "../../assets/images/user2.svg";
 import Icon3 from "../../assets/images/exp.svg";
+import Map from "../../assets/images/map.png";
 import "./school-management.scss";
 import SchoolsTable from "../../components/SchoolsTable/SchoolsTable";
 import { schools } from "../../Data/schoolsData";
@@ -12,6 +13,14 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
 import { GeoChart } from "../../components/GeoChart/GeoChart";
+const subscriptionData = [
+  { region: "South-East", value: 50 },
+  { region: "South-South", value: 80 },
+  { region: "South-West", value: 90 },
+  { region: "North-Central", value: 40 },
+  { region: "North-East", value: 30 },
+  { region: "North-West", value: 60 },
+];
 export const SchoolManagement = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState(schools);
@@ -113,9 +122,11 @@ export const SchoolManagement = () => {
         <div className="schools-filter-div col-md-12">
           <h5>At a glance</h5>
           <hr />
-          <div className="col-md-6">
-            {" "}
-            <GeoChart />
+          <div className="col-md-6 map-div">
+            <center>
+              <img src={Map} />
+            </center>
+            {/* <GeoChart /> */}
           </div>
         </div>
         <div className="schools-filter-div col-md-12">
