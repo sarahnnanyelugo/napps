@@ -132,21 +132,63 @@ export const SchoolManagement = () => {
               {/* <GeoChart /> */}
             </div>
             <div
-              className="col-md-4 progress-div"
+              className="col-md-6 progress-div"
               style={{ paddingLeft: "30px" }}
             >
-              <h6>South-East Region</h6>
-              <ProgressBar number={16} max={200} color="#0470C7" />
-              <h6>South-South Region</h6>
-              <ProgressBar number={40} max={200} color="#DC64D6" />
-              <h6>South-West Region</h6>
-              <ProgressBar number={60} max={200} color="#EF7A80" />
-              <h6>North-Central Region</h6>
-              <ProgressBar number={14} max={200} color="#67CB356" />
-              <h6>North-East Region</h6>
-              <ProgressBar number={10} max={200} color="#7F58D9" />
-              <h6>North-West Region</h6>
-              <ProgressBar number={20} max={200} color="#225A60" />
+              <div>
+                <div className="d-flex">
+                  <div className="col-md-8">
+                    <h6>South-East Region</h6>
+                    <ProgressBar number={16} max={200} color="#0470C7" />
+                  </div>
+                  <p>90 Schools</p>
+                </div>
+              </div>
+              <div>
+                <div className="d-flex">
+                  <div className="col-md-8">
+                    <h6>South-South Region</h6>
+                    <ProgressBar number={40} max={200} color="#DC64D6" />
+                  </div>
+                  <p>110 Schools</p>
+                </div>
+              </div>
+              <div>
+                <div className="d-flex">
+                  <div className="col-md-8">
+                    <h6>South-West Region</h6>
+                    <ProgressBar number={60} max={200} color="#EF7A80" />
+                  </div>
+                  <p>130 Schools</p>
+                </div>
+              </div>
+              <div>
+                <div className="d-flex">
+                  <div className="col-md-8">
+                    <h6>North-Central Region</h6>
+                    <ProgressBar number={14} max={200} color="#67CB35" />
+                  </div>
+                  <p>80 Schools</p>
+                </div>
+              </div>
+              <div>
+                <div className="d-flex">
+                  <div className="col-md-8">
+                    <h6>North-East Region</h6>
+                    <ProgressBar number={10} max={200} color="#7F58D9" />
+                  </div>
+                  <p>50 Schools</p>
+                </div>
+              </div>
+              <div>
+                <div className="d-flex">
+                  <div className="col-md-8">
+                    <h6>North-West Region</h6>
+                    <ProgressBar number={20} max={200} color="#225A60" />
+                  </div>
+                  <p>100 Schools</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

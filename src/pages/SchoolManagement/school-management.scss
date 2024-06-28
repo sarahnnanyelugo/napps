@@ -291,8 +291,15 @@
   border-right: solid 1px #e7e7e7;
 }
 .progress-div {
-  h6 {
+  p {
     margin-top: 20px;
+    margin-left: 20px;
     font-family: montM;
+    font-size: 14px;
+  }
+  h6 {
+    // margin-top: 20px;
+    font-family: montM;
+    font-size: 14px;
   }
 }
