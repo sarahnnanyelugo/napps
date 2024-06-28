@@ -133,12 +133,14 @@ export const Subscription = () => {
           </div>
           <div className="ssearch-div d-flex">
             <div className="col-md-3">
-              <h6>Search Schools</h6>
+              <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
               <br />
               <SearchBar callback={reducer} posts={schools} />
             </div>
             <div>
-              <h6>Status</h6>
+              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
+                Status
+              </h6>
               <br />
               <div className="select-div ">
                 <select>
@@ -149,7 +151,7 @@ export const Subscription = () => {
               </div>
             </div>
             <div>
-              <h6>Zone</h6>
+              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>Zone</h6>
               <br />
               <NavDropdown
                 title="Zone"
