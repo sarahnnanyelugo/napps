@@ -49,7 +49,7 @@ export const Subscription = () => {
               <div style={{ flexGrow: 1 }}>
                 {" "}
                 <img src={Icon1} height="30px" />
-                <p>Total Registered Schools</p>
+                <p>Total Subscribers</p>
               </div>
               <h1 className="stats">
                 {" "}
@@ -70,7 +70,7 @@ export const Subscription = () => {
               <div style={{ flexGrow: 1 }}>
                 {" "}
                 <img src={Icon2} height="30px" />
-                <p>Total Registered Schools</p>
+                <p>Active Subscriptions</p>
               </div>
               <h1 className="stats">
                 {" "}
@@ -91,7 +91,7 @@ export const Subscription = () => {
               <div style={{ flexGrow: 1 }}>
                 {" "}
                 <img src={Icon2} height="30px" />
-                <p>Total Registered Schools</p>
+                <p>Expired Subscriptions</p>
               </div>
               <h1 className="stats">
                 {" "}
@@ -116,25 +116,19 @@ export const Subscription = () => {
               className={`btn-1 ${category === "*" ? "sch-active" : ""}`}
               onClick={() => setCat("*")}
             >
-              All Schools
+              All Subscriptions
             </button>
             <button
               className={`btn-2 ${category === "active" ? "sch-active" : ""}`}
               onClick={() => setCat("active")}
             >
-              Active Schools
+              Active Subscriptions
             </button>
             <button
-              className={`btn-2 ${category === "inactive" ? "sch-active" : ""}`}
+              className={`btn-4 ${category === "inactive" ? "sch-active" : ""}`}
               onClick={() => setCat("inactive")}
             >
-              Inactive Schools
-            </button>
-            <button
-              className={`btn-4 ${category === "pending" ? "sch-active" : ""}`}
-              onClick={() => setCat("pending")}
-            >
-              Pending Schools
+              Inactive Subscriptions
             </button>
           </div>
           <div className="ssearch-div d-flex">

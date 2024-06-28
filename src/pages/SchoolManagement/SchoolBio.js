@@ -7,6 +7,7 @@ export const SchoolBio = ({ blog_id }) => {
   const [id, setId] = useState(0);
   const location = useLocation();
   const [value, setValue] = useState("");
+  const [blogId, setBlogId] = useState(0);
 
   const inputRef = useRef(null);
 
@@ -43,7 +44,14 @@ export const SchoolBio = ({ blog_id }) => {
             </p>
           </div>
           <div className="d-flex ">
-            <button clasName="cancel-btn">Edit School</button>
+            <Link
+              // to={"/dashboard-layout/displayed-school/" + item.id}
+              state={{ blog_id: blogId }}
+            >
+              {" "}
+              <button clasName="cancel-btn">Edit School</button>
+            </Link>
+
             <button clasName="cancel-btn" style={{ marginLeft: "10px" }}>
               Decline
             </button>
