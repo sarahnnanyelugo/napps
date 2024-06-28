@@ -220,15 +220,18 @@ export const SchoolManagement = () => {
             >
               Pending Schools
             </button>
-          </div>
+          </div>{" "}
+          <hr />
           <div className="ssearch-div d-flex">
             <div className="col-md-3">
-              <h6>Search Schools</h6>
+              <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
               <br />
               <SearchBar callback={reducer} posts={schools} />
             </div>
             <div>
-              <h6>Status</h6>
+              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
+                Status
+              </h6>
               <br />
               <div className="select-div ">
                 <select>
@@ -239,7 +242,7 @@ export const SchoolManagement = () => {
               </div>
             </div>
             <div>
-              <h6>Zone</h6>
+              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>Zone</h6>
               <br />
               <NavDropdown
                 title="Zone"
@@ -278,13 +281,15 @@ export const SchoolManagement = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </div>
-            <div className="offset-md-4">
+            <div className="offset-md-3">
               <button className="exp-btn">
                 {" "}
                 <img src={Icon3} height="20px" width="20px" />
                 Export
               </button>
-              <button className="add-sch-btn">Add School</button>
+              <button className="add-sch-btn">
+                <span>+</span>Add School
+              </button>
             </div>
           </div>{" "}
           <hr />

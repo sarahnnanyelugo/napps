@@ -16,7 +16,7 @@
 
   button,
   input {
-    font: 1em Hind, sans-serif;
+    font: 1em montR;
     line-height: 1.5em;
   }
 
@@ -36,8 +36,9 @@
   }
   .search-bar input,
   .search-btn {
-    width: 3em;
-    height: 3em;
+    // width: 3em;
+    width: 2em;
+    height: 2em;
   }
   .search-bar input:invalid:not(:focus),
   .search-btn {
