@@ -11,6 +11,7 @@ import { NewsPage } from "./pages/NewsPage/NewsPage";
 import { MainNews } from "./pages/NewsPage/MainNews/MainNews";
 import DashboardLayout from "./pages/DashboardLayout/DashboardLayout";
 import { DisplayedSchool } from "./pages/SchoolManagement/DisplayedSchool";
+import MySchoolLayout from "./pages/MySchoolLayout/MySchoolLayout";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="news-page" element={<NewsPage />} />
         <Route path="main-news/:blog_id" element={<MainNews />} />
         <Route path="dashboard-layout/*" element={<DashboardLayout />} />{" "}
+        <Route path="my-school-layout/*" element={<MySchoolLayout />} />{" "}
         {/* <Route path="displayed-school/:blog_id" element={<DisplayedSchool />} />{" "} */}
       </Routes>
     </>

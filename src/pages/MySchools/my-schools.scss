@@ -1,0 +1,52 @@
+.schools {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 3px #1018281a;
+  border: 1px solid #e4e7ec;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 10px;
+  &:hover {
+    background: #f9fafb;
+    border: solid 1px #e4e7ec;
+  }
+  .sch-frame {
+    height: 126px;
+    // background: #027a48 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 3px #1018281a;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+  p {
+    line-height: 10px;
+  }
+}
+
+.list-item,
+.grid-item {
+}
+
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin-left: 5px;
+}
+.list-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin-left: 5px;
+}
+.sch-link {
+  color: #000000;
+  text-decoration: none;
+}

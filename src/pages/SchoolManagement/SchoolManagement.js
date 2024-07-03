@@ -55,7 +55,7 @@ export const SchoolManagement = () => {
       <DashboardTop title="School Management" />
 
       <div className="Admin-dashboard">
-        <div className=" row row-cols-1 row-cols-lg-3 g-2 g-lg-4 mt">
+        <div className=" row row-cols-2 row-cols-lg-3 g-2 g-lg-4 mt">
           <div className="col">
             <div className="summary d-flex">
               <div style={{ flexGrow: 1 }}>
@@ -125,16 +125,13 @@ export const SchoolManagement = () => {
           <hr />
           <div className="d-md-flex">
             {" "}
-            <div className="col-md-6 map-div">
+            <div className="col-md-6 map-div col-8">
               <center>
                 <img src={Map} />
               </center>
               {/* <GeoChart /> */}
             </div>
-            <div
-              className="col-md-6 progress-div"
-              style={{ paddingLeft: "30px" }}
-            >
+            <div className="col-md-6 progress-div">
               <div>
                 <div className="d-flex">
                   <div className="col-md-8">
@@ -195,7 +192,7 @@ export const SchoolManagement = () => {
         <div className="schools-filter-div col-md-12">
           {" "}
           <h4>All Schools</h4>
-          <div className=" d-flex filtering-btns">
+          <div className=" d-md-flex filtering-btns">
             <button
               className={`btn-1 ${category === "*" ? "sch-active" : ""}`}
               onClick={() => setCat("*")}
@@ -222,7 +219,7 @@ export const SchoolManagement = () => {
             </button>
           </div>{" "}
           <hr />
-          <div className="ssearch-div d-flex">
+          <div className="ssearch-div d-md-flex">
             <div className="col-md-3">
               <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
               <br />

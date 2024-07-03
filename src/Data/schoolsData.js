@@ -20,6 +20,7 @@ export const schools = [
     website: "St.crigshighschool.com.ng",
     phone: "+2348059838298",
     state: "Lagos",
+    country: "Nigeria",
     email: "St.crigshighschool@gmail.com",
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
@@ -35,6 +36,7 @@ export const schools = [
     zone: "North East (NE)",
     alphabet: "D",
     bg2: "#2A86D3",
+    country: "Nigeria",
     category: ["active", "NE"],
     about:
       "Established in 1982 by renowned philanthropist Amina Sultan, Sultan High School is celebrated for its strong emphasis on cultural diversity and inclusivity. Situated in a multicultural neighborhood, the school attracts students from various backgrounds, fostering a rich tapestry of perspectives and experiences. Sultan High School's curriculum is designed to promote global awareness and intercultural understanding, with special programs in world languages, international relations, and cultural studies. The school also offers robust arts and sports programs, ensuring a well-rounded education. With its committed staff and vibrant student body, Sultan High School creates an environment where every student feels valued and empowered to succeed academically and socially.",
@@ -72,6 +74,7 @@ export const schools = [
     website: "britishspringcollege.com.ng",
     phone: "+2348047478298",
     state: "Abuja",
+    country: "Nigeria",
     email: "britishspringcollege@gmail.com",
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
@@ -98,6 +101,7 @@ export const schools = [
     website: "dowencollege.com.ng",
     phone: "+2348047925398",
     state: "Lagos",
+    country: "Nigeria",
     email: "dowencollege@gmail.com",
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
@@ -150,6 +154,7 @@ export const schools = [
     website: "wisvilleschoolsenugu.com.ng",
     phone: "+2348039085398",
     state: "Enugu",
+    country: "Nigeria",
     email: "wisvilleschoolsenugu@gmail.com",
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
@@ -202,6 +207,7 @@ export const schools = [
     website: "montessoriinternationalschool.com.ng",
     phone: "+2348034485298",
     state: "Lagos",
+    country: "Nigeria",
     email: "montessoriinternationalschool@gmail.com",
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
@@ -228,6 +234,7 @@ export const schools = [
     website: "norwagiancollege.com.ng",
     phone: "+2348034561298",
     state: "Enugu",
+    country: "Nigeria",
     email: "norwagiancollege@gmail.com",
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
