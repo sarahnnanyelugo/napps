@@ -10,12 +10,22 @@ export default function MySchools() {
     query: "",
     list: schools,
   });
+  const [activeElement, setActiveElement] = useState("element1");
   const [isGridView, setIsGridView] = useState(true);
-  const switchToGridView = () => {
-    setIsGridView(true);
-  };
-  const switchToListView = () => {
-    setIsGridView(false);
+  //   const switchToGridView = () => {
+  //     setIsGridView(true);
+  //   };
+  //   const switchToListView = () => {
+  //     setIsGridView(false);
+  //   };
+  const switchView = (view) => {
+    if (view === "grid") {
+      setIsGridView(true);
+      setActiveElement("element1");
+    } else {
+      setIsGridView(false);
+      setActiveElement("element2");
+    }
   };
   return (
     <>
@@ -24,7 +34,8 @@ export default function MySchools() {
         <div className="d-flex">
           <h2>My Schools</h2>{" "}
           <h4
-            onClick={switchToGridView}
+            onClick={() => switchView("grid")}
+            className={activeElement === "element1" ? "actived" : ""}
             style={{
               marginLeft: "20px",
               marginRight: "20px",
@@ -34,7 +45,8 @@ export default function MySchools() {
             <IoGridOutline />
           </h4>
           <h4
-            onClick={switchToListView}
+            className={activeElement === "element2" ? "actived" : ""}
+            onClick={() => switchView("list")}
             style={{
               marginTop: "5px",
             }}
