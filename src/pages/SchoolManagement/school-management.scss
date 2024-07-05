@@ -86,16 +86,31 @@
     margin: 0px 10px 10px 10px !important;
   }
 }
-.sch-view-div {
+.sch-view-div2 {
   height: 152px;
-  background: rgb(225, 183, 254);
-  background: linear-gradient(
-    153deg,
-    rgba(225, 183, 254, 1) 39%,
-    rgba(140, 191, 255, 1) 63%
-  );
+  background: #e4e7ec;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 50px;
+  padding-left: 45%;
+
+  .import-image {
+    display: none;
+    font-size: 12px;
+    width: 100%;
+  }
+  &:hover {
+    background: #19191926;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    .import-image {
+      display: block;
+    }
+  }
 }
 
 .sch-info {
@@ -106,6 +121,16 @@
     border-radius: 100%;
     background: #027a48;
     margin-top: -80px;
+    padding-top: 72px;
+    padding-left: 1%;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    &:hover {
+      background: #245335;
+      .import-image {
+        display: block;
+      }
+    }
   }
   button {
     font-size: 14px;
@@ -317,4 +342,7 @@
     font-family: montM;
     font-size: 14px;
   }
+}
+.import-image {
+  display: none;
 }

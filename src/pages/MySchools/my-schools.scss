@@ -45,11 +45,18 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   margin-left: 5px;
+  @media screen and (max-width: 820px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 .sch-link {
   color: #000000;
   text-decoration: none;
 }
 .actived {
-  color: red;
+  color: rgb(19, 7, 7);
+  background: rgb(196, 194, 194);
+  padding: 0 3px;
+  border-radius: 5px;
 }

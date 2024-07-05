@@ -1,7 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
+import { FileUpload } from "../../components/FileUpload/FileUpload";
 import { schools } from "../../Data/schoolsData";
+import ProfileAvater from "../../assets/images/edit-profile.png";
+import Icon from "../../assets/images/file-upload.png";
+
 export const SchoolBio = ({ blog_id }) => {
   const [data, setData] = useState({});
   const [id, setId] = useState(0);
@@ -10,7 +14,8 @@ export const SchoolBio = ({ blog_id }) => {
   const [blogId, setBlogId] = useState(0);
 
   const inputRef = useRef(null);
-
+  const [banner, setBanner] = useState(null);
+  const [picture, setPicture] = useState(null);
   useEffect(() => {
     setId(blog_id);
     console.log(blog_id);
@@ -32,9 +37,40 @@ export const SchoolBio = ({ blog_id }) => {
     <>
       <DashboardTop title="School Management" />
       <div className="Admin-dashboard">
-        <div className="sch-view-div"></div>
+        <div
+          className="sch-view-div2"
+          style={{ backgroundImage: "url(" + banner + ")" }}
+        >
+          <center>
+            <div className="import-image col-md-2">
+              <FileUpload
+                defaultIcon={Icon}
+                uploadable="Banner"
+                colr="black"
+                callBack={(img) => {
+                  setBanner(img);
+                }}
+              />
+            </div>
+          </center>
+        </div>
         <div className="sch-info d-flex">
-          <div className="sch-display"></div>
+          <div
+            className="sch-display"
+            style={{ backgroundImage: "url(" + picture + ")" }}
+          >
+            <div className="import-image">
+              {" "}
+              <FileUpload
+                defaultIcon={ProfileAvater}
+                uploadable="Picture"
+                colr="white"
+                callBack={(img) => {
+                  setPicture(img);
+                }}
+              />
+            </div>
+          </div>
           <div style={{ flexGrow: 1 }}>
             <h4>{data.name}</h4>
             <p>
@@ -45,7 +81,7 @@ export const SchoolBio = ({ blog_id }) => {
           </div>
           <div className="d-flex ">
             <Link
-              // to={"/dashboard-layout/displayed-school/" + item.id}
+              // to={"/dashboard-layout/displayed-school/" + data.id}
               state={{ blog_id: blogId }}
             >
               {" "}
