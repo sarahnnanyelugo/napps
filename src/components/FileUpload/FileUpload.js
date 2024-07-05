@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import ImageUploading from "react-images-uploading";
 import ProfileAvater from "../../assets/images/edit-profile.png";
-import Icon from "../../assets/images/file-upload.png";
 
 import "./file-upload.scss";
 export function FileUpload(props) {
   const [images, setImages] = React.useState([]);
   const [img, setImg] = React.useState(null);
   const maxNumber = 69;
-  const { colr, callBack } = props;
+  const { colr, callBack, align } = props;
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
@@ -35,11 +34,12 @@ export function FileUpload(props) {
     <>
       {/* <img src={img || ProfileAvater} /> */}
 
-      <div className="file-input-div d-flex">
+      <div className="file-input-div  " style={{ display: align }}>
         {" "}
-        <img src={props.defaultIcon} height="20px" width="20px" />
+        <span style={{ color: colr }} className="default-icon">
+          {props.defaultIcon}
+        </span>
         <ImageUploading
-          // multiple
           value={images}
           onChange={onChange}
           maxNumber={maxNumber}
@@ -48,16 +48,14 @@ export function FileUpload(props) {
           {({
             imageList,
             onImageUpload,
-            //   onImageRemoveAll,
+
             onImageUpdate,
             onImageRemove,
             isDragging,
             dragProps,
           }) => (
-            // write your building UI
             <div className="upload__image-wrapper">
               <button
-                // style={isDragging ? { color: "red" } : undefined}
                 style={{ color: colr }}
                 onClick={onImageUpload}
                 {...dragProps}
@@ -66,18 +64,11 @@ export function FileUpload(props) {
               </button>
               &nbsp;
               {imageList.map((image, index) => (
-                <div key={index} className="image-item">
-                  {/* <img src={image["data_url"]} alt="" width="100" /> */}
-                  {/* <div className="image-item__btn-wrapper">
-                    <button onClick={() => onImageUpdate(index)}>Update</button>
-                    <button onClick={() => onImageRemove(index)}>Cancel</button>
-                  </div> */}
-                </div>
+                <div key={index} className="image-item"></div>
               ))}
             </div>
           )}
         </ImageUploading>
-        {/* <p>SVG, PNG, JPG or GIF (max. 800x400px)</p> */}
       </div>
     </>
   );

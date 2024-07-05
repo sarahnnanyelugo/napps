@@ -5,6 +5,8 @@ import { FileUpload } from "../../components/FileUpload/FileUpload";
 import { schools } from "../../Data/schoolsData";
 import ProfileAvater from "../../assets/images/edit-profile.png";
 import Icon from "../../assets/images/file-upload.png";
+import { FaUserEdit } from "react-icons/fa";
+import { LuImagePlus } from "react-icons/lu";
 
 export const SchoolBio = ({ blog_id }) => {
   const [data, setData] = useState({});
@@ -16,6 +18,7 @@ export const SchoolBio = ({ blog_id }) => {
   const inputRef = useRef(null);
   const [banner, setBanner] = useState(null);
   const [picture, setPicture] = useState(null);
+  const [contact, setContact] = useState(null);
   useEffect(() => {
     setId(blog_id);
     console.log(blog_id);
@@ -44,7 +47,8 @@ export const SchoolBio = ({ blog_id }) => {
           <center>
             <div className="import-image col-md-2">
               <FileUpload
-                defaultIcon={Icon}
+                align="display flex"
+                defaultIcon={<LuImagePlus />}
                 uploadable="Banner"
                 colr="black"
                 callBack={(img) => {
@@ -59,17 +63,20 @@ export const SchoolBio = ({ blog_id }) => {
             className="sch-display"
             style={{ backgroundImage: "url(" + picture + ")" }}
           >
-            <div className="import-image">
+            <center>
               {" "}
-              <FileUpload
-                defaultIcon={ProfileAvater}
-                uploadable="Picture"
-                colr="white"
-                callBack={(img) => {
-                  setPicture(img);
-                }}
-              />
-            </div>
+              <div className="import-image">
+                {" "}
+                <FileUpload
+                  defaultIcon={<FaUserEdit />}
+                  uploadable="Picture"
+                  colr="white"
+                  callBack={(img) => {
+                    setPicture(img);
+                  }}
+                />
+              </div>
+            </center>
           </div>
           <div style={{ flexGrow: 1 }}>
             <h4>{data.name}</h4>
@@ -112,7 +119,26 @@ export const SchoolBio = ({ blog_id }) => {
             <div className="">
               <h5>Contact Information</h5>
               <div className="d-flex">
-                <div className="contact-frame2 col-md-"></div>
+                <div
+                  className="contact-frame2 col-md-"
+                  style={{ backgroundImage: "url(" + contact + ")" }}
+                >
+                  {" "}
+                  <center>
+                    {" "}
+                    <div className="import-contact">
+                      {" "}
+                      <FileUpload
+                        defaultIcon={<FaUserEdit />}
+                        uploadable="Picture"
+                        colr="white"
+                        callBack={(img) => {
+                          setContact(img);
+                        }}
+                      />
+                    </div>
+                  </center>
+                </div>
                 <div className="col-md-9">
                   <div style={{ marginLeft: "20px" }}>
                     <p> {data.founder}</p>
