@@ -5,6 +5,7 @@ import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import MySchoolNav from "../../components/MySchoolNav/MySchoolNav";
 import { AdminDashboard } from "../AdminDashboard/AdminDashboard";
 import MySchools from "../MySchools/MySchools";
+import { SchoolSUb } from "../SchoolSub/SchoolSub";
 
 export default function MySchoolLayout() {
   return (
@@ -17,6 +18,7 @@ export default function MySchoolLayout() {
           {/* <DashboardTop /> */}
           <Routes>
             <Route path="/my-schools" element={<MySchools />} />{" "}
+            <Route path="/sch-sub" element={<SchoolSUb />} />{" "}
           </Routes>
         </div>
       </div>

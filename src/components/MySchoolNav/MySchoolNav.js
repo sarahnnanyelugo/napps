@@ -36,7 +36,7 @@ const MySchoolNav = () => {
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./school-management"} activeClassName="active">
+            <NavLink to={"./sch-sub"} activeClassName="active">
               <span>
                 {" "}
                 <MdOutlinePayments />
