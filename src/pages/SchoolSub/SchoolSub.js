@@ -72,8 +72,9 @@ export const SchoolSUb = () => {
               <div style={{ flexGrow: 1 }}>
                 {" "}
                 {/* <img src={Icon2} height="30px" /> */}
-                <h4><PiLinkSimpleBreakThin />
-</h4>
+                <h4>
+                  <PiLinkSimpleBreakThin />
+                </h4>
                 <p>Renewals Made</p>
               </div>
               <h1 className="stats">
@@ -93,93 +94,10 @@ export const SchoolSUb = () => {
         </div>{" "}
         <div className="schools-filter-div col-md-12">
           {" "}
-          <h4>All Schools</h4>
-          <div className=" d-flex filtering-btns">
-            <button
-              className={`btn-1 ${category === "*" ? "sch-active" : ""}`}
-              onClick={() => setCat("*")}
-            >
-              All Subscriptions
-            </button>
-            <button
-              className={`btn-2 ${category === "active" ? "sch-active" : ""}`}
-              onClick={() => setCat("active")}
-            >
-              Active Subscriptions
-            </button>
-            <button
-              className={`btn-4 ${category === "inactive" ? "sch-active" : ""}`}
-              onClick={() => setCat("inactive")}
-            >
-              Inactive Subscriptions
-            </button>
-          </div>
           <div className="ssearch-div d-flex">
-            <div className="col-md-3">
-              <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
-              <br />
+            <h5>Transaction History</h5>
+            <div className="col-md-3 offset-md-7">
               <SearchBar callback={reducer} posts={schools} />
-            </div>
-            <div>
-              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
-                Status
-              </h6>
-              <br />
-              <div className="select-div ">
-                <select>
-                  <option>Active</option>
-                  <option>InActive</option>
-                  <option>Pending</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>Zone</h6>
-              <br />
-              <NavDropdown
-                title="Zone"
-                id="collapsible-nav-dropdown"
-                className="select-div "
-              >
-                <NavDropdown.Item
-                  href="#action/3.1"
-                  onClick={() => setCat("NC")}
-                >
-                  North Central (NC)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.3"
-                  onClick={() => setCat("NW")}
-                >
-                  North West (NW)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SW")}
-                >
-                  South West (SW)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SE")}
-                >
-                  South East (SE)
-                </NavDropdown.Item>{" "}
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SS")}
-                >
-                  South South (SS)
-                </NavDropdown.Item>
-              </NavDropdown>
-            </div>
-            <div className="offset-md-4">
-              <button className="exp-btn">
-                {" "}
-                <img src={Icon3} height="20px" width="20px" />
-                Export
-              </button>
-              <button className="add-sch-btn">Add School</button>
             </div>
           </div>{" "}
           <hr />
