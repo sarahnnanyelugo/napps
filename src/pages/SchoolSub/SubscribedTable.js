@@ -50,7 +50,7 @@ const SubscribedTable = ({ data }) => {
                   <td>
                     <input type="checkbox" />
                   </td>
-                  <td>{item.regID}</td>
+                  <td style={{ fontFamily: "montM" }}>{item.regID}</td>
                   <td>
                     {item.date}
                     {item.time}
@@ -58,7 +58,11 @@ const SubscribedTable = ({ data }) => {
                   <td>
                     <button
                       className="table-btn"
-                      style={{ background: item.bg, color: item.colo }}
+                      style={{
+                        background: item.bg,
+                        color: item.colo,
+                        fontFamily: "montM",
+                      }}
                     >
                       <span style={{ fontSize: "25px" }}>.</span>
                       {item.status}
