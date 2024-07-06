@@ -4,10 +4,10 @@ import CountUp from "react-countup";
 import Icon1 from "../../assets/images/user1.svg";
 import Icon2 from "../../assets/images/user2.svg";
 import Icon3 from "../../assets/images/exp.svg";
-import "./school-management.scss";
+import "./subscription.scss";
 import SchoolsTable from "../../components/SchoolsTable/SchoolsTable";
-import { schools } from "../../Data/schoolsData";
-import ManagementTable from "./ManagementTable";
+import { subscribedSchools } from "../../Data/subscribedSchData";
+import SubscribedTable from "./SubscribedTable";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
@@ -15,22 +15,22 @@ import { PiLinkSimpleBreakThin } from "react-icons/pi";
 
 export const SchoolSUb = () => {
   const [category, setCategory] = useState("*");
-  const [filteredSchools, setfilteredSchools] = useState(schools);
+  const [filteredSchools, setfilteredSchools] = useState(subscribedSchools);
   function setCat(cat) {
     setCategory(cat);
   }
   useEffect(() => {
     if (category === "*") {
-      setfilteredSchools(schools);
+      setfilteredSchools(subscribedSchools);
     } else {
       setfilteredSchools(
-        schools.filter((prd) => prd.category.indexOf(category) !== -1)
+        subscribedSchools.filter((prd) => prd.category.indexOf(category) !== -1)
       );
     }
   }, [category]);
   const [state, setState] = useState({
     query: "",
-    list: schools,
+    list: subscribedSchools,
   });
   function reducer(dt) {
     // console.log(dt);
@@ -97,11 +97,11 @@ export const SchoolSUb = () => {
           <div className="ssearch-div d-flex">
             <h5>Transaction History</h5>
             <div className="col-md-3 offset-md-7">
-              <SearchBar callback={reducer} posts={schools} />
+              <SearchBar callback={reducer} posts={subscribedSchools} />
             </div>
           </div>{" "}
           <hr />
-          <ManagementTable data={filteredSchools} />
+          <SubscribedTable data={filteredSchools} />
         </div>
       </div>
     </>

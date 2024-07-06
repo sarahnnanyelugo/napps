@@ -4,7 +4,7 @@ import "../../components/SchoolsTable/schools-table.scss";
 import { Link, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const ManagementTable = ({ data }) => {
+const SubscribedTable = ({ data }) => {
   const { bg, colo, bd2, colo2, category } = data;
   const [blogId, setBlogId] = useState(0);
   const location = useLocation();
@@ -26,16 +26,17 @@ const ManagementTable = ({ data }) => {
       <div className="d-flex"> </div>
 
       <div>
-        <Table striped bordered hover className="school-table">
+        <Table striped bordered hover className="sub-table">
           <thead>
             <tr>
               <th>
                 <input type="checkbox" />
               </th>
-              <th className="col-md-4">Name</th>
-              <th>Status</th>
-              <th>Registration ID</th>
-              <th colSpan={3}>Zone</th>
+              <th>Transaction ID</th>
+              <th>Date & TIme</th> <th>Status</th>
+              <th>Amount</th>
+              <th>Payment method</th>
+              <th>Renewal Date</th>
             </tr>
           </thead>
           <TransitionGroup component="tbody">
@@ -49,31 +50,23 @@ const ManagementTable = ({ data }) => {
                   <td>
                     <input type="checkbox" />
                   </td>
-
-                  <td className="">
-                    <div className="d-flex">
-                      <div
-                        className="alphabet"
-                        style={{ background: item.bg2, color: item.colo2 }}
-                      >
-                        <center>
-                          <p>{item.alphabet}</p>
-                        </center>
-                      </div>
-                      {item.name}
-                    </div>
+                  <td>{item.regID}</td>
+                  <td>
+                    {item.date}
+                    {item.time}
                   </td>
-
                   <td>
                     <button
                       className="table-btn"
                       style={{ background: item.bg, color: item.colo }}
                     >
+                      <span style={{ fontSize: "25px" }}>.</span>
                       {item.status}
                     </button>
                   </td>
-                  <td>{item.regID}</td>
-                  <td>{item.zone}</td>
+                  <td>{item.amount}</td>
+                  <td>{item.payment}</td>
+                  <td>{item.renewal}</td>
                   <td className="edit">
                     <Link
                       className="view"
@@ -113,4 +106,4 @@ const ManagementTable = ({ data }) => {
   );
 };
 
-export default ManagementTable;
+export default SubscribedTable;
