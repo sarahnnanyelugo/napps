@@ -5,6 +5,9 @@ import { IoGridOutline } from "react-icons/io5";
 import { Schools } from "./Schools";
 import "./my-schools.scss";
 import { schools } from "../../Data/schoolsData";
+import { IoIosAdd } from "react-icons/io";
+import { Link } from "react-router-dom";
+
 export default function MySchools() {
   const [state, setState] = useState({
     query: "",
@@ -32,7 +35,7 @@ export default function MySchools() {
       <DashboardTop title="" />
       <div className="my-schools-div">
         <div className="d-flex">
-          <h2>My Schools</h2>{" "}
+          <h2 style={{ flexGrow: 1 }}>My Schools</h2>{" "}
           <h4
             onClick={() => switchView("grid")}
             className={activeElement === "element1" ? "actived" : ""}
@@ -53,6 +56,14 @@ export default function MySchools() {
           >
             <CiGrid2H />
           </h4>{" "}
+          <Link className="add-sch" to={"/add-sch"}>
+            {" "}
+            <span>
+              {" "}
+              <IoIosAdd />
+            </span>
+            Add School
+          </Link>
         </div>
 
         <div className={isGridView ? "grid-view" : "list-view"} id="content">

@@ -15,7 +15,6 @@ export default function MySchoolLayout() {
           <MySchoolNav />
         </div>
         <div className="col-md-10" style={{ padding: "0px 20px" }}>
-          {/* <DashboardTop /> */}
           <Routes>
             <Route path="/my-schools" element={<MySchools />} />{" "}
             <Route path="/sch-sub" element={<SchoolSUb />} />{" "}

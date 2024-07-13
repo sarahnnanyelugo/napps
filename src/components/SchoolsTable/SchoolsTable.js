@@ -28,7 +28,7 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
         </button>
       </div>
 
-      <Table striped bordered hover className="school-table">
+      <Table striped bordered hover className="school-table" responsive>
         <thead>
           <tr>
             <th>

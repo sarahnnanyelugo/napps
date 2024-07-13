@@ -71,7 +71,6 @@ export const SchoolSUb = () => {
             <div className="summary d-flex">
               <div style={{ flexGrow: 1 }}>
                 {" "}
-                {/* <img src={Icon2} height="30px" /> */}
                 <h4>
                   <PiLinkSimpleBreakThin />
                 </h4>

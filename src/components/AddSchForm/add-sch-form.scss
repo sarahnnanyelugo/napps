@@ -1,0 +1,117 @@
+.sch-info2 {
+  padding: 25px;
+  .sch-display {
+    height: 173px;
+    width: 173px;
+    border-radius: 100%;
+    background: #027a48;
+    margin-top: -80px;
+    margin-right: 20px;
+    padding-top: 40px;
+    &:hover {
+      background: #245335;
+      .import-image {
+        display: block;
+      }
+    }
+  }
+  button {
+    font-size: 14px;
+    font-family: montM;
+    height: 36px;
+    border-radius: 6px;
+    border: none;
+    padding: 0 15px;
+    border: 1px solid #d0d5dd;
+  }
+  .save-btn {
+    background: #027a48;
+    color: #fff;
+    margin-left: 6px;
+  }
+  .cancel-btn {
+    border: 1px solid #d0d5dd;
+    color: #000000;
+  }
+}
+small {
+  font-family: montR;
+  font-size: 12px;
+}
+.add-sch-form {
+  background: #19191933;
+  textarea {
+    min-height: 166px;
+    border: solid 1px #e4e7ec;
+    width: 100%;
+
+    padding: 20px;
+    &:hover {
+      background: #fafafa;
+    }
+  }
+  h2 {
+    margin-top: 25px;
+  }
+  button {
+    border-radius: 6px;
+    font-family: montSB;
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+  .cancel {
+    border: solid 1px rgb(170, 169, 169);
+    background: #fff;
+    margin: 30px 10px;
+  }
+  .add {
+    background: #027a48;
+    border: solid 1px #027a48;
+    color: #fff;
+    margin: 30px 10px;
+  }
+  select {
+    width: 100%;
+  }
+  .sch-form {
+    border-radius: 10px;
+    border: solid 2px #e4e7ec;
+    background: #fff;
+  }
+  .sch-view-div3 {
+    height: 152px;
+    background: #e4e7ec;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 50px;
+
+    .import-image {
+      display: none;
+      font-size: 12px;
+      width: 100%;
+    }
+    &:hover {
+      background: #19191926;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      .import-image {
+        display: block;
+      }
+    }
+  }
+}
+.sch-input {
+  padding: 7px 20px;
+  border: solid 1px #e4e7ec;
+  color: rgb(191, 184, 184);
+  border-radius: 6px;
+  width: 100%;
+  font-size: 14px;
+  &:hover {
+    background: #fafafa;
+  }
+}

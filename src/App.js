@@ -12,6 +12,7 @@ import { MainNews } from "./pages/NewsPage/MainNews/MainNews";
 import DashboardLayout from "./pages/DashboardLayout/DashboardLayout";
 import { DisplayedSchool } from "./pages/SchoolManagement/DisplayedSchool";
 import MySchoolLayout from "./pages/MySchoolLayout/MySchoolLayout";
+import { AddSch } from "./pages/AddSch/AddSch";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />{" "}
         <Route path="login" element={<Login />} />{" "}
+        <Route path="Add-sch" element={<AddSch />} />{" "}
         <Route path="members-detail" element={<MembersDetail />} />{" "}
         <Route path="registration" element={<Registration />} />{" "}
         <Route path="news-page" element={<NewsPage />} />

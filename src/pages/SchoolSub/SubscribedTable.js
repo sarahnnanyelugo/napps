@@ -23,10 +23,8 @@ const SubscribedTable = ({ data }) => {
   };
   return (
     <div>
-      <div className="d-flex"> </div>
-
       <div>
-        <Table striped bordered hover className="sub-table">
+        <Table striped bordered hover className="sub-table" responsive>
           <thead>
             <tr>
               <th>
