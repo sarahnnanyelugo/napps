@@ -175,7 +175,7 @@ export const AddSchForm = () => {
                 <h5>Contact Information</h5>
                 <div className="d-flex">
                   <div
-                    className="contact-frame2 col-md-"
+                    className="contact-frame2 col-md- mt3"
                     style={{ backgroundImage: "url(" + contact + ")" }}
                   >
                     {" "}
