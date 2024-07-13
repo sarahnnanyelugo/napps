@@ -13,7 +13,7 @@ import { MdOutlinePayments } from "react-icons/md";
 // import Icon4 from "../../assets/images/heart.svg";
 // import Icon5 from "../../assets/images/sell-booth.png";
 
-const DashboardNav = () => {
+const ZoneNav = () => {
   return (
     <>
       <div className="dashboard-nav">
@@ -28,7 +28,7 @@ const DashboardNav = () => {
         {/* <hr /> */}
         <ul className="list-unstyled col-md-12 ">
           <li>
-            <NavLink to={"./admin-dashboard"} activeClassName="active">
+            <NavLink to={"./zone-dashboard"} activeClassName="active">
               <span>
                 <TiChartBar />
               </span>
@@ -53,19 +53,10 @@ const DashboardNav = () => {
               Subscription
             </NavLink>
           </li>{" "}
-          <li>
-            <NavLink to={"./messages"} activeClassName="active">
-              <span>
-                {" "}
-                <BsCreditCard />
-              </span>
-              Payments
-            </NavLink>
-          </li>{" "}
         </ul>
       </div>
     </>
   );
 };
 
-export default DashboardNav;
+export default ZoneNav;

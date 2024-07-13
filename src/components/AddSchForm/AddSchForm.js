@@ -8,8 +8,14 @@ import "./add-sch-form.scss";
 import { schools } from "../../Data/schoolsData";
 import { FileUpload } from "../FileUpload/FileUpload";
 import { FaLink } from "react-icons/fa6";
-
+import { ZonesAndStates } from "../../Data/Zones";
 export const AddSchForm = () => {
+  const [value, setValue] = useState();
+  const [towns, setLga] = useState([]);
+  const [naijaState, setNaijaState] = useState("");
+  const [naijaLga, setNaijaLga] = useState();
+  const [selectedState, setSelectedState] = useState("");
+  const [lgas, setLgas] = useState([]);
   const [data, setData] = useState({});
   const [isItalic, setIsItalic] = useState(false);
   const [isBold, setIsBold] = useState(false);
@@ -28,7 +34,11 @@ export const AddSchForm = () => {
   const toggleUnderline = () => {
     setIsUnderline(!isUnderline);
   };
-
+  const handleStateChange = (e) => {
+    const state = e.target.value;
+    setSelectedState(state);
+    setLgas(ZonesAndStates[state]);
+  };
   return (
     <>
       <div className="add-sch-form">
@@ -250,7 +260,7 @@ export const AddSchForm = () => {
                 <div className="col">
                   <h2>Ward</h2>
                   <div className="sch-input ">
-                    <select className="">
+                    <select>
                       <option>Ward 1</option>
                       <option>Ward 2</option>
                       <option>Ward 3</option>
@@ -261,10 +271,15 @@ export const AddSchForm = () => {
                   {" "}
                   <h2>Zone</h2>
                   <div className="sch-input ">
-                    <select className="">
-                      <option>Ward 1</option>
-                      <option>Ward 2</option>
-                      <option>Ward 3</option>
+                    <select value={selectedState} onChange={handleStateChange}>
+                      <option value="" disabled>
+                        Select your zone
+                      </option>
+                      {Object.keys(ZonesAndStates).map((state) => (
+                        <option key={state} value={state}>
+                          {state}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -272,10 +287,15 @@ export const AddSchForm = () => {
                   <h2>State</h2>
 
                   <div className="sch-input ">
-                    <select className="">
-                      <option>Ward 1</option>
-                      <option>Ward 2</option>
-                      <option>Ward 3</option>
+                    <select disabled={!selectedState}>
+                      <option value="" disabled>
+                        Select State
+                      </option>
+                      {lgas.map((lga) => (
+                        <option key={lga} value={lga}>
+                          {lga}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>{" "}

@@ -13,6 +13,7 @@ import DashboardLayout from "./pages/DashboardLayout/DashboardLayout";
 import { DisplayedSchool } from "./pages/SchoolManagement/DisplayedSchool";
 import MySchoolLayout from "./pages/MySchoolLayout/MySchoolLayout";
 import { AddSch } from "./pages/AddSch/AddSch";
+import ZoneLayout from "./pages/ZoneLayout copy/ZoneLayout";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="main-news/:blog_id" element={<MainNews />} />
         <Route path="dashboard-layout/*" element={<DashboardLayout />} />{" "}
         <Route path="my-school-layout/*" element={<MySchoolLayout />} />{" "}
+        <Route path="zone-layout/*" element={<ZoneLayout />} />{" "}
         {/* <Route path="displayed-school/:blog_id" element={<DisplayedSchool />} />{" "} */}
       </Routes>
     </>

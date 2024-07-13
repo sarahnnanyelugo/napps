@@ -53,6 +53,9 @@ function NavBar() {
               <Link to={"my-school-layout/my-schools"}>
                 <button>My Schools</button>
               </Link>{" "}
+              <Link to={"zone-layout/zone-dashboard"}>
+                <button>Zone</button>
+              </Link>{" "}
               <Link to={"/login"}>
                 <button>Log In</button>
               </Link>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import DashboardNav from "../../components/ZoneNav/ZoneNav";
+import DashboardNav from "../../components/ZoneNav/DashboardNav";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import MySchoolNav from "../../components/MySchoolNav/MySchoolNav";
 import { AdminDashboard } from "../AdminDashboard/AdminDashboard";
