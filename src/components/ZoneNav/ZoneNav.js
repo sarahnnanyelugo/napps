@@ -36,7 +36,7 @@ const ZoneNav = () => {
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./school-management"} activeClassName="active">
+            <NavLink to={"./zone-management"} activeClassName="active">
               <span>
                 {" "}
                 <LuSchool />

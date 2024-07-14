@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
@@ -14,14 +14,20 @@ export const Registration = () => {
   const [towns, setLga] = useState([]);
   const [naijaState, setNaijaState] = useState("");
   const [naijaLga, setNaijaLga] = useState();
-  const [selectedState, setSelectedState] = useState("");
+  const [selectedState, setSelectedState] = useState(null);
   const [lgas, setLgas] = useState([]);
 
   const handleStateChange = (e) => {
-    const state = e.target.value;
+    const state = statesAndLGAs.find(
+      (item) => item.id === parseInt(e.target.value)
+    );
     setSelectedState(state);
-    setLgas(statesAndLGAs[state]);
   };
+  useEffect(() => {
+    console.log(selectedState);
+    console.log(selectedState?.lgas);
+    setLgas(selectedState?.lgas);
+  }, [selectedState]);
   return (
     <div div className="members-form">
       {" "}
@@ -74,13 +80,13 @@ export const Registration = () => {
             <Col style={{ display: "grid" }}>
               <h6 style={{ textAlign: "left" }}>State</h6>
 
-              <select value={selectedState} onChange={handleStateChange}>
-                <option value="" disabled>
+              <select onChange={handleStateChange}>
+                <option value="" disabled selected>
                   Select your state
                 </option>
-                {Object.keys(statesAndLGAs).map((state) => (
-                  <option key={state} value={state}>
-                    {state}
+                {statesAndLGAs.map((state) => (
+                  <option key={state.id} value={state.id}>
+                    {state.name}
                   </option>
                 ))}
               </select>
@@ -88,11 +94,11 @@ export const Registration = () => {
             <Col style={{ display: "grid" }}>
               <h6 style={{ textAlign: "left" }}>LGA</h6>
               <select disabled={!selectedState}>
-                <option value="" disabled>
-                  Select an LGA
+                <option value="" disabled selected>
+                  {selectedState ? "Select an LGA" : "Select State First"}
                 </option>
-                {lgas.map((lga) => (
-                  <option key={lga} value={lga}>
+                {lgas?.map((lga, index) => (
+                  <option key={index} value={lga}>
                     {lga}
                   </option>
                 ))}

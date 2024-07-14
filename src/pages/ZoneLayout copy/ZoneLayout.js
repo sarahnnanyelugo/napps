@@ -7,6 +7,7 @@ import MySchools from "../MySchools/MySchools";
 import { SchoolSUb } from "../SchoolSub/SchoolSub";
 import { ZoneDashboard } from "../ZoneDashboard/ZoneDashboard";
 import ZoneNav from "../../components/ZoneNav/ZoneNav";
+import { ZoneManagement } from "../ZoneManagement/ZoneManagement";
 
 export default function ZoneLayout() {
   return (
@@ -19,6 +20,7 @@ export default function ZoneLayout() {
           <Routes>
             <Route path="/zone-dashboard" element={<ZoneDashboard />} />{" "}
             <Route path="/sch-sub" element={<SchoolSUb />} />{" "}
+            <Route path="/zone-management" element={<ZoneManagement />} />{" "}
           </Routes>
         </div>
       </div>
