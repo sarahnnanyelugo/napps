@@ -5,6 +5,12 @@ export const founders = [
     phone: "+2349030838298",
     email: "sultanhighschool@gmail.com",
   },
+  {
+    id: 2,
+    founder: "Mrs Dora Peters (Head of schools)",
+    phone: "+2349030838298",
+    email: "dorapeters@gmail.com",
+  },
 ];
 export const schools = [
   {
@@ -63,7 +69,7 @@ export const schools = [
     phone: "+2349030838298",
     email: "sultanhighschool@gmail.com",
     state: "Kaduna",
-    founder_id: 1,
+    founder_id: 2,
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",

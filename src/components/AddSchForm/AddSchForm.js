@@ -5,11 +5,12 @@ import Icon from "../../assets/images/file-upload.png";
 import { FaUserEdit } from "react-icons/fa";
 import { LuImagePlus } from "react-icons/lu";
 import "./add-sch-form.scss";
-import { schools } from "../../Data/schoolsData";
+import { founders, schools } from "../../Data/schoolsData";
 import { FileUpload } from "../FileUpload/FileUpload";
 import { FaLink } from "react-icons/fa6";
 import { ZonesAndStates } from "../../Data/Zones";
-export const AddSchForm = () => {
+export const AddSchForm = (props) => {
+  const { founder_id } = props;
   const [value, setValue] = useState();
   const [towns, setLga] = useState([]);
   const [naijaState, setNaijaState] = useState("");
@@ -20,7 +21,7 @@ export const AddSchForm = () => {
   const [isItalic, setIsItalic] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
-
+  const [founder, setFounder] = useState(null);
   const [banner, setBanner] = useState(null);
   const [picture, setPicture] = useState(null);
   const [contact, setContact] = useState(null);
@@ -39,6 +40,10 @@ export const AddSchForm = () => {
     setSelectedState(state);
     setLgas(ZonesAndStates[state]);
   };
+  useEffect(() => {
+    const founder = founders?.find((f) => f.id === founder_id);
+    setFounder(founder);
+  }, [founders, founder_id]);
   return (
     <>
       <div className="add-sch-form">
@@ -210,18 +215,21 @@ export const AddSchForm = () => {
                       className="sch-input "
                       type="text"
                       placeholder="Head of schools name"
+                      value={founder?.founder}
                     />{" "}
                     <h6>Phone</h6>
                     <input
                       className="sch-input "
                       type="text"
                       placeholder="+2347032861442"
+                      value={founder?.phone}
                     />{" "}
                     <h6>Email</h6>
                     <input
                       className="sch-input "
                       type="text"
                       placeholder="britishspringcollege@gmail.com"
+                      value={founder?.email}
                     />
                   </div>
                 </div>

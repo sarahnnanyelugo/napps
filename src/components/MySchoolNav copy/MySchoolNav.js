@@ -7,16 +7,10 @@ import { LuSchool } from "react-icons/lu";
 import { BsCreditCard } from "react-icons/bs";
 import { MdOutlinePayments } from "react-icons/md";
 
-// import Icon1 from "../../assets/images/dash.svg";
-// import Icon2 from "../../assets/images/requests.svg";
-// import Icon3 from "../../assets/images/message.svg";
-// import Icon4 from "../../assets/images/heart.svg";
-// import Icon5 from "../../assets/images/sell-booth.png";
-
 const MySchoolNav = () => {
   return (
     <>
-      <div className="dashboard-nav">
+      <div className="dashboard-nav2">
         <div className="dash-logo">
           {" "}
           <center>

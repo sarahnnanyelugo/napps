@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import { CiGrid2H } from "react-icons/ci";
 import { IoGridOutline } from "react-icons/io5";
@@ -7,20 +7,14 @@ import "./my-schools.scss";
 import { schools } from "../../Data/schoolsData";
 import { IoIosAdd } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { getLocalStorage, setLocalStorage } from "../../utility/localStorage";
 
 export default function MySchools() {
-  const [state, setState] = useState({
-    query: "",
-    list: schools,
-  });
+  const [schoolList, setSchoolList] = useState([]);
   const [activeElement, setActiveElement] = useState("element1");
   const [isGridView, setIsGridView] = useState(true);
-  //   const switchToGridView = () => {
-  //     setIsGridView(true);
-  //   };
-  //   const switchToListView = () => {
-  //     setIsGridView(false);
-  //   };
+  const [schInIt, setSchInIt] = useState(false);
+
   const switchView = (view) => {
     if (view === "grid") {
       setIsGridView(true);
@@ -30,9 +24,24 @@ export default function MySchools() {
       setActiveElement("element2");
     }
   };
+  useEffect(() => {
+    let sch = getLocalStorage("schools");
+    if (!sch) {
+      setLocalStorage("schools", schools);
+      setSchInIt(true);
+    }
+  });
+
+  useEffect(() => {
+    setSchoolList(
+      getLocalStorage("schools", (sch) => sch.founder_id === 1) || []
+    );
+  }, [schInIt]);
+
   return (
     <>
       <DashboardTop title="" />
+      <br />
       <div className="my-schools-div">
         <div className="d-flex">
           <h2 style={{ flexGrow: 1 }}>My Schools</h2>{" "}
@@ -67,7 +76,7 @@ export default function MySchools() {
         </div>
 
         <div className={isGridView ? "grid-view" : "list-view"} id="content">
-          {state.list.map((data, index) => (
+          {schoolList.map((data, index) => (
             <div key={index} className={isGridView ? "grid-item" : "list-item"}>
               <Schools data={data} />
             </div>
