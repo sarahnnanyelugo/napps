@@ -32,7 +32,6 @@ export const Schools = ({ data }) => {
       <div className="schools d-flex">
         <div className="sch-frame col-md-3 col-6" style={{ background: bg2 }}>
           {" "}
-          {/* <Skeleton count={10} /> */}
         </div>
         <div className="sch-details">
           <h6 className="col-md-12">
@@ -42,10 +41,13 @@ export const Schools = ({ data }) => {
               data.name
             )}
           </h6>
-          <p>{isLoading ? <Skeleton count={1} /> : data.zone},</p>
-          <p>Ward</p>
-          <p>{isLoading ? <Skeleton count={1} /> : data.state} </p>
-          <p> {isLoading ? <Skeleton count={1} /> : data.country}.</p>
+          <p>{isLoading ? <Skeleton count={1} /> : data.zone}</p>
+          <p>{isLoading ? <Skeleton count={1} /> : "Ward"}</p>
+
+          <p>
+            {isLoading ? <Skeleton count={1} /> : data.state}{" "}
+            {isLoading ? <Skeleton count={1} /> : data.country}{" "}
+          </p>
         </div>
       </div>
     </Link>
