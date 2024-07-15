@@ -7,7 +7,7 @@ import { LuSchool } from "react-icons/lu";
 import { BsCreditCard } from "react-icons/bs";
 import { MdOutlinePayments } from "react-icons/md";
 
-const MySchoolNav = () => {
+const DashboardNav = () => {
   return (
     <>
       <div className="dashboard-nav2">
@@ -22,15 +22,24 @@ const MySchoolNav = () => {
         {/* <hr /> */}
         <ul className="list-unstyled col-md-12 ">
           <li>
-            <NavLink to={"./my-schools"} activeClassName="active">
+            <NavLink to={"./admin-dashboard"} activeClassName="active">
               <span>
                 <LuSchool />
               </span>
-              My Schools
+              Dashboard
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./sch-sub"} activeClassName="active">
+            <NavLink to={"./school-management"} activeClassName="active">
+              <span>
+                {" "}
+                <MdOutlinePayments />
+              </span>
+              School Management
+            </NavLink>
+          </li>{" "}
+          <li>
+            <NavLink to={"./subscription"} activeClassName="active">
               <span>
                 {" "}
                 <MdOutlinePayments />
@@ -44,4 +53,4 @@ const MySchoolNav = () => {
   );
 };
 
-export default MySchoolNav;
+export default DashboardNav;

@@ -7,12 +7,6 @@ import { LuSchool } from "react-icons/lu";
 import { BsCreditCard } from "react-icons/bs";
 import { MdOutlinePayments } from "react-icons/md";
 
-// import Icon1 from "../../assets/images/dash.svg";
-// import Icon2 from "../../assets/images/requests.svg";
-// import Icon3 from "../../assets/images/message.svg";
-// import Icon4 from "../../assets/images/heart.svg";
-// import Icon5 from "../../assets/images/sell-booth.png";
-
 const MySchoolNav = () => {
   return (
     <>
@@ -25,14 +19,14 @@ const MySchoolNav = () => {
             </Link>
           </center>
         </div>
-        {/* <hr /> */}
+
         <ul className="list-unstyled col-md-12 ">
           <li>
-            <NavLink to={"./my-schools"} activeClassName="active">
+            <NavLink to={"./dashboard"} activeClassName="active">
               <span>
                 <LuSchool />
               </span>
-              My Schools
+              Dashboard
             </NavLink>
           </li>{" "}
           <li>

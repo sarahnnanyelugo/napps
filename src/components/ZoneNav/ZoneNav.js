@@ -4,14 +4,7 @@ import "./dashboard-nav.scss";
 import Logo from "../../assets/images/logo.png";
 import { TiChartBar } from "react-icons/ti";
 import { LuSchool } from "react-icons/lu";
-import { BsCreditCard } from "react-icons/bs";
 import { MdOutlinePayments } from "react-icons/md";
-
-// import Icon1 from "../../assets/images/dash.svg";
-// import Icon2 from "../../assets/images/requests.svg";
-// import Icon3 from "../../assets/images/message.svg";
-// import Icon4 from "../../assets/images/heart.svg";
-// import Icon5 from "../../assets/images/sell-booth.png";
 
 const ZoneNav = () => {
   return (
@@ -32,20 +25,11 @@ const ZoneNav = () => {
               <span>
                 <TiChartBar />
               </span>
-              Dashboard
+              My Schools
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./zone-management"} activeClassName="active">
-              <span>
-                {" "}
-                <LuSchool />
-              </span>
-              School Management
-            </NavLink>
-          </li>{" "}
-          <li>
-            <NavLink to={"./subscription"} activeClassName="active">
+            <NavLink to={"./sch-sub"} activeClassName="active">
               <span>
                 {" "}
                 <MdOutlinePayments />

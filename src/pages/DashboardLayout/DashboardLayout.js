@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import DashboardNav from "../../components/ZoneNav/ZoneNav";
-import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
+import DashboardNav from "../../components/DashboardNav/DashboardNav";
 import { AdminDashboard } from "../AdminDashboard/AdminDashboard";
 import MySchools from "../MySchools/MySchools";
 import { DisplayedSchool } from "../SchoolManagement/DisplayedSchool";
@@ -18,7 +17,6 @@ export default function DashboardLayout() {
           <DashboardNav />
         </div>
         <div className="col-md-10" style={{ padding: "0px 20px" }}>
-          {/* <DashboardTop /> */}
           <Routes>
             <Route path="/admin-dashboard" element={<AdminDashboard />} />{" "}
             <Route path="/school-management" element={<SchoolManagement />} />
