@@ -12,10 +12,13 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
 import { PiLinkSimpleBreakThin } from "react-icons/pi";
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 export const SchoolSUb = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState(subscribedSchools);
+  const [isLoading, setIsLoading] = useState(true);
+
   function setCat(cat) {
     setCategory(cat);
   }
@@ -41,6 +44,48 @@ export const SchoolSUb = () => {
       live: true,
     }).init();
   }, [category]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // 2 seconds delay
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const renderSkeletonRows = () => {
+    const rows = [];
+    for (let i = 0; i < 10; i++) {
+      rows.push(
+        <tr key={i}>
+          <td>
+            <Skeleton />
+          </td>
+          <td>
+            <Skeleton />
+          </td>
+          <td>
+            <Skeleton />
+          </td>
+          <td>
+            <Skeleton />
+          </td>
+          <td>
+            <Skeleton />
+          </td>
+          <td>
+            <Skeleton />
+          </td>
+          <td>
+            <Skeleton />
+          </td>{" "}
+          <td>
+            <Skeleton />
+          </td>
+        </tr>
+      );
+    }
+    return rows;
+  };
   return (
     <>
       <DashboardTop title="Subscription" />
@@ -100,7 +145,41 @@ export const SchoolSUb = () => {
             </div>
           </div>{" "}
           <hr />
-          <SubscribedTable data={filteredSchools} />
+          {isLoading ? (
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>
+                    <Skeleton />
+                  </th>
+                  <th>
+                    <Skeleton />
+                  </th>
+                  <th>
+                    <Skeleton />
+                  </th>
+                  <th>
+                    <Skeleton />
+                  </th>{" "}
+                  <th>
+                    <Skeleton />
+                  </th>{" "}
+                  <th>
+                    <Skeleton />
+                  </th>{" "}
+                  <th>
+                    <Skeleton />
+                  </th>{" "}
+                  <th>
+                    <Skeleton />
+                  </th>
+                </tr>
+              </thead>
+              <tbody>{renderSkeletonRows()}</tbody>
+            </table>
+          ) : (
+            <SubscribedTable data={filteredSchools} />
+          )}
         </div>
       </div>
     </>
