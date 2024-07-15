@@ -22,7 +22,7 @@ const MySchoolNav = () => {
 
         <ul className="list-unstyled col-md-12 ">
           <li>
-            <NavLink to={"./dashboard"} activeClassName="active">
+            <NavLink to={"./my-schools"} activeClassName="active">
               <span>
                 <LuSchool />
               </span>
