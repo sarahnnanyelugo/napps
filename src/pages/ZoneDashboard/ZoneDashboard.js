@@ -13,6 +13,8 @@ import Icon2 from "../../assets/images/down.svg";
 
 import "./zone-dashboard.scss";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
+const customLabels = ["Benue", "Kogi", "Kwara", "Nasarawa", "Niger", "Plateau"];
+const customData = [80, 40, 50, 60, 90, 20];
 export const ZoneDashboard = () => {
   const [state, setState] = useState({
     query: "",
@@ -111,7 +113,7 @@ export const ZoneDashboard = () => {
         <div className="d-md-flex">
           <div className="col-md-8 zone-div">
             <h5>States in your Zone</h5>
-            <ZoneChart />
+            <ZoneChart labels={customLabels} dataset={customData} />
           </div>
           <div className="col-md-4 acts-div">
             {" "}

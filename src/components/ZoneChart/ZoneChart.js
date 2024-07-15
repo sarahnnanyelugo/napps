@@ -36,29 +36,18 @@ export const options = {
   },
 };
 
-const labels = [
-  "North Central (NC)",
-  "North East (NE)",
-  "North West (NW)",
-  "South West (SW)",
-  "South East (SE)",
-  "South South (SS)",
-  ,
-];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "school",
-      data: [50, 35, 60, 70, 20, 40],
-      backgroundColor: "rgb(72,147,64)",
-      borderRadius: 10,
-      aspectRatio: 1,
-    },
-  ],
-};
-
-export function ZoneChart() {
+export function ZoneChart({ labels, dataset }) {
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "school",
+        data: dataset,
+        backgroundColor: "rgb(72,147,64)",
+        borderRadius: 10,
+        aspectRatio: 1,
+      },
+    ],
+  };
   return <Bar options={options} data={data} />;
 }

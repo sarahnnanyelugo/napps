@@ -13,6 +13,16 @@ import Icon2 from "../../assets/images/down.svg";
 
 import "./admin-dashboard.scss";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
+const customData = [50, 100, 80, 90, 70, 80];
+const customLabels = [
+  "North Central (NC)",
+  "North East (NE)",
+  "North West (NW)",
+  "South West (SW)",
+  "South East (SE)",
+  "South South (SS)",
+  ,
+];
 export const AdminDashboard = () => {
   const [state, setState] = useState({
     query: "",
@@ -111,7 +121,7 @@ export const AdminDashboard = () => {
         <div className="d-md-flex">
           <div className="col-md-8 zone-div">
             <h5>Schools by Zones</h5>
-            <ZoneChart />
+            <ZoneChart labels={customLabels} dataset={customData} />
           </div>
           <div className="col-md-4 acts-div">
             {" "}
