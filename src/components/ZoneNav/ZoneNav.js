@@ -29,12 +29,12 @@ const ZoneNav = () => {
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./sch-sub"} activeClassName="active">
+            <NavLink to={"./zone-management"} activeClassName="active">
               <span>
                 {" "}
                 <MdOutlinePayments />
               </span>
-              Subscription
+              School Management
             </NavLink>
           </li>{" "}
         </ul>
