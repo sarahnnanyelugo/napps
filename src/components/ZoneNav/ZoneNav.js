@@ -37,6 +37,15 @@ const ZoneNav = () => {
               School Management
             </NavLink>
           </li>{" "}
+          <li>
+            <NavLink to={"./sch-sub"} activeClassName="active">
+              <span>
+                {" "}
+                <MdOutlinePayments />
+              </span>
+              Subscription
+            </NavLink>
+          </li>{" "}
         </ul>
       </div>
     </>
