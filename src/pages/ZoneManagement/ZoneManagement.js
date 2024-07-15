@@ -14,14 +14,7 @@ import WOW from "wowjs";
 import { GeoChart } from "../../components/GeoChart/GeoChart";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ManagementTable from "../SchoolManagement/ManagementTable";
-const subscriptionData = [
-  { region: "South-East", value: 50 },
-  { region: "South-South", value: 80 },
-  { region: "South-West", value: 90 },
-  { region: "North-Central", value: 40 },
-  { region: "North-East", value: 30 },
-  { region: "North-West", value: 60 },
-];
+
 export const ZoneManagement = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState(schools);
@@ -133,8 +126,7 @@ export const ZoneManagement = () => {
                   <img
                     src={Map}
                     width="100%"
-                    data-tip="This is the tooltip information"
-                    data-for="tooltip-id"
+                    title="total school:50 active school:30 inactive school:80"
                   />
                 </div>
               </center>

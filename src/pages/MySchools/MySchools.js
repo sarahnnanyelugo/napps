@@ -67,10 +67,7 @@ export default function MySchools() {
           </h4>{" "}
           <Link className="add-sch" to={"/add-sch"}>
             {" "}
-            <span>
-              {" "}
-              <IoIosAdd />
-            </span>
+            <IoIosAdd style={{ color: "white", fontSize: "19px" }} />
             Add School
           </Link>
         </div>

@@ -309,8 +309,13 @@ export const AddSchForm = (props) => {
                 </div>{" "}
               </div>
               <div className="d-flex offset-md-6 ">
-                <button className="cancel">Cancel</button>
-                <button className="add">Add school</button>
+                <Link to={"/my-school-layout/my-schools"}>
+                  {" "}
+                  <button className="cancel">Cancel</button>
+                </Link>
+                <Link to={"/my-school-layout/my-schools"}>
+                  <button className="add">Add school</button>
+                </Link>
               </div>
             </div>
           </div>
