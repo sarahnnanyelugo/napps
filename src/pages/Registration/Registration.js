@@ -13,12 +13,12 @@ import "react-toastify/dist/ReactToastify.css";
 import "./registration.scss";
 export const Registration = () => {
   const [value, setValue] = useState();
-  const [towns, setLga] = useState([]);
-  const [naijaState, setNaijaState] = useState("");
-  const [naijaLga, setNaijaLga] = useState();
+  // const [towns, setLga] = useState([]);
+  // const [naijaState, setNaijaState] = useState("");
+  // const [naijaLga, setNaijaLga] = useState();
   const [selectedState, setSelectedState] = useState(null);
   const [lgas, setLgas] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
 
   const handleStateChange = (e) => {
     const state = statesAndLGAs.find(
@@ -60,9 +60,6 @@ export const Registration = () => {
     sessionStorage.setItem("user", JSON.stringify(form));
   }
 
-  const handleChecked = (event) => {
-    setIsChecked(event.target.checked);
-  };
   return (
     <>
       {" "}

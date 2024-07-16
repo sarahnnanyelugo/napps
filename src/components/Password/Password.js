@@ -20,7 +20,6 @@ export const Password = (props) => {
         type={showPassword ? "text" : "password"}
         name="name"
         autocomplete="new-password"
-        required
         value={password}
         onChange={handlePasswordChange}
         placeholder="..............."
