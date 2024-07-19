@@ -41,10 +41,10 @@ function NavBar() {
               <Link to={"school-finder"}>
                 <button>School Finder</button>
               </Link>
-              <Link to={"school-finder"}>
+              <Link to={"/news-page"}>
                 <button>News & Events</button>
               </Link>
-              <Link to={"school-finder"}>
+              <Link to={"/contact-us"}>
                 <button>Contact Us</button>
               </Link>{" "}
               <Link to={"dashboard-layout/admin-dashboard"}>
