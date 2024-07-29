@@ -1,0 +1,64 @@
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import "./dashboard-nav.scss";
+import Logo from "../../assets/images/logo.png";
+import { TiChartBar } from "react-icons/ti";
+import { LuSchool } from "react-icons/lu";
+import { MdOutlinePayments } from "react-icons/md";
+
+const LGANav = () => {
+  return (
+    <>
+      <div className="dashboard-nav">
+        <div className="dash-logo">
+          {" "}
+          <center>
+            <Link to={"/"}>
+              <img src={Logo} width="164px" height="57px" />
+            </Link>
+          </center>
+        </div>
+        {/* <hr /> */}
+        <ul className="list-unstyled col-md-12 ">
+          <li>
+            <NavLink to={"./lga-dashboard"} activeClassName="active">
+              <span>
+                <TiChartBar />
+              </span>
+              Dashboard
+            </NavLink>
+          </li>{" "}
+          <li>
+            <NavLink to={"./lga-management"} activeClassName="active">
+              <span>
+                {" "}
+                <MdOutlinePayments />
+              </span>
+              School Management
+            </NavLink>
+          </li>{" "}
+          <li>
+            <NavLink to={"./zone-management"} activeClassName="active">
+              <span>
+                {" "}
+                <MdOutlinePayments />
+              </span>
+              Wards
+            </NavLink>
+          </li>{" "}
+          <li>
+            <NavLink to={"./sch-sub"} activeClassName="active">
+              <span>
+                {" "}
+                <MdOutlinePayments />
+              </span>
+              Subscription
+            </NavLink>
+          </li>{" "}
+        </ul>
+      </div>
+    </>
+  );
+};
+
+export default LGANav;
