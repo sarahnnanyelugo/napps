@@ -52,7 +52,7 @@ export const recentActs = [
       "British College Enugu completed their registration and has been add to South East Zone.",
     bg: "rgb(42,134,211)",
 
-    id: 5,
+    id: 6,
   },
   {
     alphabet: "W",
@@ -61,7 +61,7 @@ export const recentActs = [
     schoolDetail: "WiseVille Montessori subscription has expired.",
     bg: "rgb(45,71,189)",
 
-    id: 6,
+    id: 7,
   },
   {
     alphabet: "W",
@@ -70,7 +70,7 @@ export const recentActs = [
     schoolDetail: "Imad Schools subscription just expired",
     bg: "rgb(170,200,226)",
 
-    id: 7,
+    id: 8,
   },
   {
     alphabet: "S",
@@ -79,6 +79,6 @@ export const recentActs = [
     schoolDetail: "British College Enugu subscription has expired",
     bg: "rgb(59,121,25)",
 
-    id: 8,
+    id: 9,
   },
 ];
