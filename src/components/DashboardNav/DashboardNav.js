@@ -6,6 +6,7 @@ import { TiChartBar } from "react-icons/ti";
 import { LuSchool } from "react-icons/lu";
 import { BsCreditCard } from "react-icons/bs";
 import { MdOutlinePayments } from "react-icons/md";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const DashboardNav = () => {
   return (
@@ -22,7 +23,11 @@ const DashboardNav = () => {
         {/* <hr /> */}
         <ul className="list-unstyled col-md-12 ">
           <li>
-            <NavLink to={"./admin-dashboard"} activeClassName="active">
+            <NavLink
+              to={"./admin-dashboard"}
+              activeClassName="active"
+              style={{ padding: "10px 90px 10px 10px" }}
+            >
               <span>
                 <LuSchool />
               </span>
@@ -30,7 +35,11 @@ const DashboardNav = () => {
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./school-management"} activeClassName="active">
+            <NavLink
+              to={"./school-management"}
+              activeClassName="active"
+              style={{ padding: "10px 10px 10px 10px" }}
+            >
               <span>
                 {" "}
                 <MdOutlinePayments />
@@ -39,7 +48,11 @@ const DashboardNav = () => {
             </NavLink>
           </li>{" "}
           <li>
-            <NavLink to={"./subscription"} activeClassName="active">
+            <NavLink
+              to={"./subscription"}
+              activeClassName="active"
+              style={{ padding: "10px 80px 10px 10px" }}
+            >
               <span>
                 {" "}
                 <MdOutlinePayments />
