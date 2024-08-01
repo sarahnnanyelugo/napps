@@ -50,10 +50,10 @@ export const AdminDashboard = () => {
                       enableScrollSpy={true}
                     />
                   </h1>
-                  <p>
+                  <small>
                     <img src={Icon1} height="11px" />
                     <span className="up">12%</span>vs last month
-                  </p>
+                  </small>
                 </div>{" "}
                 <div className="col-md-7">
                   <DataChart />
@@ -78,10 +78,10 @@ export const AdminDashboard = () => {
                       enableScrollSpy={true}
                     />
                   </h1>
-                  <p>
+                  <small>
                     <img src={Icon2} height="11px" />
                     <span className="down">5%</span>vs last month
-                  </p>
+                  </small>
                 </div>{" "}
                 <div className="col-md-7">
                   <SubChart />
@@ -106,10 +106,10 @@ export const AdminDashboard = () => {
                       enableScrollSpy={true}
                     />
                   </h1>
-                  <p>
+                  <small>
                     <img src={Icon1} width="11px" />
                     <span className="up">12%</span>vs last month
-                  </p>
+                  </small>
                 </div>{" "}
                 <div className="col-md-7">
                   <DataChart />
@@ -119,20 +119,29 @@ export const AdminDashboard = () => {
           </div>
         </div>
         <div className="d-md-flex">
-          <div className="col-md-8 zone-div">
-            <h5>Schools by Zones</h5>
+          <div className="col-md-8 zone-div2">
+            <div className="d-flex">
+              <h6 style={{ flexGrow: 1 }}>Schools by Zones</h6>
+              <button className="more-btn">See all</button>
+            </div>
             <ZoneChart labels={customLabels} dataset={customData} />
           </div>
           <div className="col-md-4 acts-div">
             {" "}
-            <div className=" recent-acts">
-              <h6>Recent Activities</h6>
-              <br />
-              <hr />
+            <div className=" recent-acts2">
+              <div className="act-head">
+                {" "}
+                <h6>Recent Activities</h6>
+                <br />
+                <hr />
+              </div>
 
-              {state.list.map((data, index) => (
-                <RecentActivity data={data} />
-              ))}
+              <div className="act-body">
+                {" "}
+                {state.list.map((data, index) => (
+                  <RecentActivity data={data} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
