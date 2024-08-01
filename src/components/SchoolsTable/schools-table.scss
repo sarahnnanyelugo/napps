@@ -12,6 +12,9 @@
   }
   th {
     font-family: montM;
+    @media screen and (max-width: 820px) {
+      font-size: 14px;
+    }
   }
   .alphabet {
     height: 26px;

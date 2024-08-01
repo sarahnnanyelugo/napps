@@ -14,6 +14,19 @@
     font-family: montM;
     font-size: 14px;
   }
+  @media screen and (max-width: 820px) {
+    padding: 5px !important;
+  }
+  p {
+    @media screen and (max-width: 820px) {
+      font-size: 12px !important;
+    }
+  }
+  h1 {
+    @media screen and (max-width: 820px) {
+      font-size: 18px !important;
+    }
+  }
 }
 .zone-div2 {
   padding: 25px;

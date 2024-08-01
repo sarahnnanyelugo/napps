@@ -32,12 +32,12 @@ export const AdminDashboard = () => {
     <>
       <DashboardTop title="Welcome, Peter" />
       <div className="Admin-dashboard">
-        <div className=" row row-cols-2 row-cols-lg-3 g-2 g-lg-4 mt">
+        <div className=" row row-cols-3 row-cols-lg-3 g-2 g-lg-4 mt">
           <div className="col">
             <div className="summary">
               <p>Total Registered Schools</p>
-              <div className="d-flex">
-                <div className="col-md-5">
+              <div className="d-md-flex">
+                <div className="col-md-6">
                   <h1 className="stats">
                     {" "}
                     <CountUp
@@ -55,7 +55,7 @@ export const AdminDashboard = () => {
                     <span className="up">12%</span>vs last month
                   </small>
                 </div>{" "}
-                <div className="col-md-7">
+                <div className="col-md-6">
                   <DataChart />
                 </div>
               </div>
@@ -64,8 +64,8 @@ export const AdminDashboard = () => {
           <div className="col">
             <div className="summary">
               <p>Total Registered Schools</p>
-              <div className="d-flex">
-                <div className="col-md-5">
+              <div className="d-md-flex">
+                <div className="col-md-6">
                   <h1 className="stats">
                     {" "}
                     <CountUp
@@ -83,7 +83,7 @@ export const AdminDashboard = () => {
                     <span className="down">5%</span>vs last month
                   </small>
                 </div>{" "}
-                <div className="col-md-7">
+                <div className="col-md-6">
                   <SubChart />
                 </div>
               </div>
@@ -92,15 +92,15 @@ export const AdminDashboard = () => {
           <div className="col">
             <div className="summary">
               <p>Total Registered Schools</p>
-              <div className="d-flex">
-                <div className="col-md-5">
+              <div className="d-md-flex">
+                <div className="col-md-6">
                   <h1 className="stats">
                     {" "}
                     <CountUp
                       start={0}
-                      end={100200}
+                      end={100000}
                       duration={2}
-                      decimal={true}
+                      decimal={false}
                       prefix=" "
                       suffix="m"
                       enableScrollSpy={true}
@@ -111,7 +111,7 @@ export const AdminDashboard = () => {
                     <span className="up">12%</span>vs last month
                   </small>
                 </div>{" "}
-                <div className="col-md-7">
+                <div className="col-md-6">
                   <DataChart />
                 </div>
               </div>

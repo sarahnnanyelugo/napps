@@ -125,12 +125,12 @@ export const SchoolManagement = () => {
           <hr />
           <div className="d-md-flex">
             {" "}
-            <div className="col-md-6 map-div col-8">
+            <div className="col-md-7 map-div col-8">
               <center>
                 <img src={Map} />
               </center>
             </div>
-            <div className="col-md-6 progress-div">
+            <div className="col-md-5 progress-div">
               <div>
                 <div className="d-flex">
                   <div className="col-md-8">
