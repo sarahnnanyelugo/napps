@@ -12,11 +12,11 @@ import { SubShowcase } from "../Subscription/SubShowcase";
 export default function DashboardLayout() {
   return (
     <>
-      <div className="d-flex">
+      <div className="d-md-flex">
         <div className="col-md-2">
           <DashboardNav />
         </div>
-        <div className="col-md-10" style={{ padding: "0px 20px" }}>
+        <div className="col-md-10 all-dash">
           <Routes>
             <Route path="/admin-dashboard" element={<AdminDashboard />} />{" "}
             <Route path="/school-management" element={<SchoolManagement />} />

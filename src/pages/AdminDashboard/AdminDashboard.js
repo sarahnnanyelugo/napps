@@ -119,7 +119,7 @@ export const AdminDashboard = () => {
           </div>
         </div>
         <div className="d-md-flex">
-          <div className="col-md-8 zone-div2">
+          <div className="col-md-8 zone-div2 col-12">
             <div className="d-flex">
               <h6 style={{ flexGrow: 1 }}>Schools by Zones</h6>
               <button className="more-btn">See all</button>

@@ -8,32 +8,32 @@ import Dropdown from "react-bootstrap/Dropdown";
 export const DashboardTop = (props) => {
   return (
     <>
-      <div className="d-flex top-navv ">
+      <div className="d-md-flex top-navv ">
         <h2 style={{ flexGrow: 1 }}>{props.title}</h2>
-        <input placeholder="Search" className="col-md-3" />
-        <div
-          style={{ marginLeft: "16px", marginRight: "16px" }}
-          className="notify-bell"
-        >
-          <center>
-            {" "}
-            <img src={Icon3} width="24px" />
-          </center>
-        </div>
-        <div className="profile-drop">
-          <Dropdown>
-            <Dropdown.Toggle>
-              <img src={Icon5} width="38px" />
-            </Dropdown.Toggle>
+        <div className="d-flex col-md-4">
+          {" "}
+          <input placeholder="Search" className="col-md-8" />
+          <div className="notify-bell">
+            <center>
+              {" "}
+              <img src={Icon3} width="24px" />
+            </center>
+          </div>
+          <div className="profile-drop">
+            <Dropdown>
+              <Dropdown.Toggle>
+                <img src={Icon5} width="38px" />
+              </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-              <hr />
-              <Dropdown.Item href="#/action-2" style={{ color: "#DE1E1E" }}>
-                Sign out
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                <hr />
+                <Dropdown.Item href="#/action-2" style={{ color: "#DE1E1E" }}>
+                  Sign out
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
         </div>
       </div>
     </>

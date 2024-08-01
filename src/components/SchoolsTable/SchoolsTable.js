@@ -20,7 +20,7 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
   const { bg, colo, bd2, colo2 } = data;
   return (
     <div>
-      <div className="d-flex">
+      <div className="d-flex tabled-data">
         {" "}
         <h5 style={{ flexGrow: 1 }}>Newly Registered School</h5>
         <button onClick={handleToggleDisplay} className="more-btn">

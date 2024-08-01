@@ -56,3 +56,9 @@ p {
 .mt3 {
   margin-top: 30px;
 }
+.all-dash {
+  padding: 0 20px;
+  @media screen and (max-width: 820px) {
+    padding: 0 4px;
+  }
+}

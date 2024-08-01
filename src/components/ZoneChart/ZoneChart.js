@@ -49,5 +49,5 @@ export function ZoneChart({ labels, dataset }) {
       },
     ],
   };
-  return <Bar options={options} data={data} />;
+  return <Bar options={options} data={data} className="col-12" />;
 }
