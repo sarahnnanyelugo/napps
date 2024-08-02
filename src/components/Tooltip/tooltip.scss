@@ -1,10 +1,17 @@
-.tooltip {
-  position: relative;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
+.tooltip2 {
+  position: absolute;
+  background: #fff;
+  color: #000;
   visibility: hidden;
   padding: 5px;
   border-radius: 5px;
+  width: 120px;
+  height: 50px;
+  font-family: montr;
+  z-index: 14;
+  li {
+    font-size: 10px;
+  }
 }
 .tooltip-arrow {
   position: absolute;

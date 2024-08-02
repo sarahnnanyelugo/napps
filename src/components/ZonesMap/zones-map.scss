@@ -1,0 +1,42 @@
+.south-east {
+  margin-right: -81px !important;
+  margin-left: 57px !important;
+  position: relative;
+  // z-index: 3;
+}
+.north-east {
+  margin-left: 25px !important;
+  position: relative;
+  // z-index: 2;
+  margin-top: 4px;
+}
+.north-central {
+  margin-top: -138px;
+  margin-left: 32px !important;
+}
+.south-west {
+  margin-top: -85px;
+  margin-left: 30px !important;
+  position: relative;
+  // z-index: 5;
+}
+.south-south {
+  margin-left: -34px;
+  margin-top: -33px;
+  position: relative;
+  // z-index: 4;
+}
+.north-west {
+  margin-top: -100px;
+  position: relative;
+  z-index: 1;
+  width: 90px;
+  margin-left: 13px;
+}
+.zoomed {
+  transition: transform 1s;
+}
+.zoomed:hover {
+  -ms-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
+}

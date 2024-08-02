@@ -14,6 +14,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
 import { GeoChart } from "../../components/GeoChart/GeoChart";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import { ZonesMap } from "../../components/ZonesMap/ZonesMap";
 const subscriptionData = [
   { region: "South-East", value: 50 },
   { region: "South-South", value: 80 },
@@ -126,9 +127,13 @@ export const SchoolManagement = () => {
           <div className="d-md-flex">
             {" "}
             <div className="col-md-7 map-div col-8">
-              <center>
-                <img src={Map} />
-              </center>
+              <div className="offset-md-2">
+                {/* <img src={Map} /> */}
+                <div className="col-md-8" style={{ background: "" }}>
+                  {" "}
+                  <ZonesMap />
+                </div>
+              </div>
             </div>
             <div className="col-md-5 progress-div">
               <div>

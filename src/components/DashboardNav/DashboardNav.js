@@ -7,6 +7,7 @@ import { LuSchool } from "react-icons/lu";
 import { BsCreditCard } from "react-icons/bs";
 import { MdOutlinePayments } from "react-icons/md";
 import Dropdown from "react-bootstrap/Dropdown";
+import { SlPeople } from "react-icons/sl";
 
 const DashboardNav = () => {
   return (
@@ -29,7 +30,7 @@ const DashboardNav = () => {
               style={{ padding: "10px 90px 10px 10px" }}
             >
               <span>
-                <LuSchool />
+                <TiChartBar />
               </span>
               Dashboard
             </NavLink>
@@ -42,7 +43,7 @@ const DashboardNav = () => {
             >
               <span>
                 {" "}
-                <MdOutlinePayments />
+                <LuSchool />
               </span>
               School Management
             </NavLink>
@@ -58,6 +59,19 @@ const DashboardNav = () => {
                 <MdOutlinePayments />
               </span>
               Subscription
+            </NavLink>
+          </li>{" "}
+          <li>
+            <NavLink
+              to={"./cordinators"}
+              activeClassName="active"
+              style={{ padding: "10px 80px 10px 10px" }}
+            >
+              <span>
+                {" "}
+                <SlPeople />
+              </span>
+              Cordinators
             </NavLink>
           </li>{" "}
         </ul>
