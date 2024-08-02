@@ -358,3 +358,8 @@
 .import-image {
   display: none;
 }
+.progress-div {
+  @media screen and (max-width: 820px) {
+    margin-top: 40px;
+  }
+}

@@ -126,9 +126,8 @@ export const SchoolManagement = () => {
           <hr />
           <div className="d-md-flex">
             {" "}
-            <div className="col-md-7 map-div col-8">
+            <div className="col-md-7 map-div col-12">
               <div className="offset-md-2">
-                {/* <img src={Map} /> */}
                 <div className="col-md-8" style={{ background: "" }}>
                   {" "}
                   <ZonesMap />
@@ -138,7 +137,7 @@ export const SchoolManagement = () => {
             <div className="col-md-5 progress-div">
               <div>
                 <div className="d-flex">
-                  <div className="col-md-8">
+                  <div className="col-md-8 col-8">
                     <h6>South-East Region</h6>
                     <ProgressBar number={16} max={200} color="#0470C7" />
                   </div>
@@ -147,7 +146,7 @@ export const SchoolManagement = () => {
               </div>
               <div>
                 <div className="d-flex">
-                  <div className="col-md-8">
+                  <div className="col-md-8 col-8">
                     <h6>South-South Region</h6>
                     <ProgressBar number={40} max={200} color="#DC64D6" />
                   </div>
@@ -156,7 +155,7 @@ export const SchoolManagement = () => {
               </div>
               <div>
                 <div className="d-flex">
-                  <div className="col-md-8">
+                  <div className="col-md-8 col-8">
                     <h6>South-West Region</h6>
                     <ProgressBar number={60} max={200} color="#EF7A80" />
                   </div>
@@ -165,7 +164,7 @@ export const SchoolManagement = () => {
               </div>
               <div>
                 <div className="d-flex">
-                  <div className="col-md-8">
+                  <div className="col-md-8 col-8">
                     <h6>North-Central Region</h6>
                     <ProgressBar number={14} max={200} color="#67CB35" />
                   </div>
@@ -174,7 +173,7 @@ export const SchoolManagement = () => {
               </div>
               <div>
                 <div className="d-flex">
-                  <div className="col-md-8">
+                  <div className="col-md-8 col-8">
                     <h6>North-East Region</h6>
                     <ProgressBar number={10} max={200} color="#7F58D9" />
                   </div>
@@ -183,7 +182,7 @@ export const SchoolManagement = () => {
               </div>
               <div>
                 <div className="d-flex">
-                  <div className="col-md-8">
+                  <div className="col-md-8 col-8">
                     <h6>North-West Region</h6>
                     <ProgressBar number={20} max={200} color="#225A60" />
                   </div>

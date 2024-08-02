@@ -13,12 +13,17 @@
 .north-central {
   margin-top: -138px;
   margin-left: 32px !important;
+  @media screen and (max-width: 820px) {
+    margin-left: -60px !important;
+  }
 }
 .south-west {
   margin-top: -85px;
   margin-left: 30px !important;
   position: relative;
-  // z-index: 5;
+  @media screen and (max-width: 820px) {
+    // margin-top: -95px;
+  }
 }
 .south-south {
   margin-left: -34px;
@@ -32,6 +37,9 @@
   z-index: 1;
   width: 90px;
   margin-left: 13px;
+  @media screen and (max-width: 820px) {
+    margin-left: 0px;
+  }
 }
 .zoomed {
   transition: transform 1s;
