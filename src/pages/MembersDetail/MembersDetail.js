@@ -57,7 +57,8 @@ export const MembersDetail = () => {
     } else {
       toast.success("You have successfully created your personal account");
       setInterval(() => {
-        window.location = "dashboard-layout/admin-dashboard";
+        // window.location = "dashboard-layout/admin-dashboard";
+        window.location = "/registration";
       }, 1000);
     }
     sessionStorage.setItem("user", JSON.stringify(form));

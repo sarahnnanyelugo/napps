@@ -62,7 +62,7 @@ function NavBar() {
               <Link to={"/login"}>
                 <button>Log In</button>
               </Link>
-              <Link to={"/registration"}>
+              <Link to={"/members-detail"}>
                 <button className="app-btn">Register</button>
               </Link>
             </Nav>

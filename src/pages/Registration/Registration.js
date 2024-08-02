@@ -54,7 +54,7 @@ export const Registration = () => {
     } else {
       toast.success("You have successfully signed in");
       setInterval(() => {
-        window.location = "./members-detail";
+        window.location = "dashboard-layout/admin-dashboard";
       }, 1000);
     }
     sessionStorage.setItem("user", JSON.stringify(form));
