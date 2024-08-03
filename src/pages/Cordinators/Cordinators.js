@@ -213,67 +213,72 @@ export const Cordinators = () => {
               Percentile
             </button>
           </div>
-          <div className="ssearch-div d-flex">
+          <div className="ssearch-div d-md-flex">
             <div className="col-md-3">
               <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
               <br />
               <SearchBar callback={reducer} posts={schools} />
             </div>
-            <div>
-              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
-                Status
-              </h6>
-              <br />
-              <div className="select-div ">
-                <select>
-                  <option>Active</option>
-                  <option>InActive</option>
-                  <option>Pending</option>
-                </select>
+            <div className="d-flex">
+              {" "}
+              <div>
+                <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
+                  Filter
+                </h6>
+                <br />
+                <div className="select-div ">
+                  <select>
+                    <option>Active</option>
+                    <option>InActive</option>
+                    <option>Pending</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
+                  Zone
+                </h6>
+                <br />
+                <NavDropdown
+                  title="Zone"
+                  id="collapsible-nav-dropdown"
+                  className="select-div "
+                >
+                  <NavDropdown.Item
+                    href="#action/3.1"
+                    onClick={() => setCat("NC")}
+                  >
+                    North Central (NC)
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="#action/3.3"
+                    onClick={() => setCat("NW")}
+                  >
+                    North West (NW)
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="#action/3.4"
+                    onClick={() => setCat("SW")}
+                  >
+                    South West (SW)
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="#action/3.4"
+                    onClick={() => setCat("SE")}
+                  >
+                    South East (SE)
+                  </NavDropdown.Item>{" "}
+                  <NavDropdown.Item
+                    href="#action/3.4"
+                    onClick={() => setCat("SS")}
+                  >
+                    South South (SS)
+                  </NavDropdown.Item>
+                </NavDropdown>
               </div>
             </div>
-            <div>
-              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>Zone</h6>
-              <br />
-              <NavDropdown
-                title="Zone"
-                id="collapsible-nav-dropdown"
-                className="select-div "
-              >
-                <NavDropdown.Item
-                  href="#action/3.1"
-                  onClick={() => setCat("NC")}
-                >
-                  North Central (NC)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.3"
-                  onClick={() => setCat("NW")}
-                >
-                  North West (NW)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SW")}
-                >
-                  South West (SW)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SE")}
-                >
-                  South East (SE)
-                </NavDropdown.Item>{" "}
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SS")}
-                >
-                  South South (SS)
-                </NavDropdown.Item>
-              </NavDropdown>
-            </div>
-            <div className="offset-md-4">
-              <button className="exp-btn">
+            <div className="offset-md-4 ">
+              <button className="exp-btn" style={{ flexGrow: 1 }}>
                 {" "}
                 <img src={Icon3} height="20px" width="20px" />
                 Export

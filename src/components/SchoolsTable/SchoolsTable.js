@@ -39,6 +39,7 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
             <th>Status</th>
             <th>Registration ID</th>
             <th>Zone</th>
+            <th colSpan={2}>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -63,12 +64,18 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
               </td>
 
               <td>
-                <button
+                <div
                   className="table-btn"
-                  style={{ background: item.bg, color: item.colo }}
+                  style={{
+                    background: item.bg,
+                    color: item.colo,
+                    padding: "0px 25px",
+                    width: "fit-content",
+                    height: "35px",
+                  }}
                 >
                   {item.status}
-                </button>
+                </div>
               </td>
               <td>{item.regID}</td>
               <td>{item.zone}</td>

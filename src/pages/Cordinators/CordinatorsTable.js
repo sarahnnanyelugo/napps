@@ -35,13 +35,13 @@ const CordinatorsTable = ({ data }) => {
       <div className="d-flex"> </div>
 
       <div>
-        <Table striped bordered hover className="school-table">
+        <Table striped bordered hover className="school-table cord" responsive>
           <thead>
             <tr>
               <th>
                 <input type="checkbox" />
               </th>
-              <th className="col-md-4">Name</th>
+              <th className="">Name</th>
 
               <th>Zone</th>
               <th>Email</th>
