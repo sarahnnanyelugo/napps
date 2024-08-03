@@ -15,6 +15,7 @@ import { RiBankFill } from "react-icons/ri";
 import { SlPeople } from "react-icons/sl";
 import Percentile from "./Percentile";
 import { IoMdAdd } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export const Cordinators = () => {
   const [category, setCategory] = useState("*");
@@ -98,99 +99,6 @@ export const Cordinators = () => {
             </div>
           </div>
         </div>{" "}
-        {/* <div className="schools-filter-div col-md-12">
-          {" "}
-          <div className=" d-flex filtering-btns">
-            <button
-              className={`btn-1 ${category === "*" ? "sch-active" : ""}`}
-              onClick={() => setCat("*")}
-            >
-              User Accounts
-            </button>
-            <button
-              className={`btn-2 ${category === "active" ? "sch-active" : ""}`}
-              onClick={() => setCat("active")}
-            >
-              Bank Accounts
-            </button>
-            <button
-              className={`btn-4 ${category === "inactive" ? "sch-active" : ""}`}
-              onClick={() => setCat("inactive")}
-            >
-              Percentile
-            </button>
-          </div>
-          <div className="ssearch-div d-flex">
-            <div className="col-md-3">
-              <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
-              <br />
-              <SearchBar callback={reducer} posts={schools} />
-            </div>
-            <div>
-              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
-                Status
-              </h6>
-              <br />
-              <div className="select-div ">
-                <select>
-                  <option>Active</option>
-                  <option>InActive</option>
-                  <option>Pending</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>Zone</h6>
-              <br />
-              <NavDropdown
-                title="Zone"
-                id="collapsible-nav-dropdown"
-                className="select-div "
-              >
-                <NavDropdown.Item
-                  href="#action/3.1"
-                  onClick={() => setCat("NC")}
-                >
-                  North Central (NC)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.3"
-                  onClick={() => setCat("NW")}
-                >
-                  North West (NW)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SW")}
-                >
-                  South West (SW)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SE")}
-                >
-                  South East (SE)
-                </NavDropdown.Item>{" "}
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SS")}
-                >
-                  South South (SS)
-                </NavDropdown.Item>
-              </NavDropdown>
-            </div>
-            <div className="offset-md-4">
-              <button className="exp-btn">
-                {" "}
-                <img src={Icon3} height="20px" width="20px" />
-                Export
-              </button>
-              <button className="add-sch-btn">Add School</button>
-            </div>
-          </div>{" "}
-          <hr />
-          <CordinatorsTable data={filteredSchools} />
-        </div> */}
         <div className="business-pricing-tab ">
           {" "}
           <div className="tabs filtering-btns2">
@@ -283,10 +191,13 @@ export const Cordinators = () => {
                 <img src={Icon3} height="20px" width="20px" />
                 Export
               </button>
-              <button className="add-sch-btn2">
-                <IoMdAdd />
-                Add School
-              </button>
+              <Link to={"/add-sch"}>
+                {" "}
+                <button className="add-sch-btn2">
+                  <IoMdAdd />
+                  Add School
+                </button>
+              </Link>
             </div>
           </div>{" "}
           <div className="panels">

@@ -15,6 +15,8 @@ import WOW from "wowjs";
 import { GeoChart } from "../../components/GeoChart/GeoChart";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import { ZonesMap } from "../../components/ZonesMap/ZonesMap";
+import { Link } from "react-router-dom";
+import { IoMdAdd } from "react-icons/io";
 const subscriptionData = [
   { region: "South-East", value: 50 },
   { region: "South-South", value: 80 },
@@ -287,9 +289,12 @@ export const SchoolManagement = () => {
                 <img src={Icon3} height="20px" width="20px" />
                 Export
               </button>
-              <button className="add-sch-btn">
-                <span>+</span>Add School
-              </button>
+              <Link to={"/add-sch"}>
+                <button className="add-sch-btn" style={{ paddingTop: "6px" }}>
+                  <IoMdAdd />
+                  Add School
+                </button>
+              </Link>
             </div>
           </div>{" "}
           <hr />

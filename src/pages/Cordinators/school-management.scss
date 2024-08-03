@@ -295,22 +295,18 @@
     margin-top: 40px;
     display: flex;
     font-size: 14px !important;
-    font-family: montR;
+    font-family: montM;
     @media screen and (max-width: 620px) {
     }
   }
   @media screen and (max-width: 620px) {
-    // .tabs {
-    //   button {
-    //     margin-left: 10px;
-    //   }
-    // }
   }
 
   .tab {
     width: 100%;
     font-size: 14px !important;
     padding: none !important;
+    font-family: montM;
     @media screen and (max-width: 620px) {
       width: 100%;
     }
@@ -325,7 +321,6 @@
   .panel {
     display: none;
     color: #161617;
-    font-family: rebondG;
     line-height: 40px;
     padding-top: 65px;
     background: #fff;
