@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import "./schools-table.scss";
 const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
+  // const [num] = data;
   const [blogId, setBlogId] = useState(0);
   // const location = useLocation();
   const [prevData, setPrevData] = useState([]);
@@ -23,9 +24,9 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
       <div className="d-flex tabled-data">
         {" "}
         <h5 style={{ flexGrow: 1 }}>Newly Registered School</h5>
-        <button onClick={handleToggleDisplay} className="more-btn">
+        {/* <button onClick={handleToggleDisplay} className="more-btn">
           {isShowingAll ? "See less" : "See all"}
-        </button>
+        </button> */}
       </div>
 
       <Table striped bordered hover className="school-table" responsive>

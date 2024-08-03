@@ -14,6 +14,7 @@ import WOW from "wowjs";
 import { RiBankFill } from "react-icons/ri";
 import { SlPeople } from "react-icons/sl";
 import Percentile from "./Percentile";
+import { IoMdAdd } from "react-icons/io";
 
 export const Cordinators = () => {
   const [category, setCategory] = useState("*");
@@ -277,7 +278,10 @@ export const Cordinators = () => {
                 <img src={Icon3} height="20px" width="20px" />
                 Export
               </button>
-              <button className="add-sch-btn">Add School</button>
+              <button className="add-sch-btn2">
+                <IoMdAdd />
+                Add School
+              </button>
             </div>
           </div>{" "}
           <div className="panels">
@@ -285,7 +289,7 @@ export const Cordinators = () => {
               <CordinatorsTable data={filteredSchools} />
             </div>{" "}
             <div className={`panel ${checkActive(2, "active2")}`}>
-              {/* <CordinatorsTable data={filteredSchools} /> */}2
+              <SchoolsTable data={schools} />
             </div>
             <div className={`panel ${checkActive(3, "active2")}`}>
               <Percentile data={filteredSchools} />
