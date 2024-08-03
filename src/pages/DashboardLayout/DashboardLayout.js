@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import DashboardNav from "../../components/DashboardNav/DashboardNav";
 import { AdminDashboard } from "../AdminDashboard/AdminDashboard";
+import { Cordinators } from "../Cordinators/Cordinators";
 import MySchools from "../MySchools/MySchools";
 import { DisplayedSchool } from "../SchoolManagement/DisplayedSchool";
 import { SchoolManagement } from "../SchoolManagement/SchoolManagement";
@@ -22,6 +23,7 @@ export default function DashboardLayout() {
             <Route path="/school-management" element={<SchoolManagement />} />
             <Route path="/my-schools" element={<MySchools />} />
             <Route path="/Subscription" element={<Subscription />} />
+            <Route path="/cordinators" element={<Cordinators />} />
             <Route
               path="/displayed-school/:blog_id"
               element={<DisplayedSchool />}
