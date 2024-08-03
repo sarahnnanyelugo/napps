@@ -13,6 +13,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
 import { RiBankFill } from "react-icons/ri";
 import { SlPeople } from "react-icons/sl";
+import Percentile from "./Percentile";
 
 export const Cordinators = () => {
   const [category, setCategory] = useState("*");
@@ -34,7 +35,6 @@ export const Cordinators = () => {
     list: schools,
   });
   function reducer(dt) {
-    // console.log(dt);
     setfilteredSchools(dt.list);
   }
   useEffect(() => {
@@ -42,6 +42,13 @@ export const Cordinators = () => {
       live: true,
     }).init();
   }, [category]);
+
+  const [activeIndex, setActiveIndex2] = useState(1);
+  const handleClick2 = (index) => setActiveIndex2(index);
+  const checkActive = (index, className) =>
+    activeIndex === index ? className : "";
+  const checkActive2 = (index, className) =>
+    activeIndex === index ? className : "";
   return (
     <>
       <DashboardTop title="Subscription" />
@@ -90,7 +97,7 @@ export const Cordinators = () => {
             </div>
           </div>
         </div>{" "}
-        <div className="schools-filter-div col-md-12">
+        {/* <div className="schools-filter-div col-md-12">
           {" "}
           <div className=" d-flex filtering-btns">
             <button
@@ -182,6 +189,108 @@ export const Cordinators = () => {
           </div>{" "}
           <hr />
           <CordinatorsTable data={filteredSchools} />
+        </div> */}
+        <div className="business-pricing-tab ">
+          {" "}
+          <div className="tabs filtering-btns2">
+            <button
+              className={`tab btn-1 ${checkActive2(1, "active2")}`}
+              onClick={() => handleClick2(1)}
+            >
+              User Accounts
+            </button>
+            <button
+              className={`tab btn-2 ${checkActive2(2, "active2")}`}
+              onClick={() => handleClick2(2)}
+            >
+              Bank Accounts
+            </button>
+            <button
+              className={`tab btn-4 ${checkActive2(3, "active2")}`}
+              onClick={() => handleClick2(3)}
+            >
+              Percentile
+            </button>
+          </div>
+          <div className="ssearch-div d-flex">
+            <div className="col-md-3">
+              <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
+              <br />
+              <SearchBar callback={reducer} posts={schools} />
+            </div>
+            <div>
+              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
+                Status
+              </h6>
+              <br />
+              <div className="select-div ">
+                <select>
+                  <option>Active</option>
+                  <option>InActive</option>
+                  <option>Pending</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>Zone</h6>
+              <br />
+              <NavDropdown
+                title="Zone"
+                id="collapsible-nav-dropdown"
+                className="select-div "
+              >
+                <NavDropdown.Item
+                  href="#action/3.1"
+                  onClick={() => setCat("NC")}
+                >
+                  North Central (NC)
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="#action/3.3"
+                  onClick={() => setCat("NW")}
+                >
+                  North West (NW)
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="#action/3.4"
+                  onClick={() => setCat("SW")}
+                >
+                  South West (SW)
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="#action/3.4"
+                  onClick={() => setCat("SE")}
+                >
+                  South East (SE)
+                </NavDropdown.Item>{" "}
+                <NavDropdown.Item
+                  href="#action/3.4"
+                  onClick={() => setCat("SS")}
+                >
+                  South South (SS)
+                </NavDropdown.Item>
+              </NavDropdown>
+            </div>
+            <div className="offset-md-4">
+              <button className="exp-btn">
+                {" "}
+                <img src={Icon3} height="20px" width="20px" />
+                Export
+              </button>
+              <button className="add-sch-btn">Add School</button>
+            </div>
+          </div>{" "}
+          <div className="panels">
+            <div className={`panel ${checkActive(1, "active2")}`}>
+              <CordinatorsTable data={filteredSchools} />
+            </div>{" "}
+            <div className={`panel ${checkActive(2, "active2")}`}>
+              {/* <CordinatorsTable data={filteredSchools} /> */}2
+            </div>
+            <div className={`panel ${checkActive(3, "active2")}`}>
+              <Percentile data={filteredSchools} />
+            </div>
+          </div>
         </div>
       </div>
     </>

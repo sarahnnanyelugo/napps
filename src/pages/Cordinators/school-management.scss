@@ -1,6 +1,5 @@
-.filtering-btns {
-  width: fit-content;
-  //   padding: 0 20px;
+.filtering-btns2 {
+  width: 40%;
   margin-bottom: 10px;
   height: 44px;
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
@@ -13,7 +12,7 @@
     background: #fff;
     font-size: 14px;
     font-family: montR;
-    padding: 0 30px;
+    // padding: 0 10px !important;
   }
   .btn-1 {
     border-top-left-radius: 10px;
@@ -286,4 +285,54 @@
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 500ms, transform 500ms;
+}
+
+.business-pricing-tab {
+  .tabs {
+    margin-top: 40px;
+    display: flex;
+    font-size: 14px !important;
+    font-family: montR;
+    @media screen and (max-width: 620px) {
+    }
+  }
+  @media screen and (max-width: 620px) {
+    // .tabs {
+    //   button {
+    //     margin-left: 10px;
+    //   }
+    // }
+  }
+
+  .tab {
+    width: 100%;
+    font-size: 14px !important;
+    padding: none !important;
+    @media screen and (max-width: 620px) {
+      width: 100%;
+    }
+  }
+
+  button.active2 {
+    font-weight: bold;
+    background: #027a48;
+    color: #fff;
+  }
+
+  .panel {
+    display: none;
+    color: #161617;
+    font-family: rebondG;
+    line-height: 40px;
+    padding-top: 65px;
+    background: #fff;
+  }
+  @media screen and (max-width: 620px) {
+    .panel {
+      padding: 0px;
+    }
+  }
+  .panel.active2 {
+    display: block;
+  }
 }
