@@ -32,44 +32,51 @@ const Percentile = ({ data }) => {
   };
   return (
     <div>
-      <div className="d-flex"> </div>
+      <Table striped bordered hover className="school-table percentile-table">
+        <thead>
+          <tr>
+            <th>Zones</th>
+            <th>Federal(%)</th>
+            <th>Zonal(%)</th>
+            <th>State(%)</th>
+            <th>LGA(%)</th>
+            <th>Ward(%)</th>
+            <th>Total(%)</th>
+          </tr>
+        </thead>
+        <TransitionGroup component="tbody">
+          {data.map((item) => (
+            <CSSTransition
+              key={item.id}
+              timeout={500}
+              classNames="row-slide-up"
+            >
+              <tr key={item.id}>
+                <td style={{ fontFamily: "montM" }}>{item.zone}</td>
 
-      <div>
-        <Table striped bordered hover className="school-table">
-          <thead>
-            <tr>
-              <th>Zones</th>
-              <th>Federal(%)</th>
-              <th>Zonal(%)</th>
-              <th>State(%)</th>
-              <th>LGA(%)</th>
-              <th>Ward(%)</th>
-              <th>Total(%)</th>
-            </tr>
-          </thead>
-          <TransitionGroup component="tbody">
-            {data.map((item) => (
-              <CSSTransition
-                key={item.id}
-                timeout={500}
-                classNames="row-slide-up"
-              >
-                <tr key={item.id}>
-                  <td>{item.zone}</td>
+                <td>
+                  <button>{item.federal}%</button>
+                </td>
 
-                  <td>{item.federal}%</td>
-
-                  <td> {item.zonal}%</td>
-                  <td>{item.state}%</td>
-                  <td>{item.lga}%</td>
-                  <td>{item.ward}%</td>
-                  <td>{item.total}%</td>
-                </tr>
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        </Table>
-      </div>
+                <td>
+                  {" "}
+                  <button>{item.zonal}%</button>
+                </td>
+                <td>
+                  <button>{item.state}%</button>
+                </td>
+                <td>
+                  <button>{item.lga}%</button>
+                </td>
+                <td>
+                  <button>{item.ward}%</button>
+                </td>
+                <td>{item.total}%</td>
+              </tr>
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+      </Table>
     </div>
   );
 };

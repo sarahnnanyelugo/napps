@@ -81,7 +81,7 @@ const CordinatorsTable = ({ data }) => {
                   <td>{item.username}</td>
                   <td>
                     <div className="d-flex">
-                      <span style={{ flexGrow: 1 }}>
+                      <span style={{ flexGrow: 1, fontFamily: "montSB" }}>
                         {" "}
                         {showPassword ? item.password : "*********"}
                       </span>
