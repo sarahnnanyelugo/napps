@@ -45,6 +45,12 @@ export const schools = [
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
+    federal: 20,
+    zonal: 10,
+    lga: 30,
+    state: 30,
+    ward: 10,
+    total: 100,
   },
   {
     password: "sultan5683",
@@ -77,6 +83,12 @@ export const schools = [
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
+    federal: 20,
+    zonal: 10,
+    lga: 30,
+    state: 30,
+    ward: 10,
+    total: 100,
   },
   {
     id: 3,
@@ -106,6 +118,12 @@ export const schools = [
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
+    federal: 20,
+    zonal: 10,
+    lga: 30,
+    state: 30,
+    ward: 10,
+    total: 100,
   },
   {
     id: 4,
@@ -135,6 +153,12 @@ export const schools = [
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
+    federal: 20,
+    zonal: 10,
+    lga: 30,
+    state: 30,
+    ward: 10,
+    total: 100,
   },
   {
     id: 5,
@@ -163,6 +187,12 @@ export const schools = [
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
+    federal: 20,
+    zonal: 10,
+    lga: 30,
+    state: 30,
+    ward: 10,
+    total: 100,
   },
   {
     id: 6,
@@ -192,6 +222,12 @@ export const schools = [
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
+    federal: 20,
+    zonal: 10,
+    lga: 30,
+    state: 30,
+    ward: 10,
+    total: 100,
   },
   {
     id: 7,
@@ -220,6 +256,12 @@ export const schools = [
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
+    federal: 20,
+    zonal: 10,
+    lga: 30,
+    state: 30,
+    ward: 10,
+    total: 100,
   },
   {
     id: 9,
@@ -249,6 +291,12 @@ export const schools = [
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
+    federal: 20,
+    zonal: 10,
+    lga: 30,
+    state: 30,
+    ward: 10,
+    total: 100,
   },
   {
     id: 8,
@@ -278,5 +326,11 @@ export const schools = [
     address1: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     address2:
       "Springfield Academy, 30 New Nkisi Road, GRA Onitsha Anambra state.",
+    federal: 20,
+    zonal: 10,
+    lga: 30,
+    state: 30,
+    ward: 10,
+    total: 100,
   },
 ];
