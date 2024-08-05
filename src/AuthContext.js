@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (credentials) => {
     try {
       // Replace with your actual login API call
-      const response = await fakeLoginApi(credentials);
+      const response = await loginApi(credentials);
       if (response.success) {
         setIsLoggedIn(true);
       }
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       // Replace with your actual logout API call
-      await fakeLogoutApi();
+      await logoutApi();
       setIsLoggedIn(false);
     } catch (error) {
       console.error("Logout failed", error);
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => React.useContext(AuthContext);
 
 // Fake API calls for demonstration
-const fakeLoginApi = async (credentials) => {
+const loginApi = async (credentials) => {
   // Simulate API call
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -47,7 +47,7 @@ const fakeLoginApi = async (credentials) => {
   });
 };
 
-const fakeLogoutApi = async () => {
+const logoutApi = async () => {
   // Simulate API call
   return new Promise((resolve) => {
     setTimeout(() => {
