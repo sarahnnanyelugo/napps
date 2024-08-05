@@ -36,7 +36,7 @@ export const options = (drillPage) => ({
       const datasetIndex = elements[0].datasetIndex;
       console.log(`ClickedIndex: ${elementIndex}`);
       // Call the drillPage function here
-      drillPage(elementIndex, datasetIndex);
+      drillPage&&drillPage(elementIndex);
     }
   }
 });

@@ -10,6 +10,7 @@ import { schools } from "../../Data/schoolsData";
 import CountUp from "react-countup";
 import Icon1 from "../../assets/images/up.svg";
 import Icon2 from "../../assets/images/down.svg";
+import Icon3 from "../../assets/images/reset.svg";
 
 import "./admin-dashboard.scss";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
@@ -21,7 +22,6 @@ const customLabels = [
   "South West (SW)",
   "South East (SE)",
   "South South (SS)",
-  ,
 ];
 
 const stateLabels = [
@@ -40,29 +40,90 @@ const stateData = [
   [50, 72, 91, 60, 83, 66],      // South South
   [78, 51, 68, 84, 73, 99]       // South West
 ];
+const lgaLabels = [
+  ['Ado', 'Agatu', 'Apa', 'Buruku', 'Gboko', 'Guma', 'Gwer East', 'Gwer West', 'Katsina-Ala', 'Konshisha', 'Kwande', 'Logo', 'Makurdi', 'Obi', 'Ogbadibo', 'Oju', 'Okpokwu', 'Otukpo', 'Tarka', 'Ukum', 'Ushongo', 'Vandeikya'],
+  ['Adavi', 'Ajaokuta', 'Ankpa', 'Bassa', 'Dekina', 'Ibaji', 'Idah', 'Igalamela Odolu', 'Ijumu', 'Kabba Bunu', 'Kogi', 'Lokoja', 'Mopa Muro', 'Ofu', 'Ogori Magongo', 'Okehi', 'Okene', 'Olamaboro', 'Omala', 'Yagba East', 'Yagba West'],
+  ['Asa', 'Baruten', 'Edu', 'Ekiti', 'Ifelodun', 'Ilorin East', 'Ilorin South', 'Ilorin West', 'Irepodun', 'Isin', 'Kaiama', 'Moro', 'Offa', 'Oke Ero', 'Oyun', 'Pategi'],
+  ['Akwanga', 'Awe', 'Doma', 'Karu', 'Keana', 'Keffi', 'Kokona', 'Lafia', 'Nasarawa', 'Nasarawa Egon', 'Obi', 'Toto', 'Wamba'],
+  ['Agaie', 'Agwara', 'Bida', 'Borgu', 'Bosso', 'Chanchaga', 'Edati', 'Gbako', 'Gurara', 'Katcha', 'Kontagora', 'Lapai', 'Lavun', 'Magama', 'Mariga', 'Mashegu', 'Mokwa', 'Muya', 'Pailoro', 'Rafi', 'Rijau', 'Shiroro', 'Suleja', 'Tafa', 'Wushishi'],
+  ['Barkin Ladi', 'Bassa', 'Bokkos', 'Jos East', 'Jos North', 'Jos South', 'Kanam', 'Kanke', 'Langtang North', 'Langtang South', 'Mangu', 'Mikang', 'Pankshin', 'Qua’an Pan', 'Riyom', 'Shendam', 'Wase'],
+  ['Abaji', 'Bwari', 'Gwagwalada', 'Kuje', 'Kwali', 'Municipal Area Council']
+];
+const lgaData = [
+  [34, 56, 78, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23],
+  [45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12],
+  [56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78],
+  [67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78],
+  [78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12],
+  [89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45],
+  [90, 23, 45, 67, 89, 12]
+];
 export const AdminDashboard = () => {
   const [state, setState] = useState({
     query: "",
     list: recentActs,
   });
-  const [drilled, setDrilled]=useState(0);
-  const [drillIndex, setDrillIndex]=useState(0);
+  const [drilled, setDrilled] = useState(false);
+  const [drillIndex, setDrillIndex] = useState(0);
+  const [lastDrillIndex, setLastDrillIndex] = useState(0);
+  const [drillLevel, setDrillLevel] = useState(0);//Max drill level = 2
 
-  const checkDrills = (elementIndex, datasetIndex) => {
-    setDrilled(!drilled);
+  const [dLabel, setLabel] = useState([]);
+  const [dData, setData] = useState([]);
+
+  const checkDrills = (elementIndex) => {
+    setDrilled(true);
     setDrillIndex(elementIndex);
-    // console.log(`Clicked on element at index: ${elementIndex} in dataset: ${datasetIndex}`);
-    // // Add your custom logic here
-    // // For example, navigate to another page or update state
-    // alert(`You clicked on ${customLabels[elementIndex]} with value ${customData[elementIndex]}`);
+    setLastDrillIndex(elementIndex);
+    if (drillLevel < 2)
+      setDrillLevel(drillLevel + 1);
   };
 
-  useEffect(() => {
+  const parseLabels = () => {
+    if (!drilled)
+      return customLabels
+    switch (drillLevel) {
+      case 1:
+        return stateLabels[drillIndex];
+      case 2:
+        return lgaLabels[drillIndex];
+      default:
+        return customLabels;
 
-  if(drilled) {
-
+    }
+  };
+  const parseData = () => {
+    if (!drilled)
+      return customData
+    console.log("drill level: " + drillLevel)
+    switch (drillLevel) {
+      case 1:
+        return stateData[drillIndex];
+      case 2:
+        return lgaData[drillIndex];
+      default:
+        return customData;
+    };
   }
-  },[drilled,drillIndex]);
+
+  const pegLevel=() => { 
+    // let lvl=drillLevel -1;
+    // if(lvl<0)return;
+    setDrillLevel(0) 
+    // setDrillIndex(lastDrillIndex) 
+    // setLastDrillIndex(lastDrillIndex -1);
+  }
+
+  useEffect(() => {
+    setLabel(parseLabels());
+    setData(parseData());
+  })
+  useEffect(() => {
+    setLabel(parseLabels());
+    setData(parseData());
+    console.log("level: " + drillLevel, "index: " + drillIndex);
+  }, [drillIndex])
+
   return (
     <>
       <DashboardTop title="Welcome, Peter" />
@@ -156,10 +217,10 @@ export const AdminDashboard = () => {
         <div className="d-md-flex">
           <div className="col-md-8 zone-div2 col-12">
             <div className="d-flex">
-              <h6 style={{ flexGrow: 1 }}>Schools by Zones</h6>
-              <button className="more-btn" onClick={()=>{setDrilled(false)}}>See all</button>
+              <h6 style={{ flexGrow: 1 }}>Schools by {drillLevel==0?'Zones':(drillLevel==1?'States':'LGAs')}</h6>
+              {drilled && <button className="more-btn" onClick={pegLevel}><img src={Icon3} height="15px" /> Reset</button>}
             </div>
-            <ZoneChart labels={!drilled?customLabels:stateLabels[drillIndex]} dataset={!drilled?customData:stateData[drillIndex]} drillPage={!drilled&&checkDrills} />
+            <ZoneChart labels={dLabel} dataset={dData} drillPage={checkDrills} />
           </div>
           <div className="col-md-4 acts-div">
             {" "}
