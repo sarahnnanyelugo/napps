@@ -4,9 +4,7 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
-  Title,
   Tooltip,
-  Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
@@ -14,12 +12,10 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
-  //   Title,
   Tooltip
-  //   Legend
 );
 
-export const options = {
+export const options = (drillPage) => ({
   scales: {
     y: { ticks: { display: false } },
     x: { stepSize: 1, grid: { display: false } },
@@ -27,16 +23,25 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: "",
+      display: false,
     },
     title: {
       display: false,
       text: "",
     },
   },
-};
+  onClick: (event, elements) => {
+    if (elements.length > 0) {
+      const elementIndex = elements[0].index;
+      const datasetIndex = elements[0].datasetIndex;
+      console.log(`ClickedIndex: ${elementIndex}`);
+      // Call the drillPage function here
+      drillPage(elementIndex, datasetIndex);
+    }
+  }
+});
 
-export function ZoneChart({ labels, dataset }) {
+export function ZoneChart({ labels, dataset, drillPage }) {
   const data = {
     labels,
     datasets: [
@@ -49,5 +54,6 @@ export function ZoneChart({ labels, dataset }) {
       },
     ],
   };
-  return <Bar options={options} data={data} className="col-12" />;
+
+  return <Bar options={options(drillPage)} data={data} className="col-12" />;
 }

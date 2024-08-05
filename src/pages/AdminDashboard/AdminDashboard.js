@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, Navigate, useFetcher } from "react-router-dom";
 import { DataChart } from "../../components/Chart/DataChart";
 import { RecentActivity } from "../../components/RecentActivity/RecentActivity";
 import SchoolsTable from "../../components/SchoolsTable/SchoolsTable";
@@ -13,7 +13,7 @@ import Icon2 from "../../assets/images/down.svg";
 
 import "./admin-dashboard.scss";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
-const customData = [50, 100, 80, 90, 70, 80];
+const customData = [45, 100, 80, 90, 70, 80];
 const customLabels = [
   "North Central (NC)",
   "North East (NE)",
@@ -23,11 +23,46 @@ const customLabels = [
   "South South (SS)",
   ,
 ];
+
+const stateLabels = [
+  ['Benue', 'Kogi', 'Kwara', 'Nasarawa', 'Niger', 'Plateau', 'Federal Capital Territory (FCT)'],
+  ['Adamawa', 'Bauchi', 'Borno', 'Gombe', 'Taraba', 'Yobe'],
+  ['Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Sokoto', 'Zamfara'],
+  ['Abia', 'Anambra', 'Ebonyi', 'Enugu', 'Imo'],
+  ['Akwa Ibom', 'Bayelsa', 'Cross River', 'Delta', 'Edo', 'Rivers'],
+  ['Ekiti', 'Lagos', 'Ogun', 'Ondo', 'Osun', 'Oyo']
+];
+const stateData = [
+  [34, 56, 76, 89, 90, 100, 45], // North Central
+  [23, 67, 85, 92, 48, 77],      // North East
+  [55, 44, 63, 74, 81, 97, 33],  // North West
+  [65, 70, 59, 88, 49],          // South East
+  [50, 72, 91, 60, 83, 66],      // South South
+  [78, 51, 68, 84, 73, 99]       // South West
+];
 export const AdminDashboard = () => {
   const [state, setState] = useState({
     query: "",
     list: recentActs,
   });
+  const [drilled, setDrilled]=useState(0);
+  const [drillIndex, setDrillIndex]=useState(0);
+
+  const checkDrills = (elementIndex, datasetIndex) => {
+    setDrilled(!drilled);
+    setDrillIndex(elementIndex);
+    // console.log(`Clicked on element at index: ${elementIndex} in dataset: ${datasetIndex}`);
+    // // Add your custom logic here
+    // // For example, navigate to another page or update state
+    // alert(`You clicked on ${customLabels[elementIndex]} with value ${customData[elementIndex]}`);
+  };
+
+  useEffect(() => {
+
+  if(drilled) {
+
+  }
+  },[drilled,drillIndex]);
   return (
     <>
       <DashboardTop title="Welcome, Peter" />
@@ -122,9 +157,9 @@ export const AdminDashboard = () => {
           <div className="col-md-8 zone-div2 col-12">
             <div className="d-flex">
               <h6 style={{ flexGrow: 1 }}>Schools by Zones</h6>
-              <button className="more-btn">See all</button>
+              <button className="more-btn" onClick={()=>{setDrilled(false)}}>See all</button>
             </div>
-            <ZoneChart labels={customLabels} dataset={customData} />
+            <ZoneChart labels={!drilled?customLabels:stateLabels[drillIndex]} dataset={!drilled?customData:stateData[drillIndex]} drillPage={!drilled&&checkDrills} />
           </div>
           <div className="col-md-4 acts-div">
             {" "}
