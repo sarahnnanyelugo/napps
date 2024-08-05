@@ -63,7 +63,7 @@ const Percentile = ({ data }) => {
                   <input placeholder={item.zonal} type="text" />
                 </td>
                 <td>
-                  <input placeholder={item.state} type="text" />
+                  <input placeholder={item.statePercent} type="text" />
                 </td>
                 <td>
                   <input placeholder={item.lga} type="text" />

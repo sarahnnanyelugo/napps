@@ -10,6 +10,9 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { subscribedSchools } from "../../Data/subscribedSchData";
 import SubscribedTable from "../SchoolSub/SubscribedTable";
+import { IoMailOutline } from "react-icons/io5";
+import { IoCloudDownloadOutline } from "react-icons/io5";
+
 export const AllSubs = ({ blog_id }) => {
   const [data, setData] = useState({});
   const [id, setId] = useState(0);
@@ -118,6 +121,17 @@ export const AllSubs = ({ blog_id }) => {
         </div>
       </div>
       <div className="Admin-dashboard">
+        <div className="d-flex detail-btns">
+          <div style={{ flexGrow: 1 }} />
+          <button className="save-btn">
+            <IoMailOutline style={{ marginRight: "3px" }} />
+            Send a reminder
+          </button>{" "}
+          <button clasName="cancel-btn" style={{ marginLeft: "10px" }}>
+            <IoCloudDownloadOutline style={{ marginRight: "3px" }} />
+            Export
+          </button>
+        </div>
         <div className="sch-detail-cont d-md-flex">
           <div className="col-md-6">
             {" "}
@@ -165,9 +179,10 @@ export const AllSubs = ({ blog_id }) => {
               </div>
             </div>
           </div>
-          <div className="col-md-6">
-            {" "}
+          <div className="col-md-6 contacts">
             <div className="contact-holder col-md-12  ">
+              {" "}
+              <h5>Details</h5>
               <div className="d-flex">
                 {" "}
                 <div className="col-md-6">
@@ -175,23 +190,21 @@ export const AllSubs = ({ blog_id }) => {
                   <p className="col-md-10"> {data.address1}</p>
                 </div>
                 <div className="col-md-6">
-                  <h2>Website</h2>
-
-                  <p>{data.website}</p>
+                  <h2>Address 2</h2>
+                  <p className="col-md-10"> {data.address2}</p>
                 </div>{" "}
               </div>
               <div className="d-flex">
                 <div className="col-md-6">
                   {" "}
-                  <h2>Address 2</h2>
-                  <p className="col-md-10"> {data.address2}</p>
+                  <h2>Website</h2>
+                  <p>{data.website}</p>
                 </div>
                 <div className="col-md-6">
                   <h2>Zone</h2>
                   <p>{data.zone}</p>
                 </div>{" "}
               </div>
-
               <div className="d-flex">
                 <div className="col-md-6">
                   <h2>Email</h2>

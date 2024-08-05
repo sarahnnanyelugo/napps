@@ -35,6 +35,7 @@ const SubscribedTable = ({ data }) => {
               <th>Amount</th>
               <th>Payment method</th>
               <th>Renewal Date</th>
+              <th>Action</th>
             </tr>
           </thead>
           <TransitionGroup component="tbody">
@@ -78,7 +79,7 @@ const SubscribedTable = ({ data }) => {
                       view
                     </Link>
                   </td>
-                  <td className="edit" style={{ color: "#00923F" }}>
+                  {/* <td className="edit" style={{ color: "#00923F" }}>
                     <Link
                       className="edit"
                       to={"/dashboard-layout/displayed-school/" + item.id}
@@ -87,7 +88,7 @@ const SubscribedTable = ({ data }) => {
                       {" "}
                       edit
                     </Link>
-                  </td>
+                  </td> */}
                 </tr>
               </CSSTransition>
             ))}

@@ -90,9 +90,8 @@
   border-radius: 10px;
   opacity: 1;
   padding: 25px;
-  padding-top: 0px;
-  @media screen and (max-width: 820px) {
-    height: fit-content;
+  hr {
+    border: solid 1px #c6c6c6;
   }
 }
 
@@ -110,24 +109,6 @@
     width: 150px;
     border-radius: 100%;
     background: #027a48;
-  }
-  button {
-    font-size: 14px;
-    font-family: montM;
-    height: 36px;
-    border-radius: 6px;
-    border: none;
-    padding: 0 15px;
-    border: 1px solid #d0d5dd;
-  }
-  .save-btn {
-    background: #027a48;
-    color: #fff;
-    margin-left: 6px;
-  }
-  .cancel-btn {
-    border: 1px solid #d0d5dd;
-    color: #000000;
   }
 }
 .edit,
@@ -299,8 +280,35 @@
 .data-info {
   margin-top: 40px;
   margin-left: 40px;
+
   button {
     border: none !important;
     // padding: 0
+  }
+}
+.contacts {
+  padding-left: 30px;
+  margin-left: 20px;
+  border-left: solid 1px #e8e8e8;
+}
+.detail-btns {
+  button {
+    font-size: 14px;
+    font-family: montM;
+    height: 36px;
+    border-radius: 6px;
+    border: none;
+    padding: 0 15px;
+    border: 1px solid #d0d5dd;
+    margin-bottom: 10px;
+  }
+  .save-btn {
+    background: #027a48;
+    color: #fff;
+    margin-left: 6px;
+  }
+  .cancel-btn {
+    border: 1px solid #d0d5dd;
+    color: #000000;
   }
 }
