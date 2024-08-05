@@ -25,38 +25,178 @@ const customLabels = [
 ];
 
 const stateLabels = [
-  ['Benue', 'Kogi', 'Kwara', 'Nasarawa', 'Niger', 'Plateau', 'Federal Capital Territory (FCT)'],
-  ['Adamawa', 'Bauchi', 'Borno', 'Gombe', 'Taraba', 'Yobe'],
-  ['Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Sokoto', 'Zamfara'],
-  ['Abia', 'Anambra', 'Ebonyi', 'Enugu', 'Imo'],
-  ['Akwa Ibom', 'Bayelsa', 'Cross River', 'Delta', 'Edo', 'Rivers'],
-  ['Ekiti', 'Lagos', 'Ogun', 'Ondo', 'Osun', 'Oyo']
+  [
+    "Benue",
+    "Kogi",
+    "Kwara",
+    "Nasarawa",
+    "Niger",
+    "Plateau",
+    "Federal Capital Territory (FCT)",
+  ],
+  ["Adamawa", "Bauchi", "Borno", "Gombe", "Taraba", "Yobe"],
+  ["Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Sokoto", "Zamfara"],
+  ["Abia", "Anambra", "Ebonyi", "Enugu", "Imo"],
+  ["Akwa Ibom", "Bayelsa", "Cross River", "Delta", "Edo", "Rivers"],
+  ["Ekiti", "Lagos", "Ogun", "Ondo", "Osun", "Oyo"],
 ];
 const stateData = [
   [34, 56, 76, 89, 90, 100, 45], // North Central
-  [23, 67, 85, 92, 48, 77],      // North East
-  [55, 44, 63, 74, 81, 97, 33],  // North West
-  [65, 70, 59, 88, 49],          // South East
-  [50, 72, 91, 60, 83, 66],      // South South
-  [78, 51, 68, 84, 73, 99]       // South West
+  [23, 67, 85, 92, 48, 77], // North East
+  [55, 44, 63, 74, 81, 97, 33], // North West
+  [65, 70, 59, 88, 49], // South East
+  [50, 72, 91, 60, 83, 66], // South South
+  [78, 51, 68, 84, 73, 99], // South West
 ];
 const lgaLabels = [
-  ['Ado', 'Agatu', 'Apa', 'Buruku', 'Gboko', 'Guma', 'Gwer East', 'Gwer West', 'Katsina-Ala', 'Konshisha', 'Kwande', 'Logo', 'Makurdi', 'Obi', 'Ogbadibo', 'Oju', 'Okpokwu', 'Otukpo', 'Tarka', 'Ukum', 'Ushongo', 'Vandeikya'],
-  ['Adavi', 'Ajaokuta', 'Ankpa', 'Bassa', 'Dekina', 'Ibaji', 'Idah', 'Igalamela Odolu', 'Ijumu', 'Kabba Bunu', 'Kogi', 'Lokoja', 'Mopa Muro', 'Ofu', 'Ogori Magongo', 'Okehi', 'Okene', 'Olamaboro', 'Omala', 'Yagba East', 'Yagba West'],
-  ['Asa', 'Baruten', 'Edu', 'Ekiti', 'Ifelodun', 'Ilorin East', 'Ilorin South', 'Ilorin West', 'Irepodun', 'Isin', 'Kaiama', 'Moro', 'Offa', 'Oke Ero', 'Oyun', 'Pategi'],
-  ['Akwanga', 'Awe', 'Doma', 'Karu', 'Keana', 'Keffi', 'Kokona', 'Lafia', 'Nasarawa', 'Nasarawa Egon', 'Obi', 'Toto', 'Wamba'],
-  ['Agaie', 'Agwara', 'Bida', 'Borgu', 'Bosso', 'Chanchaga', 'Edati', 'Gbako', 'Gurara', 'Katcha', 'Kontagora', 'Lapai', 'Lavun', 'Magama', 'Mariga', 'Mashegu', 'Mokwa', 'Muya', 'Pailoro', 'Rafi', 'Rijau', 'Shiroro', 'Suleja', 'Tafa', 'Wushishi'],
-  ['Barkin Ladi', 'Bassa', 'Bokkos', 'Jos East', 'Jos North', 'Jos South', 'Kanam', 'Kanke', 'Langtang North', 'Langtang South', 'Mangu', 'Mikang', 'Pankshin', 'Qua’an Pan', 'Riyom', 'Shendam', 'Wase'],
-  ['Abaji', 'Bwari', 'Gwagwalada', 'Kuje', 'Kwali', 'Municipal Area Council']
+  [
+    "Ado",
+    "Agatu",
+    "Apa",
+    "Buruku",
+    "Gboko",
+    "Guma",
+    "Gwer East",
+    "Gwer West",
+    "Katsina-Ala",
+    "Konshisha",
+    "Kwande",
+    "Logo",
+    "Makurdi",
+    "Obi",
+    "Ogbadibo",
+    "Oju",
+    "Okpokwu",
+    "Otukpo",
+    "Tarka",
+    "Ukum",
+    "Ushongo",
+    "Vandeikya",
+  ],
+  [
+    "Adavi",
+    "Ajaokuta",
+    "Ankpa",
+    "Bassa",
+    "Dekina",
+    "Ibaji",
+    "Idah",
+    "Igalamela Odolu",
+    "Ijumu",
+    "Kabba Bunu",
+    "Kogi",
+    "Lokoja",
+    "Mopa Muro",
+    "Ofu",
+    "Ogori Magongo",
+    "Okehi",
+    "Okene",
+    "Olamaboro",
+    "Omala",
+    "Yagba East",
+    "Yagba West",
+  ],
+  [
+    "Asa",
+    "Baruten",
+    "Edu",
+    "Ekiti",
+    "Ifelodun",
+    "Ilorin East",
+    "Ilorin South",
+    "Ilorin West",
+    "Irepodun",
+    "Isin",
+    "Kaiama",
+    "Moro",
+    "Offa",
+    "Oke Ero",
+    "Oyun",
+    "Pategi",
+  ],
+  [
+    "Akwanga",
+    "Awe",
+    "Doma",
+    "Karu",
+    "Keana",
+    "Keffi",
+    "Kokona",
+    "Lafia",
+    "Nasarawa",
+    "Nasarawa Egon",
+    "Obi",
+    "Toto",
+    "Wamba",
+  ],
+  [
+    "Agaie",
+    "Agwara",
+    "Bida",
+    "Borgu",
+    "Bosso",
+    "Chanchaga",
+    "Edati",
+    "Gbako",
+    "Gurara",
+    "Katcha",
+    "Kontagora",
+    "Lapai",
+    "Lavun",
+    "Magama",
+    "Mariga",
+    "Mashegu",
+    "Mokwa",
+    "Muya",
+    "Pailoro",
+    "Rafi",
+    "Rijau",
+    "Shiroro",
+    "Suleja",
+    "Tafa",
+    "Wushishi",
+  ],
+  [
+    "Barkin Ladi",
+    "Bassa",
+    "Bokkos",
+    "Jos East",
+    "Jos North",
+    "Jos South",
+    "Kanam",
+    "Kanke",
+    "Langtang North",
+    "Langtang South",
+    "Mangu",
+    "Mikang",
+    "Pankshin",
+    "Qua’an Pan",
+    "Riyom",
+    "Shendam",
+    "Wase",
+  ],
+  ["Abaji", "Bwari", "Gwagwalada", "Kuje", "Kwali", "Municipal Area Council"],
 ];
 const lgaData = [
-  [34, 56, 78, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23],
-  [45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12],
-  [56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78],
+  [
+    34, 56, 78, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56,
+    78, 90, 23,
+  ],
+  [
+    45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45,
+    67, 89, 12,
+  ],
+  [
+    56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56,
+    78,
+  ],
   [67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78],
-  [78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12],
+  [
+    78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78,
+    90, 23, 45, 67, 89, 12,
+  ],
   [89, 12, 34, 56, 78, 90, 23, 45, 67, 89, 12, 34, 56, 78, 90, 23, 45],
-  [90, 23, 45, 67, 89, 12]
+  [90, 23, 45, 67, 89, 12],
 ];
 export const AdminDashboard = () => {
   const [state, setState] = useState({
@@ -66,7 +206,7 @@ export const AdminDashboard = () => {
   const [drilled, setDrilled] = useState(false);
   const [drillIndex, setDrillIndex] = useState(0);
   const [lastDrillIndex, setLastDrillIndex] = useState(0);
-  const [drillLevel, setDrillLevel] = useState(0);//Max drill level = 2
+  const [drillLevel, setDrillLevel] = useState(0); //Max drill level = 2
 
   const [dLabel, setLabel] = useState([]);
   const [dData, setData] = useState([]);
@@ -75,13 +215,11 @@ export const AdminDashboard = () => {
     setDrilled(true);
     setDrillIndex(elementIndex);
     setLastDrillIndex(elementIndex);
-    if (drillLevel < 2)
-      setDrillLevel(drillLevel + 1);
+    if (drillLevel < 2) setDrillLevel(drillLevel + 1);
   };
 
   const parseLabels = () => {
-    if (!drilled)
-      return customLabels
+    if (!drilled) return customLabels;
     switch (drillLevel) {
       case 1:
         return stateLabels[drillIndex];
@@ -89,13 +227,11 @@ export const AdminDashboard = () => {
         return lgaLabels[drillIndex];
       default:
         return customLabels;
-
     }
   };
   const parseData = () => {
-    if (!drilled)
-      return customData
-    console.log("drill level: " + drillLevel)
+    if (!drilled) return customData;
+    console.log("drill level: " + drillLevel);
     switch (drillLevel) {
       case 1:
         return stateData[drillIndex];
@@ -103,26 +239,26 @@ export const AdminDashboard = () => {
         return lgaData[drillIndex];
       default:
         return customData;
-    };
-  }
+    }
+  };
 
-  const pegLevel=() => { 
+  const pegLevel = () => {
     // let lvl=drillLevel -1;
     // if(lvl<0)return;
-    setDrillLevel(0) 
-    // setDrillIndex(lastDrillIndex) 
+    setDrillLevel(0);
+    // setDrillIndex(lastDrillIndex)
     // setLastDrillIndex(lastDrillIndex -1);
-  }
+  };
 
   useEffect(() => {
     setLabel(parseLabels());
     setData(parseData());
-  })
+  });
   useEffect(() => {
     setLabel(parseLabels());
     setData(parseData());
     console.log("level: " + drillLevel, "index: " + drillIndex);
-  }, [drillIndex])
+  }, [drillIndex]);
 
   return (
     <>
@@ -217,10 +353,25 @@ export const AdminDashboard = () => {
         <div className="d-md-flex">
           <div className="col-md-8 zone-div2 col-12">
             <div className="d-flex">
-              <h6 style={{ flexGrow: 1 }}>Schools by {drillLevel==0?'Zones':(drillLevel==1?'States':'LGAs')}</h6>
-              {drilled && <button className="more-btn" onClick={pegLevel}><img src={Icon3} height="15px" /> Reset</button>}
+              <h6 style={{ flexGrow: 1 }}>
+                Schools by{" "}
+                {drillLevel == 0
+                  ? "Zones"
+                  : drillLevel == 1
+                  ? "States"
+                  : "LGAs"}
+              </h6>
+              {drilled && (
+                <button className="more-btn" onClick={pegLevel}>
+                  <img src={Icon3} height="15px" /> Reset
+                </button>
+              )}
             </div>
-            <ZoneChart labels={dLabel} dataset={dData} drillPage={checkDrills} />
+            <ZoneChart
+              labels={dLabel}
+              dataset={dData}
+              drillPage={checkDrills}
+            />
           </div>
           <div className="col-md-4 acts-div">
             {" "}
