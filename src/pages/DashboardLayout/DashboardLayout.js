@@ -8,7 +8,7 @@ import { DisplayedSchool } from "../SchoolManagement/DisplayedSchool";
 import { SchoolManagement } from "../SchoolManagement/SchoolManagement";
 import { SchShowcase } from "../SchoolManagement/SchShowcase";
 import { Subscription } from "../Subscription/Subscription";
-import { SubShowcase } from "../Subscription/SubShowcase";
+import { ShowSubs } from "../Subscription/ShowSubs";
 
 export default function DashboardLayout() {
   return (
@@ -29,7 +29,8 @@ export default function DashboardLayout() {
               element={<DisplayedSchool />}
             />{" "}
             <Route path="/sch-showcase/:blog_id" element={<SchShowcase />} />{" "}
-            <Route path="/sub-showcase/:blog_id" element={<SubShowcase />} />{" "}
+            {/* <Route path="/sub-showcase/:blog_id" element={<SubShowcase />} />{" "} */}
+            <Route path="/show-Subs/:blog_id" element={<ShowSubs />} />{" "}
           </Routes>
         </div>
       </div>

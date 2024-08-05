@@ -51,6 +51,7 @@ export const schools = [
     state: "30%",
     ward: "10%",
     total: "100%",
+    accName: "Peter Olugbenga",
   },
   {
     password: "sultan5683",
@@ -89,6 +90,7 @@ export const schools = [
     state: "30%",
     ward: "10%",
     total: "100%",
+    accName: "Peter Olugbenga",
   },
   {
     id: 3,
@@ -124,6 +126,7 @@ export const schools = [
     state: "30%",
     ward: "10%",
     total: "100%",
+    accName: "Peter Olugbenga",
   },
   {
     id: 4,
@@ -159,6 +162,7 @@ export const schools = [
     state: "30%",
     ward: "10%",
     total: "100%",
+    accName: "Peter Olugbenga",
   },
   {
     id: 5,
@@ -193,6 +197,7 @@ export const schools = [
     state: "30%",
     ward: "10%",
     total: "100%",
+    accName: "David Bodunde",
   },
   {
     id: 6,
@@ -228,6 +233,7 @@ export const schools = [
     state: "30%",
     ward: "10%",
     total: "100%",
+    accName: "David Bodunde",
   },
   {
     id: 7,
@@ -262,6 +268,7 @@ export const schools = [
     state: "30%",
     ward: "10%",
     total: "100%",
+    accName: "David Bodunde",
   },
   {
     id: 9,
@@ -297,6 +304,7 @@ export const schools = [
     state: "30%",
     ward: "10%",
     total: "100%",
+    accName: "Uwanna Glory",
   },
   {
     id: 8,
@@ -332,5 +340,6 @@ export const schools = [
     state: "30%",
     ward: "10%",
     total: "100%",
+    accName: "Peter Olugbenga",
   },
 ];

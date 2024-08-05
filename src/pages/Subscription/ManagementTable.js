@@ -35,7 +35,8 @@ const ManagementTable = ({ data }) => {
               <th className="col-md-4">Name</th>
               <th>Status</th>
               <th>Registration ID</th>
-              <th colSpan={3}>Zone</th>
+              <th>Zone</th>
+              <th>Action</th>
             </tr>
           </thead>
           <TransitionGroup component="tbody">
@@ -77,13 +78,14 @@ const ManagementTable = ({ data }) => {
                   <td className="edit">
                     <Link
                       className="view"
-                      to={"/dashboard-layout/sch-showcase/" + item.id}
+                      // to={"/dashboard-layout/sch-showcase/" + item.id}
+                      to={"/dashboard-layout/show-subs/" + item.id}
                       state={{ blog_id: blogId }}
                     >
                       view
                     </Link>
                   </td>
-                  <td className="edit" style={{ color: "#00923F" }}>
+                  {/* <td className="edit" style={{ color: "#00923F" }}>
                     <Link
                       className="edit"
                       to={"/dashboard-layout/displayed-school/" + item.id}
@@ -92,7 +94,7 @@ const ManagementTable = ({ data }) => {
                       {" "}
                       edit
                     </Link>
-                  </td>
+                  </td> */}
                 </tr>
               </CSSTransition>
             ))}

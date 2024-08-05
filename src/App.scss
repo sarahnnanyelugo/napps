@@ -62,3 +62,20 @@ p {
     padding: 0 4px;
   }
 }
+.bread-crums {
+  ul {
+    margin-bottom: 0 !important;
+  }
+  a {
+    color: #191919;
+    opacity: 0.6;
+    font-family: montR;
+    font-size: 12px;
+    text-decoration: none;
+  }
+  p {
+    color: #027a48;
+    font-size: 12px;
+    font-family: montSB;
+  }
+}

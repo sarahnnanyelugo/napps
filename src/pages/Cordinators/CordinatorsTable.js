@@ -72,7 +72,7 @@ const CordinatorsTable = ({ data }) => {
                           <p>{item.alphabet}</p>
                         </center>
                       </div>
-                      {item.name}
+                      {item.accName}
                     </div>
                   </td>
 

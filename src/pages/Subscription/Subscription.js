@@ -150,13 +150,14 @@ export const Subscription = () => {
                 </select>
               </div>
             </div>
-            <div>
+            <div style={{ flexGrow: 1 }}>
               <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>Zone</h6>
               <br />
               <NavDropdown
                 title="Zone"
                 id="collapsible-nav-dropdown"
                 className="select-div "
+                style={{ width: "130px" }}
               >
                 <NavDropdown.Item
                   href="#action/3.1"
@@ -190,13 +191,13 @@ export const Subscription = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </div>
-            <div className="offset-md-4">
+            <div className="offset-md-">
               <button className="exp-btn">
                 {" "}
                 <img src={Icon3} height="20px" width="20px" />
                 Export
               </button>
-              <button className="add-sch-btn">Add School</button>
+              {/* <button className="add-sch-btn">Add School</button> */}
             </div>
           </div>{" "}
           <hr />
