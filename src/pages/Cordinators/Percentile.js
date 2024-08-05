@@ -55,23 +55,23 @@ const Percentile = ({ data }) => {
                 <td style={{ fontFamily: "montM" }}>{item.zone}</td>
 
                 <td>
-                  <button>{item.federal}%</button>
+                  <input placeholder={item.federal} type="text" />
                 </td>
 
                 <td>
                   {" "}
-                  <button>{item.zonal}%</button>
+                  <input placeholder={item.zonal} type="text" />
                 </td>
                 <td>
-                  <button>{item.state}%</button>
+                  <input placeholder={item.state} type="text" />
                 </td>
                 <td>
-                  <button>{item.lga}%</button>
+                  <input placeholder={item.lga} type="text" />
                 </td>
                 <td>
-                  <button>{item.ward}%</button>
+                  <input placeholder={item.ward} type="text" />
                 </td>
-                <td>{item.total}%</td>
+                <td> {item.total}</td>
               </tr>
             </CSSTransition>
           ))}
