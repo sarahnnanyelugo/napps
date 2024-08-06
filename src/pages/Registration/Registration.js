@@ -156,23 +156,23 @@ export const Registration = (props) => {
     });
     console.log(form);
   }
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    // const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    // if (!form?.contact_email) {
-    //   toast.error("email is required");
-    // } else if (!regex.test(form?.contact_email)) {
-    //   toast.error("This is not a valid email");
-    // } else if (!form?.name) {
-    //   toast.error("School name is required");
-    // } else {
-      console.log(form);
-      // toast.success("You have successfully signed in");
-      // setInterval(() => {
-      //   window.location = "dashboard-layout/admin-dashboard";
-      // }, 1000);
-    // }
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (!form?.email) {
+      toast.error("email is required");
+    } else if (!regex.test(form?.email)) {
+      toast.error("This is not a valid email");
+    } else {
+      toast.success("Proceeding to payment");
+      setInterval(() => {
+        // window.location = "dashboard-layout/admin-dashboard";
+        window.location = "/payment";
+      }, 1000);
+    }
+    sessionStorage.setItem("user", JSON.stringify(form));
   }
 
   return (
@@ -520,7 +520,7 @@ export const Registration = (props) => {
 
             <div className="col-md- flex-end">
               {" "}
-              <button className="payment-button "> Continue</button>
+              <button className="payment-button "> Proceed to Payment</button>
             </div>
           </div>
         </div>

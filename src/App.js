@@ -16,6 +16,7 @@ import { AddSch } from "./pages/AddSch/AddSch";
 import ZoneLayout from "./pages/ZoneLayout/ZoneLayout";
 import LGALayout from "./pages/LGALayout/LGALayout";
 import DashboardSelector from "./components/DashboardSelector/DashboardSelector";
+import { PaymentPage } from "./pages/PaymentPage/PaymentPage";
 
 function App() {
   return (
@@ -24,10 +25,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />{" "}
         <Route path="login" element={<Login />} />{" "}
-        <Route path="dashboard-selector" element={<DashboardSelector/>} />
+        <Route path="dashboard-selector" element={<DashboardSelector />} />
         <Route path="Add-sch" element={<AddSch />} />{" "}
         <Route path="members-detail" element={<MembersDetail />} />{" "}
         <Route path="registration" element={<Registration />} />{" "}
+        <Route path="payment" element={<PaymentPage />} />{" "}
         <Route path="news-page" element={<NewsPage />} />
         <Route path="main-news/:blog_id" element={<MainNews />} />
         <Route path="dashboard-layout/*" element={<DashboardLayout />} />{" "}

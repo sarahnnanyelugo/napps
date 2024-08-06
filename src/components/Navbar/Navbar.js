@@ -64,7 +64,7 @@ function NavBar() {
               </Link>
               <Link to={"/members-detail"}>
                 <button className="app-btn">Register</button>
-              </Link>
+              </Link>{" "}
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -11,8 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ApiContext } from "../../ApiContext";
 import api from "../../utility/api";
 import { setLocalStorage } from "../../utility/localStorage";
-import 'bootstrap/dist/css/bootstrap.css';
-import Spinner from 'react-bootstrap/Spinner';
+import "bootstrap/dist/css/bootstrap.css";
+import Spinner from "react-bootstrap/Spinner";
 
 export const MembersDetail = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -30,13 +30,13 @@ export const MembersDetail = () => {
     password_confirmation: " ",
   });
   useEffect(() => {
-    setForm({ ...form, ['roles']: [role?.id] })
-  }, [role])
+    setForm({ ...form, ["roles"]: [role?.id] });
+  }, [role]);
 
   const initRoles = async () => {
     setLd(true);
     try {
-      const response = await api.get(apiUrl + '/register');
+      const response = await api.get(apiUrl + "/register");
       setRole(response.data);
       console.log(response.data);
     } catch (err) {
@@ -46,24 +46,23 @@ export const MembersDetail = () => {
     }
   };
   useEffect(() => {
-    initRoles()
-  }, [])
+    initRoles();
+  }, []);
 
   function handleChange(e) {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
-
   }
   useEffect(() => {
-    setForm({ ...form, ['phone']: value });
+    setForm({ ...form, ["phone"]: value });
   }, [value]);
 
   useEffect(() => {
     setForm({
-      ...form, ['name']: form.title + ' ' + form.fname
-        + ' ' + form.lname
+      ...form,
+      ["name"]: form.title + " " + form.fname + " " + form.lname,
     });
   }, [form.title, form.fname, form.lname]);
 
@@ -90,14 +89,14 @@ export const MembersDetail = () => {
     try {
       await postData("/register", form);
     } catch (errorResponse) {
-      console.error('Error creating proprietor profile:', errorResponse);
+      console.error("Error creating proprietor profile:", errorResponse);
     }
   }
 
   function setSchoolRegistrationProforma() {
-    setLocalStorage('user', data.user)
-    setLocalStorage('authToken', data.token)
-    setLocalStorage('isLoggedIn', true)
+    setLocalStorage("user", data.user);
+    setLocalStorage("authToken", data.token);
+    setLocalStorage("isLoggedIn", true);
   }
 
   function handleSubmit(e) {
@@ -119,13 +118,15 @@ export const MembersDetail = () => {
         {" "}
         <div className="login-div col-md-8 offset-md-2">
           <center>
-            <Link to={"/"}><img
-              className="img"
-              src={Logo}
-              alt="Scholar"
-              width="198px"
-              height="69px"
-            /></Link>
+            <Link to={"/"}>
+              <img
+                className="img"
+                src={Logo}
+                alt="Scholar"
+                width="198px"
+                height="69px"
+              />
+            </Link>
             <h2>Member Details (School Owners)</h2>{" "}
           </center>
           <p className="col-md-">
@@ -145,15 +146,27 @@ export const MembersDetail = () => {
           <Row className=" members-detail">
             <Col>
               <h6>Title</h6>
-              <input onChange={handleChange} name="title" placeholder="Mr, Mrs, Miss… etc." />
+              <input
+                onChange={handleChange}
+                name="title"
+                placeholder="Mr, Mrs, Miss… etc."
+              />
             </Col>{" "}
             <Col>
               <h6>First Name</h6>
-              <input name="fname" onChange={handleChange} placeholder="Enter first name here" />
+              <input
+                name="fname"
+                onChange={handleChange}
+                placeholder="Enter first name here"
+              />
             </Col>{" "}
             <Col>
               <h6>Last Name</h6>
-              <input name="lname" onChange={handleChange} placeholder="Enter last name here" />
+              <input
+                name="lname"
+                onChange={handleChange}
+                placeholder="Enter last name here"
+              />
             </Col>
           </Row>
           <Row className=" members-detail">
@@ -197,7 +210,9 @@ export const MembersDetail = () => {
           <div className="col-md- flex-end">
             {" "}
             <button className="payment-button ">
-              {loading&&<Spinner animation="border" variant="light" />} Proceed </button>
+              {loading && <Spinner animation="border" variant="light" />}{" "}
+              Proceed{" "}
+            </button>
           </div>
         </div>
       </form>

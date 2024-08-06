@@ -8,6 +8,7 @@ import { BsCreditCard } from "react-icons/bs";
 import { MdOutlinePayments } from "react-icons/md";
 import Dropdown from "react-bootstrap/Dropdown";
 import { SlPeople } from "react-icons/sl";
+import { FaPeopleRoof } from "react-icons/fa6";
 
 const DashboardNav = () => {
   return (
@@ -72,6 +73,19 @@ const DashboardNav = () => {
                 <SlPeople />
               </span>
               Cordinators
+            </NavLink>
+          </li>{" "}
+          <li>
+            <NavLink
+              to={"./ proprietors"}
+              activeClassName="active"
+              style={{ padding: "10px 80px 10px 10px" }}
+            >
+              <span>
+                {" "}
+                <FaPeopleRoof />
+              </span>
+              Proprietors
             </NavLink>
           </li>{" "}
         </ul>
