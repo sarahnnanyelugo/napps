@@ -16,30 +16,88 @@ import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 const customLabels = ["Benue", "Kogi", "Kwara", "Nasarawa", "Niger", "Jos"];
 const customData = [80, 40, 50, 60, 90, 20];
 
-// const stateLabels = [
-//   [
-//     "Benue",
-//     "Kogi",
-//     "Kwara",
-//     "Nasarawa",
-//     "Niger",
-//     "Plateau",
-//     "Federal Capital Territory (FCT)",
-//   ],
-//   ["Adamawa", "Bauchi", "Borno", "Gombe", "Taraba", "Yobe"],
-//   ["Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Sokoto", "Zamfara"],
-//   ["Abia", "Anambra", "Ebonyi", "Enugu", "Imo"],
-//   ["Akwa Ibom", "Bayelsa", "Cross River", "Delta", "Edo", "Rivers"],
-//   ["Ekiti", "Lagos", "Ogun", "Ondo", "Osun", "Oyo"],
-// ];
-// const stateData = [
-//   [34, 56, 76, 89, 90, 100, 45], // North Central
-//   [23, 67, 85, 92, 48, 77], // North East
-//   [55, 44, 63, 74, 81, 97, 33], // North West
-//   [65, 70, 59, 88, 49], // South East
-//   [50, 72, 91, 60, 83, 66], // South South
-//   [78, 51, 68, 84, 73, 99], // South West
-// ];
+const wardLabels = [
+  [
+    "Agila council ward",
+    "Igumale council ward",
+    "Ulayi council ward",
+    "Ijigbancouncil ward",
+    "Utonkon council ward",
+  ],
+  [
+    "EGBA",
+    "ENUNGBA",
+    "OBAGAJI",
+    "ODUGBEHO",
+    "OGBAULU",
+    "OGWULE-KADUNA",
+    "OGWULE OGBAULU",
+    "OKOKOLO",
+    "OSHIGBUDU",
+    "USHA",
+  ],
+  [
+    "Akpete/ojantelle",
+    "Auke",
+    "Edikwu I",
+    "Edikwu Ii",
+    "Igah-okpaya",
+    "Igoro",
+    "Ikobi",
+    "Oba",
+    "Ofoke",
+    "Oiji",
+    "Ugbokpo",
+  ],
+  [
+    "BINEV WARD",
+    " ETULO WARD",
+    "MBAADE WARD",
+    "MBAAKURA WARD",
+    "MBAAPEN WARD",
+    "MBAATIRKYAA WARD",
+    " MBAAZAGEE WARD",
+    "MBAIKYONGO/NYIFON WARD",
+    "MBAITYOUGH WARD",
+    "MBAKYAAN WARD",
+    "MBAYA WARD",
+    "MBAYAKA WARD",
+    "SHOROV WARD",
+  ],
+  [
+    "Gbk/central Market",
+    "Gboko East",
+    "Gboko North West",
+    "Gboko South",
+    "Igyorov",
+    "Mbaa Varakaa",
+    "Mbaanku",
+    "Mbadam",
+    "Mbadim",
+    "Mbatser",
+    "Yandev South",
+    "Mbaa Varakaa",
+    "Mbakper",
+    "Mbatyu",
+    "Gboko North West",
+    "Mbaanku",
+    "Mbakwen",
+    "Mbatan",
+    "Yandev South",
+    "Mbatyu",
+    "Ukpekpe",
+    "Yandev North",
+  ],
+  ["Ekiti", "Lagos", "Ogun", "Ondo", "Osun", "Oyo"],
+];
+const wardData = [
+  [54, 56, 76, 19, 90, 50, 85], // ado ward
+  [93, 67, 55, 92, 48, 47, 66, 90, 100, 30], // agatu ward
+  [55, 44, 63, 74, 81, 97, 33, 67, 10, 90, 55], // apa
+  [65, 70, 59, 88, 49, 67, 98, 20, 56, 77, 99, 19, 59], // buruku
+  [78, 51, 68, 84, 73, 99, 66, 12, 89, 57, 59, 77], //guma
+  [50, 72, 91, 60, 83, 66, 77, 50, 40, 100, 90, 59, 88, 40, 79, 44, 88], // gboko
+];
 const lgaLabels = [
   [
     "Ado",
@@ -213,10 +271,10 @@ export const ZoneDashboard = () => {
   const parseLabels = () => {
     if (!drilled) return customLabels;
     switch (drillLevel) {
-      // case 1:
-      //   return stateLabels[drillIndex];
       case 1:
         return lgaLabels[drillIndex];
+      case 2:
+        return wardLabels[drillIndex];
       default:
         return customLabels;
     }
@@ -225,10 +283,10 @@ export const ZoneDashboard = () => {
     if (!drilled) return customData;
     console.log("drill level: " + drillLevel);
     switch (drillLevel) {
-      // case 1:
-      //   return stateData[drillIndex];
       case 1:
         return lgaData[drillIndex];
+      case 2:
+        return wardData[drillIndex];
       default:
         return customData;
     }
@@ -344,9 +402,9 @@ export const ZoneDashboard = () => {
                 Schools by{" "}
                 {drillLevel == 0
                   ? "States"
-                  : // : drillLevel == 1
-                    // ? "States"
-                    "LGAs"}
+                  : drillLevel == 1
+                  ? "LGAs"
+                  : "Wards"}
               </h6>
               {drilled && (
                 <button className="more-btn" onClick={pegLevel}>
