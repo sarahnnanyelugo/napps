@@ -25,27 +25,6 @@ export const MembersDetail = () => {
     });
     console.log(form);
   }
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-  //   if (!form?.email) {
-  //     toast.error("email is required");
-  //   } else if (!form?.password) {
-  //     toast.error("password is required");
-  //   } else if (form.password.length < 4) {
-  //     toast.error("password must be more than 4 characters");
-  //   } else if (form.password.length > 10) {
-  //     toast.error("password must be less than 10 characters");
-  //   } else if (!regex.test(form?.email)) {
-  //     toast.error("This is not a valid email");
-  //   } else {
-  //     toast.success("You have successfully signed in");
-  //     setInterval(() => {
-  //       window.location = "./admin-dashboard";
-  //     }, 1000);
-  //   }
-  //   sessionStorage.setItem("user", JSON.stringify(form));
-  // }
   function handleSubmit(e) {
     e.preventDefault();
 

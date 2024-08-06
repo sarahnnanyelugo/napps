@@ -3,33 +3,49 @@ import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import { Password } from "../../components/Password/Password";
-// import PhoneInput from "react-phone-number-input";
+import { zonesAndStates } from "../../Data/States";
+
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { statesAndLGAs } from "../../Data/States";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { FaUserEdit } from "react-icons/fa";
 import "./registration.scss";
-export const Registration = () => {
+import { FileUpload } from "../../components/FileUpload/FileUpload";
+import { LuImagePlus } from "react-icons/lu";
+import { FaLink } from "react-icons/fa6";
+export const Registration = (props) => {
   const [value, setValue] = useState();
-  // const [towns, setLga] = useState([]);
-  // const [naijaState, setNaijaState] = useState("");
-  // const [naijaLga, setNaijaLga] = useState();
+  const { founder_id } = props;
+  const [isItalic, setIsItalic] = useState(false);
+  const [isBold, setIsBold] = useState(false);
+  const [isUnderline, setIsUnderline] = useState(false);
+  const [founder, setFounder] = useState(null);
+  const [banner, setBanner] = useState(null);
+  const [picture, setPicture] = useState(null);
+  const [contact, setContact] = useState(null);
+  const toggleItalic = () => {
+    setIsItalic(!isItalic);
+  };
+  const toggleBold = () => {
+    setIsBold(!isBold);
+  };
+  const toggleUnderline = () => {
+    setIsUnderline(!isUnderline);
+  };
   const [selectedState, setSelectedState] = useState(null);
-  const [lgas, setLgas] = useState([]);
-  // const [isChecked, setIsChecked] = useState(false);
-
+  const [states, setStates] = useState([]);
   const handleStateChange = (e) => {
-    const state = statesAndLGAs.find(
+    const state = zonesAndStates.find(
       (item) => item.id === parseInt(e.target.value)
     );
     setSelectedState(state);
   };
   useEffect(() => {
     console.log(selectedState);
-    console.log(selectedState?.lgas);
-    setLgas(selectedState?.lgas);
+    console.log(selectedState?.states);
+    setStates(selectedState?.states);
   }, [selectedState]);
   const [form, setForm] = useState({
     email: " ",
@@ -66,137 +82,308 @@ export const Registration = () => {
       <ToastContainer />
       <form action="" onSubmit={handleSubmit}>
         {" "}
-        <div div className="members-form">
+        <div className="members-form sch-dit">
           {" "}
-          <center>
-            {" "}
-            <div className="login-div col-md-7 ">
-              <center>
-                <img
-                  className="img"
-                  src={Logo}
-                  alt="Scholar"
-                  width="198px"
-                  height="69px"
-                />
-                <h2>School Informations</h2>{" "}
-              </center>
-              <p className="col-md-">
+          <div className="login-div col-md-8 offset-md-2 ">
+            <center>
+              <img
+                className="img"
+                src={Logo}
+                alt="Scholar"
+                width="198px"
+                height="69px"
+              />
+              <h2>School Informations</h2>{" "}
+            </center>
+            <center>
+              {" "}
+              <p className="col-md-9">
                 Once you complete the registration of your school with NAPPS,
                 it’ll be added to our online directory. Additionally, you can
                 add more schools to your account after signing up, giving you
                 greater flexibility and management options.
               </p>
-              <Row className=" registration-detail">
-                <Col>
-                  <h6>School Name</h6>
-                  <input
-                    placeholder="Enter school name here"
-                    type="email"
-                    name="email"
-                    onChange={handleChange}
-                  />
-                </Col>{" "}
-                <Col>
-                  <h6>School Email</h6>
-                  <input
-                    placeholder="Enter address email here"
-                    type="email"
-                    name="email"
-                    onChange={handleChange}
-                  />
-                </Col>{" "}
-              </Row>
-              <Row className=" members-detail">
-                <Col>
-                  <h6>School Address</h6>
-                  <input
-                    placeholder="Enter school address here"
-                    type="text"
-                    name="address"
-                    onChange={handleChange}
-                  />
-                </Col>{" "}
-                <Col style={{ display: "grid" }}>
-                  <h6 style={{ textAlign: "left" }}>School Phone Number</h6>
-
-                  <PhoneInput
-                    defaultCountry="NG"
-                    value={value}
-                    onChange={setValue}
-                    placeholder="700 000 0000"
-                  />
-                </Col>
-              </Row>
-              <Row className=" members-detail">
-                <Col style={{ display: "grid" }}>
-                  <h6 style={{ textAlign: "left" }}>State</h6>
-
-                  <select onChange={handleStateChange}>
-                    <option value="" disabled selected>
-                      Select your state
-                    </option>
-                    {statesAndLGAs.map((state) => (
-                      <option key={state.id} value={state.id}>
-                        {state.name}
-                      </option>
-                    ))}
-                  </select>
-                </Col>
-                <Col style={{ display: "grid" }}>
-                  <h6 style={{ textAlign: "left" }}>LGA</h6>
-                  <select disabled={!selectedState}>
-                    <option value="" disabled selected>
-                      {selectedState ? "Select an LGA" : "Select State First"}
-                    </option>
-                    {lgas?.map((lga, index) => (
-                      <option key={index} value={lga}>
-                        {lga}
-                      </option>
-                    ))}
-                  </select>
-                </Col>
-              </Row>
-
-              <div className=" members-detail d-md-flex">
-                <div style={{ display: "grid" }} className="col-md-6">
-                  <h6 style={{ textAlign: "left" }}>Ward</h6>
-                  <select>
-                    <option>Nort-west</option>
-                    <option>South-East</option>
-                  </select>
-                </div>
-                <div
-                  style={{ display: "grid", visibility: "hidden" }}
-                  className="col-md-6"
-                />
+            </center>
+            <div className=" col-md-12 sch-form">
+              <div
+                className="sch-view-div3"
+                style={{ backgroundImage: "url(" + banner + ")" }}
+              >
+                <center>
+                  <div className="import-image col-md-2">
+                    <FileUpload
+                      align="display flex"
+                      defaultIcon={<LuImagePlus />}
+                      uploadable="Banner"
+                      colr="black"
+                      callBack={(img) => {
+                        setBanner(img);
+                      }}
+                    />
+                  </div>
+                </center>
               </div>
-
-              <Row>
-                <Col>
-                  <h6 style={{ textAlign: "left" }}>Education Level</h6>
-                  <select>
-                    <option>Early Years Foundation School</option>
-                    <option>Primary School</option>
-                    <option>Secondary School</option>
-                  </select>
-                </Col>
-                <Col>
-                  {" "}
-                  <h6 style={{ textAlign: "left" }}>School Type</h6>
-                  <select>
-                    <option>Day</option>
-                    <option>Boarding</option>
-                    <option>Both</option>
-                  </select>
-                </Col>
-              </Row>
-              <div className="col-md- flex-end">
-                {" "}
-                <button className="payment-button "> Continue</button>
+              <div className="sch-info2 d-flex">
+                <div
+                  className="sch-display"
+                  style={{ backgroundImage: "url(" + picture + ")" }}
+                >
+                  <center>
+                    {" "}
+                    <div className="import-image">
+                      {" "}
+                      <FileUpload
+                        defaultIcon={<FaUserEdit />}
+                        uploadable="Picture"
+                        colr="white"
+                        callBack={(img) => {
+                          setPicture(img);
+                        }}
+                      />
+                    </div>
+                  </center>
+                </div>
+                <div className="col-md-4">
+                  <input
+                    className="sch-input "
+                    type="text"
+                    placeholder="School Name"
+                  />
+                </div>
+              </div>
+              <div className="d-md-flex more-info" style={{ padding: "20px" }}>
+                <div className="col-md-6">
+                  <h5>About School</h5>
+                  <div className="d-flex">
+                    <div className="select-div">
+                      <select>
+                        <option>Normal text</option>
+                        <option>Other text options</option>
+                      </select>
+                    </div>
+                    <h6 onClick={toggleBold}>B</h6>
+                    <h6 className="dec" onClick={toggleUnderline}>
+                      U
+                    </h6>
+                    <h6 onClick={toggleItalic}>
+                      <em>I</em>
+                    </h6>
+                    <h6>
+                      <FaLink />
+                    </h6>
+                  </div>
+                  <textarea
+                    placeholder="About school"
+                    style={{
+                      fontStyle: isItalic ? "italic" : "normal",
+                      fontWeight: isBold ? "Bold" : "normal",
+                      textDecoration: isUnderline ? "underline" : "normal",
+                    }}
+                  ></textarea>
+                  <small>40 characters left</small>
+                  <h5>Vision</h5>
+                  <div className="d-flex">
+                    <div className="select-div">
+                      <select>
+                        <option>Normal text</option>
+                        <option>Other text options</option>
+                      </select>
+                    </div>
+                    <h6 onClick={toggleBold}>B</h6>
+                    <h6 className="dec" onClick={toggleUnderline}>
+                      U
+                    </h6>
+                    <h6 onClick={toggleItalic}>
+                      <em>I</em>
+                    </h6>{" "}
+                    <h6>
+                      <FaLink />
+                    </h6>
+                  </div>
+                  <textarea
+                    placeholder="Brief vision statement"
+                    style={{
+                      fontStyle: isItalic ? "italic" : "normal",
+                      fontWeight: isBold ? "Bold" : "normal",
+                      textDecoration: isUnderline ? "underline" : "normal",
+                    }}
+                  ></textarea>
+                  <small>40 characters left</small> <h5>Mission</h5>
+                  <div className="d-flex">
+                    <div className="select-div">
+                      <select>
+                        <option>Normal text</option>
+                        <option>Other text options</option>
+                      </select>
+                    </div>
+                    <h6 onClick={toggleBold}>B</h6>
+                    <h6 className="dec" onClick={toggleUnderline}>
+                      U
+                    </h6>
+                    <h6 onClick={toggleItalic}>
+                      <em>I</em>
+                    </h6>{" "}
+                    <h6>
+                      <FaLink />
+                    </h6>
+                  </div>
+                  <textarea
+                    placeholder="Brief mission statement"
+                    style={{
+                      fontStyle: isItalic ? "italic" : "normal",
+                      fontWeight: isBold ? "Bold" : "normal",
+                      textDecoration: isUnderline ? "underline" : "normal",
+                    }}
+                  ></textarea>
+                  <small>40 characters left</small>
+                </div>
+                <div className="contact-holder col-md-5  offset-md-1">
+                  <div className="">
+                    <h5>Contact Information</h5>
+                    <div className="d-flex">
+                      <div
+                        className="contact-frame2 col-md- mt3"
+                        style={{ backgroundImage: "url(" + contact + ")" }}
+                      >
+                        {" "}
+                        <center>
+                          {" "}
+                          <div className="import-contact">
+                            {" "}
+                            <FileUpload
+                              defaultIcon={<FaUserEdit />}
+                              uploadable="Picture"
+                              colr="white"
+                              callBack={(img) => {
+                                setContact(img);
+                              }}
+                            />
+                          </div>
+                        </center>
+                      </div>
+                      <div className="col-md-8" style={{ marginLeft: "20px" }}>
+                        <h2>School Phone</h2>
+                        <input
+                          className="sch-input "
+                          type="text"
+                          placeholder="+2347032861442"
+                          value={founder?.phone}
+                        />{" "}
+                        <h2>School Email</h2>
+                        <input
+                          className="sch-input "
+                          type="text"
+                          placeholder="britishspringcollege@gmail.com"
+                          value={founder?.email}
+                        />{" "}
+                        <h2>School Website</h2>
+                        <input
+                          className="sch-input "
+                          type="text"
+                          placeholder="britishspringcollege@gmail.com"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-">
+                    <h2>Address 1</h2>
+                    <input
+                      className="sch-input "
+                      type="text"
+                      placeholder="1, British Spring Estate Road, Nkwelle Awka, Anambra State"
+                    />
+                  </div>
+                  <div className="col-md-">
+                    <h2>Address 2</h2>
+                    <input
+                      className="sch-input "
+                      type="text"
+                      placeholder="SpringField Academy, 30 NewnNkisi Road, GRA Onitsha, Anambra State"
+                    />
+                  </div>{" "}
+                  <div className="row row-cols-2 row-cols-lg-2 g-2 g-lg-3">
+                    <div className="col">
+                      <h2>Education type</h2>
+                      <div className="select-div ">
+                        <select>
+                          <option>Day</option>
+                          <option>Boarding</option>
+                          <option>Both</option>
+                        </select>
+                      </div>
+                    </div>{" "}
+                    <div className="col">
+                      <h2>Education level</h2>
+                      <div className="select-div ">
+                        <select>
+                          <option>Secondary</option>
+                          <option>Primary</option>
+                          <option>EYFS</option>
+                        </select>
+                      </div>
+                    </div>{" "}
+                    <div className="col">
+                      <h2>Zone</h2>
+                      <div className="select-div ">
+                        <select onChange={handleStateChange}>
+                          <option value="" disabled selected>
+                            Select your zone
+                          </option>
+                          {zonesAndStates.map((state) => (
+                            <option key={state.id} value={state.id}>
+                              {state.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>{" "}
+                    <div className="col">
+                      <h2>State</h2>
+                      <div className="select-div ">
+                        <select disabled={!selectedState}>
+                          <option value="" disabled selected>
+                            {selectedState
+                              ? "Select state"
+                              : "Select zone First"}
+                          </option>
+                          {states?.map((state, index) => (
+                            <option key={index} value={state}>
+                              {state}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>{" "}
+                    <div className="col">
+                      <h2>LGA</h2>
+                      <div className="select-div ">
+                        <select>
+                          <option>Ward 1</option>
+                          <option>Ward 2</option>
+                          <option>Ward 3</option>
+                        </select>
+                      </div>
+                    </div>{" "}
+                    <div className="col">
+                      <h2>Ward</h2>
+                      <div className="select-div ">
+                        <select>
+                          <option>Ward 1</option>
+                          <option>Ward 2</option>
+                          <option>Ward 3</option>
+                        </select>
+                      </div>
+                    </div>{" "}
+                  </div>
+                </div>
               </div>
             </div>
-          </center>
+
+            <div className="col-md- flex-end">
+              {" "}
+              <button className="payment-button "> Continue</button>
+            </div>
+          </div>
         </div>
       </form>
     </>

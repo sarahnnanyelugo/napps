@@ -14,8 +14,9 @@ import WOW from "wowjs";
 import { RiBankFill } from "react-icons/ri";
 import { SlPeople } from "react-icons/sl";
 import Percentile from "./Percentile";
-import { IoMdAdd } from "react-icons/io";
+
 import { Link } from "react-router-dom";
+import AddCoordinators from "./AddCoordinators";
 
 export const Cordinators = () => {
   const [category, setCategory] = useState("*");
@@ -185,19 +186,13 @@ export const Cordinators = () => {
                 </NavDropdown>
               </div>
             </div>
-            <div className="offset-md-4 ">
+            <div className="offset-md-3 ">
               <button className="exp-btn" style={{ flexGrow: 1 }}>
                 {" "}
                 <img src={Icon3} height="20px" width="20px" />
                 Export
               </button>
-              <Link to={"/add-sch"}>
-                {" "}
-                <button className="add-sch-btn2">
-                  <IoMdAdd />
-                  Add School
-                </button>
-              </Link>
+              <AddCoordinators />
             </div>
           </div>{" "}
           <div className="panels">
