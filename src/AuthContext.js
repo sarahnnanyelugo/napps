@@ -1,38 +1,58 @@
 // AuthContext.js
 import React, { createContext, useEffect, useState } from "react";
-import api from "./utility/api";
+import api, { setAuthToken } from "./utility/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { setLocalStorage, getLocalStorage } from "./utility/localStorage";
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     // Initialize state from localStorage
-    const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
-    return savedIsLoggedIn ? JSON.parse(savedIsLoggedIn) : false;
+    const savedIsLoggedIn = getLocalStorage('isLoggedIn');
+    return savedIsLoggedIn || false;
   });
+  const [authToken, setAuthTokenState] = useState(() => {
+    return getLocalStorage('authToken') || '';
+  });
+    const [userState, setAuthUserState] = useState(() => {
+    return getLocalStorage('user') || {};
+  });
+
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     // Save state to localStorage whenever it changes
-    localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
-  }, [isLoggedIn]);
+    setLocalStorage('isLoggedIn', isLoggedIn);
+    setLocalStorage('authToken', authToken);
+    setAuthToken(authToken);
+    setLocalStorage('user',userState);
+}, [isLoggedIn,authToken,userState]);
 
 
   const login = async (credentials) => {
+
     try {
-      const response = await api.post('/login', credentials); // Replace with your login endpoint
+      const response = await api.post(apiUrl + '/login', credentials); // Replace with your login endpoint
       setIsLoggedIn(true);
+      setAuthTokenState(response.data.token);
+      setAuthUserState(response.data.user);
       console.log('Login data:', response.data);
-    } catch (error) {
-      console.error('Login error:', error);
+    } catch (resp) {
+
+      console.error('Login error:', resp.data?.error || resp.message);
     }
   };
 
   const logout = async () => {
     try {
-      // Replace with your actual logout API call
-      await logoutApi();
+      await api.post(apiUrl +'/logout'); // Replace with your logout endpoint
       setIsLoggedIn(false);
+      setAuthTokenState(''); // Clear the token
+      setAuthUserState({})
     } catch (error) {
-      console.error("Logout failed", error);
+      console.error('Logout error:', error);
     }
   };
 
@@ -44,22 +64,3 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => React.useContext(AuthContext);
-
-// Fake API calls for demonstration
-const loginApi = async (credentials) => {
-  // Simulate API call
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ success: true });
-    }, 1000);
-  });
-};
-
-const logoutApi = async () => {
-  // Simulate API call
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ success: true });
-    }, 1000);
-  });
-};

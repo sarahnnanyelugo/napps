@@ -8,6 +8,7 @@ export const Password = (props) => {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    props.onChange&&props.onChange(e)
   };
 
   const toggleShowPassword = () => {
@@ -18,7 +19,7 @@ export const Password = (props) => {
     <div className="password-input formpassword ">
       <input
         type={showPassword ? "text" : "password"}
-        name="name"
+        name={props.name}
         autocomplete="new-password"
         value={password}
         onChange={handlePasswordChange}
@@ -27,7 +28,7 @@ export const Password = (props) => {
       <label for="text" class="label-name">
         <span class="content-name">{props.placeholder}</span>
       </label>
-      <span onClick={toggleShowPassword}>
+      <span onClick={toggleShowPassword} style={{ paddingRight:"10px" }}>
         {showPassword ? (
           <img className="" src={EyeClose} alt="Scholar" width="5%" />
         ) : (

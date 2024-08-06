@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
@@ -8,39 +8,97 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ApiContext } from "../../ApiContext";
+import api from "../../utility/api";
+import { setLocalStorage } from "../../utility/localStorage";
+import "bootstrap/dist/css/bootstrap.css";
+import Spinner from "react-bootstrap/Spinner";
 
 export const MembersDetail = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [value, setValue] = useState();
-
+  const [ld, setLd] = useState(false);
+  const [role, setRole] = useState([]);
+  const { data, loading, error, fetchData, postData } = useContext(ApiContext);
   const [form, setForm] = useState({
     email: " ",
     password: " ",
+    fname: " ",
+    lname: " ",
+    title: " ",
+    phone: " ",
+    password_confirmation: " ",
   });
+  useEffect(() => {
+    setForm({ ...form, ["roles"]: [role?.id] });
+  }, [role]);
+
+  const initRoles = async () => {
+    setLd(true);
+    try {
+      const response = await api.get(apiUrl + "/register");
+      setRole(response.data);
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLd(false);
+    }
+  };
+  useEffect(() => {
+    initRoles();
+  }, []);
 
   function handleChange(e) {
-    console.log(e.target.name, e.target.value);
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
-    console.log(form);
   }
+  useEffect(() => {
+    setForm({ ...form, ["phone"]: value });
+  }, [value]);
+  useEffect(() => {
+    console.log(form);
+    setForm({
+      ...form,
+      ["name"]: form.title + " " + form.fname + " " + form.lname,
+    });
+  }, [form.title, form.fname, form.lname]);
+
+  useEffect(() => {
+    if (!data) return;
+    toast.success("Thanks for Signing Up!");
+    setSchoolRegistrationProforma();
+    setInterval(() => {
+      window.location = "/registration";
+    }, 1000);
+  }, [data]);
+  async function registerProprietor() {
+    try {
+      await postData("/register", form);
+    } catch (errorResponse) {
+      console.error("Error creating proprietor profile:", errorResponse);
+    }
+  }
+
+  function setSchoolRegistrationProforma() {
+    setLocalStorage("user", data.user);
+    setLocalStorage("authToken", data.token);
+    setLocalStorage("isLoggedIn", true);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!form?.email) {
       toast.error("email is required");
     } else if (!regex.test(form?.email)) {
-      toast.error("This is not a valid email");
+      toast.error("Please provide a valid email");
     } else {
-      toast.success("You have successfully created your personal account");
-      setInterval(() => {
-        // window.location = "dashboard-layout/admin-dashboard";
-        window.location = "/registration";
-      }, 1000);
+      console.log(form);
+      registerProprietor();
     }
-    sessionStorage.setItem("user", JSON.stringify(form));
   }
   return (
     <>
@@ -49,13 +107,15 @@ export const MembersDetail = () => {
         {" "}
         <div className="login-div col-md-8 offset-md-2">
           <center>
-            <img
-              className="img"
-              src={Logo}
-              alt="Scholar"
-              width="198px"
-              height="69px"
-            />
+            <Link to={"/"}>
+              <img
+                className="img"
+                src={Logo}
+                alt="Scholar"
+                width="198px"
+                height="69px"
+              />
+            </Link>
             <h2>Member Details (School Owners)</h2>{" "}
           </center>
           <p className="col-md-">
@@ -75,15 +135,27 @@ export const MembersDetail = () => {
           <Row className=" members-detail">
             <Col>
               <h6>Title</h6>
-              <input placeholder="Mr, Mrs, Miss… etc." />
+              <input
+                onChange={handleChange}
+                name="title"
+                placeholder="Mr, Mrs, Miss… etc."
+              />
             </Col>{" "}
             <Col>
               <h6>First Name</h6>
-              <input placeholder="Enter first name here" />
+              <input
+                name="fname"
+                onChange={handleChange}
+                placeholder="Enter first name here"
+              />
             </Col>{" "}
             <Col>
               <h6>Last Name</h6>
-              <input placeholder="Enter last name here" />
+              <input
+                name="lname"
+                onChange={handleChange}
+                placeholder="Enter last name here"
+              />
             </Col>
           </Row>
           <Row className=" members-detail">
@@ -119,14 +191,17 @@ export const MembersDetail = () => {
               <h6>Confirm Password</h6>
               <Password
                 onChange={handleChange}
-                name="password"
+                name="password_confirmation"
                 type="password"
               />
             </Col>
           </Row>
           <div className="col-md- flex-end">
             {" "}
-            <button className="payment-button "> Continue</button>
+            <button className="payment-button ">
+              {loading && <Spinner animation="border" variant="light" />}{" "}
+              Proceed{" "}
+            </button>
           </div>
         </div>
       </form>
