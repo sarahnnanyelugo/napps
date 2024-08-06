@@ -9,6 +9,7 @@ import { SchoolManagement } from "../SchoolManagement/SchoolManagement";
 import { SchShowcase } from "../SchoolManagement/SchShowcase";
 import { Subscription } from "../Subscription/Subscription";
 import { ShowSubs } from "../Subscription/ShowSubs";
+import { Proprietors } from "../Proprietors/Proprietors";
 
 export default function DashboardLayout() {
   return (
@@ -24,6 +25,7 @@ export default function DashboardLayout() {
             <Route path="/my-schools" element={<MySchools />} />
             <Route path="/Subscription" element={<Subscription />} />
             <Route path="/cordinators" element={<Cordinators />} />
+            <Route path="/ proprietors" element={<Proprietors />} />
             <Route
               path="/displayed-school/:blog_id"
               element={<DisplayedSchool />}

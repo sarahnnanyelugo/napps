@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import CountUp from "react-countup";
-import Icon1 from "../../assets/images/user1.svg";
-import Icon2 from "../../assets/images/user2.svg";
+
 import Icon3 from "../../assets/images/exp.svg";
 import "./school-management.scss";
-import SchoolsTable from "../../components/SchoolsTable/SchoolsTable";
+
 import { schools } from "../../Data/schoolsData";
-import CordinatorsTable from "./CordinatorsTable";
+import CordinatorsTable from "./ProprietorsTable";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
 import { RiBankFill } from "react-icons/ri";
 import { SlPeople } from "react-icons/sl";
-import Percentile from "./Percentile";
 
 import { Link } from "react-router-dom";
 import AddCoordinators from "./AddCoordinators";
 
-export const Cordinators = () => {
+export const Proprietors = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState(schools);
   function setCat(cat) {
@@ -54,7 +52,7 @@ export const Cordinators = () => {
     activeIndex === index ? className : "";
   return (
     <>
-      <DashboardTop title="Coordinators" />
+      <DashboardTop title="Proprietors" />
       <div className="Admin-dashboard">
         <div className=" row row-cols-2 row-cols-lg-2 g-2 g-lg-4 mt">
           <div className="col">
@@ -62,7 +60,7 @@ export const Cordinators = () => {
               <div style={{ flexGrow: 1 }}>
                 {" "}
                 <SlPeople />
-                <p>Number of Coordinators</p>
+                <p>Number of Proprietors</p>
               </div>
               <h1 className="stats">
                 {" "}
@@ -83,7 +81,7 @@ export const Cordinators = () => {
               <div style={{ flexGrow: 1 }}>
                 {" "}
                 <RiBankFill />
-                <p>Bank Accounts</p>
+                <p>Number of Schools</p>
               </div>
               <h1 className="stats">
                 {" "}
@@ -102,26 +100,6 @@ export const Cordinators = () => {
         </div>{" "}
         <div className="business-pricing-tab ">
           {" "}
-          <div className="tabs filtering-btns2">
-            <button
-              className={`tab btn-1 ${checkActive2(1, "active2")}`}
-              onClick={() => handleClick2(1)}
-            >
-              User Accounts
-            </button>
-            <button
-              className={`tab btn-2 ${checkActive2(2, "active2")}`}
-              onClick={() => handleClick2(2)}
-            >
-              Bank Accounts
-            </button>
-            <button
-              className={`tab btn-4 ${checkActive2(3, "active2")}`}
-              onClick={() => handleClick2(3)}
-            >
-              Percentile
-            </button>
-          </div>
           <div className="ssearch-div d-md-flex">
             <div className="col-md-3">
               <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
@@ -195,17 +173,7 @@ export const Cordinators = () => {
               <AddCoordinators />
             </div>
           </div>{" "}
-          <div className="panels">
-            <div className={`panel ${checkActive(1, "active2")}`}>
-              <CordinatorsTable data={filteredSchools} />
-            </div>{" "}
-            <div className={`panel ${checkActive(2, "active2")}`}>
-              <SchoolsTable data={schools} />
-            </div>
-            <div className={`panel ${checkActive(3, "active2")}`}>
-              <Percentile data={filteredSchools} />
-            </div>
-          </div>
+          <CordinatorsTable data={filteredSchools} />
         </div>
       </div>
     </>
