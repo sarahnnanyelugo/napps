@@ -7,6 +7,8 @@ import ProfileAvater from "../../assets/images/edit-profile.png";
 import Icon from "../../assets/images/file-upload.png";
 import { FaUserEdit } from "react-icons/fa";
 import { LuImagePlus } from "react-icons/lu";
+import { CiMenuKebab } from "react-icons/ci";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export const SchoolBio = ({ blog_id }) => {
   const [data, setData] = useState({});
@@ -87,6 +89,7 @@ export const SchoolBio = ({ blog_id }) => {
             </p>
           </div>
           <div className="d-flex ">
+            {" "}
             <Link
               // to={"/dashboard-layout/displayed-school/" + data.id}
               state={{ blog_id: blogId }}
@@ -94,12 +97,16 @@ export const SchoolBio = ({ blog_id }) => {
               {" "}
               <button clasName="cancel-btn">Edit School</button>
             </Link>
+            <Dropdown>
+              <Dropdown.Toggle className="more-btn">
+                <CiMenuKebab style={{ fontSize: "25px" }} />
+              </Dropdown.Toggle>
 
-            <button clasName="cancel-btn" style={{ marginLeft: "10px" }}>
-              Decline
-            </button>
-
-            <button className="save-btn">Approve</button>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1"> Decline</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Approve</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
         <div className="d-md-flex more-info">
