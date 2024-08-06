@@ -126,7 +126,7 @@ export const MembersDetail = () => {
           </Row>
           <div className="col-md- flex-end">
             {" "}
-            <button className="payment-button "> Proceed to Payment</button>
+            <button className="payment-button "> Continue</button>
           </div>
         </div>
       </form>

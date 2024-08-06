@@ -47,10 +47,6 @@ export const Registration = (props) => {
     console.log(selectedState?.states);
     setStates(selectedState?.states);
   }, [selectedState]);
-  const [form, setForm] = useState({
-    email: " ",
-    password: " ",
-  });
   function handleChange(e) {
     console.log(e.target.name, e.target.value);
     setForm({
@@ -59,6 +55,11 @@ export const Registration = (props) => {
     });
     console.log(form);
   }
+  const [form, setForm] = useState({
+    email: " ",
+    password: " ",
+  });
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -68,9 +69,10 @@ export const Registration = (props) => {
     } else if (!regex.test(form?.email)) {
       toast.error("This is not a valid email");
     } else {
-      toast.success("You have successfully signed in");
+      toast.success("Proceeding to payment");
       setInterval(() => {
-        window.location = "dashboard-layout/admin-dashboard";
+        // window.location = "dashboard-layout/admin-dashboard";
+        window.location = "/payment";
       }, 1000);
     }
     sessionStorage.setItem("user", JSON.stringify(form));
@@ -267,15 +269,14 @@ export const Registration = (props) => {
                           className="sch-input "
                           type="text"
                           placeholder="+2347032861442"
-                          value={founder?.phone}
                         />{" "}
                         <h2>School Email</h2>
                         <input
-                          className="sch-input "
-                          type="text"
-                          placeholder="britishspringcollege@gmail.com"
-                          value={founder?.email}
-                        />{" "}
+                          placeholder="olasunkanmifinesse@gmail.com"
+                          type="email"
+                          name="email"
+                          onChange={handleChange}
+                        />
                         <h2>School Website</h2>
                         <input
                           className="sch-input "
@@ -381,7 +382,7 @@ export const Registration = (props) => {
 
             <div className="col-md- flex-end">
               {" "}
-              <button className="payment-button "> Continue</button>
+              <button className="payment-button "> Proceed to Payment</button>
             </div>
           </div>
         </div>
