@@ -360,3 +360,33 @@
     margin-top: 40px;
   }
 }
+.more-btn {
+  background: #fff;
+  margin-left: 15px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e4e7ec;
+  border-radius: 6px;
+  padding: 0 !important;
+  &:hover {
+    background: #e7e7e7;
+    color: #000;
+    border: solid 1px #e7e7e7;
+  }
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  background: #e7e7e7 !important;
+  color: #000;
+  border: solid 1px #e7e7e7 !important;
+}
+.dropdown-menu {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000000d;
+  border: 1px solid #e7e7e7 !important;
+}

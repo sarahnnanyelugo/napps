@@ -29,7 +29,7 @@
   background: #027a48 !important;
   font-size: 14px;
   font-family: montSB;
-  margin-top: 40px;
+  margin-top: 0px;
   border-radius: 7px;
   color: #fff;
   padding: 15px 40px;
@@ -88,5 +88,72 @@ h6 {
     &:hover {
       background: #e7e7e740;
     }
+  }
+  .sch-view-div3 {
+    height: 152px;
+    background: #e4e7ec;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    background-position: center;
+    padding-top: 50px;
+    .import-image {
+      display: none;
+      font-size: 12px;
+      width: 100%;
+    }
+    &:hover {
+      background: #19191926;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      .import-image {
+        display: block;
+      }
+    }
+  }
+}
+.sch-dit {
+  input {
+    width: 100% !important;
+  }
+  ::placeholder {
+    font-size: 10px;
+  }
+  p {
+    text-align: left !important;
+  }
+  textarea {
+    min-height: 166px;
+    border: solid 1px #e4e7ec;
+    width: 100%;
+    font-family: montR;
+    padding: 20px;
+    &:hover {
+      background: #fafafa;
+    }
+  }
+  .sch-input {
+    padding: 7px 20px;
+    border: solid 1px #e4e7ec;
+    color: rgb(218, 215, 215);
+    border-radius: 6px;
+    font-family: montR;
+    width: 100%;
+    font-size: 14px;
+    &:hover {
+      background: #fafafa;
+    }
+  }
+  .select-div {
+    height: 35px;
+    padding: 0 3px;
+  }
+  select {
+    padding: 0 !important;
+    border: none !important;
+    margin-left: -2px;
+    width: 100% !important;
   }
 }

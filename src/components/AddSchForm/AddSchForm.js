@@ -4,10 +4,11 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import Icon from "../../assets/images/file-upload.png";
 import { FaUserEdit } from "react-icons/fa";
 import { LuImagePlus } from "react-icons/lu";
+import { FaLink } from "react-icons/fa6";
 import "./add-sch-form.scss";
 import { founders, schools } from "../../Data/schoolsData";
 import { FileUpload } from "../FileUpload/FileUpload";
-import { FaLink } from "react-icons/fa6";
+
 import { ZonesAndStates } from "../../Data/Zones";
 export const AddSchForm = (props) => {
   const { founder_id } = props;
