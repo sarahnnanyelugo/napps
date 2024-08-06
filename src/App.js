@@ -15,6 +15,7 @@ import MySchoolLayout from "./pages/MySchoolLayout/MySchoolLayout";
 import { AddSch } from "./pages/AddSch/AddSch";
 import ZoneLayout from "./pages/ZoneLayout/ZoneLayout";
 import LGALayout from "./pages/LGALayout/LGALayout";
+import DashboardSelector from "./components/DashboardSelector/DashboardSelector";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />{" "}
         <Route path="login" element={<Login />} />{" "}
+        <Route path="dashboard-selector" element={<DashboardSelector/>} />
         <Route path="Add-sch" element={<AddSch />} />{" "}
         <Route path="members-detail" element={<MembersDetail />} />{" "}
         <Route path="registration" element={<Registration />} />{" "}
@@ -32,6 +34,7 @@ function App() {
         <Route path="my-school-layout/*" element={<MySchoolLayout />} />{" "}
         <Route path="zone-layout/*" element={<ZoneLayout />} />{" "}
         <Route path="lga-layout/*" element={<LGALayout />} />{" "}
+        <Route path="state-layout/*" element={<LGALayout />} />{" "}
         {/* <Route path="displayed-school/:blog_id" element={<DisplayedSchool />} />{" "} */}
       </Routes>
     </>

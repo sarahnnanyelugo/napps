@@ -26,8 +26,18 @@ export const Login = () => {
       ...form,
       [e.target.name]: e.target.value,
     });
-    console.log(form);
+    
   }
+  useEffect(() => {console.log(form);},[form]);
+  useEffect(() => {
+    if(isLoggedIn){
+      toast.success("You successfully logged in");
+      setInterval(() => {
+        window.location = "dashboard-selector";
+        // window.location = "dashboard-layout/admin-dashboard";
+      }, 1000);
+    }
+  },[isLoggedIn]);
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -38,22 +48,10 @@ export const Login = () => {
       toast.error("This is not a valid email");
     } else {
       handleLogin()
-      toast.success("You have successfully logged into your account");
-      setInterval(() => {
-        window.location = "dashboard-layout/admin-dashboard";
-      }, 1000);
     }
-    sessionStorage.setItem("user", JSON.stringify(form));
+    // sessionStorage.setItem("user", JSON.stringify(form));
   }
 
-  useEffect(() => {
-    if(isLoggedIn){
-      toast.success("You are already logged in");
-      setInterval(() => {
-        window.location = "dashboard-layout/admin-dashboard";
-      }, 1000);
-    }
-  },[])
     return (
     <>
       <ToastContainer />
@@ -62,13 +60,13 @@ export const Login = () => {
           {" "}
           <div className="login-div col-md-8">
             <center>
-              <img
+            <Link to={"/"}><img
                 className="img"
                 src={Logo}
                 alt="Scholar"
                 width="198px"
                 height="69px"
-              />
+              /></Link>
               <h2>Welcome to NAPPS</h2>
               <p className="col-md-7">
                 Lets connect you with the best of parents and students And make
