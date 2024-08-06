@@ -1,20 +1,28 @@
 // AuthContext.js
-import React, { createContext, useState } from "react";
-
+import React, { createContext, useEffect, useState } from "react";
+import api from "./utility/api";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    // Initialize state from localStorage
+    const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    return savedIsLoggedIn ? JSON.parse(savedIsLoggedIn) : false;
+  });
+
+  useEffect(() => {
+    // Save state to localStorage whenever it changes
+    localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
+  }, [isLoggedIn]);
+
 
   const login = async (credentials) => {
     try {
-      // Replace with your actual login API call
-      const response = await loginApi(credentials);
-      if (response.success) {
-        setIsLoggedIn(true);
-      }
+      const response = await api.post('/login', credentials); // Replace with your login endpoint
+      setIsLoggedIn(true);
+      console.log('Login data:', response.data);
     } catch (error) {
-      console.error("Login failed", error);
+      console.error('Login error:', error);
     }
   };
 

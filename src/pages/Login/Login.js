@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.scss";
 import Logo from "../../assets/images/logo.png";
 
@@ -8,14 +8,19 @@ import { MembersDetail } from "../MembersDetail/MembersDetail";
 import { Password } from "../../components/Password/Password";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../../AuthContext";
 export const Login = () => {
   const [value, setValue] = useState();
+  const { login, isLoggedIn} = useAuth();
 
   const [form, setForm] = useState({
     email: " ",
     password: " ",
   });
-  function handleChange(e) {
+   const handleLogin = () => {
+    login(form);
+  };
+   function handleChange(e) {
     console.log(e.target.name, e.target.value);
     setForm({
       ...form,
@@ -32,15 +37,24 @@ export const Login = () => {
     } else if (!regex.test(form?.email)) {
       toast.error("This is not a valid email");
     } else {
+      handleLogin()
       toast.success("You have successfully logged into your account");
       setInterval(() => {
-        // window.location = "dashboard-layout/admin-dashboard";
         window.location = "dashboard-layout/admin-dashboard";
       }, 1000);
     }
     sessionStorage.setItem("user", JSON.stringify(form));
   }
-  return (
+
+  useEffect(() => {
+    if(isLoggedIn){
+      toast.success("You are already logged in");
+      setInterval(() => {
+        window.location = "dashboard-layout/admin-dashboard";
+      }, 1000);
+    }
+  },[])
+    return (
     <>
       <ToastContainer />
       <form action="" onSubmit={handleSubmit}>
