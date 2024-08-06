@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import { Password } from "../../components/Password/Password";
-import { zonesAndStates } from "../../Data/States";
+// import { zonesAndStates } from "../../Data/States";
 
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
@@ -15,6 +15,9 @@ import "./registration.scss";
 import { FileUpload } from "../../components/FileUpload/FileUpload";
 import { LuImagePlus } from "react-icons/lu";
 import { FaLink } from "react-icons/fa6";
+import { ApiContext } from "../../ApiContext";
+import { getLocalStorage } from "../../utility/localStorage";
+
 export const Registration = (props) => {
   const [value, setValue] = useState();
   const { founder_id } = props;
@@ -25,6 +28,9 @@ export const Registration = (props) => {
   const [banner, setBanner] = useState(null);
   const [picture, setPicture] = useState(null);
   const [contact, setContact] = useState(null);
+  const [zonesAndStates, setZonesAndStates] = useState([]);
+  const { data, loading, error, fetchData, postData } = useContext(ApiContext);
+
   const toggleItalic = () => {
     setIsItalic(!isItalic);
   };
@@ -34,25 +40,116 @@ export const Registration = (props) => {
   const toggleUnderline = () => {
     setIsUnderline(!isUnderline);
   };
+  const [selectedZone, setSelectedZone] = useState(null);
   const [selectedState, setSelectedState] = useState(null);
+  const [selectedLga, setSelectedLga] = useState(null);
+  const [selectedWard, setSelectedWard] = useState(null);
+  const [lgas, setLgas] = useState(null);
+  const [wards, setWards] = useState(null);
+  const [user, setUser] =useState(() => {
+    return getLocalStorage('user') || {};
+  });
+  const [authToken, setAuthTokenState] = useState(() => {
+    return getLocalStorage('authToken') || '';
+  });
   const [states, setStates] = useState([]);
-  const handleStateChange = (e) => {
-    const state = zonesAndStates.find(
+  const handleZoneChange = (e) => {
+    const zone = zonesAndStates.find(
+      (item) => item.id === parseInt(e.target.value)
+    );
+    setSelectedZone(zone);
+  };
+    const handleStateChange = (e) => {
+    const state = states.find(
       (item) => item.id === parseInt(e.target.value)
     );
     setSelectedState(state);
   };
+  
+  const handleLGAChange = (e) => {
+    const lga = lgas.find(
+      (item) => item.id === parseInt(e.target.value)
+    );
+    setSelectedLga(lga);
+  };
+  
+  const handleWardChange = (e) => {
+    const ward = wards.find(
+      (item) => item.id === parseInt(e.target.value)
+    );
+    setSelectedWard(ward);
+  };
+
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const options = ["Secondary", "Primary", "EYFS"];
+
+  async function fetchZonesAndStates(){
+    try {
+      await fetchData("/schools/create");
+    } catch (errorResponse) {
+      console.error('Error creating proprietor profile:', errorResponse);
+    }
+  }
+  useEffect(()=>{fetchZonesAndStates()},[])
+  useEffect(() =>{
+    if(!data)return;
+    setZonesAndStates(data);
+  },[data])
+
+  const handleCheckboxChange = (option) => {
+    setSelectedOptions((prevSelected) =>
+      prevSelected.includes(option)
+        ? prevSelected.filter((item) => item !== option)
+        : [...prevSelected, option]
+    );
+  };
   useEffect(() => {
-    console.log(selectedState);
-    console.log(selectedState?.states);
-    setStates(selectedState?.states);
+    // console.log(selectedZone);
+    // console.log(selectedZone?.states);
+    setForm({
+      ...form,
+      ['zone_id']: selectedZone?.id,
+    });
+    setStates(selectedZone?.states);
+  }, [selectedZone]);
+  
+  useEffect(() => {
+    // console.log(selectedZone);
+    // console.log(selectedZone?.states);
+    setForm({
+      ...form,
+      ['state_id']: selectedState?.id,
+    });
+    setLgas(selectedState?.lgas);
   }, [selectedState]);
+
+ useEffect(() => {
+    // console.log(selectedZone);
+    // console.log(selectedZone?.states);
+    
+    setForm({
+      ...form,
+      ['lga_id']: selectedLga?.id
+    });
+ setWards(selectedLga?.wards);
+ }, [selectedLga]);
+
+ useEffect(() => {   
+    setForm({
+      ...form,
+      ['ward_id']: selectedWard?.id
+    });
+ }, [selectedWard]);
+
+
   const [form, setForm] = useState({
-    email: " ",
-    password: " ",
+    user_id: user?.id||0, zone_id: 0, state_id: 0, lga_id: 0, ward_id: 0,
+    name: "", address: "", address2: "", contact_name: "",
+    contact_phone: "", contact_email: "", website: "", about: "",
+    vision: "", mission: "", logo: "", banner: "",
   });
   function handleChange(e) {
-    console.log(e.target.name, e.target.value);
+    // console.log(e.target.name, e.target.value);
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -62,18 +159,20 @@ export const Registration = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!form?.email) {
-      toast.error("email is required");
-    } else if (!regex.test(form?.email)) {
-      toast.error("This is not a valid email");
-    } else {
-      toast.success("You have successfully signed in");
-      setInterval(() => {
-        window.location = "dashboard-layout/admin-dashboard";
-      }, 1000);
-    }
-    sessionStorage.setItem("user", JSON.stringify(form));
+    // const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    // if (!form?.contact_email) {
+    //   toast.error("email is required");
+    // } else if (!regex.test(form?.contact_email)) {
+    //   toast.error("This is not a valid email");
+    // } else if (!form?.name) {
+    //   toast.error("School name is required");
+    // } else {
+      console.log(form);
+      // toast.success("You have successfully signed in");
+      // setInterval(() => {
+      //   window.location = "dashboard-layout/admin-dashboard";
+      // }, 1000);
+    // }
   }
 
   return (
@@ -93,7 +192,7 @@ export const Registration = (props) => {
                 width="198px"
                 height="69px"
               />
-              <h2>School Informations</h2>{" "}
+              <h2>School Information</h2>{" "}
             </center>
             <center>
               {" "}
@@ -147,6 +246,7 @@ export const Registration = (props) => {
                   <input
                     className="sch-input "
                     type="text"
+                    name="name"
                     placeholder="School Name"
                   />
                 </div>
@@ -174,6 +274,8 @@ export const Registration = (props) => {
                   </div>
                   <textarea
                     placeholder="About school"
+                    name="about"
+                    onChange={handleChange}
                     style={{
                       fontStyle: isItalic ? "italic" : "normal",
                       fontWeight: isBold ? "Bold" : "normal",
@@ -202,6 +304,8 @@ export const Registration = (props) => {
                   </div>
                   <textarea
                     placeholder="Brief vision statement"
+                    name="vision"
+                    onChange={handleChange}
                     style={{
                       fontStyle: isItalic ? "italic" : "normal",
                       fontWeight: isBold ? "Bold" : "normal",
@@ -229,6 +333,8 @@ export const Registration = (props) => {
                   </div>
                   <textarea
                     placeholder="Brief mission statement"
+                    name="mission"
+                    onChange={handleChange}
                     style={{
                       fontStyle: isItalic ? "italic" : "normal",
                       fontWeight: isBold ? "Bold" : "normal",
@@ -266,21 +372,27 @@ export const Registration = (props) => {
                         <input
                           className="sch-input "
                           type="text"
+                          name="contact_phone"
+                          onChange={handleChange}
                           placeholder="+2347032861442"
-                          value={founder?.phone}
+                          value={user?.phone}
                         />{" "}
                         <h2>School Email</h2>
                         <input
                           className="sch-input "
-                          type="text"
+                          type="email"
+                          name="contact_email"
+                          onChange={handleChange}
                           placeholder="britishspringcollege@gmail.com"
-                          value={founder?.email}
+                          value={user?.email}
                         />{" "}
                         <h2>School Website</h2>
                         <input
                           className="sch-input "
                           type="text"
-                          placeholder="britishspringcollege@gmail.com"
+                          name="website"
+                          onChange={handleChange}
+                          placeholder="e.g: https://glistencollege.com"
                         />
                       </div>
                     </div>
@@ -290,6 +402,8 @@ export const Registration = (props) => {
                     <input
                       className="sch-input "
                       type="text"
+                      name="address"
+                      onChange={handleChange}
                       placeholder="1, British Spring Estate Road, Nkwelle Awka, Anambra State"
                     />
                   </div>
@@ -298,6 +412,8 @@ export const Registration = (props) => {
                     <input
                       className="sch-input "
                       type="text"
+                      name="address2"
+                      onChange={handleChange}
                       placeholder="SpringField Academy, 30 NewnNkisi Road, GRA Onitsha, Anambra State"
                     />
                   </div>{" "}
@@ -305,33 +421,42 @@ export const Registration = (props) => {
                     <div className="col">
                       <h2>Education type</h2>
                       <div className="select-div ">
-                        <select>
-                          <option>Day</option>
-                          <option>Boarding</option>
-                          <option>Both</option>
+                        <select name="education_type"
+                          onSelect={handleChange}>
+                          <option value={1}>Day</option>
+                          <option value={2}>Boarding</option>
+                          <option value={3}>Both</option>
                         </select>
                       </div>
                     </div>{" "}
                     <div className="col">
                       <h2>Education level</h2>
-                      <div className="select-div ">
-                        <select>
-                          <option>Secondary</option>
-                          <option>Primary</option>
-                          <option>EYFS</option>
-                        </select>
+                      <div className="d-flex flex-row">
+                        {options.map((option) => (
+                          <div key={option} className="mr-3">
+                            <input
+                              type="checkbox"
+                              id={option}
+                              name={option}
+                              value={option}
+                              checked={selectedOptions.includes(option)}
+                              onChange={() => handleCheckboxChange(option)}
+                            />
+                            <label htmlFor={option} className="ml-1">{option}</label>
+                          </div>
+                        ))}
                       </div>
                     </div>{" "}
                     <div className="col">
                       <h2>Zone</h2>
                       <div className="select-div ">
-                        <select onChange={handleStateChange}>
+                        <select onChange={handleZoneChange}>
                           <option value="" disabled selected>
                             Select your zone
                           </option>
-                          {zonesAndStates.map((state) => (
-                            <option key={state.id} value={state.id}>
-                              {state.name}
+                          {zonesAndStates.map((zone) => (
+                            <option key={zone.id} value={zone.id}>
+                              {zone.name}
                             </option>
                           ))}
                         </select>
@@ -340,15 +465,15 @@ export const Registration = (props) => {
                     <div className="col">
                       <h2>State</h2>
                       <div className="select-div ">
-                        <select disabled={!selectedState}>
+                        <select disabled={!selectedZone} onChange={handleStateChange}>
                           <option value="" disabled selected>
-                            {selectedState
+                            {selectedZone
                               ? "Select state"
                               : "Select zone First"}
                           </option>
                           {states?.map((state, index) => (
-                            <option key={index} value={state}>
-                              {state}
+                            <option key={index} value={state.id}>
+                              {state.name} ({state.capital})
                             </option>
                           ))}
                         </select>
@@ -357,20 +482,34 @@ export const Registration = (props) => {
                     <div className="col">
                       <h2>LGA</h2>
                       <div className="select-div ">
-                        <select>
-                          <option>Ward 1</option>
-                          <option>Ward 2</option>
-                          <option>Ward 3</option>
+                      <select disabled={!selectedState} onChange={handleLGAChange}>
+                          <option value="" disabled selected>
+                            {selectedState
+                              ? "Select LGA"
+                              : "Select State First"}
+                          </option>
+                          {lgas?.map((lga, index) => (
+                            <option key={index} value={lga.id}>
+                              {lga.name}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>{" "}
                     <div className="col">
                       <h2>Ward</h2>
                       <div className="select-div ">
-                        <select>
-                          <option>Ward 1</option>
-                          <option>Ward 2</option>
-                          <option>Ward 3</option>
+                      <select disabled={!selectedState} onChange={handleWardChange}>
+                          <option value="" disabled selected>
+                            {selectedState
+                              ? "Select Ward"
+                              : "Select LGA First"}
+                          </option>
+                          {wards?.map((ward, index) => (
+                            <option key={index} value={ward.id}>
+                              {ward.name}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>{" "}

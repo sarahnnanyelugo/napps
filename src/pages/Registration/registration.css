@@ -1,0 +1,164 @@
+.registration-detail h6 {
+  font-size: 14px;
+  margin-left: 15px;
+  margin-top: 25px;
+  float: left;
+}
+.registration-detail input {
+  margin: 0 5px;
+  width: 100%;
+  border: 1px solid #f3ecec;
+  color: #c5c3c3;
+  font-size: 14px;
+  padding: 7px 30px;
+  font-family: montM;
+  margin-bottom: 30px;
+  border-radius: 7px;
+}
+.registration-detail input:hover {
+  background: rgba(231, 231, 231, 0.2509803922);
+}
+.registration-detail ::-moz-placeholder {
+  color: rgb(200, 199, 199);
+  font-size: 14px;
+}
+.registration-detail ::placeholder {
+  color: rgb(200, 199, 199);
+  font-size: 14px;
+}
+
+.payment-button {
+  border: solid 1px #e7e7e7 !important;
+  background: #027a48 !important;
+  font-size: 14px;
+  font-family: montSB;
+  margin-top: 0px;
+  border-radius: 7px;
+  color: #fff;
+  padding: 15px 40px;
+  margin-bottom: 20px;
+  float: right;
+}
+.payment-button img {
+  margin-right: 10px;
+}
+.payment-button:hover {
+  background: #00923f !important;
+  transition: 0.5 ease;
+}
+
+.login {
+  color: #027a48;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: montB;
+}
+
+h6 {
+  float: left;
+}
+
+.PhoneInputInput {
+  border: solid 1px #f3ecec;
+  height: 40px;
+  border-radius: 0 !important;
+  border-top-right-radius: 7px !important;
+  border-bottom-right-radius: 7px !important;
+}
+
+.PhoneInputCountry {
+  border-top: solid 1px #f3ecec;
+  border-bottom: solid 1px #f3ecec;
+  border-left: solid 1px #f3ecec;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  height: 40px;
+  padding-left: 5px;
+  margin-right: 0 !important;
+  margin-left: 10px !important;
+}
+
+.members-form select {
+  margin: 0 5px;
+  width: 100%;
+  border: 1px solid #f3ecec;
+  color: #191919;
+  font-size: 14px;
+  padding: 7px 30px;
+  font-family: montM;
+  background: #fff;
+  margin-bottom: 30px;
+  border-radius: 7px;
+}
+.members-form select:hover {
+  background: rgba(231, 231, 231, 0.2509803922);
+}
+.members-form .sch-view-div3 {
+  height: 152px;
+  background: #e4e7ec;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat !important;
+  background-position: center;
+  padding-top: 50px;
+}
+.members-form .sch-view-div3 .import-image {
+  display: none;
+  font-size: 12px;
+  width: 100%;
+}
+.members-form .sch-view-div3:hover {
+  background: rgba(25, 25, 25, 0.1490196078);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.members-form .sch-view-div3:hover .import-image {
+  display: block;
+}
+
+.sch-dit input {
+  width: 100% !important;
+}
+.sch-dit ::-moz-placeholder {
+  font-size: 10px;
+}
+.sch-dit ::placeholder {
+  font-size: 10px;
+}
+.sch-dit p {
+  text-align: left !important;
+}
+.sch-dit textarea {
+  min-height: 166px;
+  border: solid 1px #e4e7ec;
+  width: 100%;
+  font-family: montR;
+  padding: 20px;
+}
+.sch-dit textarea:hover {
+  background: #fafafa;
+}
+.sch-dit .sch-input {
+  padding: 7px 20px;
+  border: solid 1px #e4e7ec;
+  color: rgb(110, 110, 110);
+  border-radius: 6px;
+  font-family: montR;
+  width: 100%;
+  font-size: 14px;
+}
+.sch-dit .sch-input:hover {
+  background: #fafafa;
+}
+.sch-dit .select-div {
+  height: 35px;
+  padding: 0 3px;
+}
+.sch-dit select {
+  padding: 0 !important;
+  border: none !important;
+  margin-left: -2px;
+  width: 100% !important;
+}/*# sourceMappingURL=registration.css.map */

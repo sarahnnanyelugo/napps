@@ -59,14 +59,17 @@ export const MembersDetail = () => {
   useEffect(() => {
     setForm({ ...form, ['phone']: value });
   }, [value]);
+
   useEffect(() => {
-    console.log(form);
     setForm({
       ...form, ['name']: form.title + ' ' + form.fname
         + ' ' + form.lname
     });
   }, [form.title, form.fname, form.lname]);
 
+  useEffect(() => {
+    console.log(form);
+  },[form.phone])
   useEffect(() => {
     if (!data)
       return;
@@ -76,6 +79,13 @@ export const MembersDetail = () => {
       window.location = "/registration";
     }, 1000);
   }, [data]);
+  
+  useEffect(() => {
+    if (!error)
+      return;
+    toast.error("Registration Error:" + error.response?.data);
+    console.log(error.response?.data);
+  }, [error]);
   async function registerProprietor() {
     try {
       await postData("/register", form);
