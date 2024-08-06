@@ -102,7 +102,7 @@ export const Proprietors = () => {
           {" "}
           <div className="ssearch-div d-md-flex">
             <div className="col-md-3">
-              <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
+              <h6 style={{ fontFamily: "montM" }}>Search Proprietors</h6>
               <br />
               <SearchBar callback={reducer} posts={schools} />
             </div>
