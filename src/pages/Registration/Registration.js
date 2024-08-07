@@ -160,7 +160,7 @@ export const Registration = (props) => {
  }
  useEffect(()=>{
   if(!data)return;
-  setLocalStorage("current_school", data);
+  setLocalStorage("current_school", data.id);
   toast.success("Proceeding to payment");
       setInterval(() => {
         window.location = "/payment";
@@ -451,9 +451,9 @@ export const Registration = (props) => {
                       <div className="select-div ">
                         <select name="education_type"
                           onSelect={handleChange}>
-                          <option value={1}>Day</option>
-                          <option value={2}>Boarding</option>
-                          <option value={3}>Both</option>
+                          <option value="Day">Day</option>
+                          <option value="Boarding">Boarding</option>
+                          <option value="Both">Both</option>
                         </select>
                       </div>
                     </div>{" "}
@@ -548,7 +548,7 @@ export const Registration = (props) => {
 
             <div className="col-md- flex-end">
               {" "}
-              <button className="payment-button "> Proceed to Payment</button>
+              <button className="payment-button "> {loading && <Spinner animation="border" variant="light" />} Create School </button>
             </div>
           </div>
         </div>
