@@ -12,6 +12,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
 import { RiBankFill } from "react-icons/ri";
 import { SlPeople } from "react-icons/sl";
+import { LuSchool2 } from "react-icons/lu";
 
 import { Link } from "react-router-dom";
 import AddCoordinators from "./AddCoordinators";
@@ -59,8 +60,8 @@ export const Proprietors = () => {
             <div className="summary d-flex">
               <div style={{ flexGrow: 1 }}>
                 {" "}
-                <SlPeople />
-                <p>Number of Proprietors</p>
+                <SlPeople style={{ fontSize: "25px" }} />
+                <p>Number of School Owners</p>
               </div>
               <h1 className="stats">
                 {" "}
@@ -80,8 +81,8 @@ export const Proprietors = () => {
             <div className="summary d-flex">
               <div style={{ flexGrow: 1 }}>
                 {" "}
-                <RiBankFill />
-                <p>Number of Schools</p>
+                <LuSchool2 style={{ fontSize: "25px" }} />
+                <p>Number of Registered Schools</p>
               </div>
               <h1 className="stats">
                 {" "}

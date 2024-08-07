@@ -79,13 +79,13 @@ const DashboardNav = () => {
             <NavLink
               to={"./ proprietors"}
               activeClassName="active"
-              style={{ padding: "10px 80px 10px 10px" }}
+              style={{ padding: "10px 60px 10px 10px" }}
             >
               <span>
                 {" "}
                 <FaPeopleRoof />
               </span>
-              Proprietors
+              School Owners
             </NavLink>
           </li>{" "}
         </ul>
