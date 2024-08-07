@@ -17,6 +17,7 @@ import ZoneLayout from "./pages/ZoneLayout/ZoneLayout";
 import LGALayout from "./pages/LGALayout/LGALayout";
 import DashboardSelector from "./components/DashboardSelector/DashboardSelector";
 import { PaymentPage } from "./pages/PaymentPage/PaymentPage";
+import WardLayout from "./pages/WardLayout/WardLayout";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="my-school-layout/*" element={<MySchoolLayout />} />{" "}
         <Route path="zone-layout/*" element={<ZoneLayout />} />{" "}
         <Route path="lga-layout/*" element={<LGALayout />} />{" "}
+        <Route path="ward-layout/*" element={<WardLayout />} />{" "}
         <Route path="state-layout/*" element={<LGALayout />} />{" "}
         {/* <Route path="displayed-school/:blog_id" element={<DisplayedSchool />} />{" "} */}
       </Routes>
