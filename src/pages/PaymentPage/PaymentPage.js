@@ -26,7 +26,7 @@ export const PaymentPage = () => {
     } else {
       toast.success("Payment successful. logging on to dashboard");
       setInterval(() => {
-        window.location = "dashboard-layout/admin-dashboard";
+        window.location = "dashboard-selector";
       }, 1000);
     }
     sessionStorage.setItem("user", JSON.stringify(form));

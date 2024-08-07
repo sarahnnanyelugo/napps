@@ -6,6 +6,14 @@ export const setLocalStorage = (key, value) => {
     console.error("Error setting localStorage", error);
   }
 };
+export const removeLocalStorage = (key) => {
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    console.error("Error removing localStorage item", error);
+  }
+};
+
 export const getLocalStorage = (key, filterFn) => {
   try {
     const serializedValue = localStorage.getItem(key);

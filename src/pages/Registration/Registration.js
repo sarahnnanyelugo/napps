@@ -16,7 +16,9 @@ import { FileUpload } from "../../components/FileUpload/FileUpload";
 import { LuImagePlus } from "react-icons/lu";
 import { FaLink } from "react-icons/fa6";
 import { ApiContext } from "../../ApiContext";
-import { getLocalStorage } from "../../utility/localStorage";
+import { getLocalStorage, setLocalStorage } from "../../utility/localStorage";
+import api, { setAuthToken } from "../../utility/api";
+import Spinner from "react-bootstrap/Spinner";
 
 export const Registration = (props) => {
   const [value, setValue] = useState();
@@ -85,16 +87,24 @@ export const Registration = (props) => {
 
   async function fetchZonesAndStates(){
     try {
-      await fetchData("/schools/create");
+      setAuthToken(authToken);
+      const response=await api.get("/schools/create");
+      setZonesAndStates(response.data);
     } catch (errorResponse) {
       console.error('Error creating proprietor profile:', errorResponse);
     }
   }
-  useEffect(()=>{fetchZonesAndStates()},[])
-  useEffect(() =>{
-    if(!data)return;
-    setZonesAndStates(data);
-  },[data])
+  useEffect(()=>{
+    if(!authToken)
+      {
+        toast.error('You must be logged in to create school profile');
+        setTimeout(()=>{
+          window.history.back();
+        },1000)
+      }
+
+    fetchZonesAndStates()},[]
+  )
 
   const handleCheckboxChange = (option) => {
     setSelectedOptions((prevSelected) =>
@@ -141,11 +151,27 @@ export const Registration = (props) => {
     });
  }, [selectedWard]);
 
+ async function enrollSchool(){
+  try {
+    await postData("/schools", form);
+  } catch (errorResponse) {
+    console.error("Error creating proprietor profile:", errorResponse);
+  }
+ }
+ useEffect(()=>{
+  if(!data)return;
+  setLocalStorage("current_school", data);
+  toast.success("Proceeding to payment");
+      setInterval(() => {
+        window.location = "/payment";
+      }, 1000);
+ },[data])
+
 
   const [form, setForm] = useState({
     user_id: user?.id||0, zone_id: 0, state_id: 0, lga_id: 0, ward_id: 0,
-    name: "", address: "", address2: "", contact_name: "",
-    contact_phone: "", contact_email: "", website: "", about: "",
+    name: "", address: "", address2: "", contact_name: user?.name||"",
+    contact_phone: user?.phone||"", contact_email: user?.email||"", website: "", about: "",
     vision: "", mission: "", logo: "", banner: "",
   });
   function handleChange(e) {
@@ -161,16 +187,17 @@ export const Registration = (props) => {
     e.preventDefault();
 
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!form?.email) {
+    if (!form?.contact_email) {
       toast.error("email is required");
-    } else if (!regex.test(form?.email)) {
+    } else if (!regex.test(form?.contact_email)) {
       toast.error("This is not a valid email");
     } else {
-      toast.success("Proceeding to payment");
-      setInterval(() => {
-        // window.location = "dashboard-layout/admin-dashboard";
-        window.location = "/payment";
-      }, 1000);
+      // toast.success("Proceeding to payment");
+      // setInterval(() => {
+      //   // window.location = "dashboard-layout/admin-dashboard";
+      //   window.location = "/payment";
+      // }, 1000);
+      enrollSchool()
     }
     sessionStorage.setItem("user", JSON.stringify(form));
   }
@@ -247,6 +274,7 @@ export const Registration = (props) => {
                     className="sch-input "
                     type="text"
                     name="name"
+                    onChange={handleChange}
                     placeholder="School Name"
                   />
                 </div>
