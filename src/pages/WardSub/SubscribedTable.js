@@ -4,11 +4,7 @@ import "../../components/SchoolsTable/schools-table.scss";
 import { Link, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const ProprietorsTable = ({ data }) => {
-  const [password, setPassword] = useState(
-    parseFloat(localStorage.getItem("requestor_balance", 0)) || 0
-  );
-  const [showPassword, setShowPassword] = useState(false);
+const SubscribedTable = ({ data }) => {
   const { bg, colo, bd2, colo2, category } = data;
   const [blogId, setBlogId] = useState(0);
   const location = useLocation();
@@ -25,26 +21,20 @@ const ProprietorsTable = ({ data }) => {
     if (wasInPrev && !isInCurrent) return "row-slide-up";
     return "";
   };
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
   return (
     <div>
-      <div className="d-flex"> </div>
-
       <div>
-        <Table striped bordered hover className="school-table cord" responsive>
+        <Table striped bordered hover className="sub-table" responsive>
           <thead>
             <tr>
               <th>
                 <input type="checkbox" />
               </th>
-              <th className="">Name </th>
-              <th> Subscription</th>
-              <th className="">Registered Schools</th>
-
-              <th>Zone</th>
-
+              <th>Transaction ID</th>
+              <th>Date & TIme</th> <th>Status</th>
+              <th>Amount</th>
+              <th>Payment method</th>
+              <th>Renewal Date</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -59,32 +49,27 @@ const ProprietorsTable = ({ data }) => {
                   <td>
                     <input type="checkbox" />
                   </td>
-                  <td className="">
-                    <div className="d-flex">
-                      <div
-                        className="alphabet"
-                        style={{ background: item.bg2, color: item.colo2 }}
-                      >
-                        <center>
-                          <p>{item.alphabet}</p>
-                        </center>
-                      </div>
-                      {item.accName}
-                    </div>
+                  <td style={{ fontFamily: "montM" }}>{item.regID}</td>
+                  <td>
+                    {item.date}
+                    {item.time}
                   </td>
                   <td>
-                    {" "}
                     <button
                       className="table-btn"
-                      style={{ background: item.bg, color: item.colo }}
+                      style={{
+                        background: item.bg,
+                        color: item.colo,
+                        fontFamily: "montM",
+                      }}
                     >
+                      <span style={{ fontSize: "25px" }}>.</span>
                       {item.status}
                     </button>
                   </td>
-                  <td>{item.id}</td>
-
-                  <td>{item.zone}</td>
-
+                  <td>{item.amount}</td>
+                  <td>{item.payment}</td>
+                  <td>{item.renewal}</td>
                   <td className="edit">
                     <Link
                       className="view"
@@ -94,6 +79,16 @@ const ProprietorsTable = ({ data }) => {
                       view
                     </Link>
                   </td>
+                  {/* <td className="edit" style={{ color: "#00923F" }}>
+                    <Link
+                      className="edit"
+                      to={"/dashboard-layout/displayed-school/" + item.id}
+                      state={{ blog_id: blogId }}
+                    >
+                      {" "}
+                      edit
+                    </Link>
+                  </td> */}
                 </tr>
               </CSSTransition>
             ))}
@@ -114,4 +109,4 @@ const ProprietorsTable = ({ data }) => {
   );
 };
 
-export default ProprietorsTable;
+export default SubscribedTable;
