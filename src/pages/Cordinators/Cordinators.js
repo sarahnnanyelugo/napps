@@ -17,6 +17,7 @@ import Percentile from "./Percentile";
 
 import { Link } from "react-router-dom";
 import AddCoordinators from "./AddCoordinators";
+import AddAccount from "./AddAccount";
 
 export const Cordinators = () => {
   const [category, setCategory] = useState("*");
@@ -200,6 +201,7 @@ export const Cordinators = () => {
               <CordinatorsTable data={filteredSchools} />
             </div>{" "}
             <div className={`panel ${checkActive(2, "active2")}`}>
+              <AddAccount />
               <SchoolsTable data={schools} />
             </div>
             <div className={`panel ${checkActive(3, "active2")}`}>
