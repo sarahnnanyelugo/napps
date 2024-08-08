@@ -193,6 +193,7 @@ export const Cordinators = () => {
                 <img src={Icon3} height="20px" width="20px" />
                 Export
               </button>
+
               <AddCoordinators />
             </div>
           </div>{" "}
