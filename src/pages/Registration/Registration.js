@@ -31,7 +31,7 @@ export const Registration = (props) => {
   const [picture, setPicture] = useState(null);
   const [contact, setContact] = useState(null);
   const [zonesAndStates, setZonesAndStates] = useState([]);
-  const { data, loading, error, fetchData, postData } = useContext(ApiContext);
+  const { data, loading, error, postData } = useContext(ApiContext);
 
   const toggleItalic = () => {
     setIsItalic(!isItalic);
@@ -122,6 +122,15 @@ export const Registration = (props) => {
     });
     setStates(selectedZone?.states);
   }, [selectedZone]);
+    useEffect(() => {
+    // console.log(selectedZone);
+    // console.log(selectedZone?.states);
+    setForm({
+      ...form,
+      ['education_levels']: selectedOptions,
+    });
+    setStates(selectedZone?.states);
+  }, [selectedOptions]);
   
   useEffect(() => {
     // console.log(selectedZone);
@@ -167,6 +176,10 @@ export const Registration = (props) => {
       }, 1000);
  },[data])
 
+ useEffect(()=>{
+  if(!error)return;
+  console.log(error)
+ }, [error]);
 
   const [form, setForm] = useState({
     user_id: user?.id||0, zone_id: 0, state_id: 0, lga_id: 0, ward_id: 0,
@@ -175,6 +188,14 @@ export const Registration = (props) => {
     vision: "", mission: "", logo: "", banner: "",
   });
   function handleChange(e) {
+    // console.log(e.target.name, e.target.value);
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+    console.log(form);
+  }
+  function handleSelect(e) {
     // console.log(e.target.name, e.target.value);
     setForm({
       ...form,
@@ -449,12 +470,13 @@ export const Registration = (props) => {
                     <div className="col">
                       <h2>Education type</h2>
                       <div className="select-div ">
-                        <select name="education_type"
-                          onSelect={handleChange}>
+                        <select name="school_type"
+                          onChange={handleSelect}>
                           <option value="Day">Day</option>
                           <option value="Boarding">Boarding</option>
                           <option value="Both">Both</option>
                         </select>
+                        {/* <pre>{JSON.stringify(form, null, 2)}</pre> */}
                       </div>
                     </div>{" "}
                     <div className="col">
@@ -548,7 +570,7 @@ export const Registration = (props) => {
 
             <div className="col-md- flex-end">
               {" "}
-              <button className="payment-button "> {loading && <Spinner animation="border" variant="light" />} Create School </button>
+              <button className="payment-button "> {loading && <Spinner animation="border" variant="light" size="sm" />} Create School </button>
             </div>
           </div>
         </div>

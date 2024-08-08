@@ -210,7 +210,7 @@ export const MembersDetail = () => {
           <div className="col-md- flex-end">
             {" "}
             <button className="payment-button ">
-              {loading && <Spinner animation="border" variant="light" />}{" "}
+              {loading && <Spinner animation="border" variant="light" size="sm"/>}{" "}
               Proceed{" "}
             </button>
           </div>
