@@ -13,7 +13,7 @@ export const SchoolBio = ({ blog_id }) => {
   useEffect(() => {
     setId(blog_id);
     console.log(blog_id);
-  }, [blog_id]);
+  }, []);
 
   useEffect(() => {
     if (id !== 0)

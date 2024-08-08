@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { SchoolBio } from "../../pages/SchoolSub/SchoolBio";
-function SchDetails() {
+function SchDetails(props) {
   const [lgShow, setLgShow] = useState(false);
-  const { blog_id } = useParams();
+  const { blog_id } = props;
+
+  useEffect(() => {
+    console.log("blog id: " + blog_id);
+  },[blog_id])
   return (
     <>
       <p onClick={() => setLgShow(true)} style={{ cursor: "pointer" }}>

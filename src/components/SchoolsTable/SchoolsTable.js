@@ -2,6 +2,7 @@ import React, { useState, useLocation, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import "./schools-table.scss";
+import SchDetails from '../SchDetails/SchDetails';
 const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
   // const [num] = data;
   const [blogId, setBlogId] = useState(0);
@@ -80,13 +81,14 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
               <td>{item.regID}</td>
               <td>{item.zone}</td>
               <td className="edit">
-                <Link
+                {/* <Link
                   className="view"
                   to={"/dashboard-layout/sch-showcase/" + item.id}
                   state={{ blog_id: blogId }}
                 >
                   view
-                </Link>
+                </Link> */}
+                <SchDetails blog_id={item.id} />
               </td>
               <td className="edit" style={{ color: "#00923F" }}>
                 <Link
