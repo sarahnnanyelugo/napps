@@ -87,7 +87,7 @@ function AddAccount() {
               <input type="email" placeholder="Enter bank name alias here" />
             </div>
           </div>
-          <button className="cont-btn">Continue</button>
+          <button className="cont-btn">Add</button>
         </Modal.Body>
       </Modal>
     </>
