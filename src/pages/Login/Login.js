@@ -9,9 +9,10 @@ import { Password } from "../../components/Password/Password";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../AuthContext";
+import { Spinner } from "react-bootstrap";
 export const Login = () => {
   const [value, setValue] = useState();
-  const { login, isLoggedIn} = useAuth();
+  const { login, isLoggedIn,loading,error} = useAuth();
 
   const [form, setForm] = useState({
     email: " ",
@@ -29,6 +30,7 @@ export const Login = () => {
     
   }
   useEffect(() => {console.log(form);},[form]);
+  useEffect(() => {if(!error)return;toast.error(error.error||error);},[error]);
   useEffect(() => {
     if(isLoggedIn){
       toast.success("You successfully logged in");
@@ -93,10 +95,10 @@ export const Login = () => {
             onChange={handleChange}
           />
           <Password onChange={handleChange} name="password" type="password" />
-          <button className="email-button"> LOGIN</button>
+          <button className="email-button">{loading&&<Spinner variant="light" size="sm" animation="border"/>} LOGIN</button>
           <center>
             <p>
-              By registering you agree with our <Link>Terms</Link> &{" "}
+              By registering, you agree with our <Link>Terms</Link> &{" "}
               <Link>Conditions</Link>
             </p>
           </center>

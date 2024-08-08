@@ -9,9 +9,9 @@ export const Schools = ({ data }) => {
   // const [prevData, setPrevData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   setBlogId(data.id);
-  // });
+  useEffect(() => {
+    console.log("Loading",data);
+  });
   useEffect(() => {
     // Set a timer to simulate loading delay
     const timer = setTimeout(() => {
@@ -30,7 +30,7 @@ export const Schools = ({ data }) => {
     >
       {" "}
       <div className="schools d-flex">
-        <div className="sch-frame col-md-3 col-6" style={{ background: bg2 }}>
+        <div className="sch-frame col-md-3 col-6" style={{ background: bg2||"#AA9C75" }}>
           {" "}
         </div>
         <div className="sch-details">
@@ -41,12 +41,12 @@ export const Schools = ({ data }) => {
               data.name
             )}
           </h6>
-          <p>{isLoading ? <Skeleton count={1} /> : data.zone}</p>
+          <p>{isLoading ? <Skeleton count={1} /> : data.zone?.name}</p>
           <p>{isLoading ? <Skeleton count={1} /> : "Ward"}</p>
 
           <p>
-            {isLoading ? <Skeleton count={1} /> : data.state}{" "}
-            {isLoading ? <Skeleton count={1} /> : data.country}{" "}
+            {isLoading ? <Skeleton count={1} /> : data.state?.name}{" "}
+            {isLoading ? <Skeleton count={1} /> : "NG"}{" "}
           </p>
         </div>
       </div>

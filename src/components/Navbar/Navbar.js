@@ -7,7 +7,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import "./navbar.scss";
+import { getLocalStorage } from "../../utility/localStorage";
+import { useState } from "react";
 function NavBar() {
+  const [authToken, setAuthTokenState] = useState(() => {
+    return getLocalStorage('authToken') || '';
+  });
   return (
     <div className="col-md-10 offset-md-1 nav-container">
       <Navbar collapseOnSelect expand="lg" className="">
@@ -47,27 +52,30 @@ function NavBar() {
               <Link to={"/contact-us"}>
                 <button>Contact Us</button>
               </Link>{" "}
-              <Link to={"dashboard-layout/admin-dashboard"}>
+              {/* <Link to={"dashboard-layout/admin-dashboard"}>
                 <button>Admin</button>
-              </Link>{" "}
-              <Link to={"my-school-layout/my-schools"}>
+              </Link>{" "} */}
+              {/* <Link to={"my-school-layout/my-schools"}>
                 <button>My Schools</button>
-              </Link>{" "}
-              <Link to={"zone-layout/zone-dashboard"}>
+              </Link>{" "} */}
+              {/* <Link to={"zone-layout/zone-dashboard"}>
                 <button>Zone</button>
-              </Link>{" "}
-              <Link to={"lga-layout/lga-dashboard"}>
+              </Link>{" "} */}
+              {/* <Link to={"lga-layout/lga-dashboard"}>
                 <button>LGA</button>
-              </Link>{" "}
-              <Link to={"ward-layout/ward-dashboard"}>
+              </Link>{" "} */}
+              {/* <Link to={"ward-layout/ward-dashboard"}>
                 <button>Ward</button>
-              </Link>{" "}
-              <Link to={"/login"}>
+              </Link>{" "} */}
+              {!authToken &&(<><Link to={"/login"}>
                 <button>Log In</button>
               </Link>
               <Link to={"/members-detail"}>
                 <button className="app-btn">Register</button>
-              </Link>{" "}
+              </Link></>)}{" "}
+              {authToken &&<Link to={"/dashboard-selector"}>
+                <button className="app-btn">Account</button>
+              </Link>}
             </Nav>
           </Navbar.Collapse>
         </Container>

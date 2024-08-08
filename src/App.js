@@ -18,6 +18,7 @@ import LGALayout from "./pages/LGALayout/LGALayout";
 import DashboardSelector from "./components/DashboardSelector/DashboardSelector";
 import { PaymentPage } from "./pages/PaymentPage/PaymentPage";
 import WardLayout from "./pages/WardLayout/WardLayout";
+import { PaymentVerifyPage } from "./pages/PaymentVerifyPage/PaymentVerifyPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="members-detail" element={<MembersDetail />} />{" "}
         <Route path="registration" element={<Registration />} />{" "}
         <Route path="payment" element={<PaymentPage />} />{" "}
+        <Route path="verify-pay" element={<PaymentVerifyPage />} />{" "}
         <Route path="news-page" element={<NewsPage />} />
         <Route path="main-news/:blog_id" element={<MainNews />} />
         <Route path="dashboard-layout/*" element={<DashboardLayout />} />{" "}

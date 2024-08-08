@@ -48,7 +48,7 @@ export const Registration = (props) => {
   const [selectedWard, setSelectedWard] = useState(null);
   const [lgas, setLgas] = useState(null);
   const [wards, setWards] = useState(null);
-  const [user, setUser] =useState(() => {
+  const [user, setUser] = useState(() => {
     return getLocalStorage('user') || {};
   });
   const [authToken, setAuthTokenState] = useState(() => {
@@ -61,20 +61,20 @@ export const Registration = (props) => {
     );
     setSelectedZone(zone);
   };
-    const handleStateChange = (e) => {
+  const handleStateChange = (e) => {
     const state = states.find(
       (item) => item.id === parseInt(e.target.value)
     );
     setSelectedState(state);
   };
-  
+
   const handleLGAChange = (e) => {
     const lga = lgas.find(
       (item) => item.id === parseInt(e.target.value)
     );
     setSelectedLga(lga);
   };
-  
+
   const handleWardChange = (e) => {
     const ward = wards.find(
       (item) => item.id === parseInt(e.target.value)
@@ -85,25 +85,26 @@ export const Registration = (props) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const options = ["Secondary", "Primary", "EYFS"];
 
-  async function fetchZonesAndStates(){
+  async function fetchZonesAndStates() {
     try {
       setAuthToken(authToken);
-      const response=await api.get("/schools/create");
+      const response = await api.get("/schools/create");
       setZonesAndStates(response.data);
     } catch (errorResponse) {
-      console.error('Error creating proprietor profile:', errorResponse);
+
+      toast.error('Error creating proprietor profile:', errorResponse.response?.status);
     }
   }
-  useEffect(()=>{
-    if(!authToken)
-      {
-        toast.error('You must be logged in to create school profile');
-        setTimeout(()=>{
-          window.history.back();
-        },1000)
-      }
+  useEffect(() => {
+    if (!authToken) {
+      toast.error('You must be logged in to create school profile');
+      setTimeout(() => {
+        window.history.back();
+      }, 1000)
+    }
 
-    fetchZonesAndStates()},[]
+    fetchZonesAndStates()
+  }, []
   )
 
   const handleCheckboxChange = (option) => {
@@ -122,7 +123,7 @@ export const Registration = (props) => {
     });
     setStates(selectedZone?.states);
   }, [selectedZone]);
-    useEffect(() => {
+  useEffect(() => {
     // console.log(selectedZone);
     // console.log(selectedZone?.states);
     setForm({
@@ -131,7 +132,7 @@ export const Registration = (props) => {
     });
     setStates(selectedZone?.states);
   }, [selectedOptions]);
-  
+
   useEffect(() => {
     // console.log(selectedZone);
     // console.log(selectedZone?.states);
@@ -142,49 +143,54 @@ export const Registration = (props) => {
     setLgas(selectedState?.lgas);
   }, [selectedState]);
 
- useEffect(() => {
+  useEffect(() => {
     // console.log(selectedZone);
     // console.log(selectedZone?.states);
-    
+
     setForm({
       ...form,
       ['lga_id']: selectedLga?.id
     });
- setWards(selectedLga?.wards);
- }, [selectedLga]);
+    setWards(selectedLga?.wards);
+  }, [selectedLga]);
 
- useEffect(() => {   
+  useEffect(() => {
     setForm({
       ...form,
       ['ward_id']: selectedWard?.id
     });
- }, [selectedWard]);
+  }, [selectedWard]);
 
- async function enrollSchool(){
-  try {
-    await postData("/schools", form);
-  } catch (errorResponse) {
-    console.error("Error creating proprietor profile:", errorResponse);
+  async function enrollSchool() {
+    try {
+      const formPayload = new FormData();
+      formPayload.append('banner', picture);
+      for (const [key, value] of Object.entries(form)) {
+        formPayload.append(key, value);
+      }
+      await postData("/schools", form);
+    } catch (errorResponse) {
+      console.error("Error creating proprietor profile:", errorResponse);
+    }
   }
- }
- useEffect(()=>{
-  if(!data)return;
-  setLocalStorage("current_school", data.id);
-  toast.success("Proceeding to payment");
-      setInterval(() => {
-        window.location = "/payment";
-      }, 1000);
- },[data])
+  useEffect(() => {
+    if (!data) return;
+    setLocalStorage("current_school", data.id);
+    toast.success("Proceeding to payment");
+    setInterval(() => {
+      window.location = "/payment";
+    }, 1000);
+  }, [data])
 
- useEffect(()=>{
-  if(!error)return;
-  console.log(error)
- }, [error]);
+  useEffect(() => {
+    if (!error) return;
+    console.log(error)
+  }, [error]);
 
   const [form, setForm] = useState({
-    user_id: user?.id||0, zone_id: 0, state_id: 0, lga_id: 0, ward_id: 0,
-    name: "", address: "", address2: "", contact_name: user?.name||"",
-    contact_phone: user?.phone||"", contact_email: user?.email||"", website: "", about: "",
+    user_id: user?.id || 0, zone_id: 0, state_id: 0, lga_id: 0, ward_id: 0,
+    name: "", address: "", address2: "", contact_name: user?.name || "",
+    contact_phone: user?.phone || "", contact_email: user?.email || "", website: "", about: "",
     vision: "", mission: "", logo: "", banner: "",
   });
   function handleChange(e) {
@@ -233,13 +239,13 @@ export const Registration = (props) => {
           {" "}
           <div className="login-div col-md-8 offset-md-2 ">
             <center>
-              <img
+              <Link to={'/'}><img
                 className="img"
                 src={Logo}
                 alt="Scholar"
                 width="198px"
                 height="69px"
-              />
+              /></Link>
               <h2>School Information</h2>{" "}
             </center>
             <center>
@@ -532,7 +538,7 @@ export const Registration = (props) => {
                     <div className="col">
                       <h2>LGA</h2>
                       <div className="select-div ">
-                      <select disabled={!selectedState} onChange={handleLGAChange}>
+                        <select disabled={!selectedState} onChange={handleLGAChange}>
                           <option value="" disabled selected>
                             {selectedState
                               ? "Select LGA"
@@ -549,7 +555,7 @@ export const Registration = (props) => {
                     <div className="col">
                       <h2>Ward</h2>
                       <div className="select-div ">
-                      <select disabled={!selectedState} onChange={handleWardChange}>
+                        <select disabled={!selectedState} onChange={handleWardChange}>
                           <option value="" disabled selected>
                             {selectedState
                               ? "Select Ward"

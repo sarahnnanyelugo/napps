@@ -16,9 +16,11 @@ export const AuthProvider = ({ children }) => {
   const [authToken, setAuthTokenState] = useState(() => {
     return getLocalStorage('authToken') || '';
   });
-    const [userState, setAuthUserState] = useState(() => {
+  const [userState, setAuthUserState] = useState(() => {
     return getLocalStorage('user') || {};
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
 
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -27,27 +29,29 @@ export const AuthProvider = ({ children }) => {
     setLocalStorage('isLoggedIn', isLoggedIn);
     setLocalStorage('authToken', authToken);
     setAuthToken(authToken);
-    setLocalStorage('user',userState);
-}, [isLoggedIn,authToken,userState]);
+    setLocalStorage('user', userState);
+  }, [isLoggedIn, authToken, userState]);
 
 
   const login = async (credentials) => {
-
+    setError(null)
+    setLoading(true)
     try {
       const response = await api.post(apiUrl + '/login', credentials); // Replace with your login endpoint
       setIsLoggedIn(true);
       setAuthTokenState(response.data.token);
       setAuthUserState(response.data.user);
-      console.log('Login data:', response.data);
+      setLoading(false)
     } catch (resp) {
 
-      console.error('Login error:', resp.data?.error || resp.message);
+      setLoading(false)
+      setError(resp.response?.data||resp.response)
     }
   };
 
   const logout = async () => {
     try {
-      await api.post(apiUrl +'/logout'); // Replace with your logout endpoint
+      await api.post(apiUrl + '/logout'); // Replace with your logout endpoint
       setIsLoggedIn(false);
       setAuthTokenState(''); // Clear the token
       setAuthUserState({})
@@ -57,7 +61,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, loading, error }}>
       {children}
     </AuthContext.Provider>
   );

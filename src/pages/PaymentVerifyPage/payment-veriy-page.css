@@ -1,0 +1,35 @@
+.payment-form {
+  border: solid 1px #e7e7e7;
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: left;
+}
+.payment-form input {
+  width: 100%;
+  border: solid 1px #e7e7e7;
+  padding: 10px;
+  border-radius: 7px;
+  position: relative;
+  z-index: 20;
+  font-family: soraM;
+}
+.payment-form h6 {
+  margin-top: 15px;
+}
+.payment-form small {
+  color: grey;
+  font-size: 12px;
+}
+.payment-form h4 {
+  margin-top: 30px;
+}
+.payment-form button {
+  width: 100%;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 30px;
+  background: #2c60cc;
+  color: #fff;
+  border: solid 1px #2c60cc;
+  font-family: soraM;
+}/*# sourceMappingURL=payment-veriy-page.css.map */
