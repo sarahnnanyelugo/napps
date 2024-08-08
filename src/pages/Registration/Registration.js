@@ -101,6 +101,7 @@ export const Registration = (props) => {
       setTimeout(() => {
         window.history.back();
       }, 1000)
+      return;
     }
 
     fetchZonesAndStates()
@@ -177,9 +178,9 @@ export const Registration = (props) => {
     if (!data) return;
     setLocalStorage("current_school", data.id);
     toast.success("Proceeding to payment");
-    setInterval(() => {
-      window.location = "/payment";
-    }, 1000);
+    // setInterval(() => {
+    //   window.location = "/payment";
+    // }, 1000);
   }, [data])
 
   useEffect(() => {
