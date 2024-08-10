@@ -358,7 +358,7 @@ export const AdminDashboard = () => {
                   </h1>
                   <small>
                     <img src={data?.yearlyPercentageChange>0?Icon1:Icon2} height="11px"/>
-                    <span className={data?.yearlyPercentageChange>0?"up":"down"}>{Math.abs(data?.yearlyPercentageChange||0)}%</span>vs last month
+                    <span className={data?.yearlyPercentageChange>0?"up":"down"}>{Math.abs(data?.yearlyPercentageChange||0)}%</span>vs last year
                   </small>
                 </div>
                 {" "}
@@ -393,7 +393,7 @@ export const AdminDashboard = () => {
                 </div>
                 {" "}
                 <div className="col-md-6">
-                  <SubChart/>
+                  {data?.monthlyPercentageChange>0?<DataChart/>:<SubChart/>}
                 </div>
               </div>
             </div>
