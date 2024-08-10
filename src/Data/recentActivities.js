@@ -1,3 +1,18 @@
+export const rndColor=()=>{
+  const colors=[
+      "#AA9C75",
+    "rgb(69,101,113)",
+    "rgb(83,84,216)",
+    "rgb(42,134,211)",
+    "rgb(45,71,189)",
+    "rgb(170,200,226)",
+    "rgb(59,121,25)",
+  ]
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}
+
+
 export const recentActs = [
   {
     alphabet: "S",

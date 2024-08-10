@@ -19,6 +19,8 @@ import DashboardSelector from "./components/DashboardSelector/DashboardSelector"
 import { PaymentPage } from "./pages/PaymentPage/PaymentPage";
 import WardLayout from "./pages/WardLayout/WardLayout";
 import { PaymentVerifyPage } from "./pages/PaymentVerifyPage/PaymentVerifyPage";
+import {SchShowcase} from "./pages/SchoolManagement/SchShowcase";
+import React from "react";
 
 function App() {
   return (

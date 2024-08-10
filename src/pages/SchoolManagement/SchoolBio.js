@@ -13,19 +13,18 @@ import { MdMoreVert } from "react-icons/md";
 
 export const SchoolBio = ({ blog_id }) => {
   const [data, setData] = useState({});
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(1);
   const location = useLocation();
   const [value, setValue] = useState("");
-  const [blogId, setBlogId] = useState(0);
+  const [blogId, setBlogId] = useState(1);
 
-  const inputRef = useRef(null);
   const [banner, setBanner] = useState(null);
   const [picture, setPicture] = useState(null);
   const [contact, setContact] = useState(null);
-  useEffect(() => {
-    setId(blog_id);
-    console.log(blog_id);
-  }, [blog_id]);
+  // useEffect(() => {
+  //   setId(blog_id);
+  //   console.log(blog_id);
+  // }, [blog_id]);
 
   useEffect(() => {
     if (id !== 0)

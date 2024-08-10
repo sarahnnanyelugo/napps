@@ -1,22 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./recent-activity.scss";
 import Icon1 from "../../assets/images/p.svg";
+import {formatAudiTrail} from "../../utility/utils";
 
 export const RecentActivity = ({ data }) => {
-  const { bg } = data;
+  const [formattedData,setFormattedData]=useState({});
+    useEffect(() => {
+        if ('bg' in data) {
+            setFormattedData(data);
+        } else {
+            const newData = formatAudiTrail(data);
+            setFormattedData(newData);
+        }
+    }, [data]);
   return (
     <div className="activities">
-      <div className="col-md-2 alphabet" style={{ background: bg }}>
+      <div className="col-md-2 alphabet" style={{ background: formattedData.bg }}>
         <center>
-          <p>{data.alphabet}</p>
+          <p>{formattedData.alphabet}</p>
         </center>
       </div>
       <div className="col-md-9" style={{ flexGrow: 1 }}>
-        <h4>{data.schoolName}</h4>
-        <p>{data.schoolDetail}</p>
+        <h4>{formattedData.schoolName}</h4>
+        <p>{formattedData.schoolDetail}</p>
       </div>
       <div className="col-md-3">
-        <small>{data.time}</small>
+        <small>{formattedData.time}</small>
         <sup>.</sup>
       </div>
     </div>

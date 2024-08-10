@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import CountUp from "react-countup";
 import Icon1 from "../../assets/images/user1.svg";
@@ -14,30 +14,36 @@ import WOW from "wowjs";
 import { PiLinkSimpleBreakThin } from "react-icons/pi";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import {getLocalStorage} from "../../utility/localStorage";
+import {ApiContext} from "../../ApiContext";
+import {setAuthToken} from "../../utility/api";
 export const SchoolSUb = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState(subscribedSchools);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [authToken, setAuthTokenState] = useState(() => {
+    return getLocalStorage('authToken') || '';
+  });
+  const [user, setUser] = useState(() => {
+    return getLocalStorage('user') || '';
+  });
+  const { data, loading, error, fetchData, postData } = useContext(ApiContext);
   function setCat(cat) {
     setCategory(cat);
   }
   useEffect(() => {
+    if(!data)return;
     if (category === "*") {
-      setfilteredSchools(subscribedSchools);
+      setfilteredSchools(data?.subscriptions);
     } else {
       setfilteredSchools(
-        subscribedSchools.filter((prd) => prd.category.indexOf(category) !== -1)
+        data?.subscriptions.filter((prd) => prd.category.indexOf(category) !== -1)
       );
     }
-  }, [category]);
-  const [state, setState] = useState({
-    query: "",
-    list: subscribedSchools,
-  });
+  }, [data]);
   function reducer(dt) {
     // console.log(dt);
-    setfilteredSchools(dt.list);
+    setfilteredSchools(dt?.list);
   }
   useEffect(() => {
     new WOW.WOW({
@@ -48,7 +54,17 @@ export const SchoolSUb = () => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000); // 2 seconds delay
+    if(!authToken)return
+    const fetchSubInfo = async () => {
+      setAuthToken(authToken);
+      try {
+        await postData("/my-subscriptions", {}); // the postData call
+      } catch (errorResponse) {
+        console.error('Error fetching role information:', errorResponse);
+      }
+    };
 
+    fetchSubInfo();
     return () => clearTimeout(timer);
   }, []);
 
@@ -102,11 +118,11 @@ export const SchoolSUb = () => {
                 {" "}
                 <CountUp
                   start={0}
-                  end={100}
+                  end={data?.sum||0}
                   duration={2}
                   decimal=""
-                  prefix="K "
-                  suffix="₦"
+                  prefix="₦ "
+                  // suffix="₦"
                   enableScrollSpy={true}
                 />
               </h1>
@@ -125,7 +141,7 @@ export const SchoolSUb = () => {
                 {" "}
                 <CountUp
                   start={0}
-                  end={20}
+                  end={data?.count||0}
                   duration={2}
                   decimal=""
                   prefix=" "
@@ -141,11 +157,11 @@ export const SchoolSUb = () => {
           <div className="ssearch-div d-flex">
             <h5>Transaction History</h5>
             <div className="col-md-3 offset-md-7">
-              <SearchBar callback={reducer} posts={subscribedSchools} />
+              <SearchBar callback={reducer} posts={data?.subscriptions} />
             </div>
           </div>{" "}
           <hr />
-          {isLoading ? (
+          {(isLoading||loading) ? (
             <table className="table">
               <thead>
                 <tr>
@@ -178,7 +194,7 @@ export const SchoolSUb = () => {
               <tbody>{renderSkeletonRows()}</tbody>
             </table>
           ) : (
-            <SubscribedTable data={filteredSchools} />
+            data && <SubscribedTable data={filteredSchools} />
           )}
         </div>
       </div>

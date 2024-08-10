@@ -5,8 +5,11 @@ import "react-loading-skeleton/dist/skeleton.css";
 import red from "../../assets/images/red_dot.png";
 import green from "../../assets/images/green_dot.png";
 import Zenith from "../../assets/images/zenith.jpeg"
-export const Schools = ({ data }) => {
+export const Perks = ({ data }) => {
   const { bg2 } = data;
+  const [blogId, setBlogId] = useState(0);
+  //   const location = useLocation();
+  // const [prevData, setPrevData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,6 +18,7 @@ export const Schools = ({ data }) => {
   useEffect(() => {
     // Set a timer to simulate loading delay
     const timer = setTimeout(() => {
+      setBlogId(data.id);
       setIsLoading(false);
     }, 2000); // 2 seconds delay
 
@@ -24,8 +28,7 @@ export const Schools = ({ data }) => {
   return (
     <Link
       className="sch-link"
-      to={"/my-school-layout/my-schools/sch-showcase/" + data.uuid}
-      state={{ blog_id: data.uuid }}
+      state={{ blog_id: blogId }}
     >
       {" "}
       <div className="schools d-flex">
@@ -37,23 +40,22 @@ export const Schools = ({ data }) => {
             {isLoading ? (
               <Skeleton count={1} style={{ width: "200px" }} />
             ) : (
-              data.name
+                "NAPPS Perks"
             )}
           </h6>
-          <p>{isLoading ? <Skeleton count={1} /> : data.zone?.name +" Zone"}</p>
-          <p>{isLoading ? <Skeleton count={1} /> : data.ward?.name + " Ward"}</p>
+          <p>{isLoading ? <Skeleton count={1} /> : "Campaigns"}</p>
+          <p>{isLoading ? <Skeleton count={1} /> : "Exciting Discounts"}</p>
 
           <p>
-            {isLoading ? <Skeleton count={1} /> : data.state?.name +" State"}{" "}
+            {isLoading ? <Skeleton count={1} /> : "Exclusive Deals!"}{" "}
           </p>
           
           {!isLoading &&
-           <p><img src={data.status?green:red} style={{ width:"10px" }}/>
-           {(data.status?' Active':' Inactive')}
+           <p><img src={red} style={{ width:"10px" }}/>
+           {(' Coming Soon!')}
            </p>
            }
-           
-          
+
         </div>
       </div>
     </Link>

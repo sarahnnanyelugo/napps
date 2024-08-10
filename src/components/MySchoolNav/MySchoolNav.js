@@ -5,7 +5,7 @@ import Logo from "../../assets/images/logo.png";
 import { TiChartBar } from "react-icons/ti";
 import { LuSchool } from "react-icons/lu";
 import { BsCreditCard } from "react-icons/bs";
-import { MdOutlinePayments } from "react-icons/md";
+import { MdOutlinePayments,MdOutlineCampaign } from "react-icons/md";
 
 const MySchoolNav = () => {
   return (
@@ -36,6 +36,15 @@ const MySchoolNav = () => {
                 <MdOutlinePayments />
               </span>
               Subscription
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"./sch-perks"} activeClassName="active">
+              <span>
+                {" "}
+                <MdOutlineCampaign />
+              </span>
+              Perks
             </NavLink>
           </li>{" "}
         </ul>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Routes, Route, Navigate, useFetcher } from "react-router-dom";
 import { DataChart } from "../../components/Chart/DataChart";
 import { RecentActivity } from "../../components/RecentActivity/RecentActivity";
@@ -11,9 +11,15 @@ import CountUp from "react-countup";
 import Icon1 from "../../assets/images/up.svg";
 import Icon2 from "../../assets/images/down.svg";
 import Icon3 from "../../assets/images/reset.svg";
+import Icon4 from "../../assets/images/active.png";
+import { ToastContainer, toast } from "react-toastify";
 
 import "./admin-dashboard.scss";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
+import {useAuth} from "../../AuthContext";
+import {ApiContext} from "../../ApiContext";
+import {setAuthToken} from "../../utility/api";
+import formatNumber from "../../utility/utils";
 const customData = [45, 100, 80, 90, 70, 80];
 const customLabels = [
   "North Central (NC)",
@@ -207,9 +213,54 @@ export const AdminDashboard = () => {
   const [drillIndex, setDrillIndex] = useState(0);
   const [lastDrillIndex, setLastDrillIndex] = useState(0);
   const [drillLevel, setDrillLevel] = useState(0); //Max drill level = 2
+  const [isLoading, setIsLoading] = useState(true);
 
   const [dLabel, setLabel] = useState([]);
   const [dData, setData] = useState([]);
+
+  const { login, isLoggedIn,authToken,userState} = useAuth();
+  const { data, loading, error, fetchData, postData } = useContext(ApiContext);
+  const [authError,setAuthError]=useState(false)
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // 2 seconds delay
+    if(!authToken)return
+    const fetchSubInfo = async () => {
+      setAuthToken(authToken);
+      try {
+        await postData("/admin/index", {}); // the postData call
+      } catch (errorResponse) {
+        console.error('Error fetching role information:', errorResponse);
+      }
+    };
+
+    fetchSubInfo();
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if(!data)return;
+  }, [data]);
+
+  useEffect(() => {
+    setAuthError(false)
+    if (!error) return;
+
+    // Display the error message
+    toast.error(error.response?.data?.message || 'You may not have access to this page!');
+
+    // Check if the message contains "Unauthorized" and navigate back
+    if (error.response?.data?.message?.includes('Unauthorized')) {
+      setAuthError(true)
+      // setTimeout(() => {
+      //   window.history.back();
+      // }, 2000); // 2-second delay
+    }
+  }, [error]);
+
 
   const checkDrills = (elementIndex) => {
     setDrilled(true);
@@ -262,37 +313,92 @@ export const AdminDashboard = () => {
 
   return (
     <>
-      <DashboardTop title="Welcome, Peter" />
+      <ToastContainer />
+      <DashboardTop title={`Welcome, ${userState?.name||""}`} />
+      {authError &&
       <div className="Admin-dashboard">
+        <div className=" row row-cols-1 row-cols-lg-1 g-2 g-lg-4 mt">
+          <div className="col">
+            <div className="summary">
+              <p className={"text-danger"}>Unauthorized Access</p>
+              <div className="d-md-flex">
+                <div className="col-md-6">
+                  <h3 className="stats">
+                    You do not have access to this page
+                  </h3>
+                </div>
+                {" "}
+                <div className="col-md-6">
+                  <DataChart backGroundColor={"#ff0000"} borderColor={"#fff000"} labelSet={[".", ".",""]} dataSet={[0, 14, 3,0]}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+      {!authError&&<div className="Admin-dashboard">
         <div className=" row row-cols-3 row-cols-lg-3 g-2 g-lg-4 mt">
           <div className="col">
             <div className="summary">
-              <p>Total Registered Schools</p>
+              <p>This Year's Registered Schools</p>
               <div className="d-md-flex">
                 <div className="col-md-6">
                   <h1 className="stats">
                     {" "}
                     <CountUp
-                      start={0}
-                      end={530}
-                      duration={2}
-                      decimal=""
-                      prefix=" "
-                      suffix=""
-                      enableScrollSpy={true}
+                        start={0}
+                        end={data?.schoolsThisYear}
+                        duration={2}
+                        decimal=""
+                        prefix=" "
+                        suffix=""
+                        enableScrollSpy={true}
                     />
                   </h1>
                   <small>
-                    <img src={Icon1} height="11px" />
-                    <span className="up">12%</span>vs last month
+                    <img src={data?.yearlyPercentageChange>0?Icon1:Icon2} height="11px"/>
+                    <span className={data?.yearlyPercentageChange>0?"up":"down"}>{Math.abs(data?.yearlyPercentageChange||0)}%</span>vs last month
                   </small>
-                </div>{" "}
+                </div>
+                {" "}
                 <div className="col-md-6">
-                  <DataChart />
+                  {data?.yearlyPercentageChange>0?<DataChart/>:<SubChart/>}
                 </div>
               </div>
             </div>
-          </div>{" "}
+          </div>
+          {" "}
+          <div className="col">
+            <div className="summary">
+              <p>This month's Registered Schools</p>
+              <div className="d-md-flex">
+                <div className="col-md-6">
+                  <h1 className="stats">
+                    {" "}
+                    <CountUp
+                        start={0}
+                        end={data?.schoolsThisMonth}
+                        duration={2}
+                        decimal=""
+                        prefix=" "
+                        suffix=""
+                        enableScrollSpy={true}
+                    />
+                  </h1>
+                  <small>
+                    <img src={data?.monthlyPercentageChange>0?Icon1:Icon2} height="11px"/>
+                    <span className={data?.monthlyPercentageChange>0?"up":"down"}>{Math.abs(data?.monthlyPercentageChange||0)}%</span>vs last month
+                  </small>
+                </div>
+                {" "}
+                <div className="col-md-6">
+                  <SubChart/>
+                </div>
+              </div>
+            </div>
+          </div>
+          {" "}
           <div className="col">
             <div className="summary">
               <p>Total Registered Schools</p>
@@ -301,50 +407,23 @@ export const AdminDashboard = () => {
                   <h1 className="stats">
                     {" "}
                     <CountUp
-                      start={0}
-                      end={490}
-                      duration={2}
-                      decimal=""
-                      prefix=" "
-                      suffix=""
-                      enableScrollSpy={true}
+                        start={0}
+                        end={data?.totalSchools}
+                        duration={2}
+                        decimal={false}
+                        prefix=" "
+                        suffix=""
+                        enableScrollSpy={true}
                     />
                   </h1>
                   <small>
-                    <img src={Icon2} height="11px" />
-                    <span className="down">5%</span>vs last month
+                    <img src={Icon4} width="11px"/>
+                    <span className="up"> {formatNumber(data?.activeSchools,0)}</span> Active Schools
                   </small>
-                </div>{" "}
-                <div className="col-md-6">
-                  <SubChart />
                 </div>
-              </div>
-            </div>
-          </div>{" "}
-          <div className="col">
-            <div className="summary">
-              <p>Total Registered Schools</p>
-              <div className="d-md-flex">
+                {" "}
                 <div className="col-md-6">
-                  <h1 className="stats">
-                    {" "}
-                    <CountUp
-                      start={0}
-                      end={100000}
-                      duration={2}
-                      decimal={false}
-                      prefix=" "
-                      suffix="m"
-                      enableScrollSpy={true}
-                    />
-                  </h1>
-                  <small>
-                    <img src={Icon1} width="11px" />
-                    <span className="up">12%</span>vs last month
-                  </small>
-                </div>{" "}
-                <div className="col-md-6">
-                  <DataChart />
+                  <DataChart/>
                 </div>
               </div>
             </div>
@@ -353,24 +432,24 @@ export const AdminDashboard = () => {
         <div className="d-md-flex">
           <div className="col-md-8 zone-div2 col-12">
             <div className="d-flex">
-              <h6 style={{ flexGrow: 1 }}>
+              <h6 style={{flexGrow: 1}}>
                 Schools by{" "}
                 {drillLevel == 0
-                  ? "Zones"
-                  : drillLevel == 1
-                  ? "States"
-                  : "LGAs"}
+                    ? "Zones"
+                    : drillLevel == 1
+                        ? "States"
+                        : "LGAs"}
               </h6>
               {drilled && (
-                <button className="more-btn" onClick={pegLevel}>
-                  <img src={Icon3} height="15px" /> Reset
-                </button>
+                  <button className="more-btn" onClick={pegLevel}>
+                    <img src={Icon3} height="15px"/> Reset
+                  </button>
               )}
             </div>
             <ZoneChart
-              labels={dLabel}
-              dataset={dData}
-              drillPage={checkDrills}
+                labels={dLabel}
+                dataset={dData}
+                drillPage={checkDrills}
             />
           </div>
           <div className="col-md-4 acts-div">
@@ -379,23 +458,23 @@ export const AdminDashboard = () => {
               <div className="act-head">
                 {" "}
                 <h6>Recent Activities</h6>
-                <br />
-                <hr />
+                <br/>
+                <hr/>
               </div>
 
               <div className="act-body">
                 {" "}
-                {state.list.map((data, index) => (
-                  <RecentActivity data={data} />
+                {data?.audits?.data?.map((data, index) => (
+                    <RecentActivity data={data}/>
                 ))}
               </div>
             </div>
           </div>
         </div>
         <div className="registered-sch">
-          <SchoolsTable data={schools} initialDisplayCount={4} />
+          <SchoolsTable data={data?.newSchools} initialDisplayCount={5}/>
         </div>
-      </div>
+      </div>}
     </>
   );
 };

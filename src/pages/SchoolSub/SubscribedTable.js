@@ -3,14 +3,14 @@ import Table from "react-bootstrap/Table";
 import "../../components/SchoolsTable/schools-table.scss";
 import { Link, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-
+import red from "../../assets/images/red_dot.png";
+import green from "../../assets/images/green_dot.png";
 const SubscribedTable = ({ data }) => {
-  const { bg, colo, bd2, colo2, category } = data;
   const [blogId, setBlogId] = useState(0);
-  const location = useLocation();
   const [prevData, setPrevData] = useState([]);
   useEffect(() => {
-    setBlogId(data.id);
+    setBlogId(data?.id);
+    console.log(data)
   });
 
   const getTransitionClass = (item) => {
@@ -31,15 +31,15 @@ const SubscribedTable = ({ data }) => {
                 <input type="checkbox" />
               </th>
               <th>Transaction ID</th>
+              <th>School</th>
               <th>Date & TIme</th> <th>Status</th>
               <th>Amount</th>
-              <th>Payment method</th>
               <th>Renewal Date</th>
               <th>Action</th>
             </tr>
           </thead>
           <TransitionGroup component="tbody">
-            {data.map((item) => (
+            {data?.map((item) => (
               <CSSTransition
                 key={item.id}
                 timeout={500}
@@ -49,32 +49,27 @@ const SubscribedTable = ({ data }) => {
                   <td>
                     <input type="checkbox" />
                   </td>
-                  <td style={{ fontFamily: "montM" }}>{item.regID}</td>
+                  <td style={{ fontFamily: "montM" }}>{item.tx_ref}</td>
+                  <td>{item.school.name}</td>
                   <td>
-                    {item.date}
-                    {item.time}
+                    {item.updated_at}
                   </td>
-                  <td>
-                    <button
-                      className="table-btn"
-                      style={{
-                        background: item.bg,
-                        color: item.colo,
-                        fontFamily: "montM",
-                      }}
-                    >
-                      <span style={{ fontSize: "25px" }}>.</span>
-                      {item.status}
-                    </button>
+                  <td style={{
+                    color: item.status=='successful'?'green':'red',
+                    fontFamily: "montM",
+                  }}>
+                      {/*<img src={(item.status=='successful'?green:red)} style={{width:"2%"}} alt=""/>*/}
+                      {" " }{(item.status||"Pending").toUpperCase()}
+
                   </td>
                   <td>{item.amount}</td>
-                  <td>{item.payment}</td>
-                  <td>{item.renewal}</td>
+
+                  <td>{item.end_date}</td>
                   <td className="edit">
                     <Link
                       className="view"
-                      to={"/dashboard-layout/sch-showcase/" + item.id}
-                      state={{ blog_id: blogId }}
+                      to={"/verify-pay?tx_ref=" + item.tx_ref}
+                      target={'blank'}
                     >
                       view
                     </Link>

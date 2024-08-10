@@ -55,7 +55,7 @@ export default function MySchools() {
 
   return (
     <>
-      <DashboardTop title={"Welcome, " +user?.name} />
+      <DashboardTop title={"Welcome, " +user?.name} hideSearch={1} />
       <br />
       <div className="my-schools-div">
         <div className="d-flex">
@@ -87,7 +87,7 @@ export default function MySchools() {
           </a>
         </div>
 
-        <div className={isGridView ? "grid-view" : "list-view"} id="content">
+        <div className={`${isGridView ? "grid-view" : "list-view"}`} id="content">
           {schoolList.map((data, index) => (
             <div key={index} className={isGridView ? "grid-item" : "list-item"}>
               <Schools data={data} />

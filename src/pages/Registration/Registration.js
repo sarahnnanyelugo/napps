@@ -220,14 +220,8 @@ export const Registration = (props) => {
     } else if (!regex.test(form?.contact_email)) {
       toast.error("This is not a valid email");
     } else {
-      // toast.success("Proceeding to payment");
-      // setInterval(() => {
-      //   // window.location = "dashboard-layout/admin-dashboard";
-      //   window.location = "/payment";
-      // }, 1000);
       enrollSchool()
     }
-    sessionStorage.setItem("user", JSON.stringify(form));
   }
 
   return (
@@ -253,7 +247,7 @@ export const Registration = (props) => {
               {" "}
               <p className="col-md-9">
                 Once you complete the registration of your school with NAPPS,
-                it’ll be added to our online directory. Additionally, you can
+                it'll be added to our online directory. Additionally, you can
                 add more schools to your account after signing up, giving you
                 greater flexibility and management options.
               </p>
@@ -338,7 +332,7 @@ export const Registration = (props) => {
                       textDecoration: isUnderline ? "underline" : "normal",
                     }}
                   ></textarea>
-                  <small>40 characters left</small>
+                  {/* <small>40 characters left</small> */}
                   <h5>Vision</h5>
                   <div className="d-flex">
                     <div className="select-div">
@@ -368,7 +362,8 @@ export const Registration = (props) => {
                       textDecoration: isUnderline ? "underline" : "normal",
                     }}
                   ></textarea>
-                  <small>40 characters left</small> <h5>Mission</h5>
+                  {/* <small>40 characters left</small>  */}
+                  <h5>Mission</h5>
                   <div className="d-flex">
                     <div className="select-div">
                       <select>
@@ -397,7 +392,7 @@ export const Registration = (props) => {
                       textDecoration: isUnderline ? "underline" : "normal",
                     }}
                   ></textarea>
-                  <small>40 characters left</small>
+                  {/* <small>40 characters left</small> */}
                 </div>
                 <div className="contact-holder col-md-5  offset-md-1">
                   <div className="">

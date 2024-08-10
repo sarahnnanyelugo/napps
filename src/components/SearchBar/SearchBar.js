@@ -18,11 +18,11 @@ function SearchBar({ callback, posts }) {
   });
   // Filter posts on typing in search input
   const handleChange = (e) => {
-    const results = posts.filter((post) => {
+    const results = posts?.filter((post) => {
       if (e.target.value === "") return post;
       return (
-        post?.name?.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        post?.zone?.toLowerCase().includes(e.target.value.toLowerCase())
+        post?.tx_ref?.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        post?.school?.name?.toLowerCase().includes(e.target.value.toLowerCase())
       );
     });
 
@@ -66,7 +66,7 @@ function SearchBar({ callback, posts }) {
           </div>
         </div>
       </form>
-      <ul>{state.list.length === 0 && <h3>Empty List !!!</h3>}</ul>
+      <ul>{state.list?.length === 0 && <h3>Empty List !!!</h3>}</ul>
     </>
   );
 }

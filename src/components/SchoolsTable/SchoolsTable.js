@@ -8,18 +8,14 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
   const [blogId, setBlogId] = useState(0);
   // const location = useLocation();
   const [prevData, setPrevData] = useState([]);
-  useEffect(() => {
-    setBlogId(data.id);
-  });
 
   const [isShowingAll, setIsShowingAll] = useState(false);
 
   const handleToggleDisplay = () => {
     setIsShowingAll(!isShowingAll);
   };
-  const visibleData = isShowingAll ? data : data.slice(0, initialDisplayCount);
+  const visibleData = isShowingAll ? data : data?.slice(0, initialDisplayCount);
 
-  const { bg, colo, bd2, colo2 } = data;
   return (
     <div>
       <div className="d-flex tabled-data">
@@ -44,63 +40,46 @@ const SchoolsTable = ({ data, initialDisplayCount = 4 }) => {
           </tr>
         </thead>
         <tbody>
-          {visibleData.map((item) => (
-            <tr key={item.id}>
-              <td>
-                <input type="checkbox" />
-              </td>
+          {visibleData?.map((item) => (
+              <tr key={item.id}>
+                <td>
+                  <input type="checkbox" />
+                </td>
 
-              <td className="">
-                <div className="d-flex">
-                  <div
-                    className="alphabet"
-                    style={{ background: item.bg2, color: item.colo2 }}
-                  >
-                    <center>
-                      <p>{item.alphabet}</p>
-                    </center>
+                <td className="">
+                  <div className="d-flex flex-column">
+                    {item.name}
+                    <small>{item.proprietor?.name}</small>
                   </div>
-                  {item.name}
-                </div>
-              </td>
+                </td>
 
-              <td>
-                <div
-                  className="table-btn"
-                  style={{
-                    background: item.bg,
-                    color: item.colo,
-                    padding: "0px 25px",
-                    width: "fit-content",
-                    height: "35px",
-                  }}
-                >
-                  {item.status}
-                </div>
-              </td>
-              <td>{item.regID}</td>
-              <td>{item.zone}</td>
-              <td className="edit">
-                {/* <Link
-                  className="view"
-                  to={"/dashboard-layout/sch-showcase/" + item.id}
-                  state={{ blog_id: blogId }}
-                >
-                  view
-                </Link> */}
-                <SchDetails blog_id={item.id} />
-              </td>
-              <td className="edit" style={{ color: "#00923F" }}>
-                <Link
-                  className="edit"
-                  to={"/dashboard-layout/displayed-school/" + item.id}
-                  state={{ blog_id: blogId }}
-                >
-                  {" "}
-                  edit
-                </Link>
-              </td>
-            </tr>
+                <td>
+                  <div
+                      className={`btn btn-light ${item.status?'text-success':'text-danger'}`}
+                      style={{
+                        width: "fit-content",
+                        height: "35px",
+                      }}
+                  >
+                    {item.status?'Active':'Inactive'}
+                  </div>
+                </td>
+                <td>{item.uuid}</td>
+                <td>{item.zone?.name}</td>
+                <td className="edit">
+                  <SchDetails blog_id={item.id} />
+                </td>
+                <td className="edit" style={{ color: "#00923F" }}>
+                  <Link
+                      className="edit"
+                      to={"/dashboard-layout/displayed-school/" + item.id}
+                      state={{ blog_id: blogId }}
+                  >
+                    {" "}
+                    edit
+                  </Link>
+                </td>
+              </tr>
           ))}
         </tbody>
       </Table>
