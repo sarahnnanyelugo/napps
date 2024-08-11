@@ -19,6 +19,7 @@ import { ApiContext } from "../../ApiContext";
 import { getLocalStorage, setLocalStorage } from "../../utility/localStorage";
 import api, { setAuthToken } from "../../utility/api";
 import Spinner from "react-bootstrap/Spinner";
+import {useAuth} from "../../AuthContext";
 
 export const Registration = (props) => {
   const [value, setValue] = useState();
@@ -26,12 +27,13 @@ export const Registration = (props) => {
   const [isItalic, setIsItalic] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
-  const [founder, setFounder] = useState(null);
   const [banner, setBanner] = useState(null);
   const [picture, setPicture] = useState(null);
   const [contact, setContact] = useState(null);
   const [zonesAndStates, setZonesAndStates] = useState([]);
-  const { data, loading, error, postData } = useContext(ApiContext);
+  const { error, postData } = useContext(ApiContext);
+  const [data,setData]=useState(null)
+  const [loading,setLoading]=useState(false)
 
   const toggleItalic = () => {
     setIsItalic(!isItalic);
@@ -48,12 +50,8 @@ export const Registration = (props) => {
   const [selectedWard, setSelectedWard] = useState(null);
   const [lgas, setLgas] = useState(null);
   const [wards, setWards] = useState(null);
-  const [user, setUser] = useState(() => {
-    return getLocalStorage('user') || {};
-  });
-  const [authToken, setAuthTokenState] = useState(() => {
-    return getLocalStorage('authToken') || '';
-  });
+
+  const {authToken,userState}=useAuth();
   const [states, setStates] = useState([]);
   const handleZoneChange = (e) => {
     const zone = zonesAndStates.find(
@@ -68,6 +66,15 @@ export const Registration = (props) => {
     setSelectedState(state);
   };
 
+  useEffect(()=>{
+    // console.log('banner: ',banner)
+  },[banner])
+  useEffect(()=>{
+    // console.log('picture: ',picture)
+  },[picture])
+  useEffect(()=>{
+    console.log('contact: ',contact)
+  },[contact])
   const handleLGAChange = (e) => {
     const lga = lgas.find(
       (item) => item.id === parseInt(e.target.value)
@@ -125,8 +132,6 @@ export const Registration = (props) => {
     setStates(selectedZone?.states);
   }, [selectedZone]);
   useEffect(() => {
-    // console.log(selectedZone);
-    // console.log(selectedZone?.states);
     setForm({
       ...form,
       ['education_levels']: selectedOptions,
@@ -164,23 +169,45 @@ export const Registration = (props) => {
 
   async function enrollSchool() {
     try {
+      setLoading(true);
+      setAuthToken(authToken)
       const formPayload = new FormData();
-      formPayload.append('banner', picture);
+      // Append the file and form data
+      if (banner) {
+        formPayload.append('bannerImg', banner[0].file, 'banner.jpg');
+      }
+      if (picture) {
+        formPayload.append('logoImg', picture[0].file, 'logo.jpg');
+      }
+      if (contact) {
+        formPayload.append('contactImg', contact[0].file, 'dp.jpg');
+      }
       for (const [key, value] of Object.entries(form)) {
         formPayload.append(key, value);
       }
-      await postData("/schools", form);
+
+      // Send the FormData payload
+      const response = await api.post("/schools", formPayload, {
+        headers: {
+          'content-type': 'multipart/form-data' // Ensure correct Content-Type header
+        }
+      })
+      if(response.data){
+        setLoading(false);
+        setData(response.data);
+      }
     } catch (errorResponse) {
-      console.error("Error creating proprietor profile:", errorResponse);
+      setLoading(false);
+      toast.error(errorResponse.response?.data ||"Error creating proprietor profile" );
     }
   }
   useEffect(() => {
-    if (!data) return;
+    if (!data||loading) return;
     setLocalStorage("current_school", data.id);
     toast.success("Proceeding to payment");
-    // setInterval(() => {
-    //   window.location = "/payment";
-    // }, 1000);
+    setInterval(() => {
+      window.location = "/payment";
+    }, 1000);
   }, [data])
 
   useEffect(() => {
@@ -189,9 +216,9 @@ export const Registration = (props) => {
   }, [error]);
 
   const [form, setForm] = useState({
-    user_id: user?.id || 0, zone_id: 0, state_id: 0, lga_id: 0, ward_id: 0,
-    name: "", address: "", address2: "", contact_name: user?.name || "",
-    contact_phone: user?.phone || "", contact_email: user?.email || "", website: "", about: "",
+    user_id: userState?.id || 0, zone_id: 0, state_id: 0, lga_id: 0, ward_id: 0,
+    name: "", address: "", address2: "", contact_name: userState?.name || "",
+    contact_phone: userState?.phone || "", contact_email: userState?.email || "", website: "", about: "",
     vision: "", mission: "", logo: "", banner: "",
   });
   function handleChange(e) {
@@ -200,7 +227,7 @@ export const Registration = (props) => {
       ...form,
       [e.target.name]: e.target.value,
     });
-    console.log(form);
+    // console.log(form);
   }
   function handleSelect(e) {
     // console.log(e.target.name, e.target.value);
@@ -255,7 +282,7 @@ export const Registration = (props) => {
             <div className=" col-md-12 sch-form">
               <div
                 className="sch-view-div3"
-                style={{ backgroundImage: "url(" + banner + ")" }}
+                style={{ backgroundImage: "url(" + (banner?banner[0]?.data_url:banner) + ")" }}
               >
                 <center>
                   <div className="import-image col-md-2">
@@ -274,7 +301,7 @@ export const Registration = (props) => {
               <div className="sch-info2 d-flex">
                 <div
                   className="sch-display"
-                  style={{ backgroundImage: "url(" + picture + ")" }}
+                  style={{ backgroundImage: "url(" + (picture?picture[0]?.data_url:picture) + ")" }}
                 >
                   <center>
                     {" "}
@@ -400,7 +427,7 @@ export const Registration = (props) => {
                     <div className="d-flex">
                       <div
                         className="contact-frame2 col-md- mt3"
-                        style={{ backgroundImage: "url(" + contact + ")" }}
+                        style={{ backgroundImage: "url(" + (contact?contact[0]?.data_url:contact) + ")" }}
                       >
                         {" "}
                         <center>
@@ -426,7 +453,7 @@ export const Registration = (props) => {
                           name="contact_phone"
                           onChange={handleChange}
                           placeholder="+2347032861442"
-                          value={user?.phone}
+                          value={userState?.phone}
                         />{" "}
                         <h2>School Email</h2>
                         <input
@@ -435,7 +462,7 @@ export const Registration = (props) => {
                           name="contact_email"
                           onChange={handleChange}
                           placeholder="britishspringcollege@gmail.com"
-                          value={user?.email}
+                          value={userState?.email}
                         />{" "}
                         <h2>School Website</h2>
                         <input

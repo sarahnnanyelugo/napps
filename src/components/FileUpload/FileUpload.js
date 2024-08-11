@@ -19,7 +19,7 @@ export function FileUpload(props) {
       return;
     }
     setImg(images[0].data_url || null);
-    CB(images[0].data_url || null);
+    CB(images);
   }, [images]);
   const CB = (img) => {
     callBack(img);

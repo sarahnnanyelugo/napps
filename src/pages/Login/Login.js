@@ -98,8 +98,7 @@ export const Login = () => {
           <button className="email-button">{loading&&<Spinner variant="light" size="sm" animation="border"/>} LOGIN</button>
           <center>
             <p>
-              By registering, you agree with our <Link>Terms</Link> &{" "}
-              <Link>Conditions</Link>
+              Not yet registered? <Link to={'/members-detail'}>Click here to register Terms</Link>
             </p>
           </center>
         </div>

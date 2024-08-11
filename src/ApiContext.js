@@ -17,6 +17,7 @@ const ApiProvider = ({ children }) => {
   const fetchData = async (endpoint) => {
     setAuthToken(authToken);
     setLoading(true);
+    setData([])
     try {
       const response = await api.get(apiUrl + endpoint);
       setData(response.data);
@@ -31,6 +32,7 @@ const ApiProvider = ({ children }) => {
 
   const postData = async (endpoint, data) => {
     setAuthToken(authToken);
+    setData([])
     setLoading(true);
     try {
       const response = await api.post(apiUrl + endpoint, data);

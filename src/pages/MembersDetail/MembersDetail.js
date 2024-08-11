@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
@@ -38,7 +38,7 @@ export const MembersDetail = () => {
     try {
       const response = await api.get(apiUrl + "/register");
       setRole(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (err) {
       console.log(err);
     } finally {
@@ -67,7 +67,7 @@ export const MembersDetail = () => {
   }, [form.title, form.fname, form.lname]);
 
   useEffect(() => {
-    console.log(form);
+    // console.log(form);
   },[form.phone])
   useEffect(() => {
     if (!data)
@@ -83,13 +83,13 @@ export const MembersDetail = () => {
     if (!error)
       return;
     toast.error("Registration Error:" + error.response?.data);
-    console.log(error.response?.data);
+    // console.log(error.response?.data);
   }, [error]);
   async function registerProprietor() {
     try {
       await postData("/register", form);
     } catch (errorResponse) {
-      console.error("Error creating proprietor profile:", errorResponse);
+      toast.error("Error creating proprietor profile: ", errorResponse.response?.data);
     }
   }
 
@@ -208,7 +208,7 @@ export const MembersDetail = () => {
             </Col>
           </Row>
           <div className="col-md- flex-end">
-            {" "}
+            <p>By registering, you agree with our <Link to={"/terms"} target={'blank'} className={"text-info bold"}>Terms & Conditions</Link></p>
             <button className="payment-button ">
               {loading && <Spinner animation="border" variant="light" size="sm"/>}{" "}
               Proceed{" "}

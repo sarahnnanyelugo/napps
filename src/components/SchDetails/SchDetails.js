@@ -1,21 +1,19 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Modal from "react-bootstrap/Modal";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { SchoolBio } from "../../pages/SchoolSub/SchoolBio";
 function SchDetails(props) {
   const [lgShow, setLgShow] = useState(false);
-  const { blog_id } = props;
+  const { opener,school_id } = props;
 
   useEffect(() => {
-    console.log("blog id: " + blog_id);
-  },[blog_id])
+    console.log("School id: " + school_id);
+  },[school_id])
+    const handleOpen = () => setLgShow(true);
   return (
     <>
-      <p onClick={() => setLgShow(true)} style={{ cursor: "pointer" }}>
-        View
-      </p>
-
+        {React.cloneElement(opener, { onClick: handleOpen })}
       <Modal
         size="xl"
         show={lgShow}
@@ -30,7 +28,7 @@ function SchDetails(props) {
 
         <Modal.Body>
           {" "}
-          <SchoolBio blog_id={blog_id} />
+          <SchoolBio school_id={school_id} />
         </Modal.Body>
       </Modal>
     </>

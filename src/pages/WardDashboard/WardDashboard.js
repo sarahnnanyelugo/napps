@@ -4,7 +4,7 @@ import { DataChart } from "../../components/Chart/DataChart";
 import { RecentActivity } from "../../components/RecentActivity/RecentActivity";
 import SchoolsTable from "../../components/SchoolsTable/SchoolsTable";
 import { SubChart } from "../../components/SubChart/SubChart";
-import { ZoneChart } from "../../components/ZoneChart/ZoneChart";
+import { ZoneChartOld } from "../../components/ZoneChart/ZoneChartOld";
 import { recentActs } from "../../Data/recentActivities";
 import { schools } from "../../Data/schoolsData";
 import CountUp from "react-countup";
@@ -122,7 +122,7 @@ export const WardDashboard = () => {
         <div className="d-md-flex">
           <div className="col-md-8 zone-div">
             <h5>Schools by Wards</h5>
-            <ZoneChart labels={customLabels} dataset={customData} />
+            <ZoneChartOld labels={customLabels} dataset={customData} />
           </div>
           <div className="col-md-4 acts-div">
             {" "}

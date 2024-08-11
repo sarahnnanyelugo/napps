@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import formatNumber from '../../utility/utils';
 
@@ -17,6 +17,9 @@ const Receipt = ({ receipt }) => {
     updated_at
   } = receipt;
 
+  useEffect(()=>{
+
+  })
   return (
     <div className="container mt-2">
       <div className="card">

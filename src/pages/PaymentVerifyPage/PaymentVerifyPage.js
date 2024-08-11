@@ -46,7 +46,7 @@ export const PaymentVerifyPage = () => {
   }, [location]);
 
   useEffect(() => {
-    if (!data) return;
+    if (!data || loading) return;
     setCurrentState(200);
     setSubscription(data);
     removeLocalStorage('current_school');

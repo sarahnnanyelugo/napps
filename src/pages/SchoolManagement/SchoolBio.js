@@ -3,7 +3,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import { FileUpload } from "../../components/FileUpload/FileUpload";
 import { schools } from "../../Data/schoolsData";
-import ProfileAvater from "../../assets/images/edit-profile.png";
+import ProfileAvatar from "../../assets/images/edit-profile.png";
 import Icon from "../../assets/images/file-upload.png";
 import { FaUserEdit } from "react-icons/fa";
 import { LuImagePlus } from "react-icons/lu";
@@ -14,17 +14,11 @@ import { MdMoreVert } from "react-icons/md";
 export const SchoolBio = ({ blog_id }) => {
   const [data, setData] = useState({});
   const [id, setId] = useState(1);
-  const location = useLocation();
-  const [value, setValue] = useState("");
   const [blogId, setBlogId] = useState(1);
 
   const [banner, setBanner] = useState(null);
   const [picture, setPicture] = useState(null);
   const [contact, setContact] = useState(null);
-  // useEffect(() => {
-  //   setId(blog_id);
-  //   console.log(blog_id);
-  // }, [blog_id]);
 
   useEffect(() => {
     if (id !== 0)
@@ -35,9 +29,6 @@ export const SchoolBio = ({ blog_id }) => {
       );
     // console.log(data, research, id);
   }, [id]);
-  useEffect(() => {
-    setValue(schools.about);
-  }, []);
   return (
     <>
       <DashboardTop title="School Management" />
