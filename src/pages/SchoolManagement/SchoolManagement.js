@@ -2,20 +2,10 @@ import React, {useContext, useEffect, useState} from "react";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import CountUp from "react-countup";
 import Icon1 from "../../assets/images/user1.svg";
-import Icon2 from "../../assets/images/user2.svg";
-import Icon3 from "../../assets/images/exp.svg";
-import Map from "../../assets/images/map.png";
 import "./school-management.scss";
 import { schools } from "../../Data/schoolsData";
-import ManagementTable from "./ManagementTable";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import WOW from "wowjs";
-import { GeoChart } from "../../components/GeoChart/GeoChart";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import { ZonesMap } from "../../components/ZonesMap/ZonesMap";
-import { Link } from "react-router-dom";
-import { IoMdAdd } from "react-icons/io";
 import api, {setAuthToken} from "../../utility/api";
 import {useAuth} from "../../AuthContext";
 import {ApiContext} from "../../ApiContext";
@@ -24,14 +14,6 @@ import {getActive, getInactive} from "../../utility/dots";
 import {getPercentage} from "../../utility/utils";
 import {DataChart} from "../../components/Chart/DataChart";
 import {SchoolFilter} from "../../components/SchoolFilter/SchoolFilter";
-const subscriptionData = [
-  { region: "South-East", value: 50 },
-  { region: "South-South", value: 80 },
-  { region: "South-West", value: 90 },
-  { region: "North-Central", value: 40 },
-  { region: "North-East", value: 30 },
-  { region: "North-West", value: 60 },
-];
 export const SchoolManagement = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState(schools);
@@ -39,8 +21,6 @@ export const SchoolManagement = () => {
   const { data, loading, error, fetchData, postData } = useContext(ApiContext);
   const [authError,setAuthError]=useState(false)
   const [isLoading, setIsLoading] = useState(true);
-
-
 
   const[NC,setNC]=useState([])
   const[NE,setNE]=useState([])

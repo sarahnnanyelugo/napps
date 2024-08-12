@@ -16,9 +16,7 @@ import {removeLocalStorage} from "../../utility/localStorage";
 export const SchoolFilter = () => {
     const [category, setCategory] = useState("*");
     const [zone, setZone] = useState("*");
-    const {authToken, userState} = useAuth();
-    const {data, error, fetchData, postData} = useContext(ApiContext);
-    const [authError, setAuthError] = useState(false)
+    const {authToken} = useAuth();
     const [loading, setLoading] = useState(true);
     const [schools, setSchools] = useState([]);
     const [filteredSchools, setfilteredSchools] = useState([]);
@@ -113,7 +111,7 @@ export const SchoolFilter = () => {
                 </button>
                 <button
                     className={`btn-2 ${category === 0 ? "sch-active" : ""}`}
-                    onClick={() => setCat(2)}
+                    onClick={() => setCat(0)}
                 >
                     Inactive Schools
                 </button>

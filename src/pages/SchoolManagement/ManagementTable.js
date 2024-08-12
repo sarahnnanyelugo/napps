@@ -97,15 +97,15 @@ const ManagementTable = ({ data }) => {
         </TransitionGroup>
       </Table>
 
-      <div className="d-flex">
-        <p style={{ flexGrow: 1 }}>Page 1 of 10</p>
-        <div className="d-flex">
-          <button className="more-btn" style={{ marginRight: "10px" }}>
-            Previous
-          </button>
-          <button className="more-btn">Next</button>
-        </div>
-      </div>
+      {/*<div className="d-flex">*/}
+      {/*  <p style={{ flexGrow: 1 }}>Page 1 of 10</p>*/}
+      {/*  <div className="d-flex">*/}
+      {/*    <button className="more-btn" style={{ marginRight: "10px" }}>*/}
+      {/*      Previous*/}
+      {/*    </button>*/}
+      {/*    <button className="more-btn">Next</button>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </div>
   );
 };
