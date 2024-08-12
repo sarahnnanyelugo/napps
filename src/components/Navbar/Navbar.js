@@ -11,7 +11,7 @@ import { getLocalStorage } from "../../utility/localStorage";
 import { useState } from "react";
 function NavBar() {
   const [authToken, setAuthTokenState] = useState(() => {
-    return getLocalStorage('authToken') || '';
+    return getLocalStorage("authToken") || "";
   });
   return (
     <div className="col-md-10 offset-md-1 nav-container">
@@ -43,7 +43,7 @@ function NavBar() {
                   Separated link
                 </NavDropdown.Item>
               </NavDropdown>
-              <Link to={"school-finder"}>
+              <Link to={"sch-finder"}>
                 <button>School Finder</button>
               </Link>
               <Link to={"/news-page"}>
@@ -67,15 +67,21 @@ function NavBar() {
               {/* <Link to={"ward-layout/ward-dashboard"}>
                 <button>Ward</button>
               </Link>{" "} */}
-              {!authToken &&(<><Link to={"/login"}>
-                <button>Log In</button>
-              </Link>
-              <Link to={"/members-detail"}>
-                <button className="app-btn">Register</button>
-              </Link></>)}{" "}
-              {authToken &&<Link to={"/dashboard-selector"}>
-                <button className="app-btn">Account</button>
-              </Link>}
+              {!authToken && (
+                <>
+                  <Link to={"/login"}>
+                    <button>Log In</button>
+                  </Link>
+                  <Link to={"/members-detail"}>
+                    <button className="app-btn">Register</button>
+                  </Link>
+                </>
+              )}{" "}
+              {authToken && (
+                <Link to={"/dashboard-selector"}>
+                  <button className="app-btn">Account</button>
+                </Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

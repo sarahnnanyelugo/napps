@@ -1,0 +1,69 @@
+.sch-finder-landing {
+  background: url("../../assets/images/sch-finder.jpg");
+  height: 485px;
+  background-position: center;
+  background-size: cover;
+  padding-top: 100px;
+  p {
+    font-size: 35px;
+    color: #fff;
+    font-family: montSB;
+  }
+}
+.show-sch {
+  height: 228px;
+  background: #027a48;
+  border-radius: 10px;
+}
+.show-sch2 {
+  height: 118px;
+  width: 118px;
+  background: #f04438;
+  border-radius: 100%;
+  margin-top: -70px;
+  margin-left: 20px;
+}
+.show-sch3 {
+  height: 71px;
+  width: 71px;
+  background: #f04438;
+  border-radius: 100%;
+  margin-top: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.find-sch-div {
+  h3 {
+    margin-top: 30px;
+  }
+  button {
+    border: none;
+    margin: 5px;
+    font-family: montSB;
+    font-size: 14px;
+    border-radius: 100px;
+    padding: 5px 5px;
+  }
+  .gen-btn {
+    color: #5e3ab1;
+    background: #f9f5ff;
+  }
+  .cat-btn {
+    color: #5e3ab1;
+    background: #eef4ff;
+  }
+  .day-boarding {
+    color: #ad1368;
+    background: #fdf2fa;
+  }
+}
+.load-more-btn {
+  background: #027a48;
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  font-family: montSB;
+  padding: 12px 50px;
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
