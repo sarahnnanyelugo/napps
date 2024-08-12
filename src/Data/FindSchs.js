@@ -10,6 +10,7 @@ export const topRated = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 1,
   },
   {
@@ -17,8 +18,9 @@ export const topRated = [
     address: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     phone1: "+2347032861442",
     phone2: " +2347032861442",
-    gender: "Boys and Girls",
-    category: "Junior and Secondary",
+    gender: "Boys ",
+    category: "Primary and Secondary",
+    operation: "Day and Boarding",
     id: 1,
   },
   {
@@ -28,6 +30,7 @@ export const topRated = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Boarding",
     id: 1,
   },
 ];
@@ -38,7 +41,8 @@ export const featuredSchs = [
     phone1: "+2347032861442",
     phone2: " +2347032861442",
     gender: "Boys and Girls",
-    category: "Junior and Secondary",
+    category: "Primary",
+    operation: " Boarding",
     id: 1,
   },
   {
@@ -46,8 +50,9 @@ export const featuredSchs = [
     address: "1, British Spring Estate Road, Nkwelle Awka, Anambra State.",
     phone1: "+2347032861442",
     phone2: " +2347032861442",
-    gender: "Boys and Girls",
+    gender: "Boys ",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 2,
   },
   {
@@ -57,6 +62,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 3,
   },
   {
@@ -66,6 +72,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 4,
   },
   {
@@ -75,6 +82,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 5,
   },
   {
@@ -84,6 +92,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 6,
   },
   {
@@ -93,6 +102,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 7,
   },
   {
@@ -102,6 +112,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 8,
   },
   {
@@ -111,6 +122,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 9,
   },
   {
@@ -120,6 +132,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 10,
   },
   {
@@ -129,6 +142,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 11,
   },
   {
@@ -138,6 +152,7 @@ export const featuredSchs = [
     phone2: " +2347032861442",
     gender: "Boys and Girls",
     category: "Junior and Secondary",
+    operation: "Day and Boarding",
     id: 12,
   },
 ];

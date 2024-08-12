@@ -4,7 +4,7 @@ export default function RatedSchools({ data }) {
   return (
     <>
       <div className="col find-sch-div ">
-        <div className="d-flex">
+        <div className="d-md-flex">
           {" "}
           <div className="show-sch col-md-6"></div>
           <div>

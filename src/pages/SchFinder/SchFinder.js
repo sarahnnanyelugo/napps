@@ -130,7 +130,7 @@ export const SchFinder = () => {
         </div>
       </div>
 
-      <div className="col-md-10 offset-md-1">
+      <div className="col-md-10 offset-md-1 mobile-padding">
         <h3 style={{ marginTop: "80px" }}>Featured Schools</h3>
         <div className=" row row-cols-1 row-cols-lg-3 g-2 g-lg-4 mt">
           {state.list.slice(0, visibleItems).map((data, index) => (

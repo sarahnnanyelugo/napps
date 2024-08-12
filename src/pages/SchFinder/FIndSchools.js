@@ -11,11 +11,11 @@ export default function FIndSchools({ data }) {
         <p>
           {data.phone1}, {data.phone2}
         </p>
-        <div className="d-flex sch-cat-btns">
+        <div className=" sch-cat-btns">
           <button className="gen-btn">{data.gender}</button>
-          <button className="cat-btn">{data.category}</button>
+          <button className="cat-btn">{data.category}</button>{" "}
+          <button className="day-boarding">{data.operation}</button>
         </div>{" "}
-        <button className="day-boarding">{data.category}</button>
       </div>
     </>
   );
