@@ -18,7 +18,6 @@ import {ApiContext} from "../../ApiContext";
 import {setAuthToken} from "../../utility/api";
 import formatNumber from "../../utility/utils";
 export const AdminDashboard = () => {
-  const [drillLevel, setDrillLevel] = useState(0); //Max drill level = 2
   const [isLoading, setIsLoading] = useState(true);
   const {authToken,userState} = useAuth();
   const { data, loading, error, fetchData, postData } = useContext(ApiContext);
@@ -57,9 +56,6 @@ export const AdminDashboard = () => {
     // Check if the message contains "Unauthorized" and navigate back
     if (error.response?.data?.message?.includes('Unauthorized')) {
       setAuthError(true)
-      // setTimeout(() => {
-      //   window.history.back();
-      // }, 2000); // 2-second delay
     }
   }, [error]);
 
@@ -110,12 +106,12 @@ export const AdminDashboard = () => {
                   </h1>
                   <small>
                     <img src={data?.yearlyPercentageChange>0?Icon1:Icon2} height="11px"/>
-                    <span className={data?.yearlyPercentageChange>0?"up":"down"}>{Math.abs(data?.yearlyPercentageChange||0)}%</span>vs last year
+                    {!loading && <><span className={data?.yearlyPercentageChange>0?"up":"down"}>{Math.abs(data?.yearlyPercentageChange||0)}%</span>vs last year</>}
                   </small>
                 </div>
                 {" "}
                 <div className="col-md-6">
-                  {data?.yearlyPercentageChange>0?<DataChart/>:<SubChart/>}
+                  {!loading && data && (data?.yearlyPercentageChange>0?<DataChart/>:<SubChart/>)}
                 </div>
               </div>
             </div>
@@ -145,7 +141,7 @@ export const AdminDashboard = () => {
                 </div>
                 {" "}
                 <div className="col-md-6">
-                  {data?.monthlyPercentageChange>0?<DataChart/>:<SubChart/>}
+                  {!loading && data && (data?.monthlyPercentageChange>0?<DataChart/>:<SubChart/>)}
                 </div>
               </div>
             </div>
@@ -185,7 +181,7 @@ export const AdminDashboard = () => {
           <div className="col-md-8 zone-div2 col-12">
             <div className="d-flex">
             </div>
-            {/*<ZoneChart start_level={"zones"}/>*/}
+            <ZoneChart start_level={"zones"}/>
           </div>
           <div className="col-md-4 acts-div">
             {" "}
@@ -200,7 +196,7 @@ export const AdminDashboard = () => {
               <div className="act-body">
                 {" "}
                 {data?.audits?.data?.map((data, index) => (
-                    <RecentActivity data={data}/>
+                    <RecentActivity key={index} data={data}/>
                 ))}
               </div>
             </div>

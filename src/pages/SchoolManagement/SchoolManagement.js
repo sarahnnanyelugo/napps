@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import CountUp from "react-countup";
 import Icon1 from "../../assets/images/user1.svg";
@@ -6,7 +6,6 @@ import Icon2 from "../../assets/images/user2.svg";
 import Icon3 from "../../assets/images/exp.svg";
 import Map from "../../assets/images/map.png";
 import "./school-management.scss";
-import SchoolsTable from "../../components/SchoolsTable/SchoolsTable";
 import { schools } from "../../Data/schoolsData";
 import ManagementTable from "./ManagementTable";
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -17,6 +16,14 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import { ZonesMap } from "../../components/ZonesMap/ZonesMap";
 import { Link } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
+import api, {setAuthToken} from "../../utility/api";
+import {useAuth} from "../../AuthContext";
+import {ApiContext} from "../../ApiContext";
+import {toast} from "react-toastify";
+import {getActive, getInactive} from "../../utility/dots";
+import {getPercentage} from "../../utility/utils";
+import {DataChart} from "../../components/Chart/DataChart";
+import {SchoolFilter} from "../../components/SchoolFilter/SchoolFilter";
 const subscriptionData = [
   { region: "South-East", value: 50 },
   { region: "South-South", value: 80 },
@@ -28,111 +35,167 @@ const subscriptionData = [
 export const SchoolManagement = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState(schools);
-  function setCat(cat) {
-    setCategory(cat);
-  }
+  const {authToken,userState} = useAuth();
+  const { data, loading, error, fetchData, postData } = useContext(ApiContext);
+  const [authError,setAuthError]=useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+
+
+
+  const[NC,setNC]=useState([])
+  const[NE,setNE]=useState([])
+  const[NW,setNW]=useState([])
+  const[SE,setSE]=useState([])
+  const[SS,setSS]=useState([])
+  const[SW,setSW]=useState([])
+
   useEffect(() => {
-    if (category === "*") {
-      setfilteredSchools(schools);
-    } else {
-      setfilteredSchools(
-        schools.filter((prd) => prd.category.indexOf(category) !== -1)
-      );
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // 2 seconds delay
+    if(!authToken)return
+    const fetchSubInfo = async () => {
+      setAuthToken(authToken);
+      try {
+        await postData("/admin/zone-chart-data", {}); // the postData call
+      } catch (errorResponse) {
+        console.error('Error fetching role information:', errorResponse);
+      }
+    };
+
+    fetchSubInfo();
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if(!data || loading || !data.zones)return;
+    const zones=data?.zones;
+
+    setNC([zones[0]?.schools_count,zones[0]?.active_schools_count,zones[0]?.inactive_schools_count]);
+    setNE([zones[1]?.schools_count,zones[1]?.active_schools_count,zones[1]?.inactive_schools_count]);
+    setNW([zones[2]?.schools_count,zones[2]?.active_schools_count,zones[2]?.inactive_schools_count]);
+    setSE([zones[3]?.schools_count,zones[3]?.active_schools_count,zones[3]?.inactive_schools_count]);
+    setSS([zones[4]?.schools_count,zones[4]?.active_schools_count,zones[4]?.inactive_schools_count]);
+    setSW([zones[5]?.schools_count,zones[5]?.active_schools_count,zones[5]?.inactive_schools_count]);
+  }, [data]);
+
+  useEffect(() => {
+    setAuthError(false)
+    if (!error) return;
+
+    // Display the error message
+    toast.error(error.response?.data?.message || 'You may not have access to this page!');
+
+    // Check if the message contains "Unauthorized" and navigate back
+    if (error.response?.data?.message?.includes('Unauthorized')) {
+      setAuthError(true)
     }
-  }, [category]);
-  const [state, setState] = useState({
-    query: "",
-    list: schools,
-  });
-  function reducer(dt) {
-    // console.log(dt);
-    setfilteredSchools(dt.list);
-  }
-  useEffect(() => {
-    new WOW.WOW({
-      live: true,
-    }).init();
-  }, [category]);
+  }, [error]);
+
   return (
     <>
       <DashboardTop title="School Management" />
-
-      <div className="Admin-dalshboard">
+      {authError &&
+      <div className="Admin-dashboard">
+        <div className=" row row-cols-1 row-cols-lg-1 g-2 g-lg-4 mt">
+          <div className="col">
+            <div className="summary">
+              <p className={"text-danger"}>Unauthorized Access</p>
+              <div className="d-md-flex">
+                <div className="col-md-6">
+                  <h3 className="stats">
+                    You do not have access to this page
+                  </h3>
+                </div>
+                {" "}
+                <div className="col-md-6">
+                  <DataChart backGroundColor={"#ff0000"} borderColor={"#fff000"} labelSet={[".", ".",""]} dataSet={[0, 14, 3,0]}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+      {!authError && <div className="Admin-dalshboard">
         <div className=" row row-cols-2 row-cols-lg-3 g-2 g-lg-4 mt">
           <div className="col">
             <div className="summary d-flex">
-              <div style={{ flexGrow: 1 }}>
+              <div style={{flexGrow: 1}}>
                 {" "}
-                <img src={Icon1} height="30px" />
+                <img src={Icon1} height="30px"/>
                 <p>Total Registered Schools</p>
               </div>
               <h1 className="stats">
                 {" "}
                 <CountUp
-                  start={0}
-                  end={530}
-                  duration={2}
-                  decimal=""
-                  prefix=" "
-                  suffix=""
-                  enableScrollSpy={true}
-                />
-              </h1>
-            </div>
-          </div>{" "}
-          <div className="col">
-            <div className="summary d-flex">
-              <div style={{ flexGrow: 1 }}>
-                {" "}
-                <img src={Icon2} height="30px" />
-                <p>Total Registered Schools</p>
-              </div>
-              <h1 className="stats">
-                {" "}
-                <CountUp
-                  start={0}
-                  end={530}
-                  duration={2}
-                  decimal=""
-                  prefix=" "
-                  suffix=""
-                  enableScrollSpy={true}
-                />
-              </h1>
-            </div>
-          </div>{" "}
-          <div className="col">
-            <div className="summary d-flex">
-              <div style={{ flexGrow: 1 }}>
-                {" "}
-                <img src={Icon2} height="30px" />
-                <p>Total Registered Schools</p>
-              </div>
-              <h1 className="stats">
-                {" "}
-                <CountUp
-                  start={0}
-                  end={530}
-                  duration={2}
-                  decimal=""
-                  prefix=" "
-                  suffix=""
-                  enableScrollSpy={true}
+                    start={0}
+                    end={data?.distribution?.total}
+                    duration={2}
+                    decimal=""
+                    prefix=" "
+                    suffix=""
+                    enableScrollSpy={true}
                 />
               </h1>
             </div>
           </div>
-        </div>{" "}
+          {" "}
+          <div className="col">
+            <div className="summary d-flex">
+              <div style={{flexGrow: 1}}>
+                {" "}
+                <img src={getActive()} height="30px"/>
+                <p>Total Active Schools</p>
+              </div>
+              <h1 className="stats">
+                {" "}
+                <CountUp
+                    start={0}
+                    end={data?.distribution?.total_active}
+                    duration={2}
+                    decimal=""
+                    prefix=" "
+                    suffix=""
+                    enableScrollSpy={true}
+                />
+              </h1>
+            </div>
+          </div>
+          {" "}
+          <div className="col">
+            <div className="summary d-flex">
+              <div style={{flexGrow: 1}}>
+                {" "}
+                <img src={getInactive()} height="30px"/>
+                <p>Total Inactive Schools</p>
+              </div>
+              <h1 className="stats">
+                {" "}
+                <CountUp
+                    start={0}
+                    end={data?.distribution?.total_inactive}
+                    duration={2}
+                    decimal=""
+                    prefix=" "
+                    suffix=""
+                    enableScrollSpy={true}
+                />
+              </h1>
+            </div>
+          </div>
+        </div>
+        {" "}
         <div className="schools-filter-div col-md-12">
           <h5>At a glance</h5>
-          <hr />
+          <hr/>
           <div className="d-md-flex">
             {" "}
             <div className="col-md-7 map-div col-12">
               <div className="offset-md-2">
-                <div className="col-md-8" style={{ background: "" }}>
+                <div className="col-md-8" style={{background: ""}}>
                   {" "}
-                  <ZonesMap />
+                  <ZonesMap zones={{NC, NE, SS, SE, SW, NW}}/>
                 </div>
               </div>
             </div>
@@ -141,166 +204,67 @@ export const SchoolManagement = () => {
                 <div className="d-flex">
                   <div className="col-md-8 col-8">
                     <h6>South-East Region</h6>
-                    <ProgressBar number={16} max={200} color="#0470C7" />
+                    <ProgressBar number={getPercentage(SE[0], data?.distribution?.total || 1, 200)} max={200}
+                                 color="#0470C7"/>
                   </div>
-                  <p>90 Schools</p>
+                  <p>{SE[0]} School{SE[0] > 1 ? 's' : ''}</p>
                 </div>
               </div>
               <div>
                 <div className="d-flex">
                   <div className="col-md-8 col-8">
                     <h6>South-South Region</h6>
-                    <ProgressBar number={40} max={200} color="#DC64D6" />
+                    <ProgressBar number={getPercentage(SS[0], data?.distribution?.total || 1, 200)} max={200}
+                                 color="#DC64D6"/>
                   </div>
-                  <p>110 Schools</p>
+                  <p>{SS[0]} School{SS[0] > 1 ? 's' : ''}</p>
                 </div>
               </div>
               <div>
                 <div className="d-flex">
                   <div className="col-md-8 col-8">
                     <h6>South-West Region</h6>
-                    <ProgressBar number={60} max={200} color="#EF7A80" />
+                    <ProgressBar number={getPercentage(SW[0], data?.distribution?.total || 1, 200)} max={200}
+                                 color="#EF7A80"/>
                   </div>
-                  <p>130 Schools</p>
+                  <p>{SW[0]} School{SW[0] > 1 ? 's' : ''}</p>
                 </div>
               </div>
               <div>
                 <div className="d-flex">
                   <div className="col-md-8 col-8">
                     <h6>North-Central Region</h6>
-                    <ProgressBar number={14} max={200} color="#67CB35" />
+                    <ProgressBar number={getPercentage(NC[0], data?.distribution?.total || 1, 200)} max={200}
+                                 color="#67CB35"/>
                   </div>
-                  <p>80 Schools</p>
+                  <p>{NC[0]} School{NC[0] > 1 ? 's' : ''}</p>
                 </div>
               </div>
               <div>
                 <div className="d-flex">
                   <div className="col-md-8 col-8">
                     <h6>North-East Region</h6>
-                    <ProgressBar number={10} max={200} color="#7F58D9" />
+                    <ProgressBar number={getPercentage(NE[0], data?.distribution?.total || 1, 200)} max={200}
+                                 color="#7F58D9"/>
                   </div>
-                  <p>50 Schools</p>
+                  <p>{NE[0]} School{NE[0] > 1 ? 's' : ''}</p>
                 </div>
               </div>
               <div>
                 <div className="d-flex">
                   <div className="col-md-8 col-8">
                     <h6>North-West Region</h6>
-                    <ProgressBar number={20} max={200} color="#225A60" />
+                    <ProgressBar number={getPercentage(NW[0], data?.distribution?.total || 1, 200)} max={200}
+                                 color="#225A60"/>
                   </div>
-                  <p>100 Schools</p>
+                  <p>{NW[0]} School{NW[0] > 1 ? 's' : ''}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="schools-filter-div col-md-12">
-          {" "}
-          <h4>All Schools</h4>
-          <div className=" d-md-flex filtering-btns">
-            <button
-              className={`btn-1 ${category === "*" ? "sch-active" : ""}`}
-              onClick={() => setCat("*")}
-            >
-              All Schools
-            </button>
-            <button
-              className={`btn-2 ${category === "active" ? "sch-active" : ""}`}
-              onClick={() => setCat("active")}
-            >
-              Active Schools
-            </button>
-            <button
-              className={`btn-2 ${category === "inactive" ? "sch-active" : ""}`}
-              onClick={() => setCat("inactive")}
-            >
-              Inactive Schools
-            </button>
-            <button
-              className={`btn-4 ${category === "pending" ? "sch-active" : ""}`}
-              onClick={() => setCat("pending")}
-            >
-              Pending Schools
-            </button>
-          </div>{" "}
-          <hr />
-          <div className="ssearch-div d-md-flex">
-            <div className="col-md-3">
-              <h6 style={{ fontFamily: "montM" }}>Search Schools</h6>
-              <br />
-              <SearchBar callback={reducer} posts={schools} />
-            </div>
-            <div>
-              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
-                Status
-              </h6>
-              <br />
-              <div className="select-div ">
-                <select>
-                  <option>Active</option>
-                  <option>InActive</option>
-                  <option>Pending</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>Zone</h6>
-              <br />
-              <NavDropdown
-                title="Zone"
-                id="collapsible-nav-dropdown"
-                className="select-div "
-              >
-                <NavDropdown.Item
-                  href="#action/3.1"
-                  onClick={() => setCat("NC")}
-                >
-                  North Central (NC)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.3"
-                  onClick={() => setCat("NW")}
-                >
-                  North West (NW)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SW")}
-                >
-                  South West (SW)
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SE")}
-                >
-                  South East (SE)
-                </NavDropdown.Item>{" "}
-                <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setCat("SS")}
-                >
-                  South South (SS)
-                </NavDropdown.Item>
-              </NavDropdown>
-            </div>
-            <div className="offset-md-3">
-              <button className="exp-btn">
-                {" "}
-                <img src={Icon3} height="20px" width="20px" />
-                Export
-              </button>
-              <Link to={"/add-sch"}>
-                <button className="add-sch-btn" style={{ paddingTop: "6px" }}>
-                  <IoMdAdd />
-                  Add School
-                </button>
-              </Link>
-            </div>
-          </div>{" "}
-          <hr />
-          <ManagementTable data={filteredSchools} />
-        </div>
-      </div>
+        <SchoolFilter/>
+      </div>}
     </>
   );
 };

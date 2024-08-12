@@ -51,23 +51,23 @@ const DashboardSelector = () => {
     if (!data) return;
     const { dashboard_id, roles } = data;
 
-    setDashboardId(dashboard_id);
+
     setRoles(roles);
 
     if (roles?.length === 1) {
       // If user has only one role, redirect immediately
-      setInterval(() => {
-        window.location = dashboards[dashboard_id];
-      }, 2000)
+      setDashboardId(dashboard_id);
     }
 
   }, [data])
 
   useEffect(() => {
-    if (dashboardId && roles?.length > 1) {
-      window.location = dashboards[dashboardId];
+    if (dashboardId) {
+      setTimeout(()=>{
+        window.location = dashboards[dashboardId];
+      },1500)
     }
-  }, [dashboardId, roles]);
+  }, [dashboardId]);
 
   const handleDashboardSelect = (id) => {
     setDashboardId(id);
@@ -88,7 +88,7 @@ const DashboardSelector = () => {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="card shadow-lg border-0 rounded" style={{ width: '24rem' }}>
-        <div className="card-body text-center">
+        <div className="card-body text-center d-flex flex-column">
           {roles?.length > 1 && <h6 className="card-title">Select Dashboard</h6>}
           {roles?.length === 1 && <h5 className="card-title">Loading Default dashboard</h5>}
           {roles?.map(role => (
@@ -101,7 +101,7 @@ const DashboardSelector = () => {
             </button>
           ))}
           {roles?.length === 1 && <h6 className="card-body">If not redirected automatically, Click the button above</h6>}
-          <center><img style={{ width: "45%" }} src={loadingGif} alt="Loading..." /></center>
+          {dashboardId && <center><img style={{ width: "45%" }} src={loadingGif} alt="Loading..." /></center>}
         </div>
       </div>
     </div>

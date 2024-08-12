@@ -3,6 +3,9 @@ import Table from "react-bootstrap/Table";
 import "../../components/SchoolsTable/schools-table.scss";
 import { Link, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import {getGreen, getRed} from "../../utility/dots";
+import SchDetails from "../../components/SchDetails/SchDetails";
+export const opener = () => {return <p className={"btn edit"}>View</p>}
 
 const ManagementTable = ({ data }) => {
   const { bg, colo, bd2, colo2, category } = data;
@@ -29,10 +32,10 @@ const ManagementTable = ({ data }) => {
             <th>
               <input type="checkbox" />
             </th>
-            <th className="col-md-4">Name</th>
+            <th>Name</th>
             <th>Status</th>
             <th>Registration ID</th>
-            <th colSpan={3}>Zone</th>
+            <th>Zone</th>
           </tr>
         </thead>
         <TransitionGroup component="tbody">
@@ -54,7 +57,7 @@ const ManagementTable = ({ data }) => {
                       style={{ background: item.bg2, color: item.colo2 }}
                     >
                       <center>
-                        <p>{item.alphabet}</p>
+                        <p><img src={item.logo} alt="Item logo" style={{width:"100%"}}/></p>
                       </center>
                     </div>
                     {item.name}
@@ -62,23 +65,21 @@ const ManagementTable = ({ data }) => {
                 </td>
 
                 <td>
-                  <button
-                    className="table-btn"
-                    style={{ background: item.bg, color: item.colo }}
-                  >
-                    {item.status}
-                  </button>
+                  <img src={item.status?getGreen():getRed()} alt="status icon" style={{width:"12px"}}/>&nbsp;
+
+                  {item.status?'Active':'Inactive'}
                 </td>
-                <td>{item.regID}</td>
-                <td>{item.zone}</td>
+                <td>{item.uuid}</td>
+                <td>{item.zone?.name}</td>
                 <td className="edit">
-                  <Link
-                    className="view"
-                    to={"/dashboard-layout/sch-showcase/" + item.id}
-                    state={{ blog_id: blogId }}
-                  >
-                    view
-                  </Link>
+                  {/*<Link*/}
+                  {/*  className="view"*/}
+                  {/*  to={"/dashboard-layout/sch-showcase/" + item.id}*/}
+                  {/*  state={{ blog_id: blogId }}*/}
+                  {/*>*/}
+                  {/*  view*/}
+                  {/*</Link>*/}
+                  <SchDetails opener={opener()} school_id={item.uuid}/>
                 </td>
                 <td className="edit" style={{ color: "#00923F" }}>
                   <Link

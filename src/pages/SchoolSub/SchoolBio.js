@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import { schools } from "../../Data/schoolsData";
 import api from "../../utility/api";
+import {getGreen, getRed} from "../../utility/dots";
 export const SchoolBio = ({ school_id }) => {
   const [data, setData] = useState(null);
   const [ld,setLd]=useState(false);
@@ -26,13 +27,23 @@ export const SchoolBio = ({ school_id }) => {
     <>
       {/*<DashboardTop title="School Management" />*/}
       {ld && <div className="Admin-dashboard">
-        <div className="sch-view-div"></div>
+        <div className="sch-view-div" style={{
+          backgroundImage: "url(" + data.banner + ")",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat"
+        }}></div>
         <div className="sch-info d-flex">
-          <div className="sch-display"></div>
+          <div className="sch-display" style={{
+            backgroundImage: "url(" + data.logo + ")",
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat"
+          }}></div>
           <div style={{flexGrow: 1}}>
             <h4>{data?.name}</h4>
             <p>{data?.zone.name}, {data?.state.name}, Nigeria{" "}
-              <span style={{fontSize: "20px", fontWeight: "bold"}}>.</span>{" "}
+              <span style={{fontSize: "20px", fontWeight: "bold"}}><img src={data.status ? getGreen() : getRed()} style={{width: "10px"}}/></span>{" "}
               {data?.status===1?'Active':'Inactive'}
             </p>
           </div>
@@ -62,7 +73,14 @@ export const SchoolBio = ({ school_id }) => {
             <div className="">
               <h5>Contact Information</h5>
               <div className="d-flex">
-                <div className="contact-frame2 col-md-"></div>
+                <div className="contact-frame2 col-md-"
+                     style={{
+                       backgroundImage: "url(" + data?.proprietor?.dp + ")",
+                       backgroundSize: "contain",
+                       backgroundPosition: "center",
+                       backgroundRepeat: "no-repeat"
+                     }}
+                ></div>
                 <div className="col-md-9">
                   <div style={{marginLeft: "20px"}}>
                     <p> {data?.proprietor?.name}</p>

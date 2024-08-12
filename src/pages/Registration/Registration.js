@@ -1,13 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
-import { Password } from "../../components/Password/Password";
 // import { zonesAndStates } from "../../Data/States";
 
 import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
-import { statesAndLGAs } from "../../Data/States";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaUserEdit } from "react-icons/fa";
@@ -22,8 +18,6 @@ import Spinner from "react-bootstrap/Spinner";
 import {useAuth} from "../../AuthContext";
 
 export const Registration = (props) => {
-  const [value, setValue] = useState();
-  const { founder_id } = props;
   const [isItalic, setIsItalic] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
@@ -66,15 +60,6 @@ export const Registration = (props) => {
     setSelectedState(state);
   };
 
-  useEffect(()=>{
-    // console.log('banner: ',banner)
-  },[banner])
-  useEffect(()=>{
-    // console.log('picture: ',picture)
-  },[picture])
-  useEffect(()=>{
-    console.log('contact: ',contact)
-  },[contact])
   const handleLGAChange = (e) => {
     const lga = lgas.find(
       (item) => item.id === parseInt(e.target.value)
@@ -301,7 +286,7 @@ export const Registration = (props) => {
               <div className="sch-info2 d-flex">
                 <div
                   className="sch-display"
-                  style={{ backgroundImage: "url(" + (picture?picture[0]?.data_url:picture) + ")" }}
+                  style={{ backgroundImage: "url(" + (picture?picture[0]?.data_url:picture) + ")",backgroundSize: "contain",backgroundPosition: "center",backgroundRepeat: "no-repeat" }}
                 >
                   <center>
                     {" "}
@@ -318,18 +303,21 @@ export const Registration = (props) => {
                     </div>
                   </center>
                 </div>
-                <div className="col-md-4">
-                  <input
-                    className="sch-input "
-                    type="text"
-                    name="name"
-                    onChange={handleChange}
-                    placeholder="School Name"
-                  />
-                </div>
               </div>
               <div className="d-md-flex more-info" style={{ padding: "20px" }}>
+
                 <div className="col-md-6">
+                  <h5>School Name</h5>
+                  <div className="col-md-12">
+                    <input
+                        className="sch-input form-control"
+                        type="text"
+                        name="name"
+                        onChange={handleChange}
+                        placeholder="School Name"
+                    />
+                  </div>
+
                   <h5>About School</h5>
                   <div className="d-flex">
                     <div className="select-div">
