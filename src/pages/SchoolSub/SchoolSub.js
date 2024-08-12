@@ -106,7 +106,7 @@ export const SchoolSUb = () => {
     <>
       <DashboardTop title="Subscription" />
       <div className="Admin-dashboard">
-        <div className=" row row-cols-1 row-cols-lg-2 g-2 g-lg-4 mt">
+        <div className=" row row-cols-1 row-cols-lg-3 g-2 g-lg-4 mt">
           <div className="col">
             <div className="summary d-flex">
               <div style={{ flexGrow: 1 }}>
@@ -119,7 +119,7 @@ export const SchoolSUb = () => {
                 <CountUp
                   start={0}
                   end={data?.sum||0}
-                  duration={2}
+                  duration={1}
                   decimal=""
                   prefix="₦ "
                   // suffix="₦"
@@ -135,18 +135,41 @@ export const SchoolSUb = () => {
                 <h4>
                   <PiLinkSimpleBreakThin />
                 </h4>
-                <p>Renewals Made</p>
+                <p>Subscription Invoices</p>
               </div>
               <h1 className="stats">
                 {" "}
                 <CountUp
                   start={0}
                   end={data?.count||0}
-                  duration={2}
+                  duration={1}
                   decimal=""
                   prefix=" "
                   suffix=""
                   enableScrollSpy={true}
+                />
+              </h1>
+            </div>
+          </div>{" "}
+          <div className="col">
+            <div className="summary d-flex">
+              <div style={{ flexGrow: 1 }}>
+                {" "}
+                <h4>
+                  <PiLinkSimpleBreakThin />
+                </h4>
+                <p>Pending Subscription</p>
+              </div>
+              <h1 className="stats">
+                {" "}
+                <CountUp
+                    start={0}
+                    end={data?.count||0}
+                    duration={1}
+                    decimal=""
+                    prefix=" "
+                    suffix=""
+                    enableScrollSpy={true}
                 />
               </h1>
             </div>

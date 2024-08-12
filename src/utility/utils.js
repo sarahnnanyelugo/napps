@@ -20,6 +20,11 @@ export const formatAudiTrail = (item) => {
         id: item.id,
     };
 };
+
+export const getPercentage=(num,den,perc)=>{
+    return parseInt((num/((den>0?den:1)))*perc);
+}
+
 const formatNumber = (number, decimalPlaces = 2) => {
     if (isNaN(number)) return 'Invalid number';
   

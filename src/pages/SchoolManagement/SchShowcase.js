@@ -1,11 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { SchoolBio } from "./SchoolBio";
 export const SchShowcase = () => {
-  const { blog_id } = useParams();
+  const { school_id } = useParams();
+  useEffect(()=>{
+      console.log(school_id)
+  })
   return (
     <div>
-      <SchoolBio blog_id={blog_id} />
+      <SchoolBio school_id={school_id} />
     </div>
   );
 };

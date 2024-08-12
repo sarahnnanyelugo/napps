@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./zones-map.scss";
 import SouthEast from "../../assets/images/south-east.svg";
 import SouthSouth from "../../assets/images/south-south.svg";
@@ -8,19 +8,20 @@ import NorthEast from "../../assets/images/north-east.svg";
 import NorthWest from "../../assets/images/north-west.svg";
 import Tooltip from "../Tooltip/Tooltip";
 
-export const ZonesMap = () => {
+export const ZonesMap = ({zones}) => {
+  const {NC, NE, SS, SE, SW, NW}=zones
   return (
     <>
       <div className="d-flex">
         {" "}
         <div className="south-east zoomed">
           {" "}
-          <Tooltip total="36" active="30" inactive="6">
+          {SE && <Tooltip total={SE[0]||0} active={SE[1]||0} inactive={SE[2]||0}>
             <img src={SouthEast} alt="Scholar" width="" height="135px" />{" "}
-          </Tooltip>
+          </Tooltip>}
         </div>
         <div className="north-east zoomed">
-          <Tooltip total="36" active="30" inactive="6">
+          <Tooltip zone={"North East"} total={NE[0]||0} active={NE[1]||0} inactive={NE[2]||0}>
             <img
               src={NorthEast}
               alt="Scholar"
@@ -31,28 +32,28 @@ export const ZonesMap = () => {
         </div>
       </div>
       <div className="north-central zoomed">
-        <Tooltip total="36" active="30" inactive="6">
+        {NC && <Tooltip zone={"North Central"} total={NC[0]||0} active={NC[1]||0} inactive={NC[2]||0}>
           <img src={NorthCentral} alt="Scholar" width="" height="140px" />{" "}
-        </Tooltip>
+        </Tooltip>}
       </div>
       <div className="d-flex col-md-8">
         {" "}
         <div className="south-west zoomed">
-          <Tooltip total="36" active="30" inactive="6">
+          {SW && <Tooltip zone={"South West"} total={SW[0]||0} active={SW[1]||0} inactive={SW[2]||0}>
             <img src={SouthWest} alt="Scholar" width="" height="" />{" "}
-          </Tooltip>
+          </Tooltip>}
         </div>
         <div>
           {" "}
           <div className="south-south zoomed">
-            <Tooltip total="36" active="30" inactive="6">
+            {SS && <Tooltip zone={"South South"} total={SS[0]||0} active={SS[1]||0} inactive={SS[2]||0}>
               <img src={SouthSouth} alt="Scholar" width="" height="" />{" "}
-            </Tooltip>
+            </Tooltip>}
           </div>{" "}
           <div className="north-west zoomed">
-            <Tooltip total="36" active="30" inactive="6">
+            {NW && <Tooltip zone={"North West"} total={NW[0]||0} active={NW[1]||0} inactive={NW[2]||0}>
               <img src={NorthWest} alt="Scholar" height="83px" className="" />{" "}
-            </Tooltip>
+            </Tooltip>}
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ export function FileUpload(props) {
   const { colr, callBack, align } = props;
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
-    console.log(imageList, addUpdateIndex);
+    // console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
   useEffect(() => {
@@ -55,13 +55,13 @@ export function FileUpload(props) {
             dragProps,
           }) => (
             <div className="upload__image-wrapper">
-              <button
-                style={{ color: colr }}
+              <span
+                style={{ color: colr,cursor:"pointer" }}
                 onClick={onImageUpload}
                 {...dragProps}
               >
                 Upload {props.uploadable}
-              </button>
+              </span>
               &nbsp;
               {imageList.map((image, index) => (
                 <div key={index} className="image-item"></div>

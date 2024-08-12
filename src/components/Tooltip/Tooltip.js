@@ -6,6 +6,7 @@ export default function Tooltip({
   total,
   active,
   inactive,
+    zone,
   ...rest
 }) {
   const [show, setShow] = React.useState(false);
@@ -14,6 +15,7 @@ export default function Tooltip({
     <div>
       <div className="tooltip2" style={show ? { visibility: "visible" } : {}}>
         <ul className="list-unstyled">
+          <li><strong>{zone?zone:''}</strong></li>
           <li>Total Schools:{total}</li>
           <li>Active Schools:{active}</li>
           <li>Inactive Schools:{inactive}</li>

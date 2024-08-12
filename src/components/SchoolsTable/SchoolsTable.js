@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import {Link} from "react-router-dom";
 import "./schools-table.scss";
 import SchDetails from '../SchDetails/SchDetails';
+import {getGreen, getRed} from "../../utility/dots";
 
 export const opener = () => {return <p className={"btn"}>View</p>}
 
@@ -40,7 +41,7 @@ const SchoolsTable = ({data, initialDisplayCount = 4}) => {
                     <th>Status</th>
                     <th>Registration ID</th>
                     <th>Zone</th>
-                    <th colSpan={2}>Action</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -59,29 +60,31 @@ const SchoolsTable = ({data, initialDisplayCount = 4}) => {
 
                         <td>
                             <div
-                                className={`btn btn-light ${item.status ? 'text-success' : 'text-danger'}`}
+                                className={`btn btn-light text-muted`}
                                 style={{
                                     width: "fit-content",
                                     height: "35px",
                                 }}
                             >
-                                {item.status ? 'Active' : 'Inactive'}
+                                <img src={item.status ? getGreen() : getRed()} style={{width: "10px"}}/>   {item.status ? 'Active' : 'Inactive'}
                             </div>
                         </td>
                         <td>{item.uuid}</td>
                         <td>{item.zone?.name}</td>
                         <td className="edit">
-                            <SchDetails opener={opener()} school_id={item.uuid}/>
-                        </td>
-                        <td className="edit" style={{color: "#00923F"}}>
-                            <Link
-                                className="edit"
-                                to={"/dashboard-layout/displayed-school/" + item.id}
-                                state={{blog_id: blogId}}
-                            >
-                                {" "}
-                                edit
-                            </Link>
+                            <div className="btn-group">
+                                    <SchDetails opener={opener()} school_id={item.uuid}/>
+                                    <Link
+                                        className="edit btn"
+                                        to={"/dashboard-layout/displayed-school/" + item.id}
+                                        state={{blog_id: blogId}}
+                                        style={{color: "#00923F"}}
+                                    >
+                                        {" "}
+                                        edit
+                                    </Link>
+                            </div>
+
                         </td>
                     </tr>
                 ))}

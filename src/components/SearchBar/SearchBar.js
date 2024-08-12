@@ -21,8 +21,7 @@ function SearchBar({ callback, posts }) {
     const results = posts?.filter((post) => {
       if (e.target.value === "") return post;
       return (
-        post?.tx_ref?.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        post?.school?.name?.toLowerCase().includes(e.target.value.toLowerCase())
+        post?.name?.toLowerCase().includes(e.target.value.toLowerCase())
       );
     });
 
@@ -66,7 +65,7 @@ function SearchBar({ callback, posts }) {
           </div>
         </div>
       </form>
-      <ul>{state.list?.length === 0 && <h3>Empty List !!!</h3>}</ul>
+      <ul>{state.list?.length === 0 && <></>}</ul>
     </>
   );
 }
