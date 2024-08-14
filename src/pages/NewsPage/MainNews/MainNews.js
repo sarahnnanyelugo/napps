@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { News } from "../../../components/News/News";
 import { latestNews } from "../../../Data/NewsData";
-// import "../../research-group.scss";
+import { IoArrowBack } from "react-icons/io5";
+import { Footer } from "../../../components/Footer/Footer";
+
 export const MainNews = () => {
   const [data, setData] = useState({});
   const [id, setId] = useState(0);
@@ -31,17 +33,18 @@ export const MainNews = () => {
 
   return (
     <>
-      <div className="col-md-12 news-container">
-        <Link to={"/news-page"} className="offset-md-1 blog-link2">
-          <i class="icofont-arrow-left"></i>Back
+      <div className="col-md-12 news-container2">
+        <Link to={"/news-page"} className="offset-md-1 news-link2">
+          <IoArrowBack />
+          Back
         </Link>
         <center>
-          <h1 className="mt8">NEWS DETAILS</h1>
+          <h1 className="mt8">ALL NEWS</h1>
         </center>
       </div>{" "}
       {data ? (
         <>
-          <div className="col-md-10 offset-md-2 flexy mt">
+          <div className="col-md-10 offset-md-1 d-md-flex mt all-news ">
             <div className="col-md-7 ">
               {" "}
               <div
@@ -99,6 +102,7 @@ export const MainNews = () => {
       ) : (
         ""
       )}
+      <Footer />
     </>
   );
 };
