@@ -43,7 +43,7 @@ function NavBar() {
                   Separated link
                 </NavDropdown.Item>
               </NavDropdown>
-              <Link to={"sch-finder"}>
+              <Link to={"/sch-finder"}>
                 <button>School Finder</button>
               </Link>
               <Link to={"/news-page"}>

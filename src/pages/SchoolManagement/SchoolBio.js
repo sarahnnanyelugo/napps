@@ -65,7 +65,13 @@ export const SchoolBio = ({school_id}) => {
                     <div className="sch-info d-flex">
                         <div
                             className="sch-display"
-                            style={{backgroundImage: "url(" + data.logo + ")"}}
+                            style={{
+                                backgroundColor:"#f3f3f3",
+                                backgroundImage: "url(" + data.logo + ")",
+                                backgroundPosition: "center",
+                                backgroundRepeat: "no-repeat",
+                                backgroundSize: "contain",
+                            }}
                         >
                             {/*<center>*/}
                             {/*  {" "}*/}

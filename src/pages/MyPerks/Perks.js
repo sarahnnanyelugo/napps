@@ -20,7 +20,7 @@ export const Perks = ({ data }) => {
     const timer = setTimeout(() => {
       setBlogId(data.id);
       setIsLoading(false);
-    }, 2000); // 2 seconds delay
+    }, 600); // 2 seconds delay
 
     // Cleanup the timer
     return () => clearTimeout(timer);
@@ -32,28 +32,28 @@ export const Perks = ({ data }) => {
     >
       {" "}
       <div className="schools d-flex">
-        <div className="sch-frame col-md-3 col-6" style={{ background: bg2||"#AA9C75" }}>
-          {data.dp && <img src={data.dp} style={{width: "100%"}}/>}
+        <div className="sch-frame col-md-3 col-6 d-flex justify-content-center align-items-center" style={{ background: bg2||"#AA9C75" }}>
+          <h3 className="col-md-12 p-3">
+            {isLoading ? (
+                <Skeleton count={1} style={{ width: "200px" }} />
+            ) : (
+                "Coming soon!"
+            )}
+          </h3>
         </div>
         <div className="sch-details">
-          <h6 className="col-md-12">
-            {isLoading ? (
-              <Skeleton count={1} style={{ width: "200px" }} />
-            ) : (
-                "NAPPS Perks"
-            )}
-          </h6>
-          <p>{isLoading ? <Skeleton count={1} /> : "Campaigns"}</p>
-          <p>{isLoading ? <Skeleton count={1} /> : "Exciting Discounts"}</p>
 
-          <p>
+          <h4>{isLoading ? <Skeleton count={1} /> : "Campaigns"}</h4>
+          <h4>{isLoading ? <Skeleton count={1} /> : "Exciting Discounts"}</h4>
+
+          <h4>
             {isLoading ? <Skeleton count={1} /> : "Exclusive Deals!"}{" "}
-          </p>
+          </h4>
           
           {!isLoading &&
-           <p><img src={red} style={{ width:"10px" }}/>
+           <h4><img src={red} style={{ width:"10px" }}/>
            {(' Coming Soon!')}
-           </p>
+           </h4>
            }
 
         </div>

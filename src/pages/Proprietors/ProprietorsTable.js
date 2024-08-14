@@ -40,10 +40,10 @@ const ProprietorsTable = ({ data }) => {
                 <input type="checkbox" />
               </th>
               <th className="">Name </th>
-              <th> Subscription</th>
-              <th className="">Registered Schools</th>
+              <th className="">Registered <br/> Schools</th>
+              <th> Contact</th>
 
-              <th>Zone</th>
+              <th>Roles</th>
 
               <th>Action</th>
             </tr>
@@ -62,28 +62,22 @@ const ProprietorsTable = ({ data }) => {
                   <td className="">
                     <div className="d-flex">
                       <div
-                        className="alphabet"
-                        style={{ background: item.bg2, color: item.colo2 }}
-                      >
+                        className="alphabet">
                         <center>
                           <p>{item.alphabet}</p>
                         </center>
                       </div>
-                      {item.accName}
+                      {item.name}
                     </div>
                   </td>
+                  <td>{item.schools_count}</td>
                   <td>
-                    {" "}
-                    <button
-                      className="table-btn"
-                      style={{ background: item.bg, color: item.colo }}
-                    >
-                      {item.status}
-                    </button>
+                    {item.email} <br/>{item.phone}
                   </td>
-                  <td>{item.id}</td>
 
-                  <td>{item.zone}</td>
+                  <td>{item.roles?.map((role,index)=>
+                    (<li key={index}>{role.name}</li>)
+                  )}</td>
 
                   <td className="edit">
                     <Link

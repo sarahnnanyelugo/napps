@@ -14,12 +14,34 @@ import { RiBankFill } from "react-icons/ri";
 import { SlPeople } from "react-icons/sl";
 import { LuSchool2 } from "react-icons/lu";
 
-import { Link } from "react-router-dom";
 import AddCoordinators from "./AddCoordinators";
+import api, {setAuthToken} from "../../utility/api";
+import {useAuth} from "../../AuthContext";
 
 export const Proprietors = () => {
   const [category, setCategory] = useState("*");
-  const [filteredSchools, setfilteredSchools] = useState(schools);
+  const [filteredSchools, setfilteredSchools] = useState([]);
+  const [data, setData] = useState(null);
+  const [ld, setLd] = useState(false);
+  const {authToken}=useAuth()
+
+  useEffect(() => {
+    setAuthToken(authToken);
+    api.post('/admin/fetch-proprietors')
+        .then(response => {
+          setData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching zone chart data:', error);
+        });
+  }, []);
+  useEffect(() => {
+    console.log(data)
+    if (!data) return;
+    setfilteredSchools(data?.proprietors_list)
+    setLd(true)
+  }, [data])
+
   function setCat(cat) {
     setCategory(cat);
   }
@@ -32,10 +54,6 @@ export const Proprietors = () => {
       );
     }
   }, [category]);
-  const [state, setState] = useState({
-    query: "",
-    list: schools,
-  });
   function reducer(dt) {
     setfilteredSchools(dt.list);
   }
@@ -67,8 +85,8 @@ export const Proprietors = () => {
                 {" "}
                 <CountUp
                   start={0}
-                  end={50}
-                  duration={2}
+                  end={data?.proprietors_count}
+                  duration={1}
                   decimal=""
                   prefix=" "
                   suffix=""
@@ -88,7 +106,7 @@ export const Proprietors = () => {
                 {" "}
                 <CountUp
                   start={0}
-                  end={530}
+                  end={data?.registered_schools_count}
                   duration={2}
                   decimal=""
                   prefix=" "
@@ -101,71 +119,13 @@ export const Proprietors = () => {
         </div>{" "}
         <div className="business-pricing-tab ">
           {" "}
-          <div className="ssearch-div d-md-flex">
+          <div className="ssearch-div d-md-flex justify-content-between">
             <div className="col-md-3">
               <h6 style={{ fontFamily: "montM" }}>Search Proprietors</h6>
               <br />
-              <SearchBar callback={reducer} posts={schools} />
+              <SearchBar callback={reducer} posts={data?.proprietors_list} />
             </div>
-            <div className="d-flex">
-              {" "}
-              <div>
-                <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
-                  Filter
-                </h6>
-                <br />
-                <div className="select-div ">
-                  <select>
-                    <option>Active</option>
-                    <option>InActive</option>
-                    <option>Pending</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <h6 style={{ fontFamily: "montM", marginLeft: "12px" }}>
-                  Zone
-                </h6>
-                <br />
-                <NavDropdown
-                  title="Zone"
-                  id="collapsible-nav-dropdown"
-                  className="select-div "
-                >
-                  <NavDropdown.Item
-                    href="#action/3.1"
-                    onClick={() => setCat("NC")}
-                  >
-                    North Central (NC)
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    href="#action/3.3"
-                    onClick={() => setCat("NW")}
-                  >
-                    North West (NW)
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    href="#action/3.4"
-                    onClick={() => setCat("SW")}
-                  >
-                    South West (SW)
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    href="#action/3.4"
-                    onClick={() => setCat("SE")}
-                  >
-                    South East (SE)
-                  </NavDropdown.Item>{" "}
-                  <NavDropdown.Item
-                    href="#action/3.4"
-                    onClick={() => setCat("SS")}
-                  >
-                    South South (SS)
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </div>
-            </div>
-            <div className="offset-md-3 ">
+            <div className="">
               <button className="exp-btn" style={{ flexGrow: 1 }}>
                 {" "}
                 <img src={Icon3} height="20px" width="20px" />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import {Link} from 'react-router-dom'
 import NavBar from "../../components/Navbar/Navbar";
 import "./home.scss";
 import Search from "../../assets/images/search-icon.svg";
@@ -111,17 +112,18 @@ export const Home = () => {
             </div>
           </div>
           <div className="col-md-2">
-            <button>
+            <Link to={"/sch-finder"}>            <button>
               {" "}
               <img
-                className=""
-                src={Search}
-                alt="Scholar"
-                width="24px"
-                height="24px"
+                  className=""
+                  src={Search}
+                  alt="Scholar"
+                  width="24px"
+                  height="24px"
               />
               Search
             </button>
+            </Link>
           </div>
         </div>
         <div className="next-select col-md-8 row row-cols-1 row-cols-lg-3 g-2 g-lg-2">

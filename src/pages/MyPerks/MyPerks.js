@@ -74,8 +74,8 @@ export default function MyPerks() {
         {/*  /!*</a>*!/*/}
         {/*</div>*/}
 
-        <div className={isGridView ? "grid-view" : "list-view"} id="content">
-          <div className={isGridView ? "grid-item" : "list-item"}>
+        <div className= {"list-view"} id="content">
+          <div className={"list-item"}>
             <Perks data="" />
           </div>
         </div>
