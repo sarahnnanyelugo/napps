@@ -23,6 +23,7 @@ import { SchShowcase } from "./pages/SchoolManagement/SchShowcase";
 import React from "react";
 import { Terms } from "./pages/Terms/Terms";
 import { SchFinder } from "./pages/SchFinder/SchFinder";
+import ContactUs from "./pages/ContactUs/ContactUs";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="verify-pay" element={<PaymentVerifyPage />} />{" "}
         <Route path="news-page" element={<NewsPage />} />
         <Route path="sch-finder" element={<SchFinder />} />
+        <Route path="contact-us" element={<ContactUs />} />
         <Route path="main-news/:blog_id" element={<MainNews />} />
         <Route path="terms" element={<Terms />} />
         <Route path="dashboard-layout/*" element={<DashboardLayout />} />{" "}

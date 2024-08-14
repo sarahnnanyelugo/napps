@@ -1,0 +1,40 @@
+.contact-section {
+  margin-top: 100px;
+  h6 {
+    color: #027a48;
+    font-family: montSB;
+  }
+  h2 {
+    font-family: montB;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 14px;
+    font-family: montR;
+  }
+}
+.contact-options {
+  margin-top: 100px;
+  p {
+    font-size: 14px;
+    font-family: montR;
+    margin-bottom: 0;
+  }
+  small {
+    color: #027a48;
+    font-family: montSB;
+    font-size: 14px;
+  }
+}
+.contact-form {
+  margin-bottom: 80px;
+  input {
+    width: 100%;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #e7e7e7;
+    border-radius: 7px;
+    padding: 10px 20px;
+  }
+}
