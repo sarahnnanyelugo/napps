@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DashboardTop } from "../../components/DashboardTop/DashboardTop";
 import CountUp from "react-countup";
 import Icon1 from "../../assets/images/user1.svg";
@@ -18,38 +18,39 @@ import Percentile from "./Percentile";
 import { Link } from "react-router-dom";
 import AddCoordinators from "./AddCoordinators";
 import AddAccount from "./AddAccount";
-import {ApiContext} from "../../ApiContext";
-import api, {setAuthToken} from "../../utility/api";
-import {ToastContainer, toast} from "react-toastify";
-import {useAuth} from "../../AuthContext";
+import { ApiContext } from "../../ApiContext";
+import api, { setAuthToken } from "../../utility/api";
+import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from "../../AuthContext";
 import AccountsTable from "../../components/AccountsTable/AccountsTable";
 export const Cordinators = () => {
-  const [coordinators, setCoordinators] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
-  const [filteredCoordinators, setFilteredCoordinators] = useState(false)
-  const {authToken}= useAuth();
+  const [coordinators, setCoordinators] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [filteredCoordinators, setFilteredCoordinators] = useState(false);
+  const { authToken } = useAuth();
   async function fetchCoordinators() {
     setIsLoading(true);
     try {
-      setAuthToken(authToken)
+      setAuthToken(authToken);
       const response = await api.post(`/admin/fetch-coordinators`);
       setCoordinators(response.data);
-      setTimeout(()=>{
+      setTimeout(() => {
         setIsLoading(false);
-      },500)
+      }, 500);
     } catch (errorResponse) {
-      toast.error('Error initializing search scheme: ' + errorResponse.response?.status);
+      toast.error(
+        "Error initializing search scheme: " + errorResponse.response?.status
+      );
       setIsLoading(false);
     }
   }
   useEffect(() => {
-    fetchCoordinators()
-  }, [])
+    fetchCoordinators();
+  }, []);
 
-  useEffect(()=>{
-    if(coordinators)
-      setFilteredCoordinators(coordinators);
-  },[coordinators])
+  useEffect(() => {
+    if (coordinators) setFilteredCoordinators(coordinators);
+  }, [coordinators]);
 
   const [activeIndex, setActiveIndex2] = useState(1);
   const handleClick2 = (index) => setActiveIndex2(index);
@@ -63,7 +64,7 @@ export const Cordinators = () => {
   }
   return (
     <>
-      <ToastContainer/>
+      <ToastContainer />
       <DashboardTop title="Coordinators" />
       <div className="Admin-dashboard">
         <div className=" row row-cols-2 row-cols-lg-2 g-2 g-lg-4 mt">
@@ -132,29 +133,31 @@ export const Cordinators = () => {
               Percentile
             </button>
           </div>
-          {activeIndex===1 &&<div className="ssearch-div d-md-flex justify-content-md-between">
-            <div className="col-md-3">
-              <h6 style={{ fontFamily: "montM" }}>Search Coordinators</h6>
-              <br />
-              <SearchBar callback={reducer} posts={coordinators} />
-            </div>
-            <div className="">
-              {" "}
-              <div className="btn-group ">
-                <button className="btn btn-light" style={{ flexGrow: 1 }}>
-                  {" "}
-                  <img src={Icon3} height="20px" width="20px" />
-                  Export
-                </button>
-                <AddCoordinators />
+          {activeIndex === 1 && (
+            <div className="ssearch-div d-md-flex justify-content-md-between">
+              <div className="col-md-3">
+                <h6 style={{ fontFamily: "montM" }}>Search Coordinators</h6>
+                <br />
+                <SearchBar callback={reducer} posts={coordinators} />
+              </div>
+              <div className="">
+                {" "}
+                <div className="btn-group ">
+                  <button className="btn btn-light" style={{ flexGrow: 1 }}>
+                    {" "}
+                    <img src={Icon3} height="20px" width="20px" />
+                    Export
+                  </button>
+                  <AddCoordinators />
+                </div>
               </div>
             </div>
-          </div> }
+          )}
           <div className="panels">
-            {!isLoading&&coordinators &&
+            {/* {!isLoading&&coordinators &&
             <div className={`panel ${checkActive(1, "active2")}`}>
               <CordinatorsTable data={filteredCoordinators} />
-            </div>}
+            </div>} */}
             <div className={`panel ${checkActive(2, "active2")}`}>
               {/*<AddAccount />*/}
               <AccountsTable />
