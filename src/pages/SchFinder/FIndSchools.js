@@ -1,6 +1,7 @@
 import React from "react";
 import SchDetails from "../../components/SchDetails/SchDetails";
 import {getGreen, getRed} from "../../utility/dots";
+import {Tooltip} from 'react-tooltip';
 
 export const opener = () => {
     return <p className={"btn btn-sm btn-outline-success"}>View Details</p>
@@ -37,9 +38,19 @@ export default function FIndSchools({data}) {
 {" "}
 
                 <div className=" sch-cat-btns">
-                    <button className="gen-btn">{data.gender}</button>
-                    <button className="cat-btn">{data.category}</button>
-                    <button className="day-boarding">{data.operation}</button>
+                    <button className="gen-btn"
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="Gender"
+                            data-tooltip-place="top">{data.gender}</button>
+                    <button className="cat-btn"
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="School Types"
+                            data-tooltip-place="top">{data.school_type}</button>
+                    <button className="day-boarding"
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="Education Levels"
+                            data-tooltip-place="top">{data.education_levels}</button>
+                    <Tooltip id="my-tooltip" />
                 </div>
 
 

@@ -20,6 +20,13 @@ export const statesAndLGAs = [
   },
 ];
 
+export const coordinatorRoles=[
+  {id:2,name:'Federal Coordinator'},
+  {id:3,name:'Zonal Coordinator'},
+  {id:4,name:'State Coordinator'},
+  {id:5,name:'Lga Coordinator'},
+  {id:6,name:'Ward Coordinator'},
+]
 export const zonesAndStates = [
   {
     id: 1,

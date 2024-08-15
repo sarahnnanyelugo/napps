@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./searchable-dropdown.scss";
+import bankIcon from '../../assets/images/bank.png'
 const SearchableDropdown = ({
   options,
   label,
@@ -20,7 +21,7 @@ const SearchableDropdown = ({
 
   const selectOption = (option) => {
     setQuery(() => "");
-    handleChange(option[label]);
+    handleChange(option);
     setIsOpen((isOpen) => !isOpen);
   };
 
@@ -30,7 +31,7 @@ const SearchableDropdown = ({
 
   const getDisplayValue = () => {
     if (query) return query;
-    if (selectedVal) return selectedVal;
+    if (selectedVal) return selectedVal[label];
 
     return "";
   };
@@ -73,7 +74,7 @@ const SearchableDropdown = ({
                 key={`${id}-${index}`}
               >
                 <img
-                  src={option[icon]}
+                  src={bankIcon}
                   alt="bank logo"
                   height="20px"
                   width="20px"

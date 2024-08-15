@@ -22,9 +22,22 @@ export const Proprietors = () => {
   const [category, setCategory] = useState("*");
   const [filteredSchools, setfilteredSchools] = useState([]);
   const [data, setData] = useState(null);
+  const [proprietor,setProprietor]=useState(null)
   const [ld, setLd] = useState(false);
   const {authToken}=useAuth()
-
+  const handleRadioSelect = (selectedId) => {
+    console.log('Selected radio button with ID:', selectedId);
+    // Initialize or perform any action based on the selected radio button
+    if (selectedId) {
+      // If a valid ID is selected, set the proprietor to the corresponding data item
+      let propr=data?.proprietors_list?.find(propr => propr.id === selectedId)
+      console.log(propr)
+      setProprietor(propr);
+    } else {
+      // If no ID is selected, handle accordingly (e.g., reset the proprietor)
+      setProprietor(null);
+    }
+  };
   useEffect(() => {
     setAuthToken(authToken);
     api.post('/admin/fetch-proprietors')
@@ -125,16 +138,18 @@ export const Proprietors = () => {
               <br />
               <SearchBar callback={reducer} posts={data?.proprietors_list} />
             </div>
-            <div className="">
-              <button className="exp-btn" style={{ flexGrow: 1 }}>
-                {" "}
-                <img src={Icon3} height="20px" width="20px" />
-                Export
-              </button>
-              <AddCoordinators />
+            <div>
+              <div className="btn-group">
+                <button className="btn btn-light" >
+                  {" "}
+                  <img src={Icon3} width="20px" />&nbsp;
+                  Export
+                </button>
+                <AddCoordinators proprietor={proprietor}/>
+              </div>
             </div>
           </div>{" "}
-          <CordinatorsTable data={filteredSchools} />
+          <CordinatorsTable data={filteredSchools} onRadioSelect={handleRadioSelect}/>
         </div>
       </div>
     </>

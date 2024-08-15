@@ -4,13 +4,21 @@ import "../../components/SchoolsTable/schools-table.scss";
 import { Link, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const ProprietorsTable = ({ data }) => {
+const ProprietorsTable = (props) => {
   const [password, setPassword] = useState(
     parseFloat(localStorage.getItem("requestor_balance", 0)) || 0
   );
   const [showPassword, setShowPassword] = useState(false);
-  const { bg, colo, bd2, colo2, category } = data;
+  const { onRadioSelect,data } = props;
   const [blogId, setBlogId] = useState(0);
+  const [selectedId, setSelectedId] = useState(null);
+  // Handler for radio button change
+  const handleRadioChange = (id) => {
+
+    const toSelect=selectedId===id?null:id;
+    setSelectedId(toSelect); // Update the selected radio button
+    onRadioSelect(toSelect); // Call the callback function with the selected id
+  };
   const location = useLocation();
   const [prevData, setPrevData] = useState([]);
   useEffect(() => {
@@ -20,7 +28,6 @@ const ProprietorsTable = ({ data }) => {
   const getTransitionClass = (item) => {
     const wasInPrev = prevData.some((prevItem) => prevItem.id === item.id);
     const isInCurrent = data.some((currentItem) => currentItem.id === item.id);
-
     if (!wasInPrev && isInCurrent) return "row-slide-down";
     if (wasInPrev && !isInCurrent) return "row-slide-up";
     return "";
@@ -57,14 +64,18 @@ const ProprietorsTable = ({ data }) => {
               >
                 <tr key={item.id}>
                   <td>
-                    <input type="checkbox" />
+                    <input type="checkbox"
+                           name="radioSelection"
+                           checked={selectedId === item.id}
+                           onChange={() => handleRadioChange(item.id)}
+                    />
                   </td>
                   <td className="">
                     <div className="d-flex">
                       <div
                         className="alphabet">
                         <center>
-                          <p>{item.alphabet}</p>
+                          <p><img src={item.dp} alt="" style={{width:"25px"}}/></p>
                         </center>
                       </div>
                       {item.name}

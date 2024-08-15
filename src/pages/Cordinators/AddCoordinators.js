@@ -27,9 +27,9 @@ function AddCoordinators() {
   }, [selectedState]);
   return (
     <>
-      <button onClick={() => setLgShow(true)} className="add-sch-btn2">
-        <IoMdAdd /> Add Coordinators
-      </button>
+      {/*<button onClick={() => setLgShow(true)} className="btn btn-success">*/}
+      {/*  <IoMdAdd /> Add Coordinators*/}
+      {/*</button>*/}
 
       <Modal
         size="lg"

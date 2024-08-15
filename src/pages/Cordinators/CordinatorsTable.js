@@ -1,134 +1,123 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import "../../components/SchoolsTable/schools-table.scss";
-import { Link, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { UserPassword } from "../../components/UserPassword/UserPassword";
-import EyeClose from "../../assets/images/eye-close.jpg";
-import EyeOpen from "../../assets/images/eye-open.svg";
-const CordinatorsTable = ({ data }) => {
-  const [password, setPassword] = useState(
-    parseFloat(localStorage.getItem("requestor_balance", 0)) || 0
-  );
-  const [showPassword, setShowPassword] = useState(false);
-  const { bg, colo, bd2, colo2, category } = data;
-  const [blogId, setBlogId] = useState(0);
-  const location = useLocation();
-  const [prevData, setPrevData] = useState([]);
-  useEffect(() => {
-    setBlogId(data.id);
-  });
+import api, {setAuthToken} from "../../utility/api";
+import {toast} from "react-toastify";
+import {useAuth} from "../../AuthContext";
 
-  const getTransitionClass = (item) => {
-    const wasInPrev = prevData.some((prevItem) => prevItem.id === item.id);
-    const isInCurrent = data.some((currentItem) => currentItem.id === item.id);
+const CordinatorsTable = (props) => {
+  const { data }=props
+  const [coordinators,setCoordinators]=useState(null)
+  const [toDetach,setToDetach]=useState(null)
+  const {authToken}=useAuth();
 
-    if (!wasInPrev && isInCurrent) return "row-slide-down";
-    if (wasInPrev && !isInCurrent) return "row-slide-up";
-    return "";
-  };
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+useEffect(()=>{
+  if(data)
+    setCoordinators(data)
+    console.log(data)
+},[data])
+
+  async function detach() {
+    try {
+      setAuthToken(authToken)
+      // Send the FormData payload
+      const response = await api.post('/admin/detach-coordinator',{user_id:toDetach}, {
+        headers: {
+          'content-type': 'application/json' // Ensure correct Content-Type header
+        }
+      })
+      if (response.data) {
+        setToDetach(null)
+        toast.success(response.data);
+        setTimeout(()=>{
+          window.location.reload();
+        },1000)
+      }
+    } catch (errorResponse) {
+      setToDetach(null)
+      toast.error(errorResponse.response?.data || "Error detaching profile");
+    }
+  }
+
+  const handleDetachCoordinator=()=>{
+  const coordinator=coordinators.find((coord)=>coord.id===toDetach)
+  if(!window.confirm('Do you wish to detach '+coordinator.name+' from current post?')){
+    return setToDetach(null);
+  }
+  detach()
+}
+useEffect(()=>{
+  if(toDetach)
+    handleDetachCoordinator();
+},[toDetach])
   return (
     <div>
-      <div className="d-flex"> </div>
-
-      <div>
-        <Table striped bordered hover className="school-table cord" responsive>
-          <thead>
+      {coordinators && <>
+        <div>
+          <Table striped bordered hover className="school-table cord" responsive>
+            <thead>
             <tr>
               <th>
-                <input type="checkbox" />
+                <input type="checkbox"/>
               </th>
               <th className="">Name</th>
 
-              <th>Zone</th>
               <th>Email</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>Action</th>
+              <th>Cadre</th>
+              <th>Description</th>
+              <th>Actions</th>
             </tr>
-          </thead>
-          <TransitionGroup component="tbody">
-            {data.map((item) => (
-              <CSSTransition
-                key={item.id}
-                timeout={500}
-                classNames="row-slide-up"
-              >
-                <tr key={item.id}>
-                  <td>
-                    <input type="checkbox" />
-                  </td>
+            </thead>
+            <TransitionGroup component="tbody">
+              {coordinators?.map((item) => (
+                  <CSSTransition
+                      key={item.id}
+                      timeout={500}
+                      classNames="row-slide-up"
+                  >
+                    <tr key={item.id}>
+                      <td>
+                        <input type="checkbox"/>
+                      </td>
 
-                  <td className="">
-                    <div className="d-flex">
-                      <div
-                        className="alphabet"
-                        style={{ background: item.bg2, color: item.colo2 }}
-                      >
-                        <center>
-                          <p>{item.alphabet}</p>
-                        </center>
-                      </div>
-                      {item.accName}
-                    </div>
-                  </td>
+                      <td className="">
+                        <div className="d-flex align-items-center">
+                          <div
+                              className="alphabet"
+                              style={{backgroundImage: `url(${item.dp})`,
+                              backgroundPosition:'center',
+                              backgroundRepeat:'no-repeat',
+                              backgroundSize:'contain'}}
+                          >
 
-                  <td>{item.zone}</td>
-                  <td>{item.email}</td>
-                  <td>{item.username}</td>
-                  <td>
-                    <div className="d-flex">
-                      <span style={{ flexGrow: 1, fontFamily: "montSB" }}>
-                        {" "}
-                        {showPassword ? item.password : "*********"}
-                      </span>
-                      <span onClick={toggleShowPassword} className="">
-                        {showPassword ? (
-                          <img
-                            className=""
-                            src={EyeClose}
-                            alt="Scholar"
-                            width="10px"
-                          />
-                        ) : (
-                          <img
-                            className=""
-                            src={EyeOpen}
-                            alt="Scholar"
-                            width="10px"
-                          />
-                        )}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="edit">
-                    <Link
-                      className="view"
-                      to={"/dashboard-layout/sch-showcase/" + item.id}
-                      state={{ blog_id: blogId }}
-                    >
-                      view
-                    </Link>
-                  </td>
-                </tr>
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        </Table>
-      </div>
+                          </div>
+                          {item.name}
+                        </div>
+                      </td>
 
-      <div className="d-flex">
-        <p style={{ flexGrow: 1 }}>Page 1 of 10</p>
-        <div className="d-flex">
-          <button className="more-btn" style={{ marginRight: "10px" }}>
-            Previous
-          </button>
-          <button className="more-btn">Next</button>
+                      <td>{item.email}</td>
+                      <td>{item.coordinator_type}</td>
+                      <td>{item.description}</td>
+                      <td><button onClick={()=> {
+                        setToDetach(item.id)
+                      }} className="btn btn-sm btn-default text-danger">&#x2715;</button></td>
+                    </tr>
+                  </CSSTransition>
+              ))}
+            </TransitionGroup>
+          </Table>
         </div>
-      </div>
+        <div className="d-flex">
+          <p style={{flexGrow: 1}}>Page 1 of 10</p>
+          <div className="d-flex">
+            <button className="more-btn" style={{marginRight: "10px"}}>
+              Previous
+            </button>
+            <button className="more-btn">Next</button>
+          </div>
+        </div></>}
+
     </div>
   );
 };

@@ -40,6 +40,7 @@ export const DashboardTop = (props) => {
 
               {isLoggedIn&&<Dropdown.Menu>
                 <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                <Dropdown.Item href="/dashboard-selector">My Roles</Dropdown.Item>
                 <hr />
                 <Dropdown.Item onClick={handleLogout} style={{ color: "#DE1E1E" }}>
                   Sign out

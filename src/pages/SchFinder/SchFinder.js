@@ -13,6 +13,7 @@ import {toast} from "react-toastify";
 import {removeLocalStorage} from "../../utility/localStorage";
 import index from "react-phone-number-input";
 export const SchFinder = () => {
+  const [zones,setZones]=useState({})
   const [selectedZone, setSelectedZone] = useState({});
   const [states, setStates] = useState([]);
   const [selectedState, setSelectedState] = useState({});
@@ -22,7 +23,6 @@ export const SchFinder = () => {
   const [searchName,setSearchName]=useState("")
   const [visibleItems, setVisibleItems] = useState(9); // State to track the number of visible items
   const { data, loading, error, fetchData,postData }=useContext(ApiContext);
-  const [zones,setZones]=useState({})
   const [isLoading,setIsLoading]=useState(false)
 
   async function fetchZones(){

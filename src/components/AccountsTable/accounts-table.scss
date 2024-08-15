@@ -1,0 +1,49 @@
+.table-btn {
+  border: none;
+  border-radius: 11px;
+  font-size: 12px;
+  padding: 5px 15px;
+  font-family: montM;
+}
+.school-table {
+  td {
+    font-family: montR;
+    font-size: 14px;
+    @media screen and (max-width: 820px) {
+      font-size: 10px;
+    }
+  }
+  th {
+    font-family: montM;
+    @media screen and (max-width: 820px) {
+      font-size: 12px;
+    }
+  }
+  .alphabet {
+    height: 26px;
+    width: 26px;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+    padding-top: 2px;
+    @media screen and (max-width: 820px) {
+      width: 44px;
+    }
+    p {
+      font-size: 16px;
+      color: #fff;
+      opacity: 1;
+      font-family: montSB;
+    }
+  }
+  .edit {
+    font-family: montM;
+  }
+}
+.tabled-data {
+  h5 {
+    @media screen and (max-width: 820px) {
+      font-size: 14px;
+    }
+  }
+}
