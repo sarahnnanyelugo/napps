@@ -6,7 +6,7 @@ import SchDetails from '../SchDetails/SchDetails';
 import {getGreen, getRed} from "../../utility/dots";
 import {useAuth} from "../../AuthContext";
 import api, {setAuthToken} from "../../utility/api";
-import {toast} from "react-toastify";
+import {toast,ToastContainer} from "react-toastify";
 import AddAccount from "../../pages/Cordinators/AddAccount";
 
 export const opener = () => {return <p className={"btn btn-sm btn-dark"}>+ Add Account</p>}
@@ -40,7 +40,11 @@ const AccountsTable = () => {
             setFilteredBankAccounts(bankAccounts);
     },[bankAccounts])
 
+    const accountCallBack=()=>{
+        fetchAccounts()
+    };
     return (
+
         <div>
             <div className="d-flex tabled-data">
                 {" "}
@@ -75,7 +79,7 @@ const AccountsTable = () => {
                         <td>{zone.account_data?.account_number}</td>
                         <td>{zone.account_data?.account_name}</td>
                         <td>{zone.account_data?.swp_bank_account_id}</td>
-                        <td><AddAccount target={zone} type={'zone'}/></td>
+                        <td><AddAccount target={zone} type={'zone'} callback={accountCallBack}/></td>
                     </tr>
                 ))}
                 </tbody>

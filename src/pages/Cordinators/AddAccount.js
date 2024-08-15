@@ -1,23 +1,18 @@
-import {useEffect, useState} from "react";
-import Button from "react-bootstrap/Button";
+import {useContext, useEffect, useState} from "react";
 import Modal from "react-bootstrap/Modal";
 import {IoMdAdd} from "react-icons/io";
-import {FileUpload} from "../../components/FileUpload/FileUpload";
 import {FaUserEdit} from "react-icons/fa";
 import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
-import {Password} from "../../components/Password/Password";
-import {zonesAndStates} from "../../Data/States";
 import SearchableDropdown from "../../components/SearchableDropdown/SearchableDropdown";
-import {bankList} from "../../Data/bankList";
 import {useAuth} from "../../AuthContext";
 import api, {setAuthToken} from "../../utility/api";
-import {toast} from "react-toastify";
+import {toast,ToastContainer} from "react-toastify";
+import {ApiContext} from "../../ApiContext";
 
 function AddAccount(props) {
     const [lgShow, setLgShow] = useState(false);
     const [value, setValue] = useState("Select bank...");
-    const {target, type} = props
+    const {target, type,callback} = props
     const [banks, setBanks] = useState({})
     const [isLoading, setIsLoading] = useState(false)
     const {authToken} = useAuth();
@@ -27,7 +22,7 @@ function AddAccount(props) {
     const [veriError, setVeriError] = useState("")
     const [ready, setReady] = useState(false)
     const [creating,setCreating]=useState(false)
-
+    const { data, loading, error, fetchData, postData } = useContext(ApiContext);
     const handleNubanChange = (e) => {
         const value = e.target.value;
         // Allow only numbers to be input
@@ -45,9 +40,10 @@ function AddAccount(props) {
         setReady(!!(selectedBank && nuban && accountName))
     }, [selectedBank, nuban, accountName])
 
-    function createAccount(){
+    async function createAccount(){
         let payload={
             bank_code:selectedBank.bank_code,
+            bank_name:selectedBank.bank_name,
             account_number:nuban,
             account_name:accountName,
         }
@@ -64,19 +60,47 @@ function AddAccount(props) {
         else if (type==='educare')
             payload.is_educare=1;
         setCreating(true)
+        // console.log(payload)
+        try {
+            setAuthToken(authToken)
+            await postData('/create-account',payload)
+        } catch (e) {
+            setTimeout(()=>{
+                setCreating(false)
+            },2000)
+            console.error(e)
+            setVeriError(e.statusText)
+        }
+
+    }
+
+    useEffect(()=>{
+        if(!data)return
+        setTimeout(()=>{
+            setCreating(false)
+            setLgShow(false)
+        },2000)
+        toast.success('Account number created successfully')
+        return (callback?callback:null);
+    },[data])
+
+    useEffect(()=>{
+        if(!error)return
         setTimeout(()=>{
             setCreating(false)
         },2000)
-    }
+        console.error(error)
+        setVeriError(error.statusText)
+    },[error])
 
     const triggerApiCall = (nuban) => {
         setVeriError("")
-        console.log(`API call triggered with NUBAN: ${nuban}`);
+        // console.log(`API call triggered with NUBAN: ${nuban}`);
         setIsLoading(true)
         try {
             api.get('resolve-nuban/' + nuban + '/' + selectedBank?.bank_code)
                 .then(resp => {
-                    console.log(resp)
+                    // console.log(resp)
                     setIsLoading(false)
                     setAccountName(resp.data)
                     if (resp.data === "") {
@@ -96,7 +120,7 @@ function AddAccount(props) {
 
     useEffect(() => {
         if (!selectedBank) return;
-        alert(selectedBank.bank_name)
+        // alert(selectedBank.bank_name)
     }, [selectedBank])
 
     async function fetchBankList() {
@@ -123,8 +147,8 @@ function AddAccount(props) {
     }, [target, type])
     return (
         <>
-            <button onClick={() => setLgShow(true)} className="btn btn-sm btn-dark">
-                <IoMdAdd/> Add Account
+            <button onClick={() => setLgShow(true)} className="btn btn-sm btn-light text-dark">
+                <IoMdAdd/> Add/Edit
             </button>
 
             <Modal
@@ -172,8 +196,8 @@ function AddAccount(props) {
                         </div>
                         {" "}
                     </div>
-                    {ready && <button disabled={creating} onClick={()=>createAccount()}
-                                      className={`cont-btn btn ${creating?'btn-light':'btn-success'}`}>{creating?'Creating...':'+ Add'}</button>}
+                    {ready && <button disabled={creating||loading} onClick={()=>createAccount()}
+                                      className={`cont-btn btn ${creating||loading?'btn-light':'btn-success'}`}>{creating||loading?'Creating...':'+ Add'}</button>}
                 </Modal.Body>
             </Modal>
         </>

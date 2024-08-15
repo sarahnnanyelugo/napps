@@ -35,7 +35,7 @@ const ApiProvider = ({ children }) => {
     setData([])
     setLoading(true);
     try {
-      const response = await api.post(apiUrl + endpoint, data);
+      const response = await api.post(apiUrl + endpoint, data,{ timeout: 20000 });
       setData(response.data);
       setError(null);
     } catch (err) {
