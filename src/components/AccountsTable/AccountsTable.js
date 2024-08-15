@@ -46,18 +46,54 @@ const AccountsTable = () => {
   };
 
   const data1 = [
-    { id: 1, name: "Data 1A", value: "100" },
-    { id: 2, name: "Data 1B", value: "200" },
+    {
+      id: 1,
+      name: "Data 1A",
+      value: "100",
+      tag: "uuruuwuwhuhu",
+      accName: "Sarah Nnanyelugo",
+    },
+    {
+      id: 2,
+      name: "Data 1B",
+      value: "200",
+      tag: "uuruuwuwhuhu",
+      accName: "Peter Olugbenga",
+    },
   ];
 
   const data2 = [
-    { id: 1, name: "Data 2A", value: "300" },
-    { id: 2, name: "Data 2B", value: "400" },
+    {
+      id: 1,
+      name: "Data 2A",
+      value: "300",
+      tag: "uuruuwuwhuhu",
+      accName: "Alex Onyia",
+    },
+    {
+      id: 2,
+      name: "Data 2B",
+      value: "400",
+      tag: "uuruuwuwhuhu",
+      accName: "James Nnanyelugo",
+    },
   ];
 
   const data3 = [
-    { id: 1, name: "Data 3A", value: "500" },
-    { id: 2, name: "Data 3B", value: "600" },
+    {
+      id: 1,
+      name: "Data 3A",
+      value: "500",
+      tag: "uuruuwuwhuhu",
+      accName: "Peter Olugbenga",
+    },
+    {
+      id: 2,
+      name: "Data 3B",
+      value: "600",
+      tag: "uuruuwuwhuhu",
+      accName: "Sarah James",
+    },
   ];
 
   const [tableData, setTableData] = useState(data1); // Default dataset
@@ -110,9 +146,12 @@ const AccountsTable = () => {
       <Table striped bordered hover className="school-table" responsive>
         <thead>
           <tr>
-            <th>ID</th>
             <th>Name</th>
-            <th>Value</th>
+            <th>Bank Name</th>
+            <th>Account Number</th>
+            <th>Account Name</th>
+            <th>Swp Tag</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -134,6 +173,8 @@ const AccountsTable = () => {
               <td>{item.id}</td>
               <td>{item.name}</td>
               <td>{item.value}</td>
+              <td>{item.accName}</td>
+              <td>{item.tag}</td>
             </tr>
           ))}
         </tbody>
