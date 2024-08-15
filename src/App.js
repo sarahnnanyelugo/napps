@@ -24,6 +24,7 @@ import React from "react";
 import { Terms } from "./pages/Terms/Terms";
 import { SchFinder } from "./pages/SchFinder/SchFinder";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import { AboutUs } from "./pages/AboutUs/AboutUs";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />{" "}
+        <Route path="about-us" element={<AboutUs />} />{" "}
         <Route path="login" element={<Login />} />{" "}
         <Route path="dashboard-selector" element={<DashboardSelector />} />
         <Route path="Add-sch" element={<AddSch />} />{" "}
