@@ -12,13 +12,13 @@ export const DashboardTop = (props) => {
   const handleLogout = () => {
     logout();
   };
-  // useEffect(()=>{
-  //   if(!isLoggedIn){
-  //     setInterval(() => {
-  //       window.location = "/login";
-  //     }, 100);
-  //   }
-  // },[isLoggedIn])
+  useEffect(() => {
+    if (!isLoggedIn) {
+      setInterval(() => {
+        window.location = "/login";
+      }, 100);
+    }
+  }, [isLoggedIn]);
   return (
     <>
       <div className="d-md-flex top-navv ">
