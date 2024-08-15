@@ -6,7 +6,7 @@ import Icon3 from "../../assets/images/value.svg";
 import Icon4 from "../../assets/images/tik.svg";
 import Tick from "../../assets/images/tick.png";
 import { Col, Row } from "react-bootstrap";
-import { executiveMembers, zonalOfficers } from "../../Data/officersData";
+import { executiveMembers, zonalPresidents } from "../../Data/officersData";
 import "./about-us.scss";
 import Officers from "./Officers";
 import { Footer } from "../../components/Footer/Footer";
@@ -261,7 +261,7 @@ export const AboutUs = () => {
           <h3>Zonal Presidents</h3>
         </center>
         <div className=" row row-cols-2 row-cols-lg-4 g-2 g-lg-4 mt col-md-10 offset-md-1 mobile-padding">
-          {zonalOfficers.map((data, index) => (
+          {zonalPresidents.map((data, index) => (
             <Officers data={data} key={"m" + index} />
           ))}
         </div>

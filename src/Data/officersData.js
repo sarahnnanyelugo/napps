@@ -82,7 +82,7 @@ export const executiveMembers = [
     portfolio: "National Financial Secretary (NAPPS NIGERIA)",
   },
 ];
-export const zonalOfficers = [
+export const zonalPresidents = [
   {
     id: 1,
     name: "ALIYU SULYMAN ADEKUNLE",
