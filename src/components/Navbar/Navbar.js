@@ -38,9 +38,9 @@ function NavBar() {
                 <Link to={"/sch-finder"}>
                   <button>School Finder</button>
                 </Link>
-                <Link to={"/news-page"}>
-                  <button>News & Events</button>
-                </Link>
+                {/*<Link to={"/news-page"}>*/}
+                {/*  <button>News & Events</button>*/}
+                {/*</Link>*/}
                 <Link to={"/contact-us"}>
                   <button>Contact Us</button>
                 </Link>{" "}

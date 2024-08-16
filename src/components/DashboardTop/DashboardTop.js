@@ -7,18 +7,18 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { useAuth } from "../../AuthContext";
 
 export const DashboardTop = (props) => {
-  const { logout, isLoggedIn} = useAuth();
+  const { logout, isLoggedIn } = useAuth();
 
-  const handleLogout = ()=>{
+  const handleLogout = () => {
     logout();
-  }
-  useEffect(()=>{
-    if(!isLoggedIn){
+  };
+  useEffect(() => {
+    if (!isLoggedIn) {
       setInterval(() => {
         window.location = "/login";
       }, 100);
     }
-  },[isLoggedIn])
+  }, [isLoggedIn]);
   return (
     <>
       <div className="d-md-flex top-navv ">
@@ -38,14 +38,21 @@ export const DashboardTop = (props) => {
                 <img src={Icon5} width="38px" />
               </Dropdown.Toggle>
 
-              {isLoggedIn&&<Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                <Dropdown.Item href="/dashboard-selector">My Roles</Dropdown.Item>
-                <hr />
-                <Dropdown.Item onClick={handleLogout} style={{ color: "#DE1E1E" }}>
-                  Sign out
-                </Dropdown.Item>
-              </Dropdown.Menu>}
+              {isLoggedIn && (
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                  <Dropdown.Item href="/dashboard-selector">
+                    My Roles
+                  </Dropdown.Item>
+                  <hr />
+                  <Dropdown.Item
+                    onClick={handleLogout}
+                    style={{ color: "#DE1E1E" }}
+                  >
+                    Sign out
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              )}
             </Dropdown>
           </div>
         </div>

@@ -36,7 +36,7 @@ export const Footer = () => {
             </ul>
           </div>
           <div className="col-md-3">
-            <h5>Quicks Links</h5>
+            <h5>Quick Links</h5>
             <ul className="list-unstyled">
               <li>
                 <Link to={"/registration"}>Register your School</Link>

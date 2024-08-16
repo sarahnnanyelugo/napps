@@ -74,6 +74,7 @@ const SchoolsTable = ({data, initialDisplayCount = 4}) => {
                         <td className="edit">
                             <div className="btn-group">
                                     <SchDetails opener={opener()} school_id={item.uuid}/>
+{/*
                                     <Link
                                         className="edit btn"
                                         to={"/dashboard-layout/displayed-school/" + item.id}
@@ -83,6 +84,7 @@ const SchoolsTable = ({data, initialDisplayCount = 4}) => {
                                         {" "}
                                         edit
                                     </Link>
+*/}
                             </div>
 
                         </td>
