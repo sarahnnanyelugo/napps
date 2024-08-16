@@ -24,8 +24,8 @@ export default function DashboardLayout() {
             <Route path="/school-management" element={<SchoolManagement />} />
             <Route path="/my-schools" element={<MySchools />} />
             <Route path="/Subscription" element={<Subscription />} />
-            <Route path="/cordinators" element={<Cordinators />} />
-            <Route path="/ proprietors" element={<Proprietors />} />
+            <Route path="/coordinators" element={<Cordinators />} />
+            <Route path="/proprietors" element={<Proprietors />} />
             <Route
               path="/displayed-school/:blog_id"
               element={<DisplayedSchool />}

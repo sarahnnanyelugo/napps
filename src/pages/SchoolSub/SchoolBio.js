@@ -4,11 +4,13 @@ import {DashboardTop} from "../../components/DashboardTop/DashboardTop";
 import {schools} from "../../Data/schoolsData";
 import api from "../../utility/api";
 import {getGreen, getRed} from "../../utility/dots";
+import {useAuth} from "../../AuthContext";
+import {setLocalStorage} from "../../utility/localStorage";
 
 export const SchoolBio = ({school_id}) => {
     const [data, setData] = useState(null);
     const [ld, setLd] = useState(false);
-
+    const {authToken}=useAuth()
     useEffect(() => {
         if (!school_id) return;
         api.get('/schools/search/' + school_id)
@@ -24,6 +26,13 @@ export const SchoolBio = ({school_id}) => {
         if (!data) return;
         setLd(true)
     }, [data])
+
+    const activateSchool=()=>{
+        setLocalStorage('current_school',data.id)
+        setTimeout(()=>{
+            window.location.href='/payment'
+        },500)
+    }
     return (
         <>
             {/*<DashboardTop title="School Management" />*/}
@@ -56,7 +65,7 @@ export const SchoolBio = ({school_id}) => {
                     {/*        Decline*/}
                     {/*    </button>*/}
 
-                    {/*    <button className="save-btn">Approve</button>*/}
+                    {data?.status !==1 && authToken &&<button onClick={activateSchool} className="save-btn">Activate</button>}
                     {/*</div>*/}
                 </div>
                 <div className="d-md-flex more-info">
@@ -138,6 +147,10 @@ export const SchoolBio = ({school_id}) => {
                             <div className="col-md-6">
                                 <h2>Education Levels</h2>
                                 <p>{data?.education_levels}</p>
+                            </div>
+                            <div className="col-md-6">
+                                <h2>Gender</h2>
+                                <p>{data?.gender}</p>
                             </div>
                         </div>
                         <div className="d-flex">

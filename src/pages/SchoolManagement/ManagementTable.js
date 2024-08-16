@@ -35,6 +35,8 @@ const ManagementTable = ({ data }) => {
             <th>Name</th>
             <th>Status</th>
             <th>Registration ID</th>
+            <th>Contact Name</th>
+            <th>Contact Details</th>
             <th>Zone</th>
           </tr>
         </thead>
@@ -70,6 +72,8 @@ const ManagementTable = ({ data }) => {
                   {item.status?'Active':'Inactive'}
                 </td>
                 <td>{item.uuid}</td>
+                <td>{item.contact_name}</td>
+                <td>{item.contact_email} <br/>{item.contact_phone}</td>
                 <td>{item.zone?.name}</td>
                 <td className="edit">
                   {/*<Link*/}
@@ -81,16 +85,16 @@ const ManagementTable = ({ data }) => {
                   {/*</Link>*/}
                   <SchDetails opener={opener()} school_id={item.uuid}/>
                 </td>
-                <td className="edit" style={{ color: "#00923F" }}>
-                  <Link
-                    className="edit"
-                    to={"/dashboard-layout/displayed-school/" + item.id}
-                    state={{ blog_id: blogId }}
-                  >
-                    {" "}
-                    edit
-                  </Link>
-                </td>
+                {/*<td className="edit" style={{ color: "#00923F" }}>*/}
+                {/*  <Link*/}
+                {/*    className="edit"*/}
+                {/*    to={"/dashboard-layout/displayed-school/" + item.id}*/}
+                {/*    state={{ blog_id: blogId }}*/}
+                {/*  >*/}
+                {/*    {" "}*/}
+                {/*    edit*/}
+                {/*  </Link>*/}
+                {/*</td>*/}
               </tr>
             </CSSTransition>
           ))}

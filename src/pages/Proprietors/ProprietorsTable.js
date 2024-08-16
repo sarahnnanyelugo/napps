@@ -52,7 +52,7 @@ const ProprietorsTable = (props) => {
 
               <th>Roles</th>
 
-              <th>Action</th>
+              {/*<th>Action</th>*/}
             </tr>
           </thead>
           <TransitionGroup component="tbody">
@@ -90,15 +90,15 @@ const ProprietorsTable = (props) => {
                     (<li key={index}>{role.name}</li>)
                   )}</td>
 
-                  <td className="edit">
-                    <Link
-                      className="view"
-                      to={"/dashboard-layout/sch-showcase/" + item.id}
-                      state={{ blog_id: blogId }}
-                    >
-                      view
-                    </Link>
-                  </td>
+                  {/*<td className="edit">*/}
+                  {/*  <Link*/}
+                  {/*    className="view"*/}
+                  {/*    to={"/dashboard-layout/sch-showcase/" + item.id}*/}
+                  {/*    state={{ blog_id: blogId }}*/}
+                  {/*  >*/}
+                  {/*    view*/}
+                  {/*  </Link>*/}
+                  {/*</td>*/}
                 </tr>
               </CSSTransition>
             ))}

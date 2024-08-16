@@ -37,7 +37,7 @@ const SearchableDropdown = ({
   };
 
   const filter = (options) => {
-    return options.filter(
+    return options?.filter(
       (option) => option[label].toLowerCase().indexOf(query.toLowerCase()) > -1
     );
   };

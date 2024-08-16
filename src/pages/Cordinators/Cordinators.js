@@ -15,16 +15,16 @@ import { RiBankFill } from "react-icons/ri";
 import { SlPeople } from "react-icons/sl";
 import Percentile from "./Percentile";
 
-import { Link } from "react-router-dom";
 import AddCoordinators from "./AddCoordinators";
-import AddAccount from "./AddAccount";
-import {ApiContext} from "../../ApiContext";
 import api, {setAuthToken} from "../../utility/api";
 import {ToastContainer, toast} from "react-toastify";
 import {useAuth} from "../../AuthContext";
-import AccountsTable from "../../components/AccountsTable/AccountsTable";
+import ZoneAccountDataTable from "../../components/AccountsTable/ZoneAccountDataTable";
 export const Cordinators = () => {
-  const [coordinators, setCoordinators] = useState({})
+  const [coordinators, setCoordinators] = useState([])
+  const [coordinatorsCount, setCoordinatorsCount] = useState(0)
+  const [accountNumbersCount, setAccountNumbersCount] = useState(0)
+
   const [isLoading, setIsLoading] = useState(false)
   const [filteredCoordinators, setFilteredCoordinators] = useState(false)
   const {authToken}= useAuth();
@@ -33,7 +33,9 @@ export const Cordinators = () => {
     try {
       setAuthToken(authToken)
       const response = await api.post(`/admin/fetch-coordinators`);
-      setCoordinators(response.data);
+      setCoordinators(response.data.coordinators);
+      setCoordinatorsCount(response.data.coordinators_count);
+      setAccountNumbersCount(response.data.accounts_count);
       setTimeout(()=>{
         setIsLoading(false);
       },500)
@@ -78,7 +80,7 @@ export const Cordinators = () => {
                 {" "}
                 <CountUp
                   start={0}
-                  end={50}
+                  end={coordinatorsCount}
                   duration={2}
                   decimal=""
                   prefix=" "
@@ -99,7 +101,7 @@ export const Cordinators = () => {
                 {" "}
                 <CountUp
                   start={0}
-                  end={530}
+                  end={accountNumbersCount}
                   duration={2}
                   decimal=""
                   prefix=" "
@@ -156,11 +158,10 @@ export const Cordinators = () => {
               <CordinatorsTable data={filteredCoordinators} />
             </div>}
             <div className={`panel ${checkActive(2, "active2")}`}>
-              {/*<AddAccount />*/}
-              <AccountsTable />
+              {activeIndex===2&&<ZoneAccountDataTable/>}
             </div>
             <div className={`panel ${checkActive(3, "active2")}`}>
-              {/*<Percentile data={filteredSchools} />*/}
+              {activeIndex===3&&<Percentile/>}
             </div>
           </div>
         </div>

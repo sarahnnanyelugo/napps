@@ -7,7 +7,7 @@ import { LuSchool } from "react-icons/lu";
 import { BsCreditCard } from "react-icons/bs";
 import { MdOutlinePayments } from "react-icons/md";
 import Dropdown from "react-bootstrap/Dropdown";
-import { SlPeople } from "react-icons/sl";
+import { SlCompass } from "react-icons/sl";
 import { FaPeopleRoof } from "react-icons/fa6";
 
 const DashboardNav = () => {
@@ -64,20 +64,20 @@ const DashboardNav = () => {
           </li>{" "}
           <li>
             <NavLink
-              to={"./cordinators"}
+              to={"./coordinators"}
               activeClassName="active"
               style={{ padding: "10px 80px 10px 10px" }}
             >
               <span>
                 {" "}
-                <SlPeople />
+                <SlCompass />
               </span>
-              Cordinators
+              Configurations
             </NavLink>
           </li>{" "}
           <li>
             <NavLink
-              to={"./ proprietors"}
+              to={"./proprietors"}
               activeClassName="active"
               style={{ padding: "10px 60px 10px 10px" }}
             >

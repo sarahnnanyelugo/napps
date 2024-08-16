@@ -6,25 +6,32 @@ import SchDetails from '../SchDetails/SchDetails';
 import {getGreen, getRed} from "../../utility/dots";
 import {useAuth} from "../../AuthContext";
 import api, {setAuthToken} from "../../utility/api";
-import {toast,ToastContainer} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import AddAccount from "../../pages/Cordinators/AddAccount";
 
-export const opener = () => {return <p className={"btn btn-sm btn-dark"}>+ Add Account</p>}
+export const opener = () => {
+    return <p className={"btn btn-sm btn-dark"}>+ Add Account</p>
+}
 
 const AccountsTable = () => {
     const [bankAccounts, setBankAccounts] = useState(null)
     const [filteredBankAccounts, setFilteredBankAccounts] = useState(null)
-    const {authToken}= useAuth();
-    const [isLoading,setIsLoading]=useState(false)
+    const {authToken} = useAuth();
+    const [isLoading, setIsLoading] = useState(false)
+    const [toggleZone, setToggleZone] = useState(true)
+    const [toggleState, setToggleState] = useState(false)
+    const [toggleLga, setToggleLga] = useState(false)
+    const [toggleWard, setToggleWard] = useState(false)
+
     async function fetchAccounts() {
         setIsLoading(true);
         try {
             setAuthToken(authToken)
             const response = await api.post(`/admin/fetch-account-numbers`);
             setBankAccounts(response.data);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setIsLoading(false);
-            },500)
+            }, 500)
         } catch (errorResponse) {
             toast.error('Error account list: ' + errorResponse.response?.status);
             setIsLoading(false);
@@ -35,12 +42,12 @@ const AccountsTable = () => {
         fetchAccounts()
     }, [])
 
-    useEffect(()=>{
-        if(bankAccounts)
+    useEffect(() => {
+        if (bankAccounts)
             setFilteredBankAccounts(bankAccounts);
-    },[bankAccounts])
+    }, [bankAccounts])
 
-    const accountCallBack=()=>{
+    const accountCallBack = () => {
         fetchAccounts()
     };
     return (
@@ -68,10 +75,21 @@ const AccountsTable = () => {
                 <tbody>
                 <tr>
                     <th>@</th>
-                    <th colSpan={5}>ZONES</th>
-                    <th><button className="btn btn-info btn-sm">Toggle</button></th>
+                    <th>FEDERAL</th>
+                    <td>{filteredBankAccounts?.federal?.bank_name}</td>
+                    <td>{filteredBankAccounts?.federal?.account_number}</td>
+                    <td>{filteredBankAccounts?.federal?.account_name}</td>
+                    <td>{filteredBankAccounts?.federal?.swp_bank_account_id}</td>
+                    <td><AddAccount target={'federal'} type={'federal'} callback={accountCallBack}/></td>
                 </tr>
-                {filteredBankAccounts?.zones?.map((zone,index)=>(
+                <tr>
+                    <th>@</th>
+                    <th colSpan={5}>ZONES</th>
+                    <th>
+                        <button onClick={()=>setToggleZone(!toggleZone)} className={`btn btn-sm ${toggleZone?"btn-info":"btn-light"}`}>Toggle</button>
+                    </th>
+                </tr>
+                {toggleZone && (filteredBankAccounts?.zones?.map((zone, index) => (
                     <tr key={index}>
                         <td>{zone.id}</td>
                         <td>{zone.name}</td>
@@ -81,7 +99,25 @@ const AccountsTable = () => {
                         <td>{zone.account_data?.swp_bank_account_id}</td>
                         <td><AddAccount target={zone} type={'zone'} callback={accountCallBack}/></td>
                     </tr>
-                ))}
+                )))}
+                <tr>
+                    <th>@</th>
+                    <th colSpan={5}>STATES</th>
+                    <th>
+                        <button  onClick={()=>setToggleState(!toggleState)} className={`btn btn-sm ${toggleState?"btn-info":"btn-light"}`}>Toggle</button>
+                    </th>
+                </tr>
+                {toggleState && (filteredBankAccounts?.states?.map((state, index) => (
+                    <tr key={index}>
+                        <td>{state.id}</td>
+                        <td>{state.name}</td>
+                        <td>{state.account_data?.bank_name}</td>
+                        <td>{state.account_data?.account_number}</td>
+                        <td>{state.account_data?.account_name}</td>
+                        <td>{state.account_data?.swp_bank_account_id}</td>
+                        <td><AddAccount target={state} type={'state'} callback={accountCallBack}/></td>
+                    </tr>
+                )))}
                 </tbody>
             </Table>
 

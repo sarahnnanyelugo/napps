@@ -13,7 +13,7 @@ function AddAccount(props) {
     const [lgShow, setLgShow] = useState(false);
     const [value, setValue] = useState("Select bank...");
     const {target, type,callback} = props
-    const [banks, setBanks] = useState({})
+    const [banks, setBanks] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const {authToken} = useAuth();
     const [selectedBank, setSelectedBank] = useState(false)
@@ -75,7 +75,7 @@ function AddAccount(props) {
     }
 
     useEffect(()=>{
-        if(!data)return
+        if(!data||!creating)return
         setTimeout(()=>{
             setCreating(false)
             setLgShow(false)
@@ -138,8 +138,9 @@ function AddAccount(props) {
     }
 
     useEffect(() => {
+        if(!lgShow)return;
         fetchBankList()
-    }, [])
+    }, [lgShow])
 
     useEffect(() => {
         if (!target || !type) return;

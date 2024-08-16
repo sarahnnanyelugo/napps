@@ -81,12 +81,12 @@ export const Login = () => {
         </center>
         <div className="col-md-4 offset-md-4 choice">
           {" "}
-          <GoogleButton />
-          <div className="d-flex ">
-            <div className="hr col-md-5 hr1"></div>
-            <p className="or">Or</p>
-            <div className="hr col-md-5 hr2"></div>
-          </div>
+          {/*<GoogleButton />*/}
+          {/*<div className="d-flex ">*/}
+          {/*  <div className="hr col-md-5 hr1"></div>*/}
+          {/*  <p className="or">Or</p>*/}
+          {/*  <div className="hr col-md-5 hr2"></div>*/}
+          {/*</div>*/}
           <h6>School Owners Email (Login Email)</h6>
           <input
             placeholder="Enter email address here"
