@@ -16,7 +16,7 @@ export const ZonesMap = ({zones}) => {
         {" "}
         <div className="south-east zoomed">
           {" "}
-          {SE && <Tooltip total={SE[0]||0} active={SE[1]||0} inactive={SE[2]||0}>
+          {SE && <Tooltip zone={"South East"} total={SE[0]||0} active={SE[1]||0} inactive={SE[2]||0}>
             <img src={SouthEast} alt="Scholar" width="" height="135px" />{" "}
           </Tooltip>}
         </div>

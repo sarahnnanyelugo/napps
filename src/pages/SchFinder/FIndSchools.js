@@ -24,13 +24,12 @@ export default function FIndSchools({data}) {
                 }}></div>
                 <h3>{data.name}</h3>
                 <div className="d-flex justify-content-between">
-                    <div>
-                        <p>{data.address}</p>
-                        <p>{data.address2}</p>
-                    </div>
+                    <p>{data.address}{data.address2 && ', ' +data.address2}</p>
                     <div className="d-flex flex-column">
-                        <button className="btn btn-outline-default"><img src={data?.status?getGreen():getRed()}
-                                                                         alt="status dot" style={{width: "10px"}}/> {data.status?"Active":"Inactive"}</button>
+                        <button className="btn btn-outline-default">
+                            <img src={data?.status?getGreen():getRed()}
+                                 alt="status dot" style={{width: "10px"}}/>
+                                 {data.status?"Active":"Inactive"}</button>
                         <SchDetails opener={opener()} school_id={data.uuid}/>
                     </div>
                 </div>

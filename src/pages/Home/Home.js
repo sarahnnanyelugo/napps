@@ -65,6 +65,9 @@ export const Home = () => {
         "My child was struggling with exam anxiety, but this platform has made all the difference. The step-by-step solutions have built their confidence, and I’ve seen a significant improvement in their scores. ..!”",
     },
   ];
+  const forceLoad=()=>{
+    window.location.href='/sch-finder'
+  }
   return (
     <>
       <NavBar />
@@ -75,17 +78,17 @@ export const Home = () => {
       </div>
       <div className="col-md-10 offset-md-1 find-sch col-10 offset-1">
         <h2>Find schools around you</h2>
-        <div className="d-md-flex">
+          <div className="d-md-flex">
           <div className="col-md-10 ">
             <div className="row row-cols-1 row-cols-lg-3 g-2 g-lg-2 ">
               <div className="col">
                 <h6>School Name</h6>
-                <input placeholder="Enter school name here" />
+                <input onClick={forceLoad} placeholder="Enter school name here" />
               </div>
               <div className="col">
                 {" "}
                 <h6>State</h6>
-                <select value={selectedState} onChange={handleStateChange}>
+                <select value={selectedState} onClick={forceLoad} onChange={handleStateChange}>
                   <option value="" disabled>
                     Select your state
                   </option>
@@ -98,7 +101,7 @@ export const Home = () => {
               </div>
               <div className="col">
                 <h6 style={{ textAlign: "left" }}>LGA</h6>
-                <select disabled={!selectedState}>
+                <select onClick={forceLoad} disabled={!selectedState}>
                   <option value="" disabled>
                     LGA
                   </option>
@@ -126,10 +129,11 @@ export const Home = () => {
             </Link>
           </div>
         </div>
+
         <div className="next-select col-md-8 row row-cols-1 row-cols-lg-3 g-2 g-lg-2">
           <div className="col">
             {" "}
-            <select>
+            <select onClick={forceLoad}>
               <option>Gender</option>
               <option>Male</option>
               <option>female</option>
@@ -137,7 +141,7 @@ export const Home = () => {
           </div>
           <div className="col">
             {" "}
-            <select>
+            <select onClick={forceLoad}>
               <option>Levels of Education</option>
               <option>EYFS</option>
               <option>Primary</option>
@@ -146,7 +150,7 @@ export const Home = () => {
           </div>
           <div className="col">
             {" "}
-            <select>
+            <select onClick={forceLoad}>
               <option>Boarding Facility (Hostel)</option>
               <option>Yes</option>
               <option>No</option>

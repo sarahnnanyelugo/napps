@@ -1,4 +1,4 @@
-import officer1 from "../assets/images/yomi.png";
+import officer1 from "../assets/images/president.jpeg";
 import officer2 from "../assets/images/ajibade.png";
 import officer3 from "../assets/images/uduak.png";
 import officer4 from "../assets/images/arugwu.png";
@@ -23,8 +23,8 @@ import officer22 from "../assets/images/tabitha.png";
 export const executiveMembers = [
   {
     id: 1,
-    name: "CHIEF (DR) YOMI OTUBELA, FCMB",
-    profileImg: officer1,
+    name: "SAMIRA JIBIR (Ph.D)",
+    profileImg: officer13,
     portfolio: "National President (NAPPS NIGERIA)",
   },
   {
@@ -97,60 +97,54 @@ export const zonalPresidents = [
   },
   {
     id: 3,
-    name: "SAMIRA JIBIR",
-    profileImg: officer13,
-    portfolio: "National Council Member (North Central Zone)",
-  },
-  {
-    id: 4,
     name: "DR. EDNA TAMUNOKIKAYEOFORI OPARA",
     profileImg: officer14,
     portfolio: "National Council Member (South South Zone)",
   },
   {
-    id: 5,
+    id: 4,
     name: "Alh. GARBA M. KILGORI",
     profileImg: officer15,
     portfolio: "National Council Member (North West Zone)",
   },
   {
-    id: 6,
+    id: 5,
     name: "PASTOR CHRIS I. INEH",
     profileImg: officer16,
     portfolio: "National Council Member (South East Zone)",
   },
   {
-    id: 7,
+    id: 6,
     name: "DR OCHUKO AKPEME RDN",
     profileImg: officer17,
     portfolio: "National Vice-President (South South Zone)",
   },
   {
-    id: 8,
+    id: 7,
     name: "HON DR. ALIYU RABIU KURFI",
     profileImg: officer18,
     portfolio: "National Vice-President (North West Zone)",
   },
   {
-    id: 9,
+    id: 8,
     name: "NONYE ENEMUO (Esq)",
     profileImg: officer19,
     portfolio: "National Vice-President (South East Zone)",
   },
   {
-    id: 10,
+    id: 9,
     name: "DR. KUNLE GBADAMOSI (Ph.D)",
     profileImg: officer20,
     portfolio: "National Vice-President (North East Zone)",
   },
   {
-    id: 11,
+    id: 10,
     name: "PASTOR (Barr.) STEPHEN O. ABITOGUN",
     profileImg: officer21,
     portfolio: "National Vice-President (South West Zone)",
   },
   {
-    id: 12,
+    id: 11,
     name: "SALAUDEEN TABITHA MSURSHIMA",
     profileImg: officer22,
     portfolio: "National Vice-President (North Central Zone)",

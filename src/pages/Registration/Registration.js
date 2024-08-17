@@ -508,7 +508,7 @@ export const Registration = (props) => {
                                             </div>
                                         </div>
                                         <div className="col">
-                                            <h2>Education type</h2>
+                                            <h2>Gender</h2>
                                             <div className="select-div ">
                                                 <select name="gender"
                                                         onChange={handleSelect}>
