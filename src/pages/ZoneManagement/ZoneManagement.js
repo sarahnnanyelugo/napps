@@ -6,12 +6,10 @@ import Icon2 from "../../assets/images/user2.svg";
 import Icon3 from "../../assets/images/exp.svg";
 import Map from "../../assets/images/map2.png";
 import "./school-management.scss";
-import SchoolsTable from "../../components/SchoolsTable/SchoolsTable";
 import { schools } from "../../Data/schoolsData";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import WOW from "wowjs";
-import { GeoChart } from "../../components/GeoChart/GeoChart";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ManagementTable from "../SchoolManagement/ManagementTable";
 
