@@ -11,7 +11,7 @@ import {useAuth} from "../../AuthContext";
 import {ApiContext} from "../../ApiContext";
 import {toast} from "react-toastify";
 import {getActive, getInactive} from "../../utility/dots";
-import {getPercentage} from "../../utility/utils";
+import formatNumber, {getPercentage} from "../../utility/utils";
 import {DataChart} from "../../components/Chart/DataChart";
 import {SchoolFilter} from "../../components/SchoolFilter/SchoolFilter";
 export const SchoolManagement = () => {
@@ -21,6 +21,7 @@ export const SchoolManagement = () => {
   const { data, loading, error, fetchData, postData } = useContext(ApiContext);
   const [authError,setAuthError]=useState(false)
   const [isLoading, setIsLoading] = useState(true);
+  const [students,setStudents]=useState({total:0,total_male:0,total_female:0})
 
   const[NC,setNC]=useState([])
   const[NE,setNE]=useState([])
@@ -50,6 +51,8 @@ export const SchoolManagement = () => {
   useEffect(() => {
     if(!data || loading || !data.zones)return;
     const zones=data?.zones;
+    const studentDist=data?.student_distribution;
+    if(studentDist)setStudents(studentDist)
 
     setNC([zones[0]?.schools_count,zones[0]?.active_schools_count,zones[0]?.inactive_schools_count]);
     setNE([zones[1]?.schools_count,zones[1]?.active_schools_count,zones[1]?.inactive_schools_count]);
@@ -98,7 +101,7 @@ export const SchoolManagement = () => {
       </div>
       }
       {!authError && <div className="Admin-dalshboard">
-        <div className=" row row-cols-2 row-cols-lg-3 g-2 g-lg-4 mt">
+        <div className=" row row-cols-2 row-cols-lg-4 g-2 g-lg-4 mt">
           <div className="col">
             <div className="summary d-flex">
               <div style={{flexGrow: 1}}>
@@ -162,6 +165,29 @@ export const SchoolManagement = () => {
                     enableScrollSpy={true}
                 />
               </h1>
+            </div>
+          </div>
+
+          <div className="col">
+            <div className="summary d-flex">
+              <div>
+                <h4 className="stats">
+                  Students: <CountUp
+                      start={0}
+                      end={students.total}
+                      duration={2}
+                      decimal=""
+                      prefix=" "
+                      suffix=""
+                      enableScrollSpy={true}
+                  />
+                </h4>
+                <p className="d-flex">
+                  <span>Male: <strong className={'text-primary'}>{formatNumber(parseInt(students.total_male),0)}</strong></span>&nbsp;
+                  <span>Female: <strong className={'text-info'}>{formatNumber(parseInt(students.total_female),0)}</strong></span>
+                </p>
+              </div>
+
             </div>
           </div>
         </div>

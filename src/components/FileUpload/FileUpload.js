@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ImageUploading from "react-images-uploading";
 import ProfileAvater from "../../assets/images/edit-profile.png";
+import upload from "../../assets/images/upload.png";
 
 import "./file-upload.scss";
 export function FileUpload(props) {
@@ -14,6 +15,9 @@ export function FileUpload(props) {
     setImages(imageList);
   };
   useEffect(() => {
+    setImg(upload)
+  })
+  useEffect(() => {
     if (!images[0]) {
       setImg(null);
       return;
@@ -21,6 +25,7 @@ export function FileUpload(props) {
     setImg(images[0].data_url || null);
     CB(images);
   }, [images]);
+
   const CB = (img) => {
     callBack(img);
   };
@@ -32,7 +37,7 @@ export function FileUpload(props) {
   // );
   return (
     <>
-      {/* <img src={img || ProfileAvater} /> */}
+       {/*<img src={img || ProfileAvater} />*/}
 
       <div className="file-input-div  " style={{ display: align }}>
         {" "}

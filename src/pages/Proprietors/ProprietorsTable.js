@@ -22,7 +22,7 @@ const ProprietorsTable = (props) => {
   const location = useLocation();
   const [prevData, setPrevData] = useState([]);
   useEffect(() => {
-    setBlogId(data.id);
+    setBlogId(data?.id);
   });
 
   const getTransitionClass = (item) => {
@@ -56,7 +56,7 @@ const ProprietorsTable = (props) => {
             </tr>
           </thead>
           <TransitionGroup component="tbody">
-            {data.map((item) => (
+            {data?.map((item) => (
               <CSSTransition
                 key={item.id}
                 timeout={500}

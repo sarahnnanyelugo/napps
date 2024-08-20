@@ -245,7 +245,9 @@ export const Registration = (props) => {
             {" "}
             <ToastContainer/>
             <form action="" onSubmit={handleSubmit}>
-                {" "}
+                {/*<div className="float-end">*/}
+                {/*    <span className="btn btn-danger" onClick={()=>{window.history.back()}}>X</span>*/}
+                {/*</div>*/}
                 <div className="members-form sch-dit">
                     {" "}
                     <div className="login-div col-md-8 offset-md-2 ">
@@ -303,7 +305,7 @@ export const Registration = (props) => {
                                             {" "}
                                             <FileUpload
                                                 defaultIcon={<FaUserEdit/>}
-                                                uploadable="Picture"
+                                                uploadable="Logo"
                                                 colr="white"
                                                 callBack={(img) => {
                                                     setPicture(img);
@@ -521,7 +523,7 @@ export const Registration = (props) => {
                                         {" "}
                                     </div>
                                     {" "}
-                                    <div className="row row-cols-1 g-1">
+                                    <div className="row row-cols-2 g-1">
                                         <div className="col">
                                             <h2>Education level</h2>
                                             <div className="d-flex flex-row">
@@ -539,6 +541,29 @@ export const Registration = (props) => {
 
                                                     </div>
                                                 ))}
+                                            </div>
+                                        </div>
+
+                                        <div className="col">
+                                            <h2>Number of Students</h2>
+                                            <div className="d-flex flex-row">
+                                                <div className="mr-3">
+                                                    <label className="ml-1">Male</label>
+                                                    <input
+                                                        type="number" min={0}
+                                                        name="male_count"
+                                                        onChange={handleChange}
+                                                    />
+                                                </div>
+                                                <div className="mr-3">
+                                                    <label className="ml-1">Female</label>
+                                                    <input
+                                                        type="number" min={0}
+                                                        name="female_count"
+                                                        onChange={handleChange}
+                                                    />
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -618,7 +643,7 @@ export const Registration = (props) => {
                             </div>
                         </div>
 
-                        <div className="col-md- flex-end">
+                        <div className="col-md- flex-end float-end">
                             {" "}
                             <button className="payment-button "> {loading &&
                             <Spinner animation="border" variant="light" size="sm"/>} Create School

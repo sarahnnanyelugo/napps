@@ -58,15 +58,15 @@ export const Proprietors = () => {
   function setCat(cat) {
     setCategory(cat);
   }
-  useEffect(() => {
-    if (category === "*") {
-      setfilteredSchools(schools);
-    } else {
-      setfilteredSchools(
-        schools.filter((prd) => prd.category.indexOf(category) !== -1)
-      );
-    }
-  }, [category]);
+  // useEffect(() => {
+  //   if (category === "*") {
+  //     setfilteredSchools(schools);
+  //   } else {
+  //     setfilteredSchools(
+  //       schools.filter((prd) => prd.category.indexOf(category) !== -1)
+  //     );
+  //   }
+  // }, [category]);
   function reducer(dt) {
     setfilteredSchools(dt.list);
   }
