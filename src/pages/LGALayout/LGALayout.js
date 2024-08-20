@@ -11,7 +11,7 @@ import { LGAManagement } from "../LGAManagement/LGAManagement";
 export default function LGALayout() {
   return (
     <>
-      <div className="d-flex">
+      <div className="d-md-flex">
         <div className="col-md-2">
           <LGANav />
         </div>

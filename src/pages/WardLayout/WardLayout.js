@@ -12,7 +12,7 @@ import { WardSUb } from "../WardSub/WardSub";
 export default function WardLayout() {
   return (
     <>
-      <div className="d-flex">
+      <div className="d-md-flex">
         <div className="col-md-2">
           <WardNav />
         </div>

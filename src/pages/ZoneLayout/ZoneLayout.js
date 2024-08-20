@@ -12,7 +12,7 @@ import { ZoneManagement } from "../ZoneManagement/ZoneManagement";
 export default function ZoneLayout() {
   return (
     <>
-      <div className="d-flex">
+      <div className="d-md-flex">
         <div className="col-md-2">
           <ZoneNav />
         </div>
