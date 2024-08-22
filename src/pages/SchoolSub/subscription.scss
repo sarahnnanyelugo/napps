@@ -294,10 +294,16 @@
   th {
     font-size: 14px;
     font-family: montSB;
+    @media screen and (max-width: 820px) {
+      font-size: 12px !important;
+    }
   }
   td {
     font-size: 13px;
     font-family: montR;
+    @media screen and (max-width: 820px) {
+      font-size: 10px !important;
+    }
   }
   button {
     background: transparent;
