@@ -25,7 +25,7 @@ export const Footer = () => {
             <h5>About</h5>
             <ul className="list-unstyled">
               <li>
-                <Link to={"/"}>About Us</Link>
+                <Link to={"/about-us"}>About Us</Link>
               </li>{" "}
               <li>
                 <Link to={"/"}>Terms of Use</Link>
@@ -50,7 +50,7 @@ export const Footer = () => {
             <h5>Support</h5>
             <ul className="list-unstyled">
               <li>
-                <Link to={"/"}>Contact Us</Link>
+                <Link to={"/contact-us"}>Contact Us</Link>
               </li>{" "}
               <li>
                 <Link to={"/"}>How it works</Link>

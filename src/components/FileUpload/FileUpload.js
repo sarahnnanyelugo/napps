@@ -15,8 +15,8 @@ export function FileUpload(props) {
     setImages(imageList);
   };
   useEffect(() => {
-    setImg(upload)
-  })
+    setImg(upload);
+  });
   useEffect(() => {
     if (!images[0]) {
       setImg(null);
@@ -37,7 +37,7 @@ export function FileUpload(props) {
   // );
   return (
     <>
-       {/*<img src={img || ProfileAvater} />*/}
+      {/*<img src={img || ProfileAvater} />*/}
 
       <div className="file-input-div  " style={{ display: align }}>
         {" "}
@@ -59,14 +59,25 @@ export function FileUpload(props) {
             isDragging,
             dragProps,
           }) => (
-            <div className="upload__image-wrapper">
-              <span
-                style={{ color: colr,cursor:"pointer" }}
+            <div
+              className="upload__image-wrapper"
+              style={{
+                cursor: "pointer",
+                width: "100%",
+                height: "60px",
+                // background: "red",
+                // marginTop: "-50px",
+              }}
+            >
+              <div
+                style={{
+                  color: colr,
+                }}
                 onClick={onImageUpload}
                 {...dragProps}
               >
                 Upload {props.uploadable}
-              </span>
+              </div>
               &nbsp;
               {imageList.map((image, index) => (
                 <div key={index} className="image-item"></div>

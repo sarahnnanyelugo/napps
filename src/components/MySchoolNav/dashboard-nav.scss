@@ -1,9 +1,9 @@
-.dashboard-nav {
+.my-sch-nav {
   padding: 10px 5px;
-  height: 100%;
+
   border-right: solid 1px #f7f5f5;
   box-shadow: 0px 3px 3px #00000029;
-
+  min-height: 750px;
   .dash-logo {
     height: 74px;
     border-bottom: solid 1px #f7f5f5;
@@ -35,7 +35,7 @@
     margin-top: 20px;
   }
   @media screen and (max-width: 820px) {
-    display: none;
+    // display: none;
   }
 }
 

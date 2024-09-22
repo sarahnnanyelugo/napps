@@ -64,6 +64,8 @@ const DashboardSelector = () => {
     if(error)
     {
       localStorage.removeItem('authToken')
+      localStorage.removeItem('isLoggedIn')
+      localStorage.removeItem('user')
       setTimeout(()=>{
         window.location.href = '/login';
       },1000)
