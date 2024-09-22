@@ -72,11 +72,12 @@ export const MembersDetail = () => {
   useEffect(() => {
     if (!data)
       return;
+    console.log(data)
     toast.success("Thanks for Signing Up!");
     setSchoolRegistrationProforma();
-    setInterval(() => {
+    setTimeout(() => {
       window.location = "/registration";
-    }, 1000);
+    }, 1500);
   }, [data]);
   
   useEffect(() => {

@@ -97,7 +97,7 @@ export const SchoolBio = ({school_id}) => {
                                     <div style={{marginLeft: "20px"}}>
                                         <p> {data?.proprietor?.name}</p>
                                         <p>{data?.contact_phone}</p>
-                                        <p>{data?.website}</p>
+                                        <p>{data?.contact_email}</p>
                                     </div>
                                     {" "}
                                 </div>
@@ -113,7 +113,7 @@ export const SchoolBio = ({school_id}) => {
                             </div>
                             <div className="col-md-6">
                                 <h2>Website</h2>
-                                <p>{data?.website}</p>
+                                <Link to={data?.website} target={'_blank'}><p>{data?.website}</p></Link>
                                 <h2>Email</h2>
                                 <p className="col-md-10">{data?.contact_email}</p>
                             </div>
@@ -151,6 +151,18 @@ export const SchoolBio = ({school_id}) => {
                             <div className="col-md-6">
                                 <h2>Gender</h2>
                                 <p>{data?.gender}</p>
+                            </div>
+                        </div>
+                        <div className="d-flex">
+                            <div className="col-md-4">
+                                <h2>Total Students</h2>
+                                <p>{(parseInt(data?.male_count)+parseInt(data?.female_count))}</p>
+                            </div>
+                            <div className="col-md-4">
+                                <div className="d-flex">
+                                    <p>Male: <strong>{data?.male_count}</strong></p>
+                                    <p>Female:  <strong>{data?.female_count}</strong> </p>
+                                </div>
                             </div>
                         </div>
                         <div className="d-flex">

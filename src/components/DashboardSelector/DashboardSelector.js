@@ -60,6 +60,15 @@ const DashboardSelector = () => {
     }
 
   }, [data])
+  useEffect(() => {
+    if(error)
+    {
+      localStorage.removeItem('authToken')
+      setTimeout(()=>{
+        window.location.href = '/login';
+      },1000)
+    }
+  }, [error])
 
   useEffect(() => {
     if (dashboardId) {

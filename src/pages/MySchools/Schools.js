@@ -83,7 +83,7 @@ export const Schools = ({data}) => {
                         </div>
                         {!isLoading &&
                         <p>
-                            <ProgressBar number={number} max={max} color={remColor(remaining)}/>
+                            <ProgressBar number={remaining} max={max} color={remColor(remaining)}/>
                             <p>Remaining days: <strong>{remaining}</strong></p>
                         </p>
                         }

@@ -34,10 +34,10 @@ export const Login = () => {
   useEffect(() => {
     if(isLoggedIn){
       toast.success("You successfully logged in");
-      setInterval(() => {
+      setTimeout(() => {
         window.location = "dashboard-selector";
         // window.location = "dashboard-layout/admin-dashboard";
-      }, 1000);
+      }, 1500);
     }
   },[isLoggedIn]);
   function handleSubmit(e) {
