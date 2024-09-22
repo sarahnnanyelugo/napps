@@ -26,10 +26,18 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Save state to localStorage whenever it changes
-    setLocalStorage('isLoggedIn', isLoggedIn);
-    setLocalStorage('authToken', authToken);
-    setAuthToken(authToken);
-    setLocalStorage('user', userState);
+    if(!authToken||authToken==""){
+      localStorage.removeItem('isLoggedIn')
+      localStorage.removeItem('authToken')
+      localStorage.removeItem('user')
+    }
+    else{
+      setLocalStorage('isLoggedIn', isLoggedIn);
+      setLocalStorage('authToken', authToken);
+      setAuthToken(authToken);
+      setLocalStorage('user', userState);
+    }
+
   }, [isLoggedIn, authToken, userState]);
 
 
@@ -38,9 +46,11 @@ export const AuthProvider = ({ children }) => {
     setLoading(true)
     try {
       const response = await api.post(apiUrl + '/login', credentials); // Replace with your login endpoint
-      setIsLoggedIn(true);
-      setAuthTokenState(response.data.token);
-      setAuthUserState(response.data.user);
+      if(response.data?.token){
+        setIsLoggedIn(true);
+        setAuthTokenState(response?.data.token);
+        setAuthUserState(response?.data.user);
+      }
       setLoading(false)
     } catch (resp) {
 
