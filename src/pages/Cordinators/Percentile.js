@@ -15,12 +15,16 @@ const Percentile = () => {
   const [paymentConfigs, setPaymentConfigs] = useState({});
   const [bearer, setBearer] = useState("");
   const [subscriptionFee, setSubscriptionFee] = useState("");
+  const [publicKey, setPublicKey] = useState("");
+  const [secretKey, setSecretKey] = useState("");
 
   // Fetch payment configurations on component mount
   useEffect(() => {
     if (!paymentConfigs) return;
     setBearer(paymentConfigs.bearer || "");
     setSubscriptionFee(paymentConfigs.subscription_fee || "");
+    setPublicKey(paymentConfigs.public_key || "");
+    setSecretKey(paymentConfigs.secret_key || "");
   }, [paymentConfigs]);
   // Handle input change for bearer
   const handleBearerChange = (event) => {
@@ -43,6 +47,8 @@ const Percentile = () => {
       await api.post("/admin/update-payment-configs", {
         bearer,
         subscription_fee: subscriptionFee,
+        public_key: publicKey,
+        secret_key: secretKey,
       });
       toast.success("Payment configurations saved successfully!");
     } catch (error) {
@@ -219,7 +225,7 @@ const Percentile = () => {
       </div>
 
       <Card
-        className={"container mt-3 col-md-4"}
+        className={"container mt-3 col-md-5"}
         style={{ paddingBottom: "10px" }}
       >
         <h2>Other Configurations</h2>
@@ -266,7 +272,28 @@ const Percentile = () => {
                   Please enter a valid number.
                 </Form.Control.Feedback>
               </td>
+
             </tr>
+            {canSetEducare && <>            <tr>
+              <th>SWP Public Key</th>
+              <td>
+                <Form.Control
+                    type="text"
+                    value={publicKey}
+                    onChange={(e)=>{setPublicKey(e.target.value)}}
+                />
+              </td>
+            </tr>
+              <tr><th>SWP Secret Key</th>
+                <td>
+                  <Form.Control
+                      type="text"
+                      value={secretKey}
+                      onChange={(e)=>{setSecretKey(e.target.value)}}
+                  />
+                </td>
+              </tr></>}
+
           </tbody>
         </Table>
 
