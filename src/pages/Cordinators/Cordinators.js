@@ -131,7 +131,7 @@ export const Cordinators = () => {
               className={`tab btn-4 ${checkActive2(3, "active2")}`}
               onClick={() => handleClick2(3)}
             >
-              Percentile
+              Percentile & Others
             </button>
           </div>
           {activeIndex===1 &&<div className="ssearch-div d-md-flex justify-content-md-between">
