@@ -247,24 +247,24 @@ export const AboutUs = () => {
             </div>
           </div>
         </div>
-        <center>
-          <h6>About Us</h6>
-          <h3>National Executive Members</h3>
-        </center>
-        <div className=" row row-cols-1 row-cols-lg-4 g-2 g-lg-4 mt col-md-10 offset-md-1 mobile-padding">
-          {executiveMembers.map((data, index) => (
-            <Officers data={data} key={"m" + index} />
-          ))}
-        </div>{" "}
-        <center>
-          <h6 style={{ marginTop: "150px" }}>About Us</h6>
-          <h3>Zonal Presidents</h3>
-        </center>
-        <div className=" row row-cols-1 row-cols-lg-4 g-2 g-lg-4 mt col-md-10 offset-md-1 mobile-padding">
-          {zonalPresidents.map((data, index) => (
-            <Officers data={data} key={"m" + index} />
-          ))}
-        </div>
+        {/*<center>*/}
+        {/*  <h6>About Us</h6>*/}
+        {/*  <h3>National Executive Members</h3>*/}
+        {/*</center>*/}
+        {/*<div className=" row row-cols-1 row-cols-lg-4 g-2 g-lg-4 mt col-md-10 offset-md-1 mobile-padding">*/}
+        {/*  {executiveMembers.map((data, index) => (*/}
+        {/*    <Officers data={data} key={"m" + index} />*/}
+        {/*  ))}*/}
+        {/*</div>{" "}*/}
+        {/*<center>*/}
+        {/*  <h6 style={{ marginTop: "150px" }}>About Us</h6>*/}
+        {/*  <h3>Zonal Presidents</h3>*/}
+        {/*</center>*/}
+        {/*<div className=" row row-cols-1 row-cols-lg-4 g-2 g-lg-4 mt col-md-10 offset-md-1 mobile-padding">*/}
+        {/*  {zonalPresidents.map((data, index) => (*/}
+        {/*    <Officers data={data} key={"m" + index} />*/}
+        {/*  ))}*/}
+        {/*</div>*/}
       </div>{" "}
       <Footer />
     </>
